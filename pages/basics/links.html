@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Linking JS to your page</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+    <section class="container">
+
+        <div class="row">
+            <div class="col">
+                <h1>3 ways to link JS to you page</h1>
+                <p>There are 3 ways to link JS to your page.</p>
+                <ul>
+                    <li>External style sheet (Recommended)</li>
+                    <li>Internal style sheet</li>
+                    <li>Inline</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+  <section class="container">
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-note">
+                <div class="alert-icon">
+                    <img src="../../_img/note-icon.png" width="60" height="60">
+                </div>
+                <div class="alert-content">
+                    <p>JS is rendered as the browser becomes aware of it. So order matters.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="heading-emphasis">External style sheet (Recommended)</h2>
+                <p>You should link this in the &lt;head&gt; or after &lt;/body&gt; depending on when the code needs to be ran.</p>
+                <p>Placing JavaScripts in external files has some advantages:</p>
+                <ul>
+                    <li>It separates HTML and code</li>
+                    <li>It makes HTML and JavaScript easier to read and maintain</li>
+                    <li>Cached JavaScript files can speed up page loads</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>This links in the &lt;head&gt; section of the HTML page.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example">
+<span class="code-html">&lt;head&gt;</span>
+  <span class="code-js">&lt;script src="myScript.js"&gt;&lt;/script&gt;</span>
+<span class="code-html">&lt;/head&gt;</span></pre>
+            </div>
+        </div>
+
+<h3>HTTP/2</h3>
+        <div class="row">
+            <div class="col">
+              <p>HTTP/2 allows multiple assets to be downloaded in parallel. However, if the file is referenced in the header, render blocking will still happen, it just takes less time.</p>
+              <p>Historically, it was a good idea to place scripts at the bottom of the &lt;body&gt; element to help page load. But since HTTP/2, that is no longer necessary. Today, you can choose to load the JS file in 3 ways:</p>
+<ul>
+  <li><strong>Immediately</strong> - If we load it right away, the HTML will parse until it encounters a reference to JavaScript. Then the JavaScript file is loaded, executed, and we continue the HTML parsing. This is JavaScript render blocking.</li>
+<li><strong>Asynchronously</strong> - If we load our JavaScript file asynchronously by adding the async attribute, the file will be downloaded alongside the HTML. Render blocking only kicks in when the script is executed. It's better, and useful in some situations.</li>
+<li><strong>Deferred</strong> - <span class="code-js">&lt;script src="scrip.js" defer&gt;&lt;/script&gt;</span> - If we defer the script, loading and execution of the file, even if it's referenced in the head, only happens when everything else is loaded.</li>
+</ul>
+</div>
+</div>
+
+    </section>
+
+
+
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="heading-emphasis">Internal style sheet</h2>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h3>Adding code in the &lt;head&gt; section.</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+
+                <p>Add your code to the head section if you want the JS to run before page is rendered.</p>
+                <p>For example, if you add document.body.innerHTML it will throw an error because it's BEFORE the &lt;body&gt;.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example">
+<span class="code-html">&lt;html&gt;
+  &lt;head&gt;</span>
+    <span class="code-js">&lt;script&gt;
+      code...
+    &lt;/script&gt;</span>
+  <span class="code-html">&lt;/head&gt;
+
+    &lt;body&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h3>Adding code after the &lt;body&gt; tag.</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+
+                <p>If you want JS to run after page has loaded.</p>
+                <p>If your JS runs on something in the &lt;body&gt;, it must be after the body tag or deferred to render later.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example">
+<span class="code-html">&lt;html&gt;
+  &lt;head&gt;</span>
+  <span class="code-html">&lt;/head&gt;
+
+  &lt;body&gt;
+  &lt;/body&gt;
+
+    <span class="code-js">&lt;script&gt;
+      code...
+    &lt;/script&gt;</span>
+
+&lt;/html&gt;</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="heading-emphasis">Inline style</h2>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>This is most often always a bad idea.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example">asdf</pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="heading-emphasis">JS render blocking</h2>
+              <p>Because JavaScript may change HTML and CSS on a page, any time a browser encounters a JavaScript file reference, it stops the rendering of the page until the script file is downloaded and executed.</p>
+              <p>This is known as JavaScript render blocking and it can slow down the performance of a site significantly.</p>
+            </div>
+          </div>
+        </section>
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

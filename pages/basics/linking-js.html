@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Linking CSS to your page</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+    <section class="container">
+
+        <div class="row">
+            <div class="col">
+                <h1>3 ways to link CSS to you page</h1>
+                <p>There are 3 ways to link CSS to your page.</p>
+                <ul>
+                    <li>External style sheet (Recommended)</li>
+                    <li>Internal style sheet</li>
+                    <li>Inline</li>
+                </ul>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="heading-emphasis">External style sheet (Recommended)</h2>
+                <p>Linking from an external style sheet is the recommended way to load CSS into your website.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>Link the external sheet within the &lt;head&gt; section of the HTML page.</p>
+                <p>type="text/css" isn't needed in HTML5</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example">
+<span class="code-css">&lt;head&gt;
+  &lt;link rel="stylesheet" type="text/css" href="mystyle.css"&gt;
+&lt;/head&gt;</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="heading-emphasis">Internal style sheet</h2>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+              <p>You can add code to the &lt;head&gt; section within &lt;style&gt; tags.</p>
+              <p>However this can get difficult to read very quickly as the CSS grows.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example">
+<span class="code-css">&lt;head&gt;
+  &lt;style&gt;
+    body {
+      background-color: linen;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="heading-emphasis">Inline style</h2>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+              <p>Inline styles are written directly into the body of the HTML page. Since there is no separation of content and style, this is an outdated method to add CSS and should never be used.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example">
+<span class="code-css">&lt;h1 style="color:blue;margin-left:30px;"&gt;This is a heading.&lt;/h1&gt;</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="heading-emphasis">Multiple Style Sheets</h2>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+              <p>If some properties have been defined for the same selector (element) in different style sheets, the value from the last read style sheet will be used.</p>
+              <p>The &lt;h1&gt; elements will be "orange" since it was called last</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;head&gt;
+  &lt;link rel="stylesheet" type="text/css" href="mystyle.css"&gt;
+
+  &lt;style&gt;
+    h1 {
+      color: orange;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="container">
+
+        <div class="row">
+            <div class="col">
+                <h1>Cascading order</h1>
+                  <p>CSS will cascade in this order:</p>
+                <ul>
+                    <li><strong>Inline style</strong> (inside an HTML element)</li>
+                    <li><strong>External and internal style sheets</strong> (in the head section)</li>
+                    <li><strong>Browser default</strong></li>
+                </ul>
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
