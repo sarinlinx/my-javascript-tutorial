@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Basic script examples</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>if else</h1>
+        <h2>if statement</h2>
+
+        <div class="row">
+            <div class="col-6">
+                <p>if statement</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">if (condition) {
+  block of code to be executed if the condition is true
+}</span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <h4>Example</h4>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">if (hour < 18) {
+  greeting = "Good day";
+} </span></pre>
+            </div>
+        </div>
+
+
+
+        <h2>if else statement</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>if statement</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">if (condition) {
+  block of code to be executed if the condition is true
+} else {
+  block of code to be executed if the condition is false
+}</span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <h4>Example</h4>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">if (hour < 18) {
+  greeting = "Good day";
+} else {
+  greeting = "Good evening";
+}</span></pre>
+            </div>
+        </div>
+
+
+        <h2>else if statement</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>if statement</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">if (condition1) {
+  block of code to be executed if condition1 is true
+} else if (condition2) {
+  block of code to be executed if the condition1 is false and condition2 is true
+} else {
+  block of code to be executed if the condition1 is false and condition2 is false
+}</span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <h4>Example</h4>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">if (time < 10) {
+  greeting = "Good morning";
+} else if (time < 20) {
+  greeting = "Good day";
+} else {
+  greeting = "Good evening";
+}</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="container">
+        <h1>Ternary operator</h1>
+
+        <div class="row">
+            <div class="col-6">
+                <p>Syntax to shorten code.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var = condition ? value_if_true : value_if_false</span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>For example, this returns false since 1 is less than 10.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var value = ( 1 > 10 ) ? true : false</span></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p>You can also use it with text. This returns the string "correct".</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var value = ( 1 < 10 ) ? "correct" : "incorrect"</span></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p>You can also use it with numbers. This returns the number 555.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var value = ( 1 < 10 ) ? 555 : 777</span></pre>
+            </div>
+        </div>
+
+
+
+    <section class="container">
+        <h1>Loops</h1>
+        <h2>while</h2>
+
+        <div class="row">
+            <div class="col-6">
+                <p>While the condition is true, the code from the loop body is executed.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var i = 0;
+
+while(i<10) {
+  // do something
+}</span></pre>
+            </div>
+        </div>
+
+
+        <h2>do while</h2>
+
+        <div class="row">
+            <div class="col-6">
+                <p>The loop will always execute once, then it checks the condition. If the condition is true, the code is exectued again until the condition is not true.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var i = 0;
+
+do {
+  alert(i);
+  i++;
+}
+
+while (i < 5);</span></pre>
+            </div>
+        </div>
+
+        <h2>for</h2>
+
+        <div class="row">
+            <div class="col-6">
+                <p>Most common loop type. All parts are put into the same location.</p>
+                <p>The variable is set: i=0</p>
+                <p>The condition to check is set: i
+                    <10</p>
+                        <p>The value is altered: i++</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">for( i=0; i<10; i++) {
+  alert(i)
+}</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="container">
+        <h1>Break</h1>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>Use 'break' to exit a loop at any time you choose.</p>
+                <p>This example breaks the loop when i is equal to 3.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var i;
+
+for (i = 0; i < 10; i++) {
+  if (i === 3) { break; }
+  alert(i);
+}</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Continue</h1>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>Continue stop the current iteration and forces the loop to start the next.</p>
+                <p>This counts 0, 1, 2, 3 and stops. The negative values are skipped.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var i = -3
+
+while( i<3 ) {
+  i++
+
+  if ( i<0 ) continue
+
+  alert(i)
+}</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Labels</h1>
+
+<h3>Break</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Lables are used for nested loops. This allows you to break out of an inner loop and outer loop at the same time. Otherwise, you'd only break out of the inner loop.</p>
+                <p>This example displays the following, but breaks out before the second outer loop can begin.</p>
+                <ul>
+                  <li>Outer Loop 0 Inner Loop 0</li>
+                  <li>Outer Loop 0 Inner Loop 0</li>
+                  <li>Outer Loop 0 Inner Loop 2</li>
+                  <li>Done!</li>
+                </ul>
+            </div>
+            <div class="col-6">
+<pre class="example"><span class="code-js">outer:
+for (var i = 0; i < 3; i++) {
+  for (var j = 0; j < 3; j++) {
+
+    alert("Outer Loop " + i + " Inner Loop " + j);
+
+    if (j === 2) break outer;
+
+  }
+}
+
+alert('Done!');</pre>
+            </div>
+        </div>
+
+<h3>Continue</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>You can also use 'continue' with labels.</p>
+                <p>This example will display the following since the value of 1 continues the statement (skips the next value of 2).</p>
+                <ul>
+                  <li>Outer Loop 0 Inner Loop 0</li>
+                  <li>Outer Loop 0 Inner Loop 1</li>
+                  <li>Outer Loop 1 Inner Loop 0</li>
+                  <li>Outer Loop 1 Inner Loop 1</li>
+                  <li>Outer Loop 2 Inner Loop 0</li>
+                  <li>Outer Loop 2 Inner Loop 1</li>
+                  <li>Done!</li>
+                </ul>
+            </div>
+            <div class="col-6">
+<pre class="example"><span class="code-js">outer:
+for (var i = 0; i < 3; i++) {
+  for (var j = 0; j < 3; j++) {
+
+    alert("Outer Loop " + i + " Inner Loop " + j);
+
+    if (j === 1) continue outer;
+
+  }
+}
+
+alert('Done!');</pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Switch</h1>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>The Switch operator checks the argument against each case. It then executes the code below the match until it meets the break operator.</p>
+                <p>This example outputs 2 and 3 because it starts at case2 and proceeds through case3.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = 2
+
+switch(x) {
+case 1:
+alert('never executes')
+
+case 2:
+alert('x === 2')
+
+case 3:
+alert('x === 3')
+}
+</pre>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>This example outputs 2, but then breaks out of the Switch, so Case3 is never ran.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = 2
+
+switch(x) {
+case 1:
+alert('never executes')
+
+case 2:
+alert('x === 2')
+break
+
+case 3:
+alert('x === 3')
+}
+</pre>
+            </div>
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>Switch uses === to check equality.</p>
+                <p>In this example, if you enter 0, 1, or 2, a pop-up displays your values normally.</p>
+                <p>However if you enter 3, Switch skips to the default case and states the value is unknown. This is because there are no quotes around the '3' for the case 3 statement meaning it's a string, not a number.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var arg = prompt("Enter arg?")
+switch(arg) {
+case '0':
+case '1':
+alert('One or zero')
+
+case '2':
+alert('Two')
+break
+
+case 3:
+alert('Never happens')
+
+case false:
+alert('False')
+break
+
+default:
+alert('Unknown value: '+arg)
+}</pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

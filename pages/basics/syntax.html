@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Syntax</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Case</h1>
+                <p>Case matters. JavaScript uses camelCase as a standard naming convention. For example: getElementByTagName.</p>
+                <p>Var, function, method names should start with lowercase.</p>
+                <p>Object and class names start with Capital.</p>
+                <p>Constants are all caps.</p>
+                <p>White space is ignored.</p>
+                <p>End each statement with a semicolon;</p>
+                <p>Tabs are ignored.</p>
+                <p>No hyphens	Hyphens are not allowed in JavaScript. It is reserved for subtractions.</p>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Data Types</h1>
+                <p><span class="standout">Numeric</span> - For exampe: <span class="code-js">var num = 1.687;</span></p>
+                <p><span class="standout">String</span> - For exampe: <span class="code-js">var string = "string text here";</span></p>
+                <ul>
+                    <li>Single or double quotes are ok. But, if quotes are in the string, use single quotes to encase it: <span class="code-js">var str = 'If he says "Hello" make sure to respond'</span></li>
+                    <li>or use double quotes, but escape them in the string: <span class="code-js">var str = "If he says \"Hello\" make sure to respond"</span></li>
+                </ul>
+
+                <p><span class="standout">Boolean</span> - For exampe: <span class="code-js">var bool = true;</span></p>
+                <p><span class="standout">null</span> - These are empty, but not undefined. For exampe: <span class="code-js">var asdf = null;</span></p>
+                <p><span class="standout">undefined</span> - These are not set to anything. They are just placeholders. For exampe: <span class="code-js">var stuff;</span></p>
+                <p><span class="standout">Symbol (ES6)</span>
+                    <h3>Viewing the type of variable</h3>
+                    <p>Use 'typeof' to determine what type the variable is. For example: <span class="code-js">console.log(typeof varNameHere);</span>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container">
+        <h1>Newlines</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>Newlines are NOT ignored. A newline may separate statements, just like semicolons do. For example, these two are equivalent:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">a = 5
+a = 5;</span></pre></div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p>If necessary, you can insert a convenience newline with \. A backslash before a line break forces the interpreter to ignore the newline. For example:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var a = "long \
+line "</span></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>The newline is also ignored if the expression is not finished.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Comments</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>Single line comments.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">// everything after these double slashes is a comment</span></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p>Multiline comments.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">/* stuf stuf
+stuff stuff
+*/</span></pre>
+            </div>
+        </div>
+</section>
+
+
+
+
+
+<section class="container">
+    <h1>Concatenate</h1>
+    <div class="row">
+        <div class="col-6">
+            <p>The + operator concats info.</p>
+        </div>
+
+        <div class="col-6">
+            <pre class="example"><span class="code-js">var a = "my" + "string here" //returns my string here</span></pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <p>It doesn't matter which one is a string. For example.</p>
+        </div>
+
+        <div class="col-6">
+            <pre class="example"><span class="code-js">alert( '1' + 2) // returns 12</span></pre>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+<section class="container">
+    <h1>Conditional if Statement</h1>
+    <div class="row">
+        <div class="col-6">
+            <p>if statement</p>
+        </div>
+
+        <div class="col-6">
+            <pre class="example"><span class="code-js">if ( some condition ) {
+  do something
+}</span></pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <p>if else</p>
+        </div>
+
+        <div class="col-6">
+            <pre class="example"><span class="code-js">if ( some condition ) {
+  do something
+} else {
+  do somethign else
+}</span></pre>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="container">
+    <h1>Logical Operators</h1>
+    <div class="row">
+        <div class="col-6">
+            <p>AND &&</p>
+        </div>
+
+        <div class="col-6">
+            <p>A AND B</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <p>OR ||</p>
+        </div>
+
+        <div class="col-6">
+            <p>A or B or BOTH</p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-6">
+            <p>XOR</p>
+        </div>
+
+        <div class="col-6">
+            <p>A or B but not BOTH. But this doesn't exist in JS.</p>
+        </div>
+    </div>
+
+<h3>How to create XOR in JS</h3>
+    <div class="row">
+        <div class="col-6">
+            <p>Nest a conditional statement inside a conditional statement. This means: Either a==b or c==d but not both</p>
+        </div>
+
+        <div class="col-6">
+            <pre class="example"><span class="code-js">if ( (a ==b) || c == d ) && ( ( a == b ) != ( c == d ) ) { } </span></pre>
+        </div>
+    </div>
+
+</section>
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

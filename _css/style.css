@@ -3,40 +3,44 @@ General Styles
 ___________________________________________________*/
 
 body {
-  background-color: #231f20;
+  background-color: #1a1a1a;
   color: #70c4ee;
   position: relative;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 3.2rem;
   margin-top: 80px;
   margin-bottom: 20px;
   color: #ffcd2f;
   border-bottom: 2px solid #776a6a;
-  padding: 10px;
+  padding: 10px 0;
   /* text-align: center; */
 }
 
 h2 {
   padding-bottom: 15px;
   margin-top: 50px;
-  color: #ffcd2f;
+  font-size: 2.6rem;
+  color: #ffaa3f;
   margin-bottom: 20px;
   border-bottom: 2px solid #776a6a;
   /* Dark Gold */
 }
 
 h3 {
+  font-size: 1.8rem;
   margin-top: 30px;
   color: #00ff88;
+  padding-top: 20px;
   /* GREEN */
   /* color: #ff5f5f; RED*/
 }
 
 h4 {
-  color: #00d4ff;
-  padding: 1.2rem 0;
+  font-size: 1.3rem;
+  color: #ff6767;
+  padding: 1rem 0;
 }
 
 h5 {

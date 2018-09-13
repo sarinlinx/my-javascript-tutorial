@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Strings</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Strings</h1>
+        <div class="row">
+            <div class="col">
+                <p>Strings are text.</p>
+                <p>In JavaScript, all strings are in unicode, no matter which type of encoding is used.</p>
+            </div>
+        </div>
+
+        <h2>Basics</h2>
+        <h3>Creating a string</h3>
+
+        <div class="row">
+            <div class="col-6">
+                <p>Put the string in quotes.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var text = "my text string";</span></pre>
+            </div>
+        </div>
+
+        <h4>Adding a number and a string</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>The result is 45 because the number is just joined with the string.</p>
+                <p>If you check typeof, you'll see it's a string now.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var a = 4;
+var b= "5";
+var sum = a + b;
+
+alert(sum);
+alert(typeof sum);</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="container">
+        <h2>Special characters</h2>
+        <div class="row">
+            <div class="col">
+                <ul>
+                    <li>\b Backspace</li>
+                    <li>\f Form feed</li>
+                    <li>\n New line</li>
+                    <li>\r Carriage return</li>
+                    <li>\t Tab</li>
+                    <li>\u#### Unicode 4 digit hex code</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4>Example of Backspace</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>asdf</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">asdf</pre>
+            </div>
+        </div>
+
+        <h4>Example of Form feed</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>asdf</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">asdf</pre>
+            </div>
+        </div>
+
+        <h4>Example of newline</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This displays as:</p>
+                <p>first</p>
+                <p>second</p>
+                <p>third</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var multiLine = " first \n second \n third line "
+alert(multiLine)</pre>
+            </div>
+        </div>
+
+        <h4>Example of Carriage return</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>asdf</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">asdf</pre>
+            </div>
+        </div>
+
+        <h4>Example of tab</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>asdf</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">asdf</pre>
+            </div>
+        </div>
+
+        <h4>Example of Unicode</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This displays the copyright symbol.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var unicode = "\u00A9 copyright symbol"
+alert(unicode)</pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h2>Escaping quotes</h2>
+        <div class="row">
+            <div class="col">
+                <p>To escape a quote, add a \ slash before the quote.</p>
+            </div>
+        </div>
+
+        <h4>Escape a single quote in a single quoted string</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>A single quote inside a single quoted string must be escaped.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = 'I\'m the Walrus';
+alert(str)</pre>
+            </div>
+        </div>
+
+
+        <h4>Escape a single quote in a double quoted string</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>A single quote inside a double quoted string does not need to be escaped.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "I'm the Walrus";
+alert(str)</pre>
+            </div>
+        </div>
+
+
+        <h4>Escape double quotes in a double quoted string</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>A double quote inside a double quoted string must be escaped.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "double \"quote\" ";
+alert(str)</pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+<section class="container">
+    <h2>String length</h2>
+    <div class="row">
+        <div class="col-6">
+            <p>Print the number of characters in a string.</p>
+            <p>This prints 3 since the newline is its own character.</p>
+        </div>
+
+        <div class="col-6">
+            <pre class="example"><span class="code-js">var str = "My\n"
+alert(str.length)</pre>
+        </div>
+    </div>
+</section>
+
+
+
+
+<section class="container">
+    <h2>Accessing a single character in a string</h2>
+    <div class="row">
+        <div class="col-6">
+            <p>There are 2 ways to do this.</p>
+        </div>
+
+        <div class="col-6">
+            <pre class="example"><span class="code-js">var str = "string text"
+alert( str.charAt(2) )
+
+var str = "string text"
+alert(str[2])</pre>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<section class="container">
+    <h2>Changing string text</h2>
+    <div class="row">
+        <div class="col-6">
+            <p>It's not possible to change the text of a string.</p>
+            <p>However, you can re-created the string one part at a time.</p>
+            <p>This changes the text 'string' into 'ring'.</p>
+        </div>
+
+        <div class="col-6">
+            <pre class="example"><span class="code-js">var str = "string"
+str = str.charAt(2) + str.charAt(3) + str.charAt(4) + str.charAt(5)
+alert(str)</pre>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
