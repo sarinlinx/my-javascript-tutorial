@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>this</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>this</h1>
+        <div class="row">
+            <div class="col">
+                <p>'this' is a keyword.</p>
+                <p>The value of 'this' is determined by how a function is called. It cannot be directly set.</p>
+                <p>Any function may use this. It doesn’t matter if the function is assigned to the object or not.</p>
+            </div>
+        </div>
+
+        <h2>Object method binding</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>In this example, the 'this' keyword refers to the person Object.</p>
+                <p>The person object "owns" the fullName method.</p>
+                <p>This example returns: John Doe</p>
+            </div>
+            <div class="col-6">
+              <pre class="example"><span class="code-js">var person = {
+  firstName: "John",
+  lastName : "Doe",
+  id       : 5566,
+  fullName : function() {
+     return this.firstName + " " + this.lastName;
+  }
+};
+
+alert(person.fullName());</span></pre>
+            </div>
+        </div>
+
+          <div class="row">
+            <div class="col-6">
+                <p>If a function is called from the object, the 'this' keyword refers to the object (which can be thought of as the owner of the function).</p>
+                <p>This example returns: John: hi!</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js"><span class="code-comment">//Create an Object</span>
+var john = {
+  firstName: "John",
+  age: 30
+}
+
+<span class="code-comment">//Create a function and assign it to a new property named sayHi
+//Think of this as: object.property equals this function</span>
+john.sayHi = function() {
+  alert(this.firstName + ": hi!")
+}
+
+<span class="code-comment">//Finally, run the function
+//This retuns John: hi!</span>
+john.sayHi()</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+<h2>When used alone (Default Binding)</h2>
+
+        <div class="row">
+            <div class="col-6">
+                <p>When used alone, the 'this' keyword refers to the Global object.</p>
+                <p>In a browser the Global object is [object Window]:</p>
+                <p>This example returns [object Window]</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = this;
+alert(this);</span></pre>
+            </div>
+        </div>
+
+        <h3>When used as a function</h3>
+
+        <div class="row">
+            <div class="col-6">
+                <p>When used in a function, 'this' refers to the Global object.</p>
+                <p>This example returns [object Window]</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">function myFunction() {
+    alert( this );
+}
+
+myFunction();</span></pre>
+            </div>
+        </div>
+
+
+
+
+        <h3>When used in strict mode</h3>
+
+        <div class="row">
+            <div class="col-6">
+                <p>The 'this' keyword will be undefined when using 'strict mode'.</p>
+                <p>This is because 'strict mode' does not allow default binding.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">"use strict";
+function myFunction() {
+    alert (this);
+}
+
+myFunction();</span></pre>
+            </div>
+        </div>
+
+
+
+        <h2>Explicit Function Binding</h2>
+
+                <div class="row">
+                    <div class="col-6">
+                        <p>The call() and apply() methods cna be used to call an object method with another object as the argument.</p>
+                        <p>In this example, when calling person1.fullName with person2 as argument, this will refer to person2, even if it is a method of person1.</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">var person1 = {
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+var person2 = {
+  firstName:"John",
+  lastName: "Doe",
+}
+
+person1.fullName.call(person2);  <span class="code-comment">// Will return "John Doe"</span></span></pre>
+                    </div>
+                </div>
+</section>
+
+
+
+
+
+
+        <script src="../../_js/jquery.js"></script>
+        <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

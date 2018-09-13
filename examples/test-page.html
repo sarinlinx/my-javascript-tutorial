@@ -17,8 +17,22 @@
 
 
 
-// alert( "testme".substring(4, -1) )
-alert ( "testme".slice(4, -4));
+  function logScope() {
+    var localVar =2;
+    //let localVar = 2;
+
+    if (localVar) {  //This is TRUE
+      var localVar = "I'm different";
+      //this if statement is the block scope of the variable
+      //let localVar = "I'm different";
+      console.log("nested localVar: ", localVar);
+    }
+
+    console.log("logScope localVar: ", localVar);
+  }
+logScope();
+
+
 
 
 
@@ -33,8 +47,7 @@ alert ( "testme".slice(4, -4));
     <a href="../index.html">Home page</a>
     <p>Test Page</p>
 
-    <script src="../../_js/jquery.js"></script>
-    <script src="../../_js/bootstrap.bundle.js"></script>
+
 </body>
 
 </html>

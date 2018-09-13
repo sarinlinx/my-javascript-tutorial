@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Variables</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Variables</h1>
+        <div class="row">
+            <div class="col">
+                <p>vars are case sensitive.</p>
+                <p>The first character of a variable must be one of the following:</p>
+                <ul>
+                    <li>$</li>
+                    <li>_</li>
+                    <li>a letter</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <h2>2 new types in ES2015</h2>
+        <h3>const</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Constant. Cannot be changed once defined.</p>
+                <p>This causes an Uncaught TypeError: Assignment to constant variable.</p>
+                <p>This happens because you CANNOT change the constant after it's declared.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">const MYCONSTANT = 5;
+console.log(MYCONSTANT);
+MYCONSTANT = 6;</span></pre>
+            </div>
+        </div>
+
+
+        <h3>let</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Block scope variable. Smaller scope than var.</p>
+                <p>Notice how 'var localVar' is commented out twice.</p>
+                <p>If both were not commented, the nested if statement would changed the variable 'localVar' to "I'm different" inside the if statement and outside of it.</p>
+                <p>When 'let' is used, it only changes inside the variable inside of the if statement. This is because the if statement is the variable's 'Block Scope'.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">function logScope() {
+  <span class="code-comment">//var localVar =2;</span>
+  let localVar = 2;
+
+  if (localVar) {  <span class="code-comment">//This is TRUE</span>
+    <span class="code-comment">// var localVar = "I'm different";
+    //this if statement is the block scope of the variable</span>
+    let localVar = "I'm different";
+    console.log("nested localVar: ", localVar);
+  }
+
+  console.log("logScope localVar: ", localVar);
+}
+
+logScope();</span></pre>
+            </div>
+        </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="container">
+    <h1>Variable Scope</h1>
+    <div class="row">
+        <div class="col">
+            <p>Scope determines where in your code your variable is available.</p>
+            <p>The location of the variable and how it is declared determines the scope.</p>
+            <p>There are 3 types of scope in JavaScript.</p>
+            <ul>
+                <li>Global - This is when you declare the variable outside of any function. You can then access it in any script.	However, if you update the variable within any function, the global value changes. So, any other references to that variable are updated as well.</li>
+                <li>Local - This is when you declare the variable inside a function. It's only then available within that function.</li>
+                <li>Block - new scope added with ES2015 used with 'const' and 'let' variables. The scope is limited to a small block of code, even within a function.</li>
+            </ul>
+
+        </div>
+    </div>
+  </section>
+
+
+
+
+
+
+        <script src="../../_js/jquery.js"></script>
+        <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

@@ -78,6 +78,9 @@ ___________________________________________________*/
   color: #ff2c2c;
 }
 
+.code-comment {
+  color: gray;
+}
 .breadcrumb-container {
   background-color: #000;
 }

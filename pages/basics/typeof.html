@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>typeof</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>typeof</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>Use the typeof() method to determine the type of operator.</p>
+                <p>There are two syntaxes you can use.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">typof var //more common
+
+or
+
+typeof(var)</span></pre>
+            </div>
+        </div>
+
+<h3>Examples</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This returns 'string'.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "test"
+alert ( typeof str );</span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>This returns 'undefined'.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str
+alert ( typeof str );</span></pre>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>This returns 'number'.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = 3
+alert ( typeof str );</span></pre>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>This returns 'boolean'.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = true;
+alert ( typeof str );</span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>This returns 'object'.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var person = {
+    firstName:"John",
+    lastName:"Doe",
+    age:50,
+    eyeColor:"blue"
+};
+
+alert ( typeof person );</span></pre>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>Funcitons are objects, but this returns the typeof 'function' instead.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = function(){};
+alert ( typeof str );</span></pre>
+            </div>
+        </div>
+
+<h3>typeof cannot distinguis between types of Objects</h3>
+
+<div class="row">
+    <div class="col-6">
+        <p>These all return 'object'.</p>
+
+    </div>
+    <div class="col-6">
+        <pre class="example"><span class="code-js">alert( typeof {} ) // 'object'
+alert( typeof [] ) // 'object'
+alert( typeof new Date ) // 'object'</span></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<h3>Strange exceptions</h3>
+<div class="row">
+    <div class="col-6">
+        <p>This is a mistake from JS from the 90s but still exists for compatibility.</p>
+        <p>This returns 'object'.</p>
+
+    </div>
+    <div class="col-6">
+        <pre class="example"><span class="code-js">var str = null;
+alert ( typeof str );</span></pre>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <p>NaN returns a type of 'number'.</p>
+
+    </div>
+    <div class="col-6">
+        <pre class="example"><span class="code-js">var str = NaN;
+alert ( typeof str );</span></pre>
+    </div>
+</div>
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
