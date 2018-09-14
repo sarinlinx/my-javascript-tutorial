@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Displaying data</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+    <section class="container">
+        <h1>Displaying data</h1>
+        <div class="row">
+            <div class="col">
+                <p>JavaScript does NOT have any built-in print or display functions.</p>
+                <p>There are 4 ways to display data.</p>
+    <ul>
+      <li>Writing into an alert box, using window.alert().</li>
+<li>Writing into the HTML output using document.write().</li>
+<li>Writing into an HTML element, using innerHTML.</li>
+<li>Writing into the browser console, using console.log().</li></ul>
+            </div>
+        </div>
+
+        <h2>window.alert()</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This creates a pop-up displaying your data.</p>
+            </div>
+            <div class="col-6">
+              <pre class="example"><span class="code-js">window.alert(5 + 6);</span></pre>
+            </div>
+          </div>
+
+
+
+          <h2>document.write()</h3>
+          <div class="row">
+              <div class="col-6">
+                  <p>This displays text directly on the web page.</p>
+              </div>
+              <div class="col-6">
+                <pre class="example"><span class="code-js">document.write(5 + 6);</span></pre>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <p>If you use it AFTER all HTML is loaded, it will delete all existing HTML.</p>
+                    <p>After clicking the button, the web page only shows the result 11.</p>
+                </div>
+                <div class="col-6">
+                  <pre class="example"><span class="code-html">&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;My First Web Page&lt;/h1&gt;
+&lt;p&gt;My first paragraph.&lt;/p&gt;
+
+<span class="code-comment">This JS code is
+&lt;button onclick="document.write(5 + 6)"&gt;Try it&lt;/button&gt;</span>
+
+<button onclick="document.write(5 + 6)">Try it</button>
+
+&lt;/body&gt;
+&lt;/html&gt;</span></pre>
+                </div>
+              </div>
+
+              <h2>innerHTML</h3>
+              <div class="row">
+                  <div class="col-6">
+                      <p>This is used to access an HTML element on the page.</p>
+                      <p>The id attribute defines the HTML element.</p>
+                      <p>The result 11 is displayed on the web page.</p>
+<p>This statement tells the browser to write "11" inside an HTML element with id="demo"</p>
+                  </div>
+                  <div class="col-6">
+                    <pre class="example"><span class="code-html">&lt;p id="demo"&gt;&lt;/p&gt;</span>
+
+<span class="code-js">&lt;script&gt;
+document.getElementById("demo").innerHTML = 5 + 6;
+&lt;/script&gt;</span></pre>
+                  </div>
+                </div>
+
+
+
+                <h2>console.log()</h3>
+                <div class="row">
+                    <div class="col-6">
+                        <p>Open the browser's dev tools to view the JS console.</p>
+                        <p>This displays the result of 11.</p>
+                    </div>
+                    <div class="col-6">
+                      <pre class="example"><span class="code-js">console.log(5 + 6);</span></pre>
+                    </div>
+                  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script src="../../_js/jquery.js"></script>
+        <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

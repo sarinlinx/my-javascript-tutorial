@@ -12,32 +12,7 @@
 
     <title>Test Page</title>
 
-  <script>
 
-
-
-
-  function logScope() {
-    var localVar =2;
-    //let localVar = 2;
-
-    if (localVar) {  //This is TRUE
-      var localVar = "I'm different";
-      //this if statement is the block scope of the variable
-      //let localVar = "I'm different";
-      console.log("nested localVar: ", localVar);
-    }
-
-    console.log("logScope localVar: ", localVar);
-  }
-logScope();
-
-
-
-
-
-
-    </script>
 </head>
 
 
@@ -48,6 +23,16 @@ logScope();
     <p>Test Page</p>
 
 
-</body>
 
+    <button onclick="document.write(5 + 6)">Try it</button>
+</body>
+<script>
+
+
+
+
+
+
+
+  </script>
 </html>
