@@ -11,28 +11,22 @@
     <link rel="stylesheet" type="text/css" href="../../_css/style.css">
 
     <title>Test Page</title>
-
-
 </head>
 
-
-
-
 <body>
-    <a href="../index.html">Home page</a>
-    <p>Test Page</p>
-
-
-
-    <button onclick="document.write(5 + 6)">Try it</button>
+    <p id="paragraphID" class="myClass"><a href="#">header here</a></p>
+    <br>
+    <button onclick="myFunction()">Click to change</button>
 </body>
+
+
+
 <script>
+    function myFunction() {
+        document.getElementById("paragraphID").setAttribute("class", "mynewClass");
+        var getNewClass = document.querySelector("#paragraphID").classList;
+        alert(getNewClass);
+    }
+</script>
 
-
-
-
-
-
-
-  </script>
 </html>
