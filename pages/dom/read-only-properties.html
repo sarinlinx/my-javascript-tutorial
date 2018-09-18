@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>READ-ONLY properties</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+    <section class="container">
+        <h2>Interacting with a read-only properties</h2>
+        <div class="row">
+            <div class="col">
+                <p>This page lists all read-only properties.</p>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element" target="_blank">Read only properties</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <h4>Return a list of all classes of an element</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Use .classList to return a list of all classes that are assigned to an element.</p>
+                <p>classList is read-only, so these values can't be changed this way.</p>
+                <p>This example returns: masthead clear.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;header class="masthead clear"&gt;header here&lt;/header&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+var classList = <span class="standout">document.querySelector(".masthead").classList;</span>
+alert(classList);
+}</span></pre>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>You could also return a specific class by using the index value.</p>
+                <p>This returns 'clear'.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;header class="masthead clear"&gt;header here&lt;/header&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+var classList = <span class="standout">document.querySelector(".masthead").classList[1];</span>
+alert(classList);
+}</span></pre>
+            </div>
+        </div>
+
+
+
+
+        <h3>How to change the class of a read-only property like classList?</h3>
+        <div class="row">
+            <div class="col">
+                <p>You must use a method to change the class of a read-only property list classList.</p>
+                <p>View the following page for available methods:</p>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList">methods</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <h4>Add a class name</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Use .add("classname") to add another class to an element.</p>
+                <p>This returns: masthead clear newClassName</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;header class="masthead clear"&gt;header here&lt;/header&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+  <span class="standout">document.querySelector(".masthead").classList.add("newClassName");</span>
+  var classList = document.querySelector(".masthead").classList;
+  alert(classList);
+}</span></pre>
+            </div>
+        </div>
+
+
+
+
+        <h4>Remove a class</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Use .remove("classname") to remove a class from an element.</p>
+                <p>This returns: masthead since the class of 'clear' was removed.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;header class="masthead clear"&gt;header here&lt;/header&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+  <span class="standout">document.querySelector(".masthead").classList.remove("clear");</span>
+  var classList = document.querySelector(".masthead").classList;
+  alert(classList);
+}</span></pre>
+            </div>
+        </div>
+
+
+
+
+        <h4>Toggle a class on/off</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Use .toggle("classname") to toggle on/off a class from an element.</p>
+                <p>Use querySelector() to locate a different class from the element, then toggle() to toggle another.</p>
+                <p>This toggles off the 'clear' class.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;header class="masthead clear"&gt;header here&lt;/header&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+<span class="standout">document.querySelector(".masthead").classList.toggle("clear");</span>
+  var classList = document.querySelector(".masthead").classList;
+  alert(classList);
+}</span></pre>
+            </div>
+        </div>
+
+        <h4>Check if another class if part of an element</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Use .contains("classname") to check if an existing element with a class, also contains a different class.</p>
+                <p>In this example, the header element contains a class of 'masthead'. .contains() then checks if this element aslo contains the class of 'clear'.
+                    <p>
+                        <p>If so, it returns TRUE.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;header class="masthead clear"&gt;header here&lt;/header&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+<span class="standout">document.querySelector(".masthead").classList.contains("clear");</span>
+  var classList = document.querySelector(".masthead").classList;
+  alert(classList);
+}</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+        <script src="../../_js/jquery.js"></script>
+        <script src="../../_js/bootstrap.bundle.js"></script>
+    </body>
+
+    </html>

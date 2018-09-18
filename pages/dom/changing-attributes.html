@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Accessing the DOM</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+    <section class="container">
+        <h2>Changing attributes</h2>
+        <div class="row">
+            <div class="col">
+                <p>Syntax is: <span class="standout">var result = elementName.hasAttribute(name);</span></p>
+                <p>'result' holds either TRUE or FALSE.</p>
+                <p>'name' is a string of the name of the attribute.</p>
+            </div>
+        </div>
+
+
+
+        <h3>Check if an element has a specific attribute (hasAttribute)</h3>
+
+        <h4>Checking by the ID</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This checks if an element with an id of 'headerID' also contains a 'class' attribute.</p>
+                <p>This returns TRUE.</p>
+                <p>View the following link for further details.</p>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttribute" target="_blank">hasAttribute</a></li>
+                </ul>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;header id="headerID" class="masthead"&gt;header here&lt;/header&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+  <span class="code-comment">//first get the element</span>
+  var hasAttr = <span class="standout">document.getElementById("headerID").hasAttribute("class");</span>
+  alert(hasAttr);
+}</span></pre>
+            </div>
+        </div>
+
+
+
+
+        <h4>Checking using querySelector</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This checks if the 'header' element contains a 'class' attribute.</p>
+                <p>This returns TRUE.</p>
+                <p>View the following link for further details.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;header class="masthead"&gt;header here&lt;/header&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+  <span class="code-comment">//first get the element</span>
+  var hasAttr = <span class="standout">document.querySelector("header").hasAttribute("class");</span>
+  alert(hasAttr);
+}</span></pre>
+            </div>
+        </div>
+
+        <h3>getAttribute()</h3>
+        <h4>Return the attribute names of an element as an Array of strings</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This first looks for the element with an id of 'paragraphID'.</p>
+                <p>It then checks if the attribute 'class' also exists for this same element.</p>
+                <p>If so, it returns the string name of that attribute.</p>
+                <p>This example returns "myClass".</p>
+                <p>View the following for more info:</p>
+                <ul>
+                    <li><a href='https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttributeNames' target="_blank">getAttribute</a></li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;p id="paragraphID" class="myClass"&gt;&lt;a href="#"&gt;header here&lt;/a&gt;&lt;/p&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+  var hasAttr = document.getElementById("paragraphID").<span class="standout">getAttribute("class")</span>;
+  alert(hasAttr);
+}</span></pre>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>Another example.</p>
+                <p>This returns "_blank".</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;a id="myAnchor" href="#" target="_blank"&gt;Attr object&lt;/a&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+  var hasAttr = document.getElementById("myAnchor").<span class="standout">getAttribute("target")</span>;
+  alert(hasAttr);
+}</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <h3>setAttribute()</h3>
+        <h4>Sets the value of an attribute on the specified element</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Sets the value of an attribute on the specified element. If the attribute already exists, the value is updated; otherwise a new attribute is added with the specified name and value.</p>
+                <p>The retrieves the element with a class of 'paragraphID', then adds a new class of 'mynewClass'.</p>
+                <ul>
+                    <li><a href='https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute' target="_blank">setAttribute</a></li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;p id="paragraphID" class="myClass"&gt;&lt;a href="#"&gt;header here&lt;/a&gt;&lt;/p&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+  document.getElementById("paragraphID").<span class="standout">setAttribute("class", "mynewClass");</span>
+  var getNewClass = document.querySelector("#paragraphID").classList;
+  alert(getNewClass);
+}</span></pre>
+            </div>
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>This retrieves the element with an id of 'myAnchor'.</p>
+                <p>It then adds a new attribute of 'href' with a value of 'example.com'.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;a id="myAnchor"&gt;A Link: Go to w3schools.com&lt;/a&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+  document.getElementById("myAnchor").<span class="standout">setAttribute("href", "https://www.example.com");</span>
+}</span></pre>
+            </div>
+        </div>
+
+
+
+
+        <h3>removeAttribute()</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>removeAttribute() removes the attribute with the specified name from the element.</p>
+                <ul>
+                    <li><a href='https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute' target="_blank">removeAttribute</a></li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;p id="paragraphID" class="myClass"&gt;&lt;a href="#"&gt;header here&lt;/a&gt;&lt;/p&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-comment">//Check original class list for element</span>
+<span class="code-js">var classList = document.querySelector("#pID").classList;
+alert(classList);
+
+function myFunction() {
+    document.getElementsByTagName("p")[0].removeAttribute("class");</span>
+    <span class="code-comment">//Check if the original classes exist</span>
+    <span class="code-js">var newclassList = document.querySelector("#pID").classList;
+    alert(newclassList);
+}</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

@@ -14,7 +14,12 @@
 </head>
 
 <body>
-    <p id="paragraphID" class="myClass"><a href="#">header here</a></p>
+
+    <div class="cta" ) <a href="#">Book now!</a>
+    </div>
+
+
+    <p id="pID" class="myClass"><a href="#">header here</a></p>
     <br>
     <button onclick="myFunction()">Click to change</button>
 </body>
@@ -22,11 +27,7 @@
 
 
 <script>
-    function myFunction() {
-        document.getElementById("paragraphID").setAttribute("class", "mynewClass");
-        var getNewClass = document.querySelector("#paragraphID").classList;
-        alert(getNewClass);
-    }
+const CTAELEMENT = document.querySelector(".cta a")
 </script>
 
 </html>
