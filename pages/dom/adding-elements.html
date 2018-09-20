@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Adding DOM elements</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+    <section class="container">
+        <h1>Adding new DOM elements</h1>
+        <div class="row">
+            <div class="col">
+                <p>Steps to add a new DOM element.</p>
+                <ul>
+                  <li>Create the element using <span class="standout"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement" target="_blank">.createElement()</a></span></li>
+                  <li>Create text that goes inside the elmenet using <span class="standout"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode" target="_blank">.createTextNode()</a></span></li>
+                  <li>Add text to the new element using <span class="standout"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild" target="_blank">.appendChild()</a></span></li>
+                  <li>Add the new element to an existing element using <span class="standout"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild" target="_blank">.appendChild()</a></span></li>
+                </ul>
+
+            </div>
+        </div>
+
+
+
+        <h3>Adding a new DOM element</h3>
+
+        <div class="row">
+            <div class="col-6">
+                <p>This creats a new element titled &lt;figcaption&gt; with text inside</p>
+                <p>If you check dev tools, you'll see the new code has been added to the DOM.</p>            
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;figure class="featured-image"&gt;
+&lt;img src="../_img/note.jpg"&gt;
+&lt;/figure&gt;</span>
+
+<span class="code-js">
+<span class="code-comment">//Create a variable for the existing element
+//You'll need this to append the new element</span>
+const FEATURED = document.querySelector(".featured-image");
+
+<span class="code-comment">//Create a figcaption element
+//This creates a fig caption document that is not placed anywhere in the document.
+//It's just sitting in the memory of the browser.</span>
+var captionElement = document.createElement("figcaption");
+
+<span class="code-comment">//Create text to add to the new figcaption element</span>
+var captionText = document.createTextNode("new text to add");
+
+<span class="code-comment">//Add the new figcaption text to the new figcaption element</span>
+captionElement.appendChild(captionText);
+
+<span class="code-comment">//Add new figcaption element to the featured image figure</span>
+FEATURED.appendChild(captionElement);</span></span></pre>
+
+</div>
+</div>
+</section>
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

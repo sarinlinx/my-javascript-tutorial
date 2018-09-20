@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Changing CSS</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+    <section class="container">
+        <h2>View INLINE styles of an element</h2>
+        <div class="alert alert-note">
+            <div class="alert-icon">
+                <img src="../../_img/note-icon.png" width="60" height="60">
+            </div>
+            <div class="alert-content">
+                <p>This shows inline styles ONLY.</p>
+                <p>The styles that are being applied from an external style sheet, or even internal styles in the head, do not show up here because JavaScript is just requesting the element and looking up what's inside the element.</p>
+                <p>When the command is ran in a console, it prints a CSS style declaration list of every possible property that could be applied using inline styles. Within that list is the inline value applied.</p>
+            </div>
+        </div>
+
+        <h4>Retrieve using the console</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Use .style to retrieve inline styles for an element.</p>
+                <p>In your browser's console, run the following command.</p>
+                <p>This returns the inline style applied to the div tag.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;div class="cta" style="color: blue;"&gt;
+&lt;p&gt;Text&lt;/p&gt;
+&lt;/div&gt;</span>
+
+<span class="code-js">document.querySelector(".cta").style;</span>
+CSS2Properties { color → "blue" }</pre>
+            </div>
+        </div>
+        <h4>Retrieve using alert()</h4>
+        <div class="row">
+            <div class="col">
+                <p>This doesn't work. The alert box returns: [object CSS2Properties].</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container">
+        <h1>Changing CSS</h1>
+        <h3>Changing a single property</h3>
+        <div class="alert alert-note">
+            <div class="alert-icon">
+                <img src="../../_img/note-icon.png" width="60" height="60">
+            </div>
+            <div class="alert-content">
+                <p>It does not matter where the CSS is added. This will change it.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>To change the CSS of an element, first retrieve it, then append .style.
+                    <property> = "value" to it.</p>
+                <p>For example: <span class="standout">document.querySelector(".cta").style.color = "green"</span></p>
+            </div>
+        </div>
+
+        <h4>Change using the console</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This changes the CSS of the .cta class to red.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;div class="cta" style="color: blue;"&gt;
+  &lt;p&gt;Text&lt;/p&gt;
+&lt;/div&gt;</span>
+
+<span class="code-js">document.querySelector(".cta").style.color = "red";</span></pre>
+            </div>
+        </div>
+
+        <h4>If the property has a hyphen</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>If the CSS property has a hyphen in it, it becomes camelCase in JavaScript.</p>
+                <p>For example, background-color becomes backgroundColor.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;div class="cta" style="color: blue;"&gt;
+  &lt;p&gt;Text&lt;/p&gt;
+&lt;/div&gt;</span>
+
+<span class="code-js">document.querySelector(".cta").style.backgroundColor = "red";</span></pre>
+            </div>
+        </div>
+
+
+
+        <h3>Changing multiple properties</h4>
+  <div class="row">
+      <div class="col-6">
+          <p>Use .style.cssText following by multiple statements to add multiple properties.</p>
+      </div>
+      <div class="col-6">
+<pre class="example"><span class="code-html">&lt;div class="cta" style="color: blue;"&gt;
+  &lt;p&gt;Text&lt;/p&gt;
+&lt;/div&gt;</span>
+
+<span class="code-js">document.querySelector(".cta a").style.cssText = "padding: 1em; color: white; background-color: red;"</span></pre>
+  </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="container">
+    <h1>Inline CSS is just an attribute</h1>
+
+    <div class="row">
+        <div class="col">
+            <p>Inline CSS is an attribute. Because it's an attribute, you can use the following methods to interact with the 'style' inline style.</p>
+              <p>This only works with inline CSS.</p>
+<ul>
+    <li>.hasAttribute("style");	- does element have style?</li>
+<li>.getAttribute("style");	- get inline style</li>
+<li>.setAttribute("style", "color:red");	- Add CSS</li>
+<li>.removeAttribute("style");	- Remove inline styles</li>
+</ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

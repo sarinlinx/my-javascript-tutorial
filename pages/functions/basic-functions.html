@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Basic Functions</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+    <section class="container">
+        <h1>Basics of Functions</h1>
+        <div class="row">
+            <div class="col">
+                <p>Steps to add a new DOM element.</p>
+                <ul>
+                    <li>All functions are defined with 'function' keyword.</li>
+                    <li>Giving the function a name is optional.</li>
+                    <li>Function names cannot start with a number. However, they can include: $, _, a...z, 0...9</li>
+                    <li>You can have zero or as many parameters as you want, and these will become variables that are local to and only available inside your function.</li>
+                    <li>Function parameters are the names listed in the function definition.</li>
+<li>Function arguments are the real values received by the function when it is invoked.</li>
+                </ul>
+
+            </div>
+        </div>
+
+
+
+        <h1>Declaring functions</h1>
+        <h2>2 ways to declare a function</h2>
+        <h3>Function declaration</h3>
+<h4>Declaring a function without a name</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This is only executed when called.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">function plus(a,b) {
+  var sum = a+b;
+  return sum;
+}
+
+<span class="code-comment">//call the function</span>
+plus(2,2);</span></span></pre>
+
+            </div>
+        </div>
+
+<h4>Declaring a function with a name</h4>
+<div class="row">
+    <div class="col-6">
+        <p>This is only executed when called.</p>
+    </div>
+
+    <div class="col-6">
+        <pre class="example"><span class="code-js">function myFunction(parameter1, parameter2, parameter3) {
+  code to be executed
+}</span></span></pre>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h3>Definition express (aka 'anonymous function')</h3>
+        <div class="row">
+            <div class="col">
+                <p>Assigns functions to variable or expression. A function expression can be stored in a variable.</p>
+                <p>Functions stored in variables do not need function names. They are always invoked (called) using the variable name.</p>
+            </div>
+        </div>
+
+        <h4>Variable assigned but not used</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This is ran when it's called. For example: <span class="standout">plus(2,2);</span></p>
+                <p>This prints 4 to the console.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var plus = function(a,b) {
+  return console.log(a + b);
+};
+
+<span class="code-comment">//call the function</span>
+plus(2,2);</span></span></pre>
+            </div>
+        </div>
+
+
+        <h4>Variables used as functions</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>After a function expression has been stored in a variable, the variable can be used as a function.</p>
+                <p>This returns: 12</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;p id="demo"&gt;&lt;/p&gt;</span>
+
+<span class="code-js">var x = function (a,b) {
+  return a * b;
+};
+
+document.getElementById("demo").innerHTML = x(4,3);</span></pre>
+            </div>
+        </div>
+
+        <h4>Immediately invoke instead of calling it later</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>A function is immediately invoked by adding () after the closing }.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var plus = function(a,b) {
+  return console.log(a+b);
+} (2,2);</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container">
+        <h1>Where to call (invoke) the function?</h1>
+        <div class="row">
+            <div class="col">
+                <p>It doesn't matter. The browser loads all JS, then runs it.</p>
+                <p>But for readability, it's easier to put the function before it's called in the script.</p>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>3 types of Functions</h1>
+        <div class="row">
+            <div class="col">
+                <p>Steps to add a new DOM element.</p>
+                <ul>
+                    <li><span class="standout">Named</span> - executed when called by name. Usefull when the function needs to be called multiple times.</li>
+                    <li><span class="standout">Anonymous</span> - ran after being triggered by an event. Parenthesis are right after the word function.</li>
+                    <li><span class="standout">Immediately</span> - invoked function expressions run the moment the browser encounters them. These are anonymous functions with another () at the end to trigger them. And it's all wrapped in parenthesis.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Named</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>asdf</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">function multiply(a,b) {
+  var result = a*b;
+  console.log(result);
+  return result;
+}
+
+var multiplied = multipy(3,4);</span></pre>
+            </div>
+        </div>
+
+        <h3>Anonymous</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>asdf</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var divided = function() {
+    var result = 3/4;
+    console.log("3 divided by 4 is ", result);
+}
+
+divided();</span></pre>
+            </div>
+        </div>
+
+        <h3>Immediately invoked</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Two ways to write the part that immediately invokes it:</p>
+                <ul>
+                    <li>(function () { /* ... */ })();</li>
+                    <li>(function () { /* ... */ }());</li>
+                </ul>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">(function() {
+    var result = 12 / 0.75;
+    console.log("12 divided by 0.75 is ", result);
+} () )</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

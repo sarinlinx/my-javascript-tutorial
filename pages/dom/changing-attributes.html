@@ -57,7 +57,7 @@
 
 
 
-        <h4>Checking using querySelector</h4>
+        <h4>Checking using querySelector with alert()</h4>
         <div class="row">
             <div class="col-6">
                 <p>This checks if the 'header' element contains a 'class' attribute.</p>
@@ -76,6 +76,26 @@
 }</span></pre>
             </div>
         </div>
+
+        <h4>Checking using querySelector with console</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This checks if the inline 'style' element exists.</p>
+                <p>This returns 'true' in the console.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;div class="cta" style="color: red;"&gt;
+  &lt;p&gt;Text&lt;/p&gt;
+&lt;/div&gt;</span>
+
+<span class="code-js">document.querySelector(".cta")<span class="standout">.hasAttribute("style");</span></span>
+true</pre>
+    </div>
+  </div>
+
+
+
 
         <h3>getAttribute()</h3>
         <h4>Return the attribute names of an element as an Array of strings</h4>
@@ -122,6 +142,22 @@
 
 
 
+        <h4>Retrieving using querySelector with console</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This returns the value of the inline 'style' if it exists.</p>
+                <p>This returns "color: red;" in the console.</p>
+
+            </div>
+            <div class="col-6">
+          <pre class="example"><span class="code-html">&lt;div class="cta" style="color: red;"&gt;
+&lt;p&gt;Text&lt;/p&gt;
+&lt;/div&gt;</span>
+
+<span class="code-js">document.querySelector(".cta")<span class="standout">.getAttribute("style");</span></span>
+"color: red;"</pre>
+</div>
+</div>
 
 
 
@@ -150,8 +186,6 @@
         </div>
 
 
-
-
         <div class="row">
             <div class="col-6">
                 <p>This retrieves the element with an id of 'myAnchor'.</p>
@@ -169,6 +203,24 @@
         </div>
 
 
+
+
+
+        <h4>Changing and Inline CSS style</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This only works to change CSS if it's written Inline.</p>
+                <p>This chanages the RED inline color to GREEN.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;div class="cta" style="color: red;"&gt;
+  &lt;p&gt;Text&lt;/p&gt;
+&lt;/div&gt;</span>
+
+<span class="code-js">document.querySelector(".cta")<span class="standout">.setAttribute("style","color: green");</span></span></pre>
+    </div>
+</div>
 
 
         <h3>removeAttribute()</h3>
@@ -202,12 +254,22 @@ function myFunction() {
 
 
 
+        <h4>Remove an inline style using querySelector with console</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This remove the inline 'style' attribute if it exists.</p>
+                <p>You can then test if it's been removed by using .hasAttribute().</p>
 
+            </div>
+            <div class="col-6">
+          <pre class="example"><span class="code-html">&lt;div class="cta" style="color: red;"&gt;
+&lt;p&gt;Text&lt;/p&gt;
+&lt;/div&gt;</span>
 
-
-
-
-
+<span class="code-js">document.querySelector(".cta")<span class="standout">.removeAttribute("style");</span>
+document.querySelector(".cta").hasAttribute("style");</span></pre>
+</div>
+</div>
 
 
     </section>
