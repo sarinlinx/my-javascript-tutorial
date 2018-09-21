@@ -4,9 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
     <title>Test Page</title>
 </head>
 
@@ -19,15 +17,21 @@
 
 
 <script>
+var person = {
+  firstName:"John",
+  lastName: "Doe",
+  fullName: function() {
+  return this.firstName + " " + this.lastName;
+  }
+}
 
+var myObject = {
+  firstName:"Mary",
+  lastName: "Doe",
+}
 
-var plus = function(a,b) {
-  return console.log(a + b);
-};
-
-//call the function
-plus(2,2);
-
+// Will return "Mary Doe"
+person.fullName.call(myObject);
 
 
 </script>

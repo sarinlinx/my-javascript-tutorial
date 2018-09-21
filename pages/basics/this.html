@@ -110,6 +110,55 @@ myFunction();</span></pre>
             </div>
         </div>
 
+        <h4>Example</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>The 'this' keyword is the Object that owns the current code.</p>
+                <p>The value of this, when used in a function, is the Object that owns the function.</p>
+                <p>'this' contains a copy of the Object you created.</p>
+                <p>What if 'this' is called without an owner object? Then the value of 'this' becomes the global object, which is global window object.</p>
+                <p>console.dir prints a list of all properties of the Object.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var Dog = function() {
+  var name, breed;
+  return console.dir(this);
+}
+
+firstDog = new Dog;
+firstDog.name = "Rover";
+firstDog.breed = "Doberman";</span></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img class="img-fluid" src="../../_img/this-constructor-function.png">
+            </div>
+        </div>
+
+
+
+
+
+        <h4>Example</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>The fullName method is a function.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var myObject = {
+  firstName:"John",
+  lastName: "Doe",
+  fullName: function () {
+
+  return this.firstName + " " + this.lastName;
+  }
+}
+<span class="code-comment">// Will return "John Doe" if you type it into the console
+//Otherwise it's stored in memory</span>
+myObject.fullName();</span></span></pre>
+            </div>
+        </div>
 
 
 
@@ -134,13 +183,13 @@ myFunction();</span></pre>
 
         <h2>Explicit Function Binding</h2>
 
-                <div class="row">
-                    <div class="col-6">
-                        <p>The call() and apply() methods cna be used to call an object method with another object as the argument.</p>
-                        <p>In this example, when calling person1.fullName with person2 as argument, this will refer to person2, even if it is a method of person1.</p>
-                    </div>
-                    <div class="col-6">
-                        <pre class="example"><span class="code-js">var person1 = {
+        <div class="row">
+            <div class="col-6">
+                <p>The call() and apply() methods cna be used to call an object method with another object as the argument.</p>
+                <p>In this example, when calling person1.fullName with person2 as argument, this will refer to person2, even if it is a method of person1.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var person1 = {
   fullName: function() {
     return this.firstName + " " + this.lastName;
   }
@@ -152,17 +201,17 @@ var person2 = {
 }
 
 person1.fullName.call(person2);  <span class="code-comment">// Will return "John Doe"</span></span></pre>
-                    </div>
-                </div>
-</section>
+            </div>
+        </div>
+    </section>
 
 
 
 
 
 
-        <script src="../../_js/jquery.js"></script>
-        <script src="../../_js/bootstrap.bundle.js"></script>
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
 </body>
 
 </html>
