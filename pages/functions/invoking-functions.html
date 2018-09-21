@@ -207,7 +207,7 @@ console.log(firstDog.name);</span></pre>
             <div class="col">
                 <p>These methods give you more control over the 'this' keyword.</p>
                 <p>They let you define what 'this' will be.</p>
-                <p>Call & Apply take 2 parameters:</p>
+                <p>Call & Apply both take 2 parameters:</p>
                 <ul>
                     <li>What you want the value of the this argument to be inside the function</li>
                     <li>The arguments you want to pass to the function</li>
@@ -254,8 +254,100 @@ var myObject = {
 person.fullName.call(myObject);</span></pre>
             </div>
         </div>
+
+        <h4>Example</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This returns 'purr'.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var speak = function(what) {
+  console.log(this.love);
+}
+
+var saySomething = {
+  normal: "meow",
+  love: "purr"
+}
+
+speak.call(saySomething);</span></pre>
+            </div>
+        </div>
+
+
+        <h4>Example</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This returns 'meow'.</p>
+                <p>The call() method calls the 'saySomthing' Object. This first line controls the value of 'this'.</p>
+                <p>The 2nd param is sent to the function as a value to pass.</p>
+            </div>
+            <div class="col-6">
+<pre class="example"><span class="code-js">var speak = function(what) {
+  console.log(what);
+}
+
+var saySomething = {
+  normal: "meow",
+  love: "purr"
+}
+
+speak.call(saySomething, saySomething.normal);</span></pre>
+            </div>
+        </div>
     </section>
 
+
+
+
+
+
+
+
+
+
+
+
+<section class="container">
+    <h3>The apply() method</h3>
+    <div class="row">
+        <div class="col">
+            <p>The apply() method is similar to call(), but it passes an array (instead of object or element).</p>
+        </div>
+    </div>
+
+    <h4>Example</h4>
+    <div class="row">
+        <div class="col-6">
+            <p>This returns: 'hiss'.</p>
+        </div>
+        <div class="col-6">
+<pre class="example"><span class="code-js">var speak = function(what) {
+  console.log(what);
+}
+
+var saySomething = {
+  normal: "meow",
+  love: "purr"
+}
+
+speak.apply(saySomething, ['hiss']);</span></pre>
+        </div>
+    </div>
+
+
+
+    <h3>The Difference Between call() and apply()</h3>
+    <div class="row">
+        <div class="col">
+            <p>call() takes any function arguments separately.call() passes a value.</p>
+            <p>apply() takes any function arguments as an array. apply() passes an array.</p>
+            <p>The apply() method is very handy if you want to use an array instead of an argument list.</p>
+        </div>
+    </div>
+
+
+  </section>
 
 
 

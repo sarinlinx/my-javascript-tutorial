@@ -17,21 +17,18 @@
 
 
 <script>
-var person = {
-  firstName:"John",
-  lastName: "Doe",
-  fullName: function() {
-  return this.firstName + " " + this.lastName;
-  }
+
+
+var speak = function(what) {
+  console.log(what);
+
 }
 
-var myObject = {
-  firstName:"Mary",
-  lastName: "Doe",
+var saySomething = {
+normal: "meow",
+love: "purr"
 }
-
-// Will return "Mary Doe"
-person.fullName.call(myObject);
+speak.apply(saySomething, ['hiss']);
 
 
 </script>
