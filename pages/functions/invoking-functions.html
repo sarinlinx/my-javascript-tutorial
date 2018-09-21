@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Invoking Functions</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>4 ways to invoking a Function</h1>
+        <div class="row">
+            <div class="col">
+                <ol>
+                    <li>Functions (common)</li>
+                    <li>Methods (common)</li>
+                    <li>Constructors</li>
+                    <li>Call & Apply methods</li>
+                </ol>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <section class="container">
+        <h2>Invoking as a function</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>This example prints 3 things to the console.</p>
+                <ul>
+                    <li>The first is the value 4 from the 'return' function. return is also a function, so you can use it like a function inside the function.</li>
+
+                    <li>The value of 'this' is the window object in this example.</li>
+                    <li>The 'arguments' parameter is outputted as an array. The 'arguments' parameter is useful when you want to create functions without passing a specific number of parameters. Allows you to create any amount of vars you like without creating
+                        each and every one.</li>
+                </ul>
+                <p>Finally, the function is invoked using the function <span class="standout">plus(2,2);</span></p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">function plus(a,b) {
+
+  return (
+    console.log(a+b),
+
+    console.log(this),
+    console.log(arguments)
+  )
+}
+
+<span class="standout">plus(2,2);</span></span></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img class="img-fluid" src="../../_img/function_parameters.png">
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="container">
+        <h2>Invoking as a method</h2>
+        <div class="row">
+            <div class="col">
+                <p>A method is nothing more than a function that has been assigned as a property of an object.</p>
+                <p>This example creates an Object which contains a function.</p>
+                <p>That function is then invoked using a method.</p>
+                <p>One of the big advantages of calling functions as a method is that the 'this' keyword gets the value of the Object, which is really useful.</p>
+
+                <div class="alert alert-note">
+                    <div class="alert-icon">
+                        <img src="../../_img/note-icon.png" width="60" height="60">
+                    </div>
+                    <div class="alert-content">
+                        <p>The binding of 'this' happens at invocation time. This means that the 'this' attribute is not going to be bound to that object until you invoke the method.</p>
+                        <p>This makes the function re-useable.</p>
+                        <p>binding functions to objects and using them as methods is a great programming technique.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>This returns 4 things.</p>
+                <ul>
+                    <li>The 'this' keyword returns the Object and all parameters.</li>
+                    <li>4 is the result of the addition.</li>
+                    <li>The 'arguments' parameter returns two arguments.</li>
+                    <li>The 'this' keyword queries the 'status' parameter of the object.</li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var clac = {
+status: 'Awesome',
+
+plus: function(a,b){
+  return (
+    console.log(this),
+    console.log(a+b),
+    console.log(arguments),
+    console.log(this.status)
+    )
+  }
+}
+
+<span class="standout">calc.plus(2,2);</span></span></pre>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+                <img class="img-fluid" src="../../_img/function_parameters12.png">
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

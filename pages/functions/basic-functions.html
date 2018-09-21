@@ -17,6 +17,7 @@
     <a href="../../index.html">Home page</a>
 
 
+
     <section class="container">
         <h1>Basics of Functions</h1>
         <div class="row">
@@ -33,9 +34,78 @@
 
             </div>
         </div>
+</section>
 
 
 
+    <section class="container">
+        <h1>3 types of Functions</h1>
+        <div class="row">
+            <div class="col">
+                <p>Steps to add a new DOM element.</p>
+                <ul>
+                    <li><span class="standout">Named</span> - executed when called by name. Usefull when the function needs to be called multiple times.</li>
+                    <li><span class="standout">Anonymous</span> - ran after being triggered by an event. Parenthesis are right after the word function.</li>
+                    <li><span class="standout">Immediately</span> - invoked function expressions run the moment the browser encounters them. These are anonymous functions with another () at the end to trigger them. And it's all wrapped in parenthesis.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Named</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This function has a name of 'multiply'.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">function <span class="standout">multiply</span>(a,b) {
+  var result = a*b;
+  console.log(result);
+  return result;
+}
+
+var multiplied = multipy(3,4);</span></pre>
+            </div>
+        </div>
+
+        <h3>Anonymous</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This function does not have a name. It's triggered after assigning a variable to it, then running that variable function name.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var <span class="standout">divided</span> = function() {
+    var result = 3/4;
+    console.log("3 divided by 4 is ", result);
+}
+
+divided();</span></pre>
+            </div>
+        </div>
+
+        <h3>Immediately invoked</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Two ways to write the part that immediately invokes it:</p>
+                <ul>
+                    <li>(function () { /* ... */ })();</li>
+                    <li>(function () { /* ... */ }());</li>
+                </ul>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">(function() {
+  var result = 12 / 0.75;
+  console.log("12 divided by 0.75 is ", result);
+} () )</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+  <section class="container">
         <h1>Declaring functions</h1>
         <h2>2 ways to declare a function</h2>
         <h3>Function declaration</h3>
@@ -73,19 +143,7 @@ plus(2,2);</span></span></pre>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        <h3>Definition express (aka 'anonymous function')</h3>
+        <h3>Definition expression (aka 'anonymous function')</h3>
         <div class="row">
             <div class="col">
                 <p>Assigns functions to variable or expression. A function expression can be stored in a variable.</p>
@@ -129,6 +187,23 @@ document.getElementById("demo").innerHTML = x(4,3);</span></pre>
             </div>
         </div>
 
+        <h4>Another way variables can be used</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>The function is first named.</p>
+                <p>The variable is then assigned to the function name along with arguments.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">function myFunction(a, b) {
+return a * b;
+}
+
+var x = myFunction(4, 3) * 2;</span></pre>
+            </div>
+        </div>
+
+
         <h4>Immediately invoke instead of calling it later</h4>
         <div class="row">
             <div class="col-6">
@@ -152,89 +227,58 @@ document.getElementById("demo").innerHTML = x(4,3);</span></pre>
                 <p>But for readability, it's easier to put the function before it's called in the script.</p>
               </div>
             </div>
+</section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <section class="container">
-        <h1>3 types of Functions</h1>
-        <div class="row">
-            <div class="col">
-                <p>Steps to add a new DOM element.</p>
-                <ul>
-                    <li><span class="standout">Named</span> - executed when called by name. Usefull when the function needs to be called multiple times.</li>
-                    <li><span class="standout">Anonymous</span> - ran after being triggered by an event. Parenthesis are right after the word function.</li>
-                    <li><span class="standout">Immediately</span> - invoked function expressions run the moment the browser encounters them. These are anonymous functions with another () at the end to trigger them. And it's all wrapped in parenthesis.</li>
-                </ul>
-            </div>
-        </div>
-
-        <h3>Named</h3>
-        <div class="row">
-            <div class="col-6">
-                <p>asdf</p>
-            </div>
-
-            <div class="col-6">
-                <pre class="example"><span class="code-js">function multiply(a,b) {
+<section class="container">
+    <h1>Where to define variables?</h1>
+    <div class="row">
+        <div class="col-6">
+            <p>You must define them BEFORE the function is called.</p>
+          </div>
+          <div class="col-6">
+              <pre class="example"><span class="code-js">function multiply(a,b) {
   var result = a*b;
   console.log(result);
   return result;
 }
 
-var multiplied = multipy(3,4);</span></pre>
-            </div>
+var multiplied = multipy(3,4);
+
+multiply();</span></pre>
+          </div>
         </div>
+</section>
 
-        <h3>Anonymous</h3>
-        <div class="row">
-            <div class="col-6">
-                <p>asdf</p>
-            </div>
 
-            <div class="col-6">
-                <pre class="example"><span class="code-js">var divided = function() {
-    var result = 3/4;
-    console.log("3 divided by 4 is ", result);
-}
 
-divided();</span></pre>
-            </div>
+
+<section class="container">
+    <h1>Return values</h1>
+    <div class="row">
+        <div class="col">
+            <p>The 'return' keyword returns the value of your function statment.</p>
+<p>JS can also return an object or another function.</p>
+          </div>
         </div>
+</section>
 
-        <h3>Immediately invoked</h3>
-        <div class="row">
-            <div class="col-6">
-                <p>Two ways to write the part that immediately invokes it:</p>
-                <ul>
-                    <li>(function () { /* ... */ })();</li>
-                    <li>(function () { /* ... */ }());</li>
-                </ul>
-            </div>
 
-            <div class="col-6">
-                <pre class="example"><span class="code-js">(function() {
-    var result = 12 / 0.75;
-    console.log("12 divided by 0.75 is ", result);
-} () )</span></pre>
-            </div>
+
+<section class="container">
+    <h1>Function literal??????????</h1>
+    <div class="row">
+        <div class="col">
+            <p>an expression that defines an unnamed function..????????????</p>
+          </div>
         </div>
-    </section>
+</section>
+
+
+
+
+
+
+
 
 
 

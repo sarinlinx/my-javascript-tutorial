@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Immediately Invoked Functions</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Immediately Invoked Functions</h1>
+        <div class="row">
+            <div class="col">
+                <p>Good when you want to execute something only once, or immediately.</p>
+                <p>Function expressions will execute automatically if the expression is followed by ().</p>
+                <p>This function is actually an anonymous self-invoking function (function without name). AKA 'anonymous closure'.</p>
+            </div>
+        </div>
+        <h3>Why use IIFE?</h3>
+        <div class="row">
+            <div class="col">
+                <p>They run immediately so they are not affected by code later in the script.</p>
+                <p>Great for quickly populating a variable or argument in a larger function or a property in an object, and are often hooked to event listeners for an immediate output.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container">
+        <h2>3 ways to write an IIEF (Immediately Invoked Function Expression)</h2>
+        <h3>Option 1</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Wrap the function in parenthesis.</p>
+                <p>The () is after the function has closed.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">(function () {
+  /* ... */
+} ) <span class="standout">();</span></span></pre>
+            </div>
+        </div>
+
+        <h4>example</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>example</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var theBiggest = (function(a,b) {
+  var result;
+  a>b ? result = ["a", a] : result = ["b", b];
+  return result;
+} ) <span class="standout">(7/9,13/25)</span>;
+
+console.log(theBiggest);</span></pre>
+            </div>
+        </div>
+
+
+        <h3>Option 2</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Wrap the function in parenthesis.</p>
+                <p>The () is inside the function.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">(function () {
+  /* ... */
+} <span class="standout">();</span> )</span></pre>
+            </div>
+        </div>
+
+        <h3>Option 3</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>The ! takes the place of parenthesis.</p>
+                <p>The () is inside the function.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js"><span class="standout">!</span> function(){
+  // some code…
+} <span class="standout">()</span>;</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h2>Using external variables with an IIFE</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>If you're going to use external variables rather than put them in the expression, they MUST comebefore the expression.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var firstFraction = 7/9;
+var secondFraction = 13/25;
+
+var theBiggest = (function(a,b) {
+    var result;
+    a>b ? result = [""a"", a] : result = [""b"", b];
+    return result;
+} ) (firstFraction,secondFraction)
+
+console.log(theBiggest);</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
