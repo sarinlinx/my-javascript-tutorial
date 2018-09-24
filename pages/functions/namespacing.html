@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Namespacing</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+    <section class="container">
+        <h1>Namespacing</h1>
+        <div class="row">
+            <div class="col">
+                <p>Namespacing allows you to protect any variables that you have in your modules from any global scoped variables.</p>
+                <p>This is really important because in any module, you might be using some variables that are already used by other things in that application.</p>
+            </div>
+          </div>
+
+
+          <div class="row">
+              <div class="col-6">
+<p>Encapsulating a function within parentheses protects all the variables inside from the global scope.</p>
+<p>But what if you need to access those variables from within the application? To do that, you need to create a variable and assign it to your self-executing function. This gives you access to what's inside it.</p>
+<p>In this example, the variable 'ray' has been namespaced.</p>
+              </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var ray = (function() {
+  var private;
+}) () ;</span></span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

@@ -6,6 +6,7 @@ body {
   background-color: #1a1a1a;
   color: #70c4ee;
   position: relative;
+  background-image: url("textures/asfalt-dark.png");
 }
 
 h1 {
@@ -44,7 +45,7 @@ h2 {
 h3 {
   padding-left: 5px;
   padding-bottom: 10px;
-  background-color: #0e0e0e;
+  /* background-color: #0e0e0e; */
   font-size: 1.8rem;
   margin-top: 30px;
   margin-bottom: 20px;
@@ -52,20 +53,17 @@ h3 {
   padding-top: 20px;
   /* GREEN */
   /* color: #ff5f5f; RED*/
-  border-radius: 10px;
-  border-left: 1px solid #00ff88;
-  border-bottom: 2px solid #00ff88;
+  /* border-radius: 10px; */
+  /* border-left: 1px solid #00ff88; */
+  /* border-bottom: 2px solid #00ff88; */
 }
 
 h4 {
-  /* background-color: #0e0e0e; */
   font-size: 1.3rem;
   color: #ff6767;
   padding: 1rem 0;
   padding-left: 8px;
-  /* border-left: 2px solid #000; */
-  border-bottom: 3px solid #000;
-  border-radius: 10px;
+
 }
 
 h5 {

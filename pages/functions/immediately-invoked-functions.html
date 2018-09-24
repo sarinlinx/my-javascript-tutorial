@@ -43,7 +43,7 @@
         <h3>Option 1</h3>
         <div class="row">
             <div class="col-6">
-                <p>Wrap the function in parenthesis.</p>
+                <p>Wrap the function in parenthesis. Encapsulating the function in parentheses protect the variables from the global scope.</p>
                 <p>The () is after the function has closed.</p>
             </div>
 
@@ -135,6 +135,40 @@ console.log(theBiggest);</span></pre>
     </section>
 
 
+
+    <section class="container">
+        <h2>Accessing data within the function</h2>
+
+
+
+          <div class="row">
+              <div class="col-6">
+    <p>To access data in the function, use a 'return' statement. This allows you to communicate back with the rest of the application.</p>
+    <p>Additionally, instead of returning a statement, you can return an object. Through the object, you can create variables and functions.</p>
+              </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var ray = (function() {
+    return {
+    speak: function() {
+      console.log('hello');
+    }
+    };
+    }) () ;</span></span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+    <p>You can then call the function using dot notation.</p>
+    <p>Now you can access that module from within your main application, while protecting all namespaces.</p>
+            </div>
+          <div class="col-6">
+              <pre class="example"><span class="code-js">ray.speak();</span></span></pre>
+          </div>
+      </div>
+
+
+    </section>
 
 
 

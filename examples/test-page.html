@@ -19,16 +19,20 @@
 <script>
 
 
-var speak = function(what) {
-  console.log(what);
-
+var speak = function(saywhat) {
+  console.log(saywhat);
 }
 
-var saySomething = {
-normal: "meow",
-love: "purr"
+var Dog = function() {
+  var name, breed;
 }
-speak.apply(saySomething, ['hiss']);
+
+Dog.prototype.speak = speak;
+
+firstDog = new Dog;
+firstDog.name = "Rover";
+firstDog.breed = "Doberman";
+firstDog.speak('woof');
 
 
 </script>
