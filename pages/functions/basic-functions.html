@@ -31,9 +31,110 @@
                     <li>Function parameters are the names listed in the function definition.</li>
                     <li>Function arguments are the real values received by the function when it is invoked.</li>
                 </ul>
-
             </div>
         </div>
+    </section>
+
+    <section class="container">
+        <h1>Parameters</h1>
+        <h4>Parameter Rules</h4>
+        <ul>
+            <li>JavaScript function definitions do not specify data types for parameters.</li>
+            <li>JavaScript functions do not perform type checking on the passed arguments.</li>
+            <li>JavaScript functions do not check the number of arguments received.</li>
+        </ul>
+
+        <h4>Parameter Defaults</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>If a function is called with missing arguments (less than declared), the missing values are set to: undefined.</p>
+                <p>Sometimes this is acceptable, but sometimes it is better to assign a default value to the parameter:</p>
+                <p>This example outputs: 0</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;p id="demo"&gt;&lt;/p&gt;
+
+<span class="code-js">function myFunction(x, y) {
+  if (y === undefined) {
+    y = 0;
+  }
+  return x * y;
+}
+
+document.getElementById("demo").innerHTML = myFunction(4);</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <h4>The Arguments Object (parameter)</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>JavaScript functions have a built-in object called the arguments object.</p>
+                <p>If a function is called with too many arguments (more than declared), these arguments can be reached using the arguments object.</p>
+                <p>The argument object contains an array of the arguments used when the function was called (invoked). Holds a list of all the elements passed as arguments to the function.</p>
+                <p>This way you can simply use a function to find (for instance) the highest value in a list of numbers.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;p id="demo"&gt;&lt;/p&gt;
+
+    <span class="code-js">function myFunction(x, y) {
+    if (y === undefined) {
+    y = 0;
+    }
+    return x * y;
+    }
+
+    document.getElementById("demo").innerHTML = myFunction(4);</span></pre>
+            </div>
+        </div>
+
+
+
+
+        <h4>The Arguments Array: arguments[x]</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>You can loop through the Array like object with a 'for' loop.</p>
+                <p>However, this is an array-like object, not a real Array.</p>
+                <p>Because they're not Arrays, (but an Object that happens to have some list-like functionality), you can't use Array methods like pop, push, shift, or others.</p>
+                <p>This example loops through all elements in the argument Array (like Object).</p>
+                <p>This returns: 4, 6, 7.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var plus = function() {
+var sum = 0;
+  for (var i = arguments.length - 1; i >= 0; i--) {
+    sum += arguments[i];
+  }
+  return sum;
+}
+
+console.log(plus(2, 2));
+console.log(plus(2, 2, 2));
+console.log(plus(2, 2, 3));</span></pre>
+            </div>
+        </div>
+
+
+        <h4>Arguments are passed by Value</h4>
+        <div class="row">
+            <div class="col">
+                <p>The parameters, in a function call, are the function's arguments.</p>
+                <p>JavaScript arguments are passed by value: The function only gets to know the values, not the argument's locations.</p>
+                <p>If a function changes an argument's value, it does not change the parameter's original value.</p>
+                <p>Changes to arguments are not visible (reflected) outside the function.</p>
+            </div>
+        </div>
+
     </section>
 
 
@@ -238,6 +339,31 @@ var x = myFunction(4, 3) * 2;</span></pre>
 } (2,2);</span></pre>
             </div>
         </div>
+
+
+        <h4>Assigning a function by reference to a variable</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>The function is kept in memory and sayHi is a reference (or you could say pointer) to it.</p>
+                <p>When assigned it to hi, both variables start to reference the same function.</p>
+                <p>This outputs: hi, dude</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">function sayHi(name) {
+alert("Hi, "+name)
+}
+
+var hi = sayHi <span class="code-comment">// assign a function to another variable</span>
+
+hi("dude") <span class="code-comment">// call the function</span></span></pre>
+            </div>
+        </div>
+
+
+
+
+
     </section>
 
 
@@ -280,11 +406,42 @@ multiply();</span></pre>
             <div class="col">
                 <p>The 'return' keyword returns the value of your function statment.</p>
                 <p>JS can also return an object or another function.</p>
+                <p>return is only available inside the function body</p>
+                <p>You can put it anywhere in the function, but it will stop the rest of the function from executing.</p>
             </div>
         </div>
     </section>
 
 
+    <section class="container">
+        <h1>Undefined</h1>
+        <div class="row">
+            <div class="col">
+                <p>If it returns nothing it's considered undefined</p>
+    </section>
+
+    <section class="container">
+        <h1>Execution order</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>Function Declarations are parsed at pre-execution stage, when the browser prepares to execute the code.</p>
+                <p>These are the same.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">function sayHi(name) {
+  alert("Hi, "+name)
+}
+
+sayHi("John")
+
+
+sayHi("John")
+
+function sayHi(name) {
+  alert("Hi, "+name)
+}</span></pre></div>
+        </div>
+    </section>
 
     <section class="container">
         <h1>Function literal??????????</h1>
@@ -293,6 +450,10 @@ multiply();</span></pre>
                 <p>an expression that defines an unnamed function..????????????</p>
             </div>
         </div>
+    </section>
+
+
+
     </section>
 
 

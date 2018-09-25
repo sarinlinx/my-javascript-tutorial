@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Hoisting</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>4 ways to invoking a Function</h1>
+        <div class="row">
+            <div class="col-6">
+<p>Variables can exist before you use them.</p>
+<p>If you put vars in the wrong order (like after console.log that calls variable), JS autmatically moves that variables definition BEFORE the console.log out put.</p>
+<p>So console.log returns undefined</p>
+<p>JS rewrites your code to move var myDog; before console.log</p>
+<p><span class="red">Find more examples. This outputs 'undefined'.</span></p>
+            </div>
+            <div class="col-6"><pre class="example"><span class="code-js">function myFunction() {
+  console.log(myDog);
+  var myDog = "Rover";
+}
+
+myFunction();</span></pre>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

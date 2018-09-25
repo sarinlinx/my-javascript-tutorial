@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -10,30 +11,20 @@
 
 <body>
 
-<p id="demo"></p>
+    <p id="demo"></p>
 
 </body>
 
 
 
 <script>
-
-
-var speak = function(saywhat) {
-  console.log(saywhat);
+function sayHi(name) {
+alert("Hi, "+name)
 }
 
-var Dog = function() {
-  var name, breed;
-}
+var hi = sayHi // assign a function to another variable
 
-Dog.prototype.speak = speak;
-
-firstDog = new Dog;
-firstDog.name = "Rover";
-firstDog.breed = "Doberman";
-firstDog.speak('woof');
-
+hi("dude") // call the function
 
 </script>
 

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Scope</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Scope Chain</h1>
+        <div class="row">
+            <div class="col">
+                <p>Scope Chain determines what happens when a function can't find the variable within its function.</p>
+                <p>The function is then going to look for a variable up through all the parent functions.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container">
+<h3>Normal example of a function</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>The last line of myDog() runs the function.</p>
+<p>Since the method inside of that function is the only thing that outputs data, the result is: Rover says woof.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">function myDog() {
+  var dogName = 'Fido';
+
+  function otherDog() {
+    var dogName = 'Rover';
+    console.log(dogName + " says woof");
+  }
+
+  otherDog();
+
+}
+
+myDog();</span></span></pre>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="container">
+  <h3>Example of Scope Chain</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This example removes 'var dogName = 'Rover' from the inner function.</p>
+                <p>This now outputs: 'Fido says woof'.</p>
+                <p>This is because although the inner function doesn't have a variable called dogName, it went outside into its parent and found that variable.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">function myDog() {
+  var dogName = 'Fido';
+
+  function otherDog() {
+    <span class="code-comment">//var dogName = 'Rover';</span>
+    console.log(dogName + " says woof");
+  }
+
+  otherDog();
+
+  }
+
+  myDog();</span></span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
