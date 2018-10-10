@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Objects</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Creating Objects</h1>
+        <div class="row">
+            <div class="col">
+                <p>Objects store data such as properties and methods.</p>
+                <ul>
+                    <li>Properties: Info about the object we can retrieve and use</li>
+                    <li>Methods: functions that belong to the object</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container">
+        <h2>Long way to create an Object</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>Use {} to create an Object.</p>
+                <p>When a JavaScript variable is declared with the keyword "new", the variable is created as an object. However this isn't necessary since you can assign properties while creating it.</p>
+                <p>This creates and Object named 'course'.</p>
+
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var course = new Object();</span></pre>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>You can then run commands to assign it properties using dot or bracket notation.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">course.title = "JavaScript Essential Training";
+course.instructor = "Name of teacher";
+course.level = 1;
+course["Where it is"] = "At the school";</span></pre>
+            </div>
+        </div>
+
+
+
+
+        <h2>Short way to create an Object</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>The short hand way is to assign the properties while creating the Object.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var course = {
+  title: "JavaScript Essential Training",
+  instructor: "Name of teacher",
+  level: 1,
+  views: 0,
+}</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Retrieving data from Objects</h1>
+
+        <h3>Retrieving the full Object</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>You can retrieve the full Object just like a variable.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(course);</span></pre>
+            </div>
+        </div>
+
+        <h3>Retrieving properties using dot notation</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>You can use dot notation to retrieve a specific property.</p>
+                <p>The syntax is: <span class="standout">objectName.propertyName</span></p>
+                <p>Dot notation works well for properly named properties.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(course.title);</span></pre>
+            </div>
+        </div>
+
+        <h3>Retrieving properties using bracket notation</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>You can use bracket notation to retrieve a specific property.</p>
+                <p>The syntax is: <span class="standout">objectName["propertyName"]</span></p>
+                <p>Bracket notation works well for when we might have to convert the property name into a string.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(person["lastName"];);</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+<section class="container">
+  <h1>Deleting an Object or property</h1>
+    <h3>Deleting a property</h3>
+    <div class="row">
+        <div class="col-6">
+            <p>You can delete a property by running 'delete' following by the property value in dot notation.</p>
+        </div>
+        <div class="col-6">
+            <pre class="example"><span class="code-js">delete course.title;</span></pre>
+        </div>
+    </div>
+
+
+    <h3>Empty an Object</h3>
+    <div class="row">
+        <div class="col-6">
+            <p>You can empty an object by setting it to null.</p>
+            <p>If you now run 'person.firstName' it will return null.</p>
+        </div>
+        <div class="col-6">
+            <pre class="example"><span class="code-js">var person = { firstName:"John",
+  lastName:"Doe", age:50,
+  eyeColor:"blue"
+};
+
+var person = null;</span></pre>
+        </div>
+    </div>
+
+
+  </section>
+
+
+
+  <section class="container">
+    <h1>Object conversion</h1>
+
+    <div class="row">
+        <div class="col-6">
+            <p>Avoid String, Number, and Boolean objects. They complicate your code and slow down execution speed.</p>
+        </div>
+        <div class="col-6">
+            <pre class="example"><span class="code-js">var x = new String(); <span class="code-comment">// Declares x as a String object</span>
+var y = new Number(); <span class="code-comment">// Declares y as a Number object</span>
+var z = new Boolean(); <span class="code-comment">// Declares z as a Boolean object</span></span></pre>
+        </div>
+    </div>
+
+      <div class="row">
+          <div class="col">
+              <p>Objects in JavaScript can be converted to primitives in three contexts:</p>
+              <ul><li>Numeric</li>
+<li>String</li>
+<li>Boolean</li></ul>
+<p><a href="http://javascript.info/tutorial/object-conversion">Object conversion</a></p>
+          </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+      <h1>Iterating over Object key:value pairs</h1>
+
+      <div class="row">
+          <div class="col-6">
+              <p>You can loop through key:value pairs by using a for loop with the 'key' keyword.</p>
+          </div>
+          <div class="col-6">
+              <pre class="example"><span class="code-js">var menu = {
+  width:  300,
+  height: 200,
+  title: "Menu"
+};
+
+for(var key in menu) {
+var val = menu[key];
+
+console.log("Key: " + key + " \nValue: " + val);
+}</span></pre>
+          </div>
+      </div>
+
+        <div class="row">
+            <div class="col">
+                <p>The code above prints out the following:</p>
+<pre class="example">Key: width
+Value: 300
+
+Key: height
+Value: 200
+
+Key: title
+Value: Menu</pre>
+            </div>
+        </div>
+      </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

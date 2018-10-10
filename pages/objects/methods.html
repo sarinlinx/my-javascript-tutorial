@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Methods</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+    <section class="container">
+        <h1>Methods</h1>
+        <div class="row">
+            <div class="col-6">
+              <p>A method is a function definition stored as a property value.</p>
+                <p>Methods use or change the data in the object properties.</p>
+                <p>These are added just like properties.</p>
+                <p>This outputs: 0, then increments to 1, then outputs 1.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var course = {
+  title: "JavaScript Essential Training",
+  instructor: "Name of teacher",
+  level: 1,
+  views: 0,
+  <span class="standout">updateView: function() {
+      return ++course.views;
+  }</span>
+}
+
+console.log(course.views);
+course.updateViews();
+console.log(course.views);</span></pre>
+            </div>
+        </div>
+      </section>
+
+
+
+
+
+      <section class="container">
+          <h1>Accessing Methods</h1>
+          <div class="row">
+              <div class="col-6">
+                <p>You must add () or it will only return the function definition instead.</p>
+              </div>
+              <div class="col-6">
+                  <pre class="example"><span class="code-js">objectName.methodName();</span></pre>
+              </div>
+          </div>
+        </section>
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

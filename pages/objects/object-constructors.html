@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Object Constructors</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Object Constructors</h1>
+        <div class="row">
+            <div class="col">
+                <p>Object Constructors are templates for creating objects that you define once. You can then use those templates again and again.</p>
+                <p>The object constructor allows you to create different objects using the same properties.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container">
+        <h2>Create a constructor for an object</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>The constructor must be Capitalized.</p>
+                <p>This creates a constructor named 'Course'.</p>
+                <p>The 'this' keyword refers to the current object since you're making new objects and don't know the name of them yet.</p>
+                <p><span class="red">Not sure what the updateViews function is supposed to do.</span></p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">function Course(title,instructor,level,views) {
+  this.title = title;
+  this.instructor = instructor;
+  this.level = level;
+  this.views = views;
+  this.updateViews = function() {
+      return ++this.views;
+    };
+}</span></pre>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>Use the constructor to create new instances of the 'Course' object.</p>
+                <p>Assign each of the properties inside the object to the matching argument.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var course01 = new Course("JavaScript Essential Training",
+               "Teacher Name",
+               1,
+               0);
+
+console.log(course01);</span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>Create a new course with different information, but same properties.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var course02 = new Course("New course name", "other teacher Name", 3, 1234);
+
+console.log(course02);</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+</section>
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
