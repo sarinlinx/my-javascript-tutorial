@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Events</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+    <section class="container">
+        <h1>Events</h1>
+        <div class="row">
+            <div class="col">
+                <p>Events are something that has taken place on the web page.</p>
+                <p>Events can represent everything from basic user interactions to automated notifications of things happening in the rendering model.</p>
+                <p>View the following site for a list of Events.</p>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank">Event Reference</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h1>The Events Queue</h1>
+        <div class="row">
+            <div class="col">
+                <p>Events in JavaScript work by inserting themselves into a queue and they will remain there until they're needed. So if you don't remove some events, it's going to cause a problem like this.</p>
+                <p>Uncaught TypeError: Cannot read property 'parentNode' of null.</p>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container">
+        <h1>Different types of events</h1>
+        <h3>Browser level events</h3>
+        <div class="row">
+            <div class="col">
+                <p>Load - when the resource and dependents have finished loading</p>
+                <p>Error - the resource failed to load</p>
+                <p>Online/offline -</p>
+                <p>Resize - when viewport is resized</p>
+                <p>Scroll - when viewport is scrolled</p>
+            </div>
+          </div>
+
+            <h3>DOM level events</h3>
+            <div class="row">
+                <div class="col">
+                    <p>Focus - When element receives focus (clicked, tabbed to, etc.)</p>
+                    <p>Resets/submit - form-specific events</p>
+                    <p>Mouse events - click, mousover, drag, drop, etc.</p>
+                </div>
+              </div>
+
+
+<h3>Other events</h3>
+                <div class="row">
+
+                    <div class="col">
+                        <p>Media events - relate to audio/video playback</p>
+                        <p>Progress events - monitor ongoing browser progress</p>
+                        <p>CSS transition events - transition start/run/end</p>
+                    </div>
+
+
+                </div>
+    </section>
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Event Registration</h1>
+        <div class="row">
+            <div class="col">
+                <p>Event registraton is when you tell the browser you want to do something when an event takes place.</p>
+                <p>There are 3 ways to do this.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h3>Option 1 - Using tag attribute</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This create an event handler for your event using an onclick tag.</p>
+                <p>This is bad practice as it makes your code difficult to update.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;button <span class="standout">onclick="alert('pushed button')"</span>&gt;</span></pre>
+            </div>
+        </div>
+
+
+
+        <h3>Option 2 - Dot notation (old option)</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>First specify element.</p>
+                <p>Then get the element by ID or Class.</p>
+                <p>Give it an event handler. In this example, onclick().</p>
+                <p>The event handler then executes a function literal (function without a name)</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;img src"pink.gif" "alt="pink" id="pink"&gt;</span>
+
+<span class="code-js">document.getElementById('pink').onclick=function() {
+  alert('click on pink");
+}</span></pre>
+            </div>
+        </div>
+
+        <h3>Option 3 - Using addEventListener() (Modern option)</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>First specify element.</p>
+                <p>Add 'addEventListener'.</p>
+                <p>Pass along type of event you want (click).</p>
+                <p>There are a few advantages to this:</p>
+                <ul>
+                    <li>This allows you to check for multiple events within a single call aka: Event propagation.</li>
+                    <li>The other less common advantage is that events can be triggered by non-dom elements, which means that with that method you can write your own event.</li>
+                    <li>And different parts of your code can listen for those events that you've created yourself, and then you can execute pieces of code based on that.</li>
+                </ul>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;img src"pink.gif" "alt="pink" id="pink"&gt;</span>
+
+<span class="code-js">document.getElementById('pink').addEventListener('click', function() {
+  alert("click on pink");
+} , false);</span></pre>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>You can also write the function separate from the addEventListener call.</p>
+                <p>NOTE How there are no () after the reveal function.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;img src"pink.gif" class="cta"&gt;</span>
+
+<span class="code-js">const CTA = document.querySelector(".cta a");
+
+function reveal(e) {
+  CTA.classList.toggle("hide");
+}
+
+CTA.addEventListener("click" , <span class="standout">reveal</span>, false);</span></pre>
+            </div>
+        </div>
+
+
+        <h4>IE8 & ></h4>
+        <div class="row">
+            <div class="col">
+                <p>IE8 and later can't use addEventLister. They must use attachEvent.</p>
+                <p>https://www.lynda.com/JavaScript-tutorials/Using-events-old-browsers/140780/148715-4.html</p>
+            </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

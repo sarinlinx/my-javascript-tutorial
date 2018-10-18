@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Sorting Arrays</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+      <section class="container">
+          <h1>Sorting Arrays with sort()</h1>
+
+          <div class="row">
+              <div class="col-6">
+                <p>This outputs: Array(3) [ 1, 15, 2 ]</p>
+<p>Notice something strange? The order is 1, 15, 2.</p>
+<p>That’s because sort() converts everything to string and uses lexicographical order by default.</p>
+              </div>
+              <div class="col-6">
+<pre class="example"><span class="code-js">var arr = [ 1, 2, 15 ]
+arr.sort()
+console.log(arr);</span></pre>
+              </div>
+          </div>
+
+<h3>Sorting in correct order</h3>
+          <div class="row">
+              <div class="col-6">
+                <p>To make it smarter, we need to pass in the custom comparison function. It should accept two arguments and return 1, 0 or -1.</p>
+                <p>This outputs: Array(3) [ 1, 2, 15 ]</p>
+              </div>
+              <div class="col-6">
+<pre class="example"><span class="code-js">function compare(a, b) {
+  if (a > b) return 1
+  else if (a < b) return -1
+  else return 0
+}
+
+var arr = [ 1, 2, 15 ]
+arr.sort(compare)
+console.log(arr);</span></pre>
+              </div>
+          </div>
+        </section>
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

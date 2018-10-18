@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Arrays and Strings</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+    <section class="container">
+        <h1>Turn array into a string</h1>
+        <h2>Using join()</h2>
+        <h3>Convert the array into a string assigned to a new var</h3>
+
+        <div class="row">
+            <div class="col-6">
+                <p>The join() method turns an array into a string.</p>
+                <p>This first outputs the array: <span class="standout">Array(4) [ "Lemon", "Apple", "Orange", "Peach" ]</span></p>
+                <p>After the join() is used, it outputs: <span class="standout">Lemon, Apple, Orange, Peach</span></p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var fruits = ["Lemon","Apple","Orange","Peach"];
+console.log(fruits);
+var str = fruits.join(', ');
+console.log(str);</span></pre>
+            </div>
+        </div>
+
+        <h3>Convert the array into a string with a specific separator</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>It behaves just like toString(), but in addition you can specify the separator.</p>
+                <p>This outputs: Banana * Orange * Apple * Mango</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var fruits = ["Banana", "Orange","Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.join(" * ");</span></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2>Using toString()</h2>
+        <h3>Convert the array into a string with comma separated values</h3>
+
+        <div class="row">
+            <div class="col-6">
+                <p>This outputs <span class="standout">Banana,Orange,Apple,Mango</span></p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var fruits = ["Banana", "Orange", "Apple", "Mango"];
+document.getElementById("demo").innerHTML = fruits.<span class="standout">toString()</span>;</span></pre>
+            </div>
+        </div>
+      </section>
+
+
+
+
+
+      <section class="container">
+          <h1>Turn String into an Array</h1>
+          <h2>Using split()</h2>
+
+          <div class="row">
+              <div class="col-6">
+                <p>The split() method converts a string into an Array.</p>
+                  <p>This outputs: Apple</p>
+              </div>
+              <div class="col-6">
+<pre class="example"><span class="code-js">var fruits = "Apple,Orange,Peach";
+var arr = fruits.split(',');
+console.log(arr[0]);</span></pre>
+              </div>
+          </div>
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

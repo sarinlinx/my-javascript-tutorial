@@ -23,7 +23,7 @@
         <h1>Methods</h1>
         <div class="row">
             <div class="col-6">
-              <p>A method is a function definition stored as a property value.</p>
+                <p>A method is a function definition stored as a property value.</p>
                 <p>Methods use or change the data in the object properties.</p>
                 <p>These are added just like properties.</p>
                 <p>This outputs: 0, then increments to 1, then outputs 1.</p>
@@ -44,23 +44,179 @@ course.updateViews();
 console.log(course.views);</span></pre>
             </div>
         </div>
-      </section>
+    </section>
 
 
 
 
 
-      <section class="container">
-          <h1>Accessing Methods</h1>
-          <div class="row">
-              <div class="col-6">
+    <section class="container">
+        <h1>Accessing Methods</h1>
+        <div class="row">
+            <div class="col-6">
                 <p>You must add () or it will only return the function definition instead.</p>
-              </div>
-              <div class="col-6">
-                  <pre class="example"><span class="code-js">objectName.methodName();</span></pre>
-              </div>
-          </div>
-        </section>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">objectName.methodName();</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <section class="container">
+        <h1>Send information to the function using an object</h1>
+        <h2><span class="red">REVIEW THESE SECTIONS</span></h2>
+        <div class="row">
+            <div class="col-6">
+                <p>In the script, you need to capture arguments being sent to it.</p>
+                <p>This allows you to send arguments into function and then parse them out using an array.</p>
+                <p>use the 'arguments' array as an internal object</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var ray = (function() {
+  return {
+    speak: function() {
+      console.log('arguments[0].say');
+    }
+  };
+}) () ;</span>
+
+&lt;body&gt;
+<span class="code-js">&lt;script&gt;
+ray.speak({ say: 'howdy' });
+&lt;/script&gt;</span>
+&lt;/body&gt;</pre>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container">
+        <h1>What if user doesn't enter an argument?</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>var myArguments sets to the arguments that get passed from my function, or I'll set it to nothing.</p>
+                <p>So if user forgets to set it, it's automatically set to nothing.</p>
+                <p>This outputs 'undefined'.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var ray = (function() {
+  return {
+    speak: function() {
+    var myArguments = arguments[0] || '';
+    console.log('myArguments.say');
+    }
+  };
+}) () ;</span></pre>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>Instead of allowing the output to be 'undefined' make sure something is in the argument.</p>
+                <p>If nothing is entered as an argument, it outputs the default which is 'hello'</p>
+                <p>If an argument is passed, it outputs that argument</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var ray = (function() {
+  return {
+    speak: function() {
+    var myArguments = arguments[0] || '';
+    var statement = myArguments.say || 'hello';
+    console.log('statement');
+    }
+  };
+}) () ;</span></pre>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>You can also add a defalt value to the top of the function, rather than specifying the default value within the statement</p>
+                <p>It's a good idea to set default at the top of the method. Makes it easier to see and edit them.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var ray = (function() {
+  var DEFAULTS = {
+    say: 'hello'
+    }
+
+  return {
+    speak: function() {
+    var myArguments = arguments[0] || '';
+    var statement = myArguments.say || DEFAULTS.say;
+    console.log('statement');
+    }
+  };
+}) () ;</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+    <section class="container">
+        <h1>Chaining</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>Chaining allows one function to call another function.</p>
+                <p>This outputs:<br>howdy<br>running...fast</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var ray = (function() {
+  var DEFAULTS = {
+    say: 'hello'
+    speed: 'normal'
+    }
+
+  return {
+    speak: function() {
+    var myArguments = arguments[0] || '';
+    var statement = myArguments.say || DEFAULTS.say;
+    console.log('statement');
+    },
+    run : function() {
+    var myArguments = arguments[0] || '';
+    var running = myArguments.speed || DEFAULTS.speed;
+    console.log('running...' + running);
+    }
+  };
+}) () ;</span>
+
+&lt;body&gt;
+<span class="code-js">&lt;script&gt;
+  ray.speak({ say: 'howdy' });
+  ray.speed({ speed: 'fast' });
+&lt;/script&gt;</span>
+&lt;/body&gt;
+</pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <script src="../../_js/jquery.js"></script>

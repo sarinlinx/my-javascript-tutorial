@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Arrays</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Overview</h1>
+
+        <div class="row">
+            <div class="col">
+                <p>An array is a special variable, which can hold more than one value at a time.</p>
+                <p>This is different from arrays in some languages which represent a contiguous segment of memory, and also different from queue/stack structures based on linked-lists.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="container">
+        <h1>Basics</h1>
+        <h2>Array Syntax</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>There are two ways to create an Array.</p>
+                <ul>
+                    <li>Using the 'new' keyword' or not.</li>
+                </ul>
+                <p>For simplicity do not use the 'new' word.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example">Using the 'new' keyword
+<span class="code-js">var cars = new Array("Saab", "Volvo", "BMW");</span>
+Not using the 'new' keyword
+<span class="code-js">var myarray = ["keys", "stuff", "things"]</span></pre>
+            </div>
+        </div>
+
+        <h2>Running a method on an Array</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>Use this syntax to run a method on an Array: <span class="standout">ArrayName.method();</span></p>
+                <p>This runs a method named reverse() on the array myarray.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">myarray.reverse();</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container">
+        <h2>Viewing Array contents</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>Output to console.log</p>
+                <p>This displays the following:</p>
+                <ul>
+                  <li>Array(4) [ "red", "blue", "green", "orange" ]</li>
+                  <li>Array length:  4</li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var pens = ["red", "blue", "green", "orange"];
+console.log(pens);
+
+console.log("Array length: ", pens.length);</span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>You can also use a 'for' loop to print out each index value.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var fruits = ["Pineapple", "Lemon", "Apple", "Orange", "Peach"]
+
+  for(var i=0; i &lt; fruits.length; i++) {
+  console.log(fruits[i])
+}</span></pre>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>You can also use getElementById to access an index, or the full array.</p>
+                <p>This outputs: Saab</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var cars = ["Saab", "Volvo", "BMW"];
+document.getElementById("demo").innerHTML = cars[0];</span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+
+                <p>This outputs: Saab,Volvo,BMW</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var cars = ["Saab", "Volvo", "BMW"];
+document.getElementById("demo").innerHTML = cars;</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
