@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Event Propagation</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+    <section class="container">
+        <h1>Event Propagation</h1>
+        <div class="row">
+            <div class="col">
+                <p>Event Propagation lets you have a single element capture all the events of its children elements. Event propagation is the reason you want to use the newer addEventListener model.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container">
+        <h1>View the Event Object</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>Load the page and click an image.</p>
+                <p>View the console output. NOTE: The 'MouseEvent' event does NOT show in Firefox. It only shows in Chrome.</p>
+                <p>Notice inside the 'MouseEvent', there is a 'toElement: img' item (chrome only).</p>
+<p>Scroll down to the toElement item.</p>
+<p>Open it and you'll see the list elemtn you clicked noted by alt: "pink"</p>
+<img src="../../_img/chrome-only-mouse-event.png">
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;ul id ="grid"&gt;
+&lt;li&gt;&lt;img src"green.gif" alt="green" id="green"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src"red.gif" alt="red" id="red"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src"pink.gif" alt="pink" id="pink"&gt;&lt;/li&gt;
+&lt;/ul&gt;</span>
+
+<span class="code-js">document.getElementById('grid').addEventListener('click', function(e) {
+  console.log(e);
+} , false);</span></pre>
+            </div>
+        </div>
+
+
+
+<h3>Specify the alt attribute in the Event Object</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Change your script to output the toElement. This only returns the alt attribute.</p>
+                <p>Only 1 event listener was needed to track this.</p>
+                <br><br><img src="../../_img/chrome-only-mouse-event_02.png">
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">document.getElementById('grid').addEventListener('click', function(e) {
+  console.log(e);
+  console.log(<span class="standout">e.toElement.alt</span>);
+} , false);</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Bubbling and Capturing</h1>
+        <div class="row">
+            <div class="col">
+                <p>Some browers only support bubbling or capturing.</p>
+                <ul><li><a href="https://quirksmode.org/js/events_order.html">Events Order</a></li></ul>
+
+<h3>Capturing</h3>
+<p>Capturing works top down.</p>
+<p>When the click happens it can move down the dom and notice or register that the click happened inside the UL first, then on the LI and finally on the IMG. This is called catching an event in the capturing phase.</p>
+
+<h3>Bubbling</h3>
+<p>Bubbling works bottom up</p>
+<p>The other way to register the event is by having the browser notice the event first on the lowest element. In our example, the IMG and then passing the event up the dom chain until it reaches the UL. This is called catching an event in the bubbling phase, because the event bubbles from the LI to the UL.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+    <h2>Example of bubling (use false)</h2>
+            <div class="row">
+                <div class="col-6">
+                    <p>true or false dictates 'capturing phase' or 'bubling phase'.</p>
+                    <p>Load the page and click 'pink'.</p>
+                    <p>The console outputs:<br><strong>pink<br>Clicked inside UL</strong></p>
+                    <p>This is because it 'bubbles' the event up from the bottom element to the top element.</p>
+                </div>
+
+                <div class="col-6">
+                  <pre class="example"><span class="code-html">&lt;ul id ="grid"&gt;
+&lt;li&gt;&lt;img src"green.gif" alt="green" id="green"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src"red.gif" alt="red" id="red"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src"pink.gif" alt="pink" id="pink"&gt;&lt;/li&gt;
+&lt;/ul&gt;</span>
+
+<span class="code-js">document.getElementById('grid').addEventListener('click', function(e) {
+  console.log("Clicked inside UL");
+} , <span class="standout">false</span>);
+
+document.getElementById('pink').addEventListener('click', function(e) {
+  console.log(e.toElement.alt);
+} , <span class="standout">false</span>);</span></pre>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="container">
+        <h2>Example of Capturing (use true)</h2>
+                <div class="row">
+                    <div class="col-6">
+                        <p>true or false dictates 'capturing phase' or 'bubling phase'.</p>
+                        <p>Load the page and click 'pink'.</p>
+                        <p>The console outputs:<br><strong>Clicked inside UL<br>pink</strong></p>
+                        <p>This is because it 'Captures' the event from the top element to the bottom element.</p>
+                    </div>
+
+                    <div class="col-6">
+                      <pre class="example"><span class="code-html">&lt;ul id ="grid"&gt;
+&lt;li&gt;&lt;img src"green.gif" alt="green" id="green"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src"red.gif" alt="red" id="red"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src"pink.gif" alt="pink" id="pink"&gt;&lt;/li&gt;
+&lt;/ul&gt;</span>
+
+<span class="code-js">document.getElementById('grid').addEventListener('click', function(e) {
+  console.log("Clicked inside UL");
+} , <span class="standout">true</span>);
+
+  document.getElementById('pink').addEventListener('click', function(e) {
+  console.log(e.toElement.alt);
+} , <span class="standout">true</span>);</span></pre>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

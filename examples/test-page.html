@@ -11,13 +11,26 @@
 
 <body>
 
-    <p id="demo"></p>
-<button onclick="alert('pushed pink')">
+  <ul id ="grid">
+  <li><img src"green.gif" alt="green" id="green"></li>
+  <li><img src"red.gif" alt="red" id="red"></li>
+  <li><img src"pink.gif" alt="pink" id="pink"></li>
+  </ul>
+
 </body>
 
 
 
 <script>
+
+document.getElementById('grid').addEventListener('click', function(e) {
+  console.log("Clicked inside UL");
+} , false);
+
+document.getElementById('pink').addEventListener('click', function(e) {
+  console.log(e.toElement.alt);
+} , false);
+
 
 </script>
 

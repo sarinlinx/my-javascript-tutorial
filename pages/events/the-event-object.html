@@ -24,28 +24,68 @@
         <div class="row">
             <div class="col">
                 <p>Once you register and capture an event, you'll receive an event object back from the browser. The object you get might look different depending on the version of the browser you're using.</p>
-                <p>This is important to remember, because you won't always be able to use all this information.</p>          
+                <p>This is important to remember, because you won't always be able to use all this information.</p>
             </div>
         </div>
     </section>
 
 
     <section class="container">
-        <h3>Option 1 - Using tag attribute</h3>
+        <h1>View the Event Object</h1>
         <div class="row">
             <div class="col-6">
-                <p>This create an event handler for your event using an onclick tag.</p>
-                <p>This is bad practice as it makes your code difficult to update.</p>
+                <ol>
+                    <li>First, register the event using addEventListener</li>
+                    <li>Pass the Event Object to a function using function(e)</li>
+                    <li>Load the page.</li>
+                    <li>Click the text 'pink'. This triggers the event.</li>
+                    <li>View the output in the console.log</li>
+                    <li>The console displays the Event Object: <span class="standout">click { target: img#pink, buttons: 0, clientX: 14, clientY: 30, layerX: 14, layerY: 30 }</span></li>
+                    <li>You can then click the Event Object to view more if its information.
+                        <br><img src="../../_img/event-object.png"></li>
+                </ol>
             </div>
 
             <div class="col-6">
-                <pre class="example"><span class="code-html">&lt;button <span class="standout">onclick="alert('pushed button')"</span>&gt;</span></pre>
+                <pre class="example"><span class="code-html">&lt;img src"pink.gif" "alt="pink" id="pink"&gt;</span>
+
+<span class="code-comment">//Register an event to receive the Event Object
+//Pass the Event Object to a function(e)</span>
+  <span class="code-js">document.getElementById('pink').addEventListener('click', function(e) {
+    <span class="code-comment">//Output the Event Object</span>
+    console.log(e);
+  } , false);</span></pre>
             </div>
         </div>
     </section>
 
 
+    <section class="container">
+        <h1>Event Information</h1>
+        <div class="row">
+            <div class="col">
+              <p>Not all events function in all browsers. View the following link to see what events work in which browser:
+                <ul><li><a href="javascriptkit.com/jsref/event.shtml">JS Events in Browser</a></li></ul>
+                <p><strong>type</strong>	- This is just simply the type of event that you're getting. So in our case this would be a click event.</p>
+<p><strong>defaultPrevented</strong> - prevent default behavior from happening</p>
+<h5>Targeting Information</h5>
+<p><strong>currenTarget</strong>	- element the event was assigned to. And that's not necessarily the event you clicked on because you can assign the event to be tracked by another item.</p>
+<p><strong>target</strong> - the element that the event is originated from, which may differ from the element the event was assigned to.</p>
+<p><strong>srcElement</strong> - The source element is the actual element that fired the event.</p>
+<p><strong>fromElement</strong> - from and to element are kind of related to each other and they deal with mouse over and mouse out events.</p>
+<p><strong>toElement</strong></p>
+<h5>Coordinate Information</h5>
+<p>screen x,y</p>
+<p>layer x,y</p>
+<h5>Key/Mouse info</h5>
+<p>altKey</p>
+<p>charCode</p>
+<p>Article on keyboard position</p>
+<ul><li><a href="unixpapa.com/js/key.html">Keyboard position</a></li></ul>
 
+            </div>
+        </div>
+    </section>
 
 
 

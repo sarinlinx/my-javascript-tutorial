@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Stopping an Event</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+    <section class="container">
+        <h1>Stopping an Event from Propagating</h1>
+        <div class="row">
+            <div class="col">
+                <p>Use the stopPropataion() method to stop the event from propagating.</p>
+                <p>NOTE: This will cause it to run once, but it will no longer propagate any further up (bubbling) or down (capturing) the event chain.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container">
+
+        <h3>Example</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This will only output: pink</p>
+                <p>If stopPropagation() was not used, it would output:<br>pink<br>Clicked inside UL</p>
+            </div>
+
+
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;ul id ="grid"&gt;
+&lt;li&gt;&lt;img src"green.gif" alt="green" id="green"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src"red.gif" alt="red" id="red"&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src"pink.gif" alt="pink" id="pink"&gt;&lt;/li&gt;
+&lt;/ul&gt;</span>
+
+<span class="code-js">document.getElementById('grid').addEventListener('click', function(e) {
+  console.log("Clicked inside UL");
+} , false);
+
+document.getElementById('pink').addEventListener('click', function(e) {
+  console.log(e.toElement.alt);
+  <span class="standout">e.stopPropagation();</span>
+} , false);</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="container">
+
+        <h3>Cancel the default behavior</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>preventDefault() will stop the default action from happening</p>
+                <p>This still outputs: <br>pink<br>Clicked inside UL</p>
+                <p>However, the default action which is the href doesn't not redirect.</p>
+
+            </div>
+
+
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;ul id ="grid"&gt;
+&lt;li&gt;&lt;a href="google.com"&gt;&lt;img src"green.gif" alt="green" id="green"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="google.com"&gt;&lt;img src"red.gif" alt="red" id="red"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="google.com"&gt;&lt;img src"pink.gif" alt="pink" id="pink"&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</span>
+
+<span class="code-js">document.getElementById('grid').addEventListener('click', function(e) {
+  e.preventDefault();
+  console.log("Clicked inside UL");
+} , false);
+
+document.getElementById('pink').addEventListener('click', function(e) {
+  e.preventDefault();
+  console.log(e.toElement.alt);
+} , false);</span></pre>
+        </div>
+    </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
