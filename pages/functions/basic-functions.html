@@ -22,7 +22,6 @@
         <h1>Basics of Functions</h1>
         <div class="row">
             <div class="col">
-                <p>Steps to add a new DOM element.</p>
                 <ul>
                     <li>All functions are defined with 'function' keyword.</li>
                     <li>Giving the function a name is optional.</li>
@@ -30,6 +29,7 @@
                     <li>You can have zero or as many parameters as you want, and these will become variables that are local to and only available inside your function.</li>
                     <li>Function parameters are the names listed in the function definition.</li>
                     <li>Function arguments are the real values received by the function when it is invoked.</li>
+                    <li>You invoke
                 </ul>
             </div>
         </div>
@@ -85,14 +85,14 @@ document.getElementById("demo").innerHTML = myFunction(4);</span></pre>
             <div class="col-6">
                 <pre class="example"><span class="code-html">&lt;p id="demo"&gt;&lt;/p&gt;
 
-    <span class="code-js">function myFunction(x, y) {
-    if (y === undefined) {
-    y = 0;
-    }
-    return x * y;
-    }
+<span class="code-js">function myFunction(x, y) {
+  if (y === undefined) {
+  y = 0;
+}
+  return x * y;
+}
 
-    document.getElementById("demo").innerHTML = myFunction(4);</span></pre>
+document.getElementById("demo").innerHTML = myFunction(4);</span></pre>
             </div>
         </div>
 
@@ -375,7 +375,38 @@ hi("dude") <span class="code-comment">// call the function</span></span></pre>
                 <p>But for readability, it's easier to put the function before it's called in the script.</p>
             </div>
         </div>
+
+
+
+
+
+        <h3>Accessing the function without ()</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>To access a function you would use (). For example, if the function is named testFunction, you would call it using: testFunction().</p>
+                <p>However, if you leave off the (), the function definition instead is returned.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">function test() {
+  var y = 2;
+  var z = 2;
+  var x = y + z;
+  return x;
+}
+
+console.log(test());
+console.log(test);</span></pre>
+            </div>
+            <img src="../../_img/call-function-without-parenthesis.png">
+        </div>
+
+
     </section>
+
+
+
+
 
     <section class="container">
         <h1>Where to define variables?</h1>

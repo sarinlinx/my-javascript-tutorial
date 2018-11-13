@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../../_css/style.css">
 
-    <title>typeof</title>
+    <title>Data Types</title>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
 
 
     <section class="container">
-        <h1>typeof</h1>
+        <h1>typeof (Data Types)</h1>
         <div class="row">
             <div class="col-6">
                 <p>Use the typeof() method to determine the type of operator.</p>
@@ -152,6 +152,32 @@ alert ( typeof str );</span></pre>
     <div class="col-6">
         <pre class="example"><span class="code-js">var str = NaN;
 alert ( typeof str );</span></pre>
+    </div>
+</div>
+
+
+
+
+
+<h3>Functions and Objects</h3>
+<div class="row">
+    <div class="col-6">
+        <p>The typeof operator returns object for both objects, arrays, and null.</p>
+<p>The typeof operator does not return object for functions.</p>
+<p>These return the following:</p>
+<ul>
+  <li>object</li>
+  <li>object</li>
+  <li>object</li>
+  <li>function</li>
+</ul>
+
+    </div>
+    <div class="col-6">
+        <pre class="example"><span class="code-js">typeof {name:'john', age:34}
+typeof [1,2,3,4]
+typeof null
+typeof function myFunc(){};</span></pre>
     </div>
 </div>
 

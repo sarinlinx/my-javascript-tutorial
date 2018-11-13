@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>String Methods</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+    <section class="container">
+        <h1>String methods</h1>
+        <div class="row">
+            <div class="col">
+                <p>With JavaScript, methods and properties are available to primitive values, because JavaScript treats primitive values as objects when executing methods and properties.</p>
+            </div>
+        </div>
+
+        <h3>String length</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Print the number of characters in a string.</p>
+                <p>This prints 3 since the newline is its own character.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "My\n"
+  alert(str.length)</pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Searching Strings</h1>
+
+        <h2>Accessing a single character in a string</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>There are 2 ways to do this.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "string text"
+    alert( str.charAt(2) )
+
+    var str = "string text"
+    alert(str[2])</pre>
+            </div>
+        </div>
+
+
+
+        <h2>Searching for the index value String in a String</h2>
+        <h3>indexOf()</h3>
+
+        <div class="row">
+            <div class="col-6">
+                <p>Use indexOf() to search for a sub-string within a string.</p>
+                <p>It returns the position of a first occurence of a substring or -1 if nothing found.</p>
+                <p>This example returns the following:</p>
+                <ul>
+                    <li>returns 0</li>
+                    <li>returns 1 because the second character starts with 'id'</li>
+                    <li>returns -1</li>
+                </ul>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Widget with id"
+
+    alert( str.indexOf("Widget") )
+    alert( str.indexOf("id") )
+    alert( str.indexOf("Lalala") ) </pre>
+            </div>
+        </div>
+
+        <h4>Find sub-string after beginning at a specific index</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This starts searching at character 2.</p>
+                <p>It returns 12 because that's the first character position (after 2) that starts with 'id'.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Widget with id"
+    alert( str.indexOf("id", 2) ) </pre>
+            </div>
+        </div>
+
+
+
+        <h4>Finding the first index value of a String in a String (indexOf)</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>The indexOf() method returns the index of (the position of) the first occurrence of a specified text in a string.</p>
+                <p>This returns: 7</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Please locate where 'locate' occurs!";
+            var pos = str.indexOf("locate");</pre>
+            </div>
+        </div>
+
+
+
+        <h4>Finding the last index value of a String in a String (lastIndexOf)</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>The lastIndexOf() method returns the index of the last occurrence of a specified text in a string.</p>
+                <p>This returns 21 since it finds the second (or last) occurrence of the word 'locate'.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Please locate where 'locate' occurs!";
+            var pos = str.lastIndexOf("locate");</pre>
+            </div>
+        </div>
+
+
+        <h4>If a String in a String doesn't exist</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Both indexOf(), and lastIndexOf() return -1 if the text is not found.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Please locate where 'locate' occurs!";
+            var pos = str.lastIndexOf("John");</pre>
+            </div>
+        </div>
+
+
+        <h4>Setting a starting index</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Both methods accept a second parameter as the starting position for the search.</p>
+                <p>This returns 21.<span class="red">WHY???</span></p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Please locate where 'locate' occurs!";
+            var pos = str.indexOf("locate",15);</pre>
+            </div>
+        </div>
+
+
+        <h4>Using search() instead of indexOf()</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>The search() method searches a string for a specified value and returns the position of the match.</p>
+                <p>This returns 7</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Please locate where 'locate' occurs!";
+            var pos = str.search("locate");</pre>
+            </div>
+        </div>
+
+        <h3>Difference between search() and indexOf()</h3>
+        <div class="row">
+            <div class="col">
+                <p>The search() method cannot take a second start position argument.</p>
+                <p>The indexOf() method cannot take powerful search values (regular expressions).</p>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <h3>substring()</h3>
+        <h4>Find a sub-string starting at a specific character</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Syntax</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">substr(beginning_value , how_many_to_extract)</pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>This prints 'ring'.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "stringify"
+    str = str.substr(2,4)
+    alert(str)</pre>
+            </div>
+        </div>
+
+
+        <h4>Find a sub-string between specific characters</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Syntax</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">substring(beginning_value , end_value)</pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>This prints the letter 's'.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "stringify"
+    alert(str.substring(0,1))</pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>This prints ringify since only the first value was specified.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "stringify"
+    alert(str.substring(2))</pre>
+            </div>
+        </div>
+
+        <h4>What if first value is larger than second?</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>If the first value is larger, the values are swapped.</p>
+                <p>-1 becomes zero, then the values are swapped.</p>
+                <p>This returns 'test'.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert( "testme".substring(4, -1) )</pre>
+            </div>
+        </div>
+
+
+
+
+
+        <h3>slice()</h3>
+        <div class="row">
+            <div class="col">
+                <p>slice() extracts a part of a string and returns the extracted part in a new string.</p>
+                <p>You can use a single value, or 2 values.</p>
+                <p>The values and be positive or negative.</p>
+            </div>
+        </div>
+
+        <h4>Using a single value with slice()</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>The index is where it begins to cut from.</p>
+                <p>This returns: Banana, Kiwi</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Apple, Banana, Kiwi";
+    var res = str.slice(7);</pre>
+            </div>
+        </div>
+
+
+        <h4>Using two index values with slice()</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>The method takes 2 parameters: the starting index (position), and the ending index (position).</p>
+                <p>The first index is where it begins to cut from.</p>
+                <p>The last index is where it stops, meaning it does not cut that final value.</p>
+                <p>This example slices out a portion of a string from position 7 to position 13: </p>
+                <p>This returns 'banana'.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Apple, Banana, Kiwi";
+    var res = str.slice(7, 13);</pre>
+            </div>
+        </div>
+
+
+        <h3>Using negative values with slice()</h3>
+        <h4>Using a single negative value with slice()</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>When couting, do not use 0 as the first value. Count back starting at 1.</p>
+                <p>If a single negative value is specified, you count backwards to that index, then cut the rest of the string out.</p>
+                <p>This returns: Kiwi</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Apple, Banana, Kiwi";
+    var res = str.slice(-4);</pre>
+            </div>
+        </div>
+
+        <h4>Using two negative values with slice()</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>If a parameter is negative, the position is counted from the end of the string.</p>
+                <p>This example slices out a portion of a string from position -12 to position -6:</p>
+                <p>When couting, do not use 0 as the first value. Count back starting at 1.</p>
+                <p>The first index is where the string starts to cut from.</p>
+                <p>The last index is where it stops, so it is not included in the returned string.</p>
+                <p>This returns: Banana</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Apple, Banana, Kiwi";
+    var res = str.slice(-12, -6);</pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <h3>Difference between slice() and substring()</h3>
+        <div class="row">
+            <div class="col">
+                <p>The difference between slice() and substring() is how they treat negative and overflow values.</p>
+                <p>Negative values using substring() become zero.</p>
+                <p>Negative values using slice() count backwards.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>This returns 'testme' because -2 becomes 0, and there's no second value.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert( "testme".substring(-2) ) </pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>slice is the same with positive values.</p>
+                <p>This returns 'test'.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert ( "testme".slice(0, 4));</pre>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>With slice() and negative values, it counts back from the end.</p>
+                <p>This returns 'me'.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert( "testme".slice(-2) )  </pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p><span class="red">why does this return 'm'?</span></p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert ( "testme".slice(4, -1));</pre>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p><span class="red">why does this return 'm'?</span></p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert ( "testme".slice(4, -1));</pre>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
