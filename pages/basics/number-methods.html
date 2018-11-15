@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Number Methods</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+    <section class="container">
+        <h1>Overview</h1>
+        <div class="row">
+            <div class="col">
+                <p>With JavaScript, methods and properties are available to primitive values, because JavaScript treats primitive values as objects when executing methods and properties.</p>
+                <p>Primitive number values would be: 3.14 or 2014.</p>
+            </div>
+        </div>
+
+        <h2>toString()</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>toString() returns a number as a string.</p>
+                <p><span class="red">Why does the typeof return 'number'?</span></p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = 123;
+x.toString();
+console.log(typeof x);</span></pre>
+            </div>
+        </div>
+
+        <h2>valueOf()</h2>
+        <div class="row">
+            <div class="col">
+
+                <p>The valueOf() method is used internally in JavaScript to convert Number objects to primitive values.</p>
+                <p>There is no reason to use it in your code.</p>
+                <p>All JavaScript data types have a valueOf() and a toString() method.</p>
+            </div>
+
+        </div>
+
+
+        <h2>toFixed()</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>toFixed() returns a string, with the number written with a specified number of decimals</p>
+                <p>This returns:
+                    <ul>
+                        <li>10</li>
+                        <li>9.66</li>
+                        <li>6.6560</li>
+                    </ul>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = 9.656;
+x.toFixed(0);
+x.toFixed(2);
+x.toFixed(4);</span></pre>
+            </div>
+        </div>
+
+
+
+        <h2>toPrecision()</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>toPrecision() returns a string, with a number written with a specified length:</p>
+                <p>This returns:
+                    <ul>
+                        <li>9.656</li>
+                        <li>9.7</li>
+                        <li>9.656</li>
+                        <li>9.65600</li>
+                    </ul>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = 9.656;
+x.toPrecision();
+x.toPrecision(2);
+x.toPrecision(4);
+x.toPrecision(6); </span></pre>
+            </div>
+        </div>
+
+
+
+
+        <h1>Converting Variables to Numbers</h1>
+        <div class="row">
+            <div class="col-6">
+                <p><span class="red">SKIPPED</span></p>
+                <p><a href="https://www.w3schools.com/js/js_number_methods.asp">js_number_methods.asp</a></p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">lkj</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+        <h1>Number Properties</h1>
+
+
+        <h2>MAX_VALUE</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>Returns the largest number possible in JavaScript</p>
+                <p>This returns: 1.7976931348623157e+308</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = Number.MAX_VALUE;</span></pre>
+            </div>
+        </div>
+
+        <h2>MIN_VALUE</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>Returns the smallest number possible in JavaScript</p>
+                <p>This returns: 5e-324</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = Number.MIN_VALUE;</span></pre>
+            </div>
+        </div>
+
+
+        <h2>POSITIVE or NEGATIVE_INFINITY</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>Returns the smallest number possible in JavaScript</p>
+                <p>This returns: Infinity and -Infinity</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = Number.POSITIVE_INFINITY;
+var x = Number.NEGATIVE_INFINITY;</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+    <script src="../../_js/jquery.js "></script>
+    <script src="../../_js/bootstrap.bundle.js "></script>
+</body>
+
+</html>

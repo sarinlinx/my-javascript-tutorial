@@ -34,8 +34,8 @@
 
 
     <section class="container">
-        <h1>Basics</h1>
-        <h2>Array Syntax</h2>
+
+        <h1>Array Syntax</h1>
         <div class="row">
             <div class="col-6">
                 <p>There are two ways to create an Array.</p>
@@ -52,43 +52,96 @@ Not using the 'new' keyword
             </div>
         </div>
 
-        <h2>Running a method on an Array</h2>
-        <div class="row">
-            <div class="col-6">
-                <p>Use this syntax to run a method on an Array: <span class="standout">ArrayName.method();</span></p>
-                <p>This runs a method named reverse() on the array myarray.</p>
-
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">myarray.reverse();</span></pre>
-            </div>
-        </div>
     </section>
 
 
 
+
     <section class="container">
-        <h2>Viewing Array contents</h1>
+
+        <h1>The length Property</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>The length property of an array returns the length of an array (the number of array elements).</p>
+                <p>This returns 4</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var fruits = ["Banana", "Orange", "Apple", "Mango"];
+alert(fruits.length);</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+    <section class="container">
+
+        <h1>Viewing Array contents</h1>
+
+        <h3>Viewing the full Array contents</h3>
         <div class="row">
             <div class="col-6">
                 <p>Output to console.log</p>
                 <p>This displays the following:</p>
                 <ul>
-                  <li>Array(4) [ "red", "blue", "green", "orange" ]</li>
-                  <li>Array length:  4</li>
+                    <li>Array(4) [ "red", "blue", "green", "orange" ]</li>
+
                 </ul>
             </div>
             <div class="col-6">
                 <pre class="example"><span class="code-js">var pens = ["red", "blue", "green", "orange"];
-console.log(pens);
-
-console.log("Array length: ", pens.length);</span></pre>
+console.log(pens);</span></pre>
             </div>
         </div>
 
+
+        <h3>Access single element</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>You can also access a single index.</p>
+                <p>This outputs: Saab</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var cars = ["Saab", "Volvo", "BMW"];
+console.log(cars[0]);</span></pre>
+            </div>
+        </div>
+
+
+        <h3>Access the last element</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Use the length property and add -1.</p>
+                <p>This prints 'Mango'.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">fruits = ["Banana", "Orange", "Apple", "Mango"];
+var last = fruits[fruits.length - 1];
+console.log(last);</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <section class="container">
+        <h1>Looping through Array elements</h1>
+        <h3>Using a for loop to print Array elements</h3>
         <div class="row">
             <div class="col-6">
                 <p>You can also use a 'for' loop to print out each index value.</p>
+                <p>This returns:</p>
+                <ul>
+                    <li>Pineapple</li>
+                    <li>Lemon</li>
+                    <li>Apple</li>
+                    <li>Orange</li>
+                    <li>Peach</li>
+                </ul>
             </div>
             <div class="col-6">
                 <pre class="example"><span class="code-js">var fruits = ["Pineapple", "Lemon", "Apple", "Orange", "Peach"]
@@ -99,29 +152,54 @@ console.log("Array length: ", pens.length);</span></pre>
             </div>
         </div>
 
-
+        <h3>Using a forEach() function</h3>
         <div class="row">
             <div class="col-6">
-                <p>You can also use getElementById to access an index, or the full array.</p>
-                <p>This outputs: Saab</p>
+                <p>You can also use a 'for' loop to print out each index value.</p>
+                <p>This returns the elments in an HTML unordered list. For example.</p>
+                <p>&lt;ul&gt;&lt;li&gt;Banana&lt;/li&gt;&lt;li&gt;Orange&lt;/li&gt;&lt;li&gt;Apple&lt;/li&gt;&lt;li&gt;Mango&lt;/li&gt;&lt;/ul&gt;</p>
+
+
             </div>
             <div class="col-6">
-                <pre class="example"><span class="code-js">var cars = ["Saab", "Volvo", "BMW"];
-document.getElementById("demo").innerHTML = cars[0];</span></pre>
+                <pre class="example"><span class="code-js">var fruits, text;
+fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+text = "<ul>";
+fruits.forEach(myFunction);
+text += "</ul>";
+
+function myFunction(value) {
+    text += "<li>" + value + "</li>";
+}
+
+console.log(text);</span></pre>
             </div>
         </div>
 
         <div class="row">
             <div class="col-6">
 
-                <p>This outputs: Saab,Volvo,BMW</p>
+                <p>For this reason, it makes sense to use getElementById to add this information to a page.</p>
+                <p>For example, this prints the unordered list to the HTML page.</p>
+
             </div>
             <div class="col-6">
-                <pre class="example"><span class="code-js">var cars = ["Saab", "Volvo", "BMW"];
-document.getElementById("demo").innerHTML = cars;</span></pre>
+                <pre class="example"><span class="code-html">&lt;p id="demo"&gt;</span>
+
+<span class="code-js">var fruits, text;
+fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+text = "&lt;ul&gt;";
+fruits.forEach(myFunction);
+text += "&lt;/ul&gt;";
+document.getElementById("demo").innerHTML = text;
+
+function myFunction(value) {
+    text += "&lt;li&gt;" + value + "&lt;/li&gt;";
+} </span></pre>
             </div>
         </div>
-
     </section>
 
 
@@ -129,8 +207,106 @@ document.getElementById("demo").innerHTML = cars;</span></pre>
 
 
 
+    <section class="container">
+        <h1>Changing an Array Element</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>You can change an Array element by directly assigning it.</p>
+                <p>This outputs: Opel,Volvo,BMW</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var cars = ["Saab",
+            "Volvo",
+            "BMW"];
+cars[0] = "Opel";</span></pre>
+            </div>
+        </div>
+    </section>
 
 
+
+
+    <section class="container">
+        <h1>Different types of Array elements</h1>
+        <div class="row">
+            <div class="col">
+                <p>You can have objects in an Array. You can have functions in an Array. You can have arrays in an Array.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container">
+        <h1>Associative Arrays</h1>
+        <div class="row">
+            <div class="col">
+                <p>Many programming languages support arrays with named indexes which are known as Associative arrays (or hashes).</p>
+                <p>JavaScript does not support arrays with named indexes. In JavaScript, arrays always use numbered indexes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h1>Difference Between Arrays and Objects</h1>
+        <div class="row">
+            <div class="col">
+                <p>Arrays are a special kind of objects, with numbered indexes.</p>
+                <p>In JavaScript, arrays use numbered indexes.</p>
+                <p>In JavaScript, objects use named indexes.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container">
+        <h1>Check if a variable is an Array</h1>
+        <h3>Option 1 - Array.isArray()</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>typeof will return Object since Arrays are Objects.</p>
+                <p>ECMAScript 5 defines a new method Array.isArray(). This returns 'true' if it's an Array.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var cars = ["Saab","Volvo","BMW"];
+console.log(Array.isArray(cars));</span></pre>
+            </div>
+        </div>
+
+        <h3>Option 2 - Create your own function</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>The function always returns true if the argument is an array.</p>
+<p>Or more precisely: it returns true if the object prototype contains the word "Array"</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var cars = ["Saab","Volvo","BMW"];
+
+function isArray(myArray) {
+    return myArray.constructor.toString().indexOf("Array") > -1;
+}
+
+console.log(isArray(cars));</span></pre>
+            </div>
+        </div>
+
+
+        <h3>Option 3 - instanceof operator</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>The instanceof operator returns true if an object is created by a given constructor.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var cars = ["Saab","Volvo","BMW"];
+
+console.log(cars instanceof Array);</span></pre>
+            </div>
+        </div>
+
+
+
+
+    </section>
 
 
 

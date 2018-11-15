@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Numbers</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+    <section class="container">
+        <h1>Overview</h1>
+        <div class="row">
+            <div class="col">
+                <p>JavaScript has only one type of number. Numbers can be written with or without decimals.</p>
+                <p>The maximum number of decimals is 17, but floating point arithmetic is not always 100% accurate.</p>
+            </div>
+        </div>
+        <div class="alert alert-note">
+            <div class="alert-icon">
+                <img src="../../_img/note-icon.png" width="60" height="60">
+            </div>
+            <div class="alert-content">
+                <p>Never write a number with a leading zero (like 07). Some JavaScript versions interpret numbers as octal if they are written with a leading zero.</p></div></div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>Numbers can be written with or without decimals.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = 3.14;
+var y = 3;</span></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p>Extra large or extra small numbers can be written with scientific (exponent) notation.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = 123e5;
+var y = 123e-5; </span></pre>
+            </div>
+        </div>
+
+        <h2>Number types</h2>
+        <div class="row">
+            <div class="col">
+                <p>Unlike other programming languages, JavaScript does not define different types of numbers, like integers, short, long, floating-point etc.</p>
+                <p>JavaScript numbers are always stored as double precision floating point numbers, following the international IEEE 754 standard.</p>
+                <p>JavaScript Numbers are Always 64-bit Floating Point</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container">
+        <h1>Precision and decimals</h1>
+
+        <div class="row">
+            <div class="col-6">
+                <p>Integers (numbers without a period or exponent notation) are accurate up to 15 digits.</p>
+                <p>This returns: 999999999999999<br> 9999999999999992
+                </p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = 999999999999999;
+var y = 9999999999999991;</span></pre>
+            </div>
+        </div>
+
+<h4>Incorrect floating point math</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>The maximum number of decimals is 17.</p>
+                <p>NOTE. Floating point arithmetic is not always 100% accurate. For example this should return .3, but it returns 0.30000000000000004.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = 999999999999999;
+      var y = 9999999999999991;</pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>To get the correct result, multiply and divide.</p>
+                <p>This returns .3</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = (0.2 * 10 + 0.1 * 10) / 10;</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="container">
+        <h1>Adding numbers and strings</h1>
+
+        <div class="row">
+            <div class="col-6">
+                <p>The + sing adds for numbers and concatenates for strings.</p>
+                <p>If you use + with numbers and strings, the result will be a string concatenation.</p>
+                <p>This results in 1020</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = 10;
+var y = "20";
+var z = x + y;</span></pre>
+            </div>
+        </div>
+
+<h4>Order matters!</h4>
+        <div class="alert alert-note">
+            <div class="alert-icon">
+                <img src="../../_img/note-icon.png" width="60" height="60">
+            </div>
+            <div class="alert-content">
+                <p>The JavaScript compiler works from left to right. So take that into account when several values use the + sign.</p>
+                <p>The result depends on the order from left to right of 'string' or 'number'.</p></div></div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>This results in 1020</p>
+                <p>Why? Because 'z' starts as a string, the + sign is then used to concatenate.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = 10;
+var y = 20;
+var z = "The result is: " + x + y;</span></pre>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>This results in 3030</p>
+                <p>Why? Because x and y are first added. Then, the string 'z' is concatenated.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = 10;
+var y = 20;
+var z = "30";
+var result = x + y + z;</span></pre>
+            </div>
+        </div>
+</section>
+
+
+
+
+
+<section class="container">
+    <h1>Numeric Strings</h1>
+
+    <div class="row">
+        <div class="col-6">
+            <p>JavaScript will try to convert strings to numbers in all numeric operations.</p>
+            <p>You can use - * or /</p>
+            <p>You CANNOT use + since that will concatenate the strings.</p>
+            <p>This results in 10</p>
+        </div>
+
+        <div class="col-6">
+            <pre class="example"><span class="code-js">var x = "100";
+var y = "10";
+var z = x / y;</span></pre>
+        </div>
+    </div>
+  </section>
+
+
+
+
+
+  <section class="container">
+      <h1>NaN - Not a Number</h1>
+
+      <div class="row">
+          <div class="col-6">
+              <p>NaN is a JavaScript reserved word indicating that a number is not a legal number.</p>
+<p>Trying to do arithmetic with a non-numeric string will result in NaN (Not a Number)</p>
+<p>This results with: NaN</p>
+          </div>
+
+          <div class="col-6">
+              <pre class="example"><span class="code-js">var x = "100";
+  var y = "10";
+  var z = x / y;</span></pre>
+          </div>
+      </div>
+
+<h4>What if the string contains a numeric value?</h4>
+      <div class="row">
+          <div class="col-6">
+              <p>In this case, JavaScript will consider the string to be a number and divide.</p>
+          </div>
+
+          <div class="col-6">
+              <pre class="example"><span class="code-js">var x = 100 / "10"; </span></pre>
+          </div>
+      </div>
+
+
+
+      <h4>Using NaN in a math operation with a number</h4>
+            <div class="row">
+                <div class="col-6">
+                    <p>If NaN is used in math, it will return NaN.</p>
+                </div>
+
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">var x = NaN;
+var y = 5;
+var z = x + y;</span></pre>
+                </div>
+            </div>
+
+            <h4>Using NaN in a math operation with a string</h4>
+                  <div class="row">
+                      <div class="col-6">
+                          <p>If NaN is used with a string and the + sign, it concatenates</p>
+                          <p>This returns: NaN5</p>
+                      </div>
+
+                      <div class="col-6">
+                          <pre class="example"><span class="code-js">var x = NaN;
+var y = "5";
+var z = x + y;</span></pre>
+                      </div>
+                  </div>
+    </section>
+
+
+
+    <section class="container">
+        <h1>Check if a value is a number</h1>
+
+        <div class="row">
+            <div class="col-6">
+                <p>You can use the global JavaScript function isNaN() to find out if a value is a number.</p>
+                <p>isNan() returns true or false</p>
+                <p>This returns: true, then false</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = 100 / "Apple";
+alert(isNaN(x));
+//alert(x);
+
+var y = 100 / "10";
+alert(isNaN(y));</span></pre>
+            </div>
+        </div>
+
+<h4>NaN is a number type</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>NaN is actually a number type in JavaScript.</p>
+                <p>You can check by using typeof</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = NaN;
+alert(typeof x);</span></pre>
+            </div>
+        </div>
+</section>
+
+
+
+
+
+<section class="container">
+    <h1>The Infinity value</h1>
+
+    <div class="alert alert-note">
+        <div class="alert-icon">
+            <img src="../../_img/note-icon.png" width="60" height="60">
+        </div>
+        <div class="alert-content">
+            <p>Infinity is a number: typeof Infinity returns number.</p></div></div>
+
+
+<h4>Calculating values too high</h4>
+    <div class="row">
+        <div class="col-6">
+            <p>If the value returned is larger than the 'largest possible number' (which is 1.7976931348623157e+308), JavaScript returns 'Infinity'.</p>
+            <p>This will start to calculate values until it's too high, then 'Infinity' is returned.</p>
+        </div>
+
+        <div class="col-6">
+            <pre class="example"><span class="code-js">var myNumber = 2;
+var txt = "";
+while (myNumber != Infinity) {
+   myNumber = myNumber * myNumber;
+   txt = txt + myNumber + "<br>";
+}
+console.log(myNumber);</span></pre>
+        </div>
+    </div>
+
+    <h4>Dividing by zero</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Division by 0 (zero) also generates Infinity</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x =  2 / 0;</span></pre>
+            </div>
+        </div>
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+  <section class="container">
+      <h1>Hexidecimal values</h1>
+
+  <h4>Calculating values too high</h4>
+      <div class="row">
+          <div class="col-6">
+              <p>If you precede a value with 0x, JavaScript interprets it as a Hexidecimal value.</p>
+              <p>This returns 255</p>
+          </div>
+
+          <div class="col-6">
+              <pre class="example"><span class="code-js">var x = 0xFF;</span></pre>
+          </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Base values</h1>
+
+    <h4>Calculating values too high</h4>
+        <div class="row">
+            <div class="col-6">
+                <p> By default, JavaScript displays numbers as base 10 decimals. But you can use the toString() method to output numbers from base 2 to base 36.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var myNumber = 32;
+myNumber.toString(10);  // returns 32
+myNumber.toString(32);  // returns 10
+myNumber.toString(16);  // returns 20
+myNumber.toString(8);   // returns 40
+myNumber.toString(2);   // returns 100000</span></pre>
+            </div>
+        </div>
+      </section>
+
+
+
+
+    <script src="../../_js/jquery.js "></script>
+    <script src="../../_js/bootstrap.bundle.js "></script>
+</body>
+
+</html>
