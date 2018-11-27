@@ -17,6 +17,75 @@
     <a href="../../index.html">Home page</a>
 
 
+    <section class="container">
+        <h1>Global and Local scope</h1>
+        <h2>Global Scope</h2>
+        <div class="row">
+            <div class="col">
+                <p>Global scope is anything defined outside of all code blocks.</p>
+                <p>The variable is accessible everywhere in the program.</p>
+            </div>
+        </div>
+
+        <h2>Local Scope</h2>
+        <div class="row">
+            <div class="col">
+                <p>Local Scope are variables defined within a code block.</p>
+                <p>It's only accessible within that code block, or parent scope.</p>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+    <section class="container">
+        <h1>Simple scope example</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>Variables have a scope where they are accessible.</p>
+                <p>If you try to access a variable that's out of the current scope, an error displays.</p>
+                <p>This first prints: 'varOne'.</p>
+                <p>An error is then thrown because 'varTwo' is not in the current scope. It's in the if statement but it's being called outside of it.</p>
+                <p>You'll see this error: ReferenceError: varTwo is not defined</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let varOne = 'varOne'
+
+if (true) {
+    console.log(varOne)
+    let varTwo = 'varTwo'
+}
+
+console.log(varTwo)</span></pre>
+            </div>
+        </div>
+
+<h4>Variable shadowing</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Variable shadowing is when a local variable uses the same name as a Global variable, but the local value is used.</p>
+                <p>This prints 'Mike' since the local value is used over the Global value.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let name = 'Andrew'
+
+if (true) {
+    let name = 'Mike'
+
+    if (true) {
+      console.log(name)
+    }
+}</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
 
     <section class="container">
         <h1>Scope Chain</h1>
@@ -31,11 +100,11 @@
 
 
     <section class="container">
-<h3>Normal example of a function</h3>
+        <h3>Normal example of a function</h3>
         <div class="row">
             <div class="col-6">
                 <p>The last line of myDog() runs the function.</p>
-<p>Since the method inside of that function is the only thing that outputs data, the result is: Rover says woof.</p>
+                <p>Since the method inside of that function is the only thing that outputs data, the result is: Rover says woof.</p>
 
             </div>
             <div class="col-6">
@@ -58,7 +127,7 @@ myDog();</span></span></pre>
     </section>
 
     <section class="container">
-  <h3>Example of Scope Chain</h3>
+        <h3>Example of Scope Chain</h3>
         <div class="row">
             <div class="col-6">
                 <p>This example removes 'var dogName = 'Rover' from the inner function.</p>
@@ -84,12 +153,6 @@ myDog();</span></span></pre>
         </div>
 
     </section>
-
-
-
-
-
-
 
 
 

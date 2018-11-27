@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Array Iteration</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+    <section class="container">
+        <h1>forEach()</h1>
+
+          <div class="row">
+              <div class="col-6">
+                <p>The forEach() method calls a function (a callback function) once for each array element.</p>
+                <p>This prints: 45, 4, 9, 16, 25</p>
+                <p>The function takes 3 arguments:</p>
+                <ul>
+                  <li>The item value</li>
+    <li>The item index</li>
+    <li>The array itself</li></ul>
+
+              </div>
+              <div class="col-6">
+      <pre class="example"><span class="code-js">var txt = "";
+var numbers = [45, 4, 9, 16, 25];
+numbers.forEach(myFunction);
+document.getElementById("demo").innerHTML = txt;
+
+function myFunction(value, index, array) {
+    txt = txt + value + "&lt;br&gt;";
+}</span></pre>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col">
+                <p>The example above uses only the value parameter.</p>
+                <p>The function could also be written like this: <span class="standout">function myFunction(value)</span></p>
+              </div>
+            </div>
+</section>
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

@@ -58,7 +58,7 @@ h4 {
 }
 
 h5 {
-  color: #ff6060;
+  color: #a3dc90;
 }
 
 /*___________________________________________________
@@ -95,6 +95,11 @@ ___________________________________________________*/
 .code-comment {
   color: gray;
 }
+
+.code-output {
+  color: #a3dc90;
+}
+
 .breadcrumb-container {
   background-color: #000;
 }

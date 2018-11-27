@@ -220,24 +220,88 @@ console.log(myArrayMax(points));</span></pre>
 
 
         <h3>Best solution - custom</h3>
-
-
+        <h4>Displays highest value</h4>
         <div class="row">
             <div class="col-6">
-                <p>Use Math.max.apply to find the highest number in an array</p>
+                <p>The fastest solution is to use a "home made" method.</p>
+                <p>This function loops through an array comparing each value with the highest value found: </p>
             </div>
             <div class="col-6">
                 <pre class="example"><span class="code-js">var points = [40, 100, 1, 5, 25, 10];
+document.getElementById("demo").innerHTML = myArrayMax(points);
 
-      function myArrayMax(arr) {
-      return Math.min.apply(null, arr);
+function myArrayMax(arr) {
+    var len = arr.length;
+    var max = -Infinity;
+    while (len--) {
+      if (arr[len] > max) {
+        max = arr[len];
       }
+    }
+    return max;
+}</span></pre>
+            </div>
+        </div>
 
-      console.log(myArrayMax(points));</span></pre>
+        <h4>Displays lowest value</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>The fastest solution is to use a "home made" method.</p>
+                <p>This function loops through an array comparing each value with the highest value found: </p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var points = [40, 100, 1, 5, 25, 10];
+document.getElementById("demo").innerHTML = myArrayMin(points);
+
+function myArrayMin(arr) {
+    var len = arr.length;
+    var min = Infinity;
+    while (len--) {
+      if (arr[len] < min) {
+        min = arr[len];
+      }
+    }
+    return min;
+}</span></pre>
             </div>
         </div>
 
 
+
+
+
+        <h2>Sorting Object Arrays</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>Even if objects have properties of different data types, the sort() method can be used to sort the array.</p>
+<p>The solution is to write a compare function to compare the property values</p>
+<p>This sorts the car objects by year. This prints:</p>
+<ul>
+  <li>Saab 2001</li>
+<li>BMW 2010</li>
+<li>Volvo 2016</li></ul>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var cars = [
+{type:"Volvo", year:2016},
+{type:"Saab", year:2001},
+{type:"BMW", year:2010}]
+
+displayCars();
+
+function myFunction() {
+    cars.sort(function(a, b){return a.year - b.year});
+    displayCars();
+}
+
+function displayCars() {
+  document.getElementById("demo").innerHTML =
+  cars[0].type + " " + cars[0].year + "&lt;br&gt;" +
+  cars[1].type + " " + cars[1].year + "&lt;br&gt;" +
+  cars[2].type + " " + cars[2].year;
+}</span></pre>
+            </div>
+        </div>
 
     </section>
     <script src="../../_js/jquery.js"></script>

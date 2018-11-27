@@ -17,13 +17,17 @@
 
 <script>
 
-var points = [40, 100, 1, 5, 25, 10];
-
-function myArrayMax(arr) {
-    return Math.min.apply(null, arr);
+var plus = function() {
+var sum = 0;
+  for (var i = arguments.length - 1; i >= 0; i--) {
+    sum += arguments[i];
+  }
+  return sum;
 }
 
-console.log(myArrayMax(points));
+console.log(plus(2, 2));
+console.log(plus(2, 2, 2));
+console.log(plus(2, 2, 3));
 
 
 

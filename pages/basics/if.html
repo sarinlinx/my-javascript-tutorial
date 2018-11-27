@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>If statements</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+    <section class="container">
+
+        <h2>If statement</h2>
+        <h4>Simple if statement</h4>
+        <div class="row">
+            <div class="col-6">
+              <p>Type the word 'if' following by parenthesis.</p>
+              <p>Your condition statement goes in the parenthesis.</p>
+              <p>Add a section contained in braces. This is what happens as a result of the if statement.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let temp = 180
+
+if (temp <= 32) {
+    console.log('It is freezing outside!')
+}</span></pre>
+            </div>
+        </div>
+
+        <h4>If statement checks if the condition is true</h4>
+        <div class="row">
+            <div class="col-6">
+              <p>The if statment checks if the statement is true.</p>
+              <p>This prints 'Welcome' since the condition is not true.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let isAccountLocked = false
+
+if (isAccountLocked) {
+    console.log('Is account locked')
+} else {
+    console.log('Welcome')
+}</span></pre>
+            </div>
+        </div>
+
+        <h2>else if statement</h2>
+        <div class="row">
+            <div class="col-6">
+              <p>If the 'if statement' is not true, you can add additional 'else if' and and final 'else' section to take care of those cases.</p>
+              <p>The additional else if statements can be used to look for additional conditions to check.</p>
+              <p>This prints 'Wecome' because the first if statement is NOT true, and the 'else if' statement is NOT true.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let isAccountLocked = false
+let userRole = 'user'
+
+if (isAccountLocked) {
+    console.log('Is account locked')
+} else if (userRole === 'admin') {
+    console.log('Welcome Admin')
+} else {
+    console.log('Welcome')
+}</span></pre>
+            </div>
+        </div>
+
+        <h4>boolean else if</h4>
+        <div class="row">
+            <div class="col-6">
+              <p>This prints 'It is freezing outside' since the first if condition is TRUE.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let temp = 4
+
+if (temp <= 32) {
+    console.log('It is freezing outside')
+} else if (temp >= 110) {
+    console.log('It is hot outside')
+} else {
+    console.log('Go for it. It is pretty nice out')
+}</span></pre>
+            </div>
+        </div>
+
+
+
+    </section>
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
