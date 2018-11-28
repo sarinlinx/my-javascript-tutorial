@@ -159,6 +159,79 @@ console.log(plus(2, 2, 3));</span></pre>
             </div>
         </div>
 
+
+
+
+
+
+
+        <h4>Setting default values for parameters</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>It's sometimes helpful to assign default values to params so an undefined error isn't thrown.</p>
+                <p>To set the default value, just type it into the param field</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let getScoreText = function (name = 'Anonymous', score = 0) {
+
+  console.log(name);
+  console.log(score);
+}
+
+getScoreText();</span></pre>
+</div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs: Anonymous, 0</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Anonymous
+0</span></pre>
+            </div>
+        </div>
+
+
+        <h4>Changing the first and second default values</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>If you use two arguments, they are passed to the function normally.</p>
+                <p>If you add one argument, only the first parameter is changed. The second remains default.</p>
+                <p>If you only want to change the second param, you must set the first argument to undefined.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let getScoreText = function (name = 'Anonymous', score = 0) {
+    return 'Name: ' + name + ' - Score: ' + score
+}
+
+let scoreText = getScoreText(undefined, 99)
+console.log(scoreText)</span></pre>
+      </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs: Anonymous, 99</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Anonymous
+99</span></pre>
+            </div>
+        </div>
+
+
+
+
+
     </section>
 
 

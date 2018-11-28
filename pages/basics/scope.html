@@ -151,8 +151,58 @@ myDog();</span></span></pre>
   myDog();</span></span></pre>
             </div>
         </div>
-
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Function Scope</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>This example breaks down scope variables.</p>
+                <p>NOTE how 'fahrenheit' is an argument, so it's local scope.</p>
+                <p>This outputs: 0, 20</p>
+                <p>NOTE that isFreezing is never printed because nothing returns this value. It's just there to explain scope.</p>
+            </div>
+            <div class="col-6">
+<pre class="example"><span class="code-js"><span class="code-comment">// Global scope (convertFahrenheitToCelsius, tempOne, tempTwo)
+  // Local scope (fahrenheit, celsius)
+    // Local scope (isFreezing)</span>
+
+let convertFahrenheitToCelsius = function (fahrenheit) {
+    let celsius = (fahrenheit - 32) * 5 / 9
+
+    if (celsius <= 0) {
+        let isFreezing = true
+    }
+
+    return celsius
+}
+
+let tempOne = convertFahrenheitToCelsius(32)
+let tempTwo = convertFahrenheitToCelsius(68)
+
+console.log(tempOne)
+console.log(tempTwo)</span></pre>
+            </div>
+        </div>
+    </section>
+
+
 
 
 
