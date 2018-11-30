@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Dates</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+    <section class="container">
+        <h1>Creating a Date Object</h1>
+
+        <h4>4 ways to create a new Date Object</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Date objects are created with the new Date() constructor.</p>
+<p>There are 4 ways to create a new date object:</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">new Date()
+new Date(year, month, day, hours, minutes, seconds, milliseconds)
+new Date(milliseconds)
+new Date(date string)</span></pre>
+            </div>
+        </div>
+
+
+        <div class="alert alert-note">
+            <div class="alert-icon">
+                <img src="../../_img/note-icon.png" width="60" height="60">
+            </div>
+            <div class="alert-content">
+              <p>Date objects are static. The computer time is ticking, but date objects are not.</p>
+            </div></div>
+        <h4>New Date Object with current date</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>By default, JavaScript will use the browser's time zone and display a date as a full text string:</p>
+                <p><span class="standout">Wed Nov 28 2018 18:27:38 GMT-0500 (Eastern Standard Time)</span></p>
+
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+console.log(d);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output"><strong>Firefox</strong>
+Date 2018-11-28T23:36:39.161Z
+<strong>Chrome</strong>
+Thu Nov 29 2018 17:34:47 GMT-0500 (Eastern Standard Time)</span></pre>
+            </div>
+        </div>
+
+
+
+        <h4>Creating a custom date Object</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>You can create a Date Object for any date you like.</p>
+                <p>7 numbers specify year, month, day, hour, minute, second, and millisecond</p>
+                <p>You can leave off everything except the year and month.</p>
+                <p>If only one value is specified, it's assumed it's milliseconds.</p>
+                <p>One and two digit years assume the 1900s.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date(2018, 11, 24, 10, 33, 30, 0);;
+console.log(d);
+
+var d2 = new Date(99, 11, 24);
+console.log(d2);
+
+var d3 = new Date(9, 11, 24);
+console.log(d3);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Mon Dec 24 2018 10:33:30 GMT-0500 (Eastern Standard Time)
+Fri Dec 24 1999 00:00:00 GMT-0500 (Eastern Standard Time)
+Fri Dec 24 1909 00:00:00 GMT-0500 (Eastern Standard Time)</pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                <h4>Creating a date from a String</h4>
+                <div class="row">
+                    <div class="col-6">
+                        <p>You can also create a date Object using a String.</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">var d = new Date("October 13, 2014 11:13:00");
+console.log(d);</span></pre>
+                    </div>
+                </div>
+
+                <h5>Output</h5>
+                <div class="row">
+                    <div class="col-6">
+
+                        <p class="code-output">This example outputs:</p>
+                    </div>
+
+                    <div class="col-6">
+                        <pre class="example"><span class="code-output">Mon Oct 13 2014 11:13:00 GMT-0400 (Eastern Daylight Time)</pre>
+                    </div>
+                </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="container">
+    <h1>How dates are stored</h1>
+    <div class="row">
+        <div class="col-6">
+            <p>JavaScript stores dates as number of milliseconds since January 01, 1970, 00:00:00 UTC (Universal Time Coordinated).</p>
+        </div>
+        <div class="col-6">
+            <pre class="example"><span class="code-js">var d = new Date(0);
+console.log(d);</span></pre>
+        </div>
+    </div>
+
+    <h5>Output</h5>
+    <div class="row">
+        <div class="col-6">
+
+            <p class="code-output">This example outputs:</p>
+        </div>
+
+        <div class="col-6">
+            <pre class="example"><span class="code-output">(Firefox)
+1970-01-01T00:00:00.000Z</span></pre>
+        </div>
+    </div>
+
+<h4>Example adding 100000000000 ms</h4>
+    <div class="row">
+        <div class="col-6">
+            <p>This adds 100000000000 ms from January 01, 1970, 00:00:00 UTC.</p>
+            <p>NOTE: You can also use negative values.</p>
+        </div>
+        <div class="col-6">
+            <pre class="example"><span class="code-js">var d = new Date(100000000000);
+console.log(d);</span></pre>
+        </div>
+    </div>
+
+    <h5>Output</h5>
+    <div class="row">
+        <div class="col-6">
+
+            <p class="code-output">This example outputs:</p>
+        </div>
+
+        <div class="col-6">
+            <pre class="example"><span class="code-output">(Firefox)
+1973-03-03T09:46:40.000Z</span></pre>
+        </div>
+    </div>
+
+
+<h1>String methods</h1>
+<div class="row">
+    <div class="col-6">
+        <p>  <p>When you display a date object in HTML, it is automatically converted to a string, with the toString() method. You don't need to specify toString() in your code if you don't want to. JavaScript does it automatically.</p>
+          <p>However, you're not outputting to HTML, you'd need to specify the toString() method, otherwise it will appear different.</p>
+          <p>You can also use toUTCString() to format it differently.</p>
+          <p>The toDateString() method converts a date to a more readable format:</p>
+    </div>
+    <div class="col-6">
+        <pre class="example"><span class="code-js">var d = new Date(100000000000);
+console.log(d);
+console.log(d.toString())
+console.log(d.toUTCString())
+console.log(d.toDateString())
+</span></pre>
+    </div>
+</div>
+
+<h5>Output</h5>
+<div class="row">
+    <div class="col-6">
+
+        <p class="code-output">This example outputs:</p>
+    </div>
+
+    <div class="col-6">
+        <pre class="example"><span class="code-output">(Firefox)
+Date 1973-03-03T09:46:40.000Z
+Sat Mar 03 1973 04:46:40 GMT-0500 (Eastern Standard Time)
+Sat, 03 Mar 1973 09:46:40 GMT
+Sat Mar 03 1973</span></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Retrieiving Dates</h1>
+
+
+        <h4>Show Year only</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>To specifically retrieve the year, use the method of the Object: getFullYear()</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+console.log(<span class="standout">d.getFullYear()</span>);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">2018</span></pre>
+            </div>
+        </div>
+
+
+        <h4>Show Month only</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>To specifically retrieve the month, use the method of the Object: getMonth()</p>
+                <p>NOTE: The months count from zero, so to view the correct month, you must add 1.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+console.log(<span class="standout">d.getMonth() + 1</span>);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">11</span></pre>
+            </div>
+        </div>
+
+        <h4>Show Day only</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>To specifically retrieve the day, use the method of the Object: getDate()</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+console.log(<span class="standout">d.getDate()</span>);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">29</span></pre>
+            </div>
+        </div>
+
+
+        <h4>Show Hours only</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>To specifically retrieve the hour, use the method of the Object: getHours()</p>
+                <p>This returns military time.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+console.log(<span class="standout">d.getHours()</span>);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">17</span></pre>
+            </div>
+        </div>
+
+        <h4>Show Minutes only</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>To specifically retrieve the minute, use the method of the Object: getMinutes()</p>
+                <p>This returns military time.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+console.log(<span class="standout">d.getMinutes()</span>);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">31</span></pre>
+            </div>
+        </div>
+
+        <h4>Show Seconds only</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>To specifically retrieve the second, use the method of the Object: getSeconds()</p>
+                <p>This returns military time.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+console.log(<span class="standout">d.getSeconds()</span>);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">47</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

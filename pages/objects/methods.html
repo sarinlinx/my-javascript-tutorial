@@ -34,7 +34,7 @@
   instructor: "Name of teacher",
   level: 1,
   views: 0,
-  <span class="standout">updateView: function() {
+  <span class="standout">updateViews: function() {
       return ++course.views;
   }</span>
 }
@@ -48,19 +48,103 @@ console.log(course.views);</span></pre>
 
 
 
+        <section class="container">
+            <h2>Accessing Methods</h2>
+            <div class="row">
+                <div class="col-6">
+                    <p>You must add () or it will only return the function definition instead.</p>
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">objectName.methodName();</span></pre>
+                </div>
+            </div>
+        </section>
 
 
     <section class="container">
-        <h1>Accessing Methods</h1>
+        <h2>Restaurant example</h2>
         <div class="row">
             <div class="col-6">
-                <p>You must add () or it will only return the function definition instead.</p>
+                <p>This checks customer count against the total capacity.</p>
+                <p>This returns: true, then false.</p>
             </div>
             <div class="col-6">
-                <pre class="example"><span class="code-js">objectName.methodName();</span></pre>
+                <pre class="example"><span class="code-js">let restaurant = {
+    name: 'ASB',
+    guestCapacity: 75,
+    guestCount: 0,
+    checkAvailability: function (partySize) {
+        <span class="code-comment">//'this' refers to this current Object
+        //(first time ran) seatsLeft = 75 - 72
+        //(second time ran) seatsLeft = 75  - 68</span>
+        let seatsLeft = this.guestCapacity - this.guestCount
+        <span class="code-comment">//(first time ran) 4 <= 3 is false
+        //(second time ran) 4 <= 7 is true</span>
+        return partySize <= seatsLeft
+    },
+    seatParty: function (partySize) {
+        <span class="code-comment">//change guestCount to new value
+        //guestCount = 0 + 72</span>
+        this.guestCount = this.guestCount + partySize
+    },
+    removeParty: function (partySize) {
+        <span class="code-comment">//guestCount = 72 - 5</span>
+        this.guestCount = this.guestCount - partySize
+    }
+}
+
+<span class="code-comment">//Send 72 into the method seatParty</span>
+restaurant.seatParty(72)
+<span class="code-comment">//Checks if partySize (72) is <= seatsLeft (75)</span>
+
+<span class="code-comment">//Now send 4 into method checkAvailability
+//This returns: false since there were only 3 seats left</span>
+console.log(restaurant.checkAvailability(4))
+
+<span class="code-comment">//Send 5 into method removeParty</span>
+restaurant.removeParty(5)
+console.log(restaurant.checkAvailability(4))</span></pre>
             </div>
         </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -204,18 +288,6 @@ ray.speak({ say: 'howdy' });
             </div>
         </div>
     </section>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

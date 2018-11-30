@@ -652,6 +652,55 @@ alert(str);</pre>
 
 
 
+
+    <h1>includes()</h1>
+    <section class="container">
+
+        <div class="row">
+            <div class="col-6">
+                <p>This returns 'false' since 'xyz' is not part of the string named 'password'.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let password = 'abc123asdf098'
+console.log(password.includes('xyz'))</pre>
+            </div>
+        </div>
+
+<h3>Example of includes() and length()</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This returns 'false' since 'xyz' is not part of the string named 'password'.</p>
+                <p>This returns: false, true, false.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let isValidPassword = function (password) {
+  <span class="code-comment">//length must be over 8 char AND cannot contain the string xyz</span>
+  return password.length > 8 && !password.includes('xyz')
+}
+
+<span class="code-comment">//Returns true because it's under 8 char</span>
+console.log(isValidPassword('asdfp'))
+<span class="code-comment">//Returns true because it's over 8 char, and it DOES NOT contain 'xyz'</span>
+console.log(isValidPassword('abc123!@#$%^z'))
+<span class="code-comment">//Returns false because DOES contain the string 'xyz'</span>
+console.log(isValidPassword('asdfpasdfpoij_xyz'))</pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <h1>ECMAScript 5 (2009) Property Access</h1>
     <section class="container">
 
@@ -673,6 +722,8 @@ str[0];</pre>
             </div>
         </div>
     </section>
+
+
 
 
 
