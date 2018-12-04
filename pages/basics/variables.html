@@ -41,7 +41,7 @@
                 <p>Declare a variable that's undefined (has no value).</p>
             </div>
             <div class="col-6">
-              <pre class="example"><span class="code-js">var carName;</pre>
+                <pre class="example"><span class="code-js">var carName;</pre>
             </div>
         </div>
 
@@ -50,7 +50,7 @@
                 <p>You can then assign a value.</p>
             </div>
             <div class="col-6">
-              <pre class="example"><span class="code-js">carName = "Volvo";</pre>
+                <pre class="example"><span class="code-js">carName = "Volvo";</pre>
             </div>
         </div>
 
@@ -59,7 +59,7 @@
                 <p>You can also declare several variables in a singl statement.</p>
             </div>
             <div class="col-6">
-              <pre class="example"><span class="code-js">var person = "John Doe", carName = "Volvo", price = 200;</pre>
+                <pre class="example"><span class="code-js">var person = "John Doe", carName = "Volvo", price = 200;</pre>
             </div>
         </div>
 
@@ -68,11 +68,27 @@
                 <p>A declaration can span multiple lines.</p>
             </div>
             <div class="col-6">
-              <pre class="example"><span class="code-js">var person = "John Doe",
+                <pre class="example"><span class="code-js">var person = "John Doe",
 carName = "Volvo",
 price = 200;</pre>
             </div>
         </div>
+
+
+<h2>var is no longer used</h2>
+<div class="row">
+    <div class="col">
+      <p>var was used in the past, but no longer used due to its quirks. It still works, but modern devs do not use it any longer.</p>
+      <p>One reason is that you can re-declare a variable with the same name to a different value. let and const do not allow this.</p>
+      <p>var is function scoped, not block scoped. If var is used in a function, you cannot access it outside of that function. If var is used in an if block statement, you can still access it outside. If let us used in the if statement, it's not accessible outside of it.</p>
+      <p>When a var is created, its declaration is hoisted to the top of the scope. So you can call that variables before it's declared and it will display as undefined. This would throw an error with let.</p>
+    </div>
+</div>
+
+
+
+
+
 
 
 
@@ -85,11 +101,28 @@ price = 200;</pre>
                 <p>Constant. Cannot be changed once defined.</p>
                 <p>This causes an Uncaught TypeError: Assignment to constant variable.</p>
                 <p>This happens because you CANNOT change the constant after it's declared.</p>
+                <p>The biggest reason to use const is for code readability.</p>
             </div>
             <div class="col-6">
                 <pre class="example"><span class="code-js">const MYCONSTANT = 5;
 console.log(MYCONSTANT);
 MYCONSTANT = 6;</span></pre>
+            </div>
+        </div>
+
+        <h4>Change value of const Object</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Even though you can't change a const variable, if it's an Object, you can still change it's properties.</p>
+                <p>This returns: Object { age: 28 }</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">const person = {
+  age: 27
+}
+
+person.age = 28
+console.log(person)</span></pre>
             </div>
         </div>
 

@@ -10,25 +10,78 @@
     <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../../_css/style.css">
 
-    <title>Dates</title>
+    <title>Date Formats</title>
 </head>
 
 <body>
     <a href="../../index.html">Home page</a>
 
     <section class="container">
-        <h1>lkjlkj</h1>
-
+        <h1>Date input formats</h1>
+        <h2>3 types of JavaScript date input format</h2>
         <div class="row">
-            <div class="col-6">
-                <p>ljklkj</p>
+            <div class="col">
 
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">lkjlkjlkj</span></pre>
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Type</th>
+                            <th scope="col">Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ISO Date</td>
+                            <td>"2015-03-25" (The International Standard). The ISO format follows a strict standard in JavaScript. The other formats are not so well defined and might be browser specific.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Short Date</td>
+                            <td>"03/25/2015" - Make sure to add a zero or the browser may throw an error.</td>
+                        </tr>
+                        <tr>
+                            <td>Long Date</td>
+                            <td>"Mar 25 2015" or "25 Mar 2015" - Month and day can be in any order. The month can also be fully written out.</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
+<h3>Undefined dates</h3>
+        <div class="row">
+            <div class="col">
+<p>The following date formats are undefined.</p>
+<ul>
+  <li>YYY/MM/DD</li>
+  <li>DD-MM-YYY</li>
+</ul>
+            </div>
+          </div>
+        <h1>Date Output</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>Independent of input format, JavaScript will (by default) output dates in full text string format.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">Tue Mar 24 2015 20:00:00 GMT-0400 (Eastern Daylight Time) </span></pre>
+            </div>
+        </div>
+
+        <h1>ISO Dates</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>ISO 8601 is the international standard for the representation of dates and times.</p>
+                <p>The ISO 8601 syntax (YYYY-MM-DD) is also the preferred JavaScript date format</p>
+                <p>NOTE: The computed date will be relative to your time zone.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date("2015-03-25");
+console.log(d.toString());</span></pre>
+            </div>
+        </div>
 
         <h5>Output</h5>
         <div class="row">
@@ -38,10 +91,141 @@
             </div>
 
             <div class="col-6">
-                <pre class="example"><span class="code-output">ljlkjlj</span></pre>
+                <pre class="example"><span class="code-output">Tue Mar 24 2015 20:00:00 GMT-0400 (Eastern Daylight Time)</pre>
             </div>
         </div>
 
+        <h2>Leave out the Day</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>ISO dates can be written without specifying the day (YYYY-MM):</p>
+                <p>NOTE: There's no reason to do this. The day will still display, but it will default to the last day of the month.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date("2015-03");
+console.log(d.toString());</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Sat Feb 28 2015 19:00:00 GMT-0500 (Eastern Standard Time)</pre>
+            </div>
+        </div>
+
+        <h2>Only year</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>You can also write a date with only the year.</p>
+                <p>However, there's no reason to do this. The month and day will still display, but it will default to the last day of the year.</p>
+            </div>
+
+    </section>
+
+    <section class="container">
+        <h2>Adding Hours, Minutes, and Seconds</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>Date and time is separated with a capital T.</p>
+                <p>UTC time is defined with a capital letter Z.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date("2018-12-03T12:00:00Z");
+console.log(d.toString());</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+                <p class="code-output">Notice how the date automatically calcualtes based on my local time which is -5hrs from UTC.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Mon Dec 03 2018 07:00:00 GMT-0500 (Eastern Standard Time)</pre>
+            </div>
+        </div>
+
+        <h2>Modify time relative to UTC</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>If you want to modify the time relative to UTC, remove the Z and add +HH:MM or -HH:MM instead: </p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date("2018-12-03T12:00:00<span class="standout">-05:00</span>");
+console.log(d.toString());</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+                <p class="code-output">This example outputs:</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Mon Dec 03 2018 12:00:00 GMT-0500 (Eastern Standard Time)</pre>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container">
+        <h1>Time Zones</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>When setting or getting a date (without specifying the timezone), the browser's timezone is used.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">lkjlkjlkjlkj</pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+                <p class="code-output">This example outputs:</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-output">jljlkjlkjlk</pre>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container">
+        <h1>Parsing a date into milliseconds</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>If you have a valid date string, you can use the Date.parse() method to convert it to milliseconds.</p>
+<p>Date.parse() returns the number of milliseconds between the date and January 1, 1970:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var msec = Date.parse("March 21, 2012");
+console.log(msec.toString());</pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+                <p class="code-output">This example outputs:</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-output">1332302400000</pre>
+            </div>
+        </div>
+    </section>
 
 
 

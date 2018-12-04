@@ -29,15 +29,90 @@
                 <p>The search term is also Case Sensitive.</p>
             </div>
             <div class="col-6">
-<pre class="example"><span class="code-js">var fruits = ["Kiwi", "Banana", "Orange", "Lemon", "Apple", "Mango"];
+                <pre class="example"><span class="code-js">var fruits = ["Kiwi", "Banana", "Orange", "Lemon", "Apple", "Mango"];
 var result = fruits.indexOf("Orange", 2);
 console.log("The index position is: ", result);</span></pre>
             </div>
         </div>
+    </section>
 
 
 
 
+
+
+
+    <section class="container">
+        <h1>Searching an Array of Objects</h1>
+
+        <div class="row">
+            <div class="col-6">
+                <p>First, create the Array of Objects.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js"><span class="code-comment">//Create Array of Objects</span>
+const notes = [{
+    title: 'My next trip',
+    body: 'I would like to go to Spain'
+}, {
+    title: 'Habbits to work on',
+    body: 'Exercise. Eating a bit better.'
+}, {
+    title: 'Office modification',
+    body: 'Get a new seat'
+}]</span></pre>
+            </div>
+        </div>
+
+<h4>Check its length</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>First, create the Array of Objects.</p>
+                <p>This returns 3 since there are 3 different Array elements.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(notes.length)</span></pre>
+            </div>
+        </div>
+
+
+        <h2>Using findIndex()</h4>
+                <div class="row">
+                    <div class="col-6">
+                      <p>indexOf() will not work on an Array of Objects. You need to sue findIdex()</p>
+                        <p>The findIndex() method returns the index of the first element in the array that satisfies the provided testing function.</p>
+                        <p>Otherwise, it returns -1, indicating no element passed the test.</p>
+                        <p>First, create a function that takes a param.</p>
+                        <p>In that function, check the argument.PROPERTYNAME against a string.</p>
+                        <p>Run the findIndex() method on the Array name: ARRAY.findIndex()</p>
+                        <p>console.log that to view the index value where that string appears.</p>
+                        <p>This returns: 1</p>
+                    </div>
+                    <div class="col-6">
+<pre class="example"><span class="code-js">function myFunction(someproperty) {
+  return someproperty.title === 'Habbits to work on'
+}
+
+let indexValue = notes.findIndex(myFunction)
+console.log(indexValue)</span></pre>
+                    </div>
+                </div>
+
+<h4>Another way to write it without naming the function</h4>
+                <div class="row">
+                    <div class="col-6">
+                        <p>Here's another way to write it.</p>
+                    </div>
+                    <div class="col-6">
+              <pre class="example"><span class="code-js">const index = notes.findIndex(function (param) {
+  return param.title === 'Habbits to work on'
+})
+
+console.log(index)</span></pre>
+                    </div>
+                </div>
+
+    </section>
 
 
 

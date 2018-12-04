@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Setting Dates</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+    <section class="container">
+        <h1>Setting Dates</h1>
+        <div class="row">
+            <div class="col">
+                <p>Set Date methods let you set date values, rather than retrieve the current time.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="container">
+
+
+
+      <h4>Set the year</h4>
+      <div class="row">
+          <div class="col-6">
+              <p>use setFullYear() to set the year.</p>
+              <p>This sets the year to 2020.</p>
+          </div>
+          <div class="col-6">
+              <pre class="example"><span class="code-js">var d = new Date();
+d.setFullYear(2020);
+console.log(d.toString())</pre>
+          </div>
+      </div>
+
+      <h5>Output</h5>
+      <div class="row">
+          <div class="col-6">
+
+              <p class="code-output">This example outputs:</p>
+          </div>
+
+          <div class="col-6">
+              <pre class="example"><span class="code-output">Thu Dec 03 2020 19:40:12 GMT-0500 (Eastern Standard Time)</span></pre>
+          </div>
+      </div>
+
+
+
+
+
+
+        <h4>Set the month</h4>
+        <div class="row">
+            <div class="col-6">
+              <p>Use setMonth() to set the month.</p>
+                <p>This sets the month to November.</p>
+                <p>NOTE: The months start at zero. So 10 is November.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+d.setMonth(10);
+console.log(d.toString())</pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Sat Nov 03 2018 19:42:35 GMT-0400 (Eastern Daylight Time)</span></pre>
+            </div>
+        </div>
+        <h4>Set the day of the month</h4>
+        <div class="row">
+            <div class="col-6">
+              <p>Use setDate() to set the day of the month.</p>
+                <p>This sets the day of the month to the 20th.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+d.setDate(20);
+console.log(d.toString())</pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Thu Dec 20 2018 19:38:11 GMT-0500 (Eastern Standard Time)</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+        <h4>Set the hour</h4>
+        <div class="row">
+            <div class="col-6">
+              <p>Use setHours() to set the hour of the day in military time.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+d.setHours(13);
+console.log(d.toString())</pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Mon Dec 03 2018 13:47:05 GMT-0500 (Eastern Standard Time)</span></pre>
+            </div>
+        </div>
+
+
+        <h4>Set the minutes</h4>
+        <div class="row">
+            <div class="col-6">
+              <p>Use setMinutes() to set the minute of the hour.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+d.setMinutes(30);
+console.log(d.toString())</pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Mon Dec 03 2018 19:30:27 GMT-0500 (Eastern Standard Time)</span></pre>
+            </div>
+        </div>
+
+        <h4>Set the seconds</h4>
+        <div class="row">
+            <div class="col-6">
+              <p>Use setSeconds() to set the seconds.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+d.setSeconds(30);
+console.log(d.toString())</pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Mon Dec 03 2018 19:49:30 GMT-0500 (Eastern Standard Time)</span></pre>
+            </div>
+        </div>
+
+
+        <h4>Set the Milliseconds</h4>
+        <div class="row">
+            <div class="col-6">
+              <p>Use setMilliseconds() to set the seconds.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+d.setMilliseconds(999);
+console.log(d)</pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Date 2018-12-04T00:50:49.999Z</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

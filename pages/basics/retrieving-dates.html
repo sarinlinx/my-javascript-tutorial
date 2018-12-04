@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Retrieving Dates</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+    <section class="container">
+        <h1>Retrieiving Dates</h1>
+
+
+        <h4>Show Year only</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>To specifically retrieve the year, use the method of the Object: getFullYear()</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+console.log(<span class="standout">d.getFullYear()</span>);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">2018</span></pre>
+            </div>
+        </div>
+
+
+        <h4>Show Month only</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>To specifically retrieve the month, use the method of the Object: getMonth()</p>
+                <p>NOTE: The months count from zero, so to view the correct month, you must add 1.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+console.log(<span class="standout">d.getMonth() + 1</span>);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">11</span></pre>
+            </div>
+        </div>
+
+        <h4>Show Day only</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>To specifically retrieve the day of the month, use the method of the Object: getDate()</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+console.log(<span class="standout">d.getDate()</span>);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">29</span></pre>
+            </div>
+        </div>
+
+
+        <h4>Show Hours only</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>To specifically retrieve the hour, use the method of the Object: getHours()</p>
+                <p>This returns military time.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+console.log(<span class="standout">d.getHours()</span>);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">17</span></pre>
+            </div>
+        </div>
+
+        <h4>Show Minutes only</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>To specifically retrieve the minute, use the method of the Object: getMinutes()</p>
+                <p>This returns military time.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+console.log(<span class="standout">d.getMinutes()</span>);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">31</span></pre>
+            </div>
+        </div>
+
+        <h4>Show Seconds only</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>To specifically retrieve the second, use the method of the Object: getSeconds()</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+console.log(<span class="standout">d.getSeconds()</span>);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">47</span></pre>
+            </div>
+        </div>
+
+
+        <h4>Show Milliseconds only</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>To specifically retrieve the millisecond, use the method of the Object: getMilliseconds()</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+console.log(<span class="standout">d.getMilliseconds()</span>);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">847</span></pre>
+            </div>
+        </div>
+
+
+        <h4>Show Day of week</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>To specifically retrieve the day of the week, use the method of the Object: getDay()</p>
+                <p>NOTE: In JavaScript, the first day of the week (0) means "Sunday".</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var d = new Date();
+console.log(<span class="standout">d.getDay()</span>);</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">1</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+<section class="container">
+<h1>UTC time</h1>
+  <div class="row">
+      <div class="col">
+        <p>To retrieve UTC time, just preface all of the examples above with UTC. For example.</p>
+        <ul><li>getUTCDate()</li>
+          <li>getUTCHours()</li>
+          <li>getUTCSeconds()</li>
+</ul>
+</div>
+</div>
+</section>
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
