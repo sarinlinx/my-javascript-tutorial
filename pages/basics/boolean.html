@@ -18,9 +18,17 @@
 
 
     <section class="container">
-        <h2>Boolean</h2>
-
+        <h1>Boolean</h1>
         <div class="row">
+            <div class="col">
+              <p>A JavaScript Boolean represents one of two values: true or false.</p>
+              <p>Booleans are primitive values created from literals.</p>
+              <p>You can create a Boolean Object using the 'new' keyword, but this is never recommended since it slows down and complicates your code.</p>
+            </div>
+          </div>
+
+<h3>Example</h3>
+            <div class="row">
             <div class="col-6">
               <p>Assigning a variable to a comparison that uses an operator makes it a Boolean variable.</p>
                 <p>This prints 'true'.</p>
@@ -50,13 +58,50 @@ console.log(isChild)
 console.log(isSenior)</pre>
             </div>
         </div>
-
-
-
-
     </section>
 
+<section class="container">
+    <h1>The Boolean() function</h1>
+      <div class="row">
 
+      <div class="col-6">
+          <p>You can use the Boolean() function to find out if an expression (or a variable) is true.</p>
+          <p>This returns: true</p>
+      </div>
+      <div class="col-6">
+          <pre class="example"><span class="code-js">console.log(Boolean(10 > 9));</span></pre>
+      </div>
+  </div>
+
+  <h4>Everything with a value is TRUE</h4>
+    <div class="row">
+
+    <div class="col-6">
+        <p>If there is a value at all, even without a comparison, the result is true.</p>
+        <p>This returns: true</p>
+    </div>
+    <div class="col-6">
+        <pre class="example"><span class="code-js">console.log(Boolean(10));</span></pre>
+    </div>
+</div>
+
+<h4>False values using Boolean()</h4>
+  <div class="row">
+
+  <div class="col-6">
+      <p>The following will all return false.</p>
+  </div>
+  <div class="col-6">
+      <pre class="example"><span class="code-js">console.log(Boolean(0));
+console.log(Boolean(-0));
+console.log(Boolean(""));
+var undefinedVar;
+console.log(Boolean(undefinedVar));
+console.log(Boolean(null));
+console.log(Boolean(NaN));</span></pre>
+  </div>
+</div>
+</section>
 
 
 

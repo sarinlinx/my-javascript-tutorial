@@ -22,9 +22,9 @@
         <h1>Boolean operators</h1>
         <div class="row">
             <div class="col-6">
-                <p>AND</p>
-                <p>OR</p>
-                <p>NOT</p>
+                <p>AND &&</p>
+                <p>OR ||</p>
+                <p>NOT !</p>
             </div>
             <div class="col-6">
                 <pre class="example"><span class="code-js">alert( true && false ); // false
@@ -40,32 +40,36 @@ alert( !false ); // true</span></pre>
 
 
         <h3>Default TRUE (truthy) values</h3>
-                <div class="row">
-                    <div class="col">
-                        <p>The following values are always truthy:</p>
-                        <ul><li>'0' (a string containing a single zero)</li>
-    <li>'false' (a string containing the text “false”)</li>
-    <li>[] (an empty array)</li>
-    <li>{} (an empty object)</li>
-    <li>function(){} (an “empty” function)</li></ul>
+        <div class="row">
+            <div class="col">
+                <p>The following values are always truthy:</p>
+                <ul>
+                    <li>'0' (a string containing a single zero)</li>
+                    <li>'false' (a string containing the text “false”)</li>
+                    <li>[] (an empty array)</li>
+                    <li>{} (an empty object)</li>
+                    <li>function(){} (an “empty” function)</li>
+                </ul>
 
-                    </div>
-                  </div>
+            </div>
+        </div>
 
 
-<h3>Default FALSE (falsy) values</h3>
+        <h3>Default FALSE (falsy) values</h3>
         <div class="row">
             <div class="col">
                 <p>The following values are always falsy:</p>
-                <ul><li>false</li>
-  <li>0 (zero)</li>
-  <li>'' or "" (empty string)</li>
-  <li>null</li>
-  <li>undefined</li>
-  <li>NaN (e.g. the result of 1/0)</li></ul>
+                <ul>
+                    <li>false</li>
+                    <li>0 (zero)</li>
+                    <li>'' or "" (empty string)</li>
+                    <li>null</li>
+                    <li>undefined</li>
+                    <li>NaN (e.g. the result of 1/0)</li>
+                </ul>
 
             </div>
-          </div>
+        </div>
 
 
 
@@ -121,7 +125,7 @@ alert(null && 5) // Since the first value if FALSE (null), it is the last evalua
 
         <div class="row">
             <div class="col-6">
-              <p>In this example, the left operand is FALSE, so OR continues to the next operand which is TRUE and returns it.</p>
+                <p>In this example, the left operand is FALSE, so OR continues to the next operand which is TRUE and returns it.</p>
                 <p>The result is 1.</p>
             </div>
             <div class="col-6">
@@ -129,10 +133,10 @@ alert(null && 5) // Since the first value if FALSE (null), it is the last evalua
             </div>
         </div>
 
-<h4>If both are false</h4>
+        <h4>If both are false</h4>
         <div class="row">
             <div class="col-6">
-              <p>In this example, the left operand is FALSE, so OR continues to the next operand which is also FALSE.</p>
+                <p>In this example, the left operand is FALSE, so OR continues to the next operand which is also FALSE.</p>
                 <p>Since there is no TRUE value, the result is null.</p>
             </div>
             <div class="col-6">
@@ -141,27 +145,21 @@ alert(null && 5) // Since the first value if FALSE (null), it is the last evalua
         </div>
 
         <h4>When to use?</h4>
-                <div class="row">
-                    <div class="col-6">
-                      <p>This is useful when you have multiple variables and need to get the first one that is true.</p>
-                      <p>This returns 'Oh-la-la' since it's the last value that isn't falsy.</p>
-                    </div>
-                    <div class="col-6">
-                        <pre class="example"><span class="code-js">var b = false
+        <div class="row">
+            <div class="col-6">
+                <p>This is useful when you have multiple variables and need to get the first one that is true.</p>
+                <p>This returns 'Oh-la-la' since it's the last value that isn't falsy.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var b = false
 var n = 0
 var s = "O-la-la"
 
 var result = b || n || s
 
 alert(result) // "O-la-la"</span></pre>
-                    </div>
-                </div>
-
-
-
-
-
-
+            </div>
+        </div>
 
 
 
@@ -350,6 +348,7 @@ alert( a ); // 7 (the result of 3 + 4)</span></pre>
                     <</p>
                         <p>
                             <=</p>
+                                <p>>=</p>
             </div>
         </div>
         <h3>String comparison</h3>
@@ -373,6 +372,17 @@ alert( a ); // 7 (the result of 3 + 4)</span></pre>
 
 
         <h3>Comparing different types</h3>
+        <h4>Number comparison</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This returns TRUE becuase 8 is less than or equal to 10.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(8 <= 10)</span></pre>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-6">
                 <p>The interpreter converts values to numbers. In this case, "01" becomes the numerical value of 1.</p>
@@ -431,11 +441,12 @@ undefined == 0 // is false</span></pre>
 
 
     <section class="container">
-        <h1>Equality</h1>
+        <h1>Comparison Equality operators</h1>
         <div class="row">
             <div class="col">
                 <p>==</p>
                 <p>===</p>
+                <p>!=</p>
                 <p>!==</p>
             </div>
         </div>
@@ -462,13 +473,23 @@ undefined == 0 // is false</span></pre>
         </div>
 
 
+        <h3>In-equality operator !=</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This is false since zero does equal a false boolean value. The type doesn't matter.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(0 != false)</span></pre>
+            </div>
+        </div>
+
         <h3>Strict in-equality operator !==</h3>
         <div class="row">
             <div class="col-6">
                 <p>This is true since zero is not equal to false since they are different types.</p>
             </div>
             <div class="col-6">
-                <pre class="example"><span class="code-js">alert(0 !== false);</span></pre>
+                <pre class="example"><span class="code-js">console.log(0 !== false);</span></pre>
             </div>
         </div>
     </section>

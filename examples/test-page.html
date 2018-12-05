@@ -29,20 +29,31 @@ const notes = [{
 }]
 
 
-/*
-function myFunction(someproperty) {
-    return someproperty.title === 'Habbits to work on'
-}
-let indexValue = notes.findIndex(myFunction)
-console.log(indexValue)
-*/
-//console.log(notes.findIndex(myFunction))
+//Create function that takes two params
+//param1 is the notes Array you're searching through
+//noteString is the string you're looking for in the Array
+const findNote = function (param1, noteString) {
+     //Search ARRAY.findIndex()
+     //param2 is the value of the current element. In this case, it's the
+     //Objects within the 'notes' Array.
+     //'index' stores the Object matche, otherwise -1 is returned
+     const indexVal = param1.findIndex(function (param2) {
+         //Checks all the titles of all Objects
+         //to see if any equal the string input
+         //If one does, it's returned
+         return param2.title.toLowerCase() === noteString.toLowerCase()
+     })
+     //return the Object title
+     //Return the note Array and the indexVal variable you created above
+     //to store the result of the search
+     return notes[indexVal]
+ }
 
-
-const index = notes.findIndex(function (param) {
-    return param.title === 'Habbits to work on'
-})
-console.log(index)
+//Run findNote() with 2 params
+//notes is the notes you're searching through in the Array
+//string you're looking for
+const note = findNote(notes, 'Office modification')
+console.log(note)
 
 
 </script>

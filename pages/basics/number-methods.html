@@ -100,7 +100,7 @@ x.toPrecision(6); </span></pre>
         </div>
 
 
-<h1>Math methods</h1>
+        <h1>Math methods</h1>
         <h2>round()</h2>
         <div class="row">
             <div class="col-6">
@@ -147,31 +147,85 @@ console.log(Math.ceil(num))</span></pre>
         </div>
 
 
-<h1>random()</h1>
+
+
+        <h1>Math.min() and Math.max()</h1>
+        <div class="row">
+            <div class="col">
+                <p>Math.min() and Math.max() can be used to find the lowest or highest value in a list of arguments</p>
+            </div>
+          </div>
+<h4>Find lowest number in a list</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Math.min() returns the lowest value in a list of arguments:</p>
+                <p>This returns -200.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let minValue = Math.min(0, 150, 30, 20, -8, -200)
+console.log(minValue)</span></pre>
+            </div>
+        </div>
+        <h4>Find largest number in a list</h4>
                 <div class="row">
                     <div class="col-6">
-                        <p>This generates a value between 0 and 1, which you can then scale to your desired range.</p>
-                        <p>This returns a number such as: 0.08616273575050071</p>
-
+                        <p>Math.mzx() returns the lowest value in a list of arguments:</p>
+                        <p>This returns 150.</p>
                     </div>
-
                     <div class="col-6">
-                        <pre class="example"><span class="code-js">let randomNum = Math.random()
-console.log(randomNum)</span></pre>
+                        <pre class="example"><span class="code-js">let maxValue = Math.max(0, 150, 30, 20, -8, -200)
+console.log(maxValue)</span></pre>
                     </div>
                 </div>
 
-                <h2>Generate random number between two values</h2>
-                <div class="row">
-                    <div class="col-6">
-                        <p>This generates a value between 10 and 20.</p>
-                        <p>You need to use a simple formula of (max - min +1) to ge a base over the min value.</p>
-                        <p>You can then use Math.floor() to round down to the nearest integer to set the base value.</p>
 
-                    </div>
 
-                    <div class="col-6">
-                        <pre class="example"><span class="code-js">let min = 10
+
+
+
+
+
+
+
+        <h1>random()</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>This generates a value between 0 and 1, which you can then scale to your desired range.</p>
+                <p>This returns a number such as: 0.08616273575050071</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let randomNum = Math.random()
+console.log(randomNum)</span></pre>
+            </div>
+        </div>
+
+
+        <h2>Generate random number between 0 and 10</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>If you mutiply Math.random() by 10, the highest value will be 9.9999.</p>
+                <p>To obtain the value 10, multipley by 11 instead. Now the top value could be 10.9999.</p>
+                <p>Finally, use Math.floor() to round that down to 10.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let randValue = Math.floor(Math.random() * 11);
+console.log(randValue)</span></pre>
+            </div>
+        </div>
+
+
+
+        <h2>Generate random number between two specific values</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>This generates a value between 10 and 20.</p>
+                <p>You need to use a simple formula of (max - min +1) to ge a base over the min value.</p>
+                <p>You can then use Math.floor() to round down to the nearest integer to set the base value.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let min = 10
 let max = 20
 <span class="code-comment">//random() creates a value between 0 and 1
 //To get whole numbers between 10 and 20 use this formula: * (max-min)
@@ -180,20 +234,36 @@ let max = 20
 //Finally, use Math.floor to round down to the nearest integer. This makes the random base value 10</span>
 let randomNum = Math.floor(Math.random() * (max - min + 1)) + min
 console.log(randomNum)</span></pre>
-                    </div>
-                </div>
+            </div>
+        </div>
+
+        <h3>Another way to write this</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This generates a value between 15 and 27.</p>
+                          </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+let randomValue = getRndInteger(15,27)
+console.log(randomValue)</span></pre>
+            </div>
+        </div>
 
 
 
-                <h2>Create random function that takes a param, then checks if it equals the random number</h2>
-                <div class="row">
-                    <div class="col-6">
-                        <p>This returns true if your guess is equal to the random value. Othwise false.</p>
+        <h2>Create random function that takes a param, then checks if it equals the random number</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>This returns true if your guess is equal to the random value. Othwise false.</p>
 
-                    </div>
+            </div>
 
-                    <div class="col-6">
-                        <pre class="example"><span class="code-js">let min = 10
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let min = 10
   let max = 20
   let makeGuess = function (guess) {
   let min = 1
@@ -204,9 +274,8 @@ console.log(randomNum)</span></pre>
 }
 
 console.log(makeGuess(1))</span></pre>
-                    </div>
-                </div>
-
+            </div>
+        </div>
 
 
 
