@@ -190,24 +190,112 @@
         </div>
 
 
+        <h4>Remove elements when button is clicked</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This removes all elements with a class of .note when the button is clicked.</p>
+            </div>
+            <div class="col-6">
+<pre class="example"><span class="code-html">&lt;p class="note"&gt;This application was created by Andrew Mead&lt;/p&gt;
+&lt;p class="note"&gt;Some note text&lt;/p&gt;
+&lt;button id="remove-all"&gt;Remove All Notes&lt;/button&gt;</span>
+
+<span class="code-js">document.querySelector('#remove-all').addEventListener('click', function () {
+    document.querySelectorAll('.note').forEach(function( note) {
+        note.remove()
+    })
+})</span></pre>
+            </div>
+        </div>
+
+
         <h3>querySelectorAll</h3>
         <div class="row">
             <div class="col-6">
                 <p>querySelectorAll. This returns a node list of all elements that match the specified selectors.</p>
-                <p>This example retrieves all anchor tags as a list.</p>
-                <p>Run the command in your console to see the node list output.</p>
+                <p>This example retrieves all paragraph tags.</p>
+                <p>You can then alter them.</p>
                 <ul>
                     <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll" target="_blank">querySelectorAll</a></li>
                 </ul>
             </div>
             <div class="col-6">
-                <pre class="example"><span class="code-js">document.querySelectorAll("a");</span>
-
-<span class="code-html">&lt;p&gt;Paragraph 1&lt;/p&gt;
+                <pre class="example"><span class="code-html">&lt;p&gt;Paragraph 1&lt;/p&gt;
 &lt;p&gt;Paragraph 2&lt;/p&gt;
-&lt;p&gt;Paragraph 3&lt;/p&gt;</span></pre>
+&lt;p&gt;Paragraph 3&lt;/p&gt;</span>
+
+<span class="code-js">document.querySelectorAll("a");
+</span></pre>
             </div>
         </div>
+
+        <h4>Change all paragraph content to *</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This queries all paragraph tags.</p>
+                <p>They are then looped through and their content changed.</p>
+                <p>textContent is a property</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">const ps = document.querySelectorAll('p')
+
+ps.forEach(function (p) {
+    p.textContent = '******'
+})</span></pre>
+            </div>
+        </div>
+
+        <h4>Remove an element</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Use the remove() method to remove an element.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">const ps = document.querySelectorAll('p')
+
+ps.forEach(function (p) {
+    p.remove()
+})</span></pre>
+            </div>
+        </div>
+
+        <h4>Remove paragraphs that contain the word 'the'</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This removes all paragraphs that contain the word 'the'.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">const paragraphs = document.querySelectorAll('p')
+
+paragraphs.forEach(function (paragraph) {
+  if (paragraph.textContent.includes('the')) {
+    paragraph.remove()
+  }
+})</span></pre>
+            </div>
+        </div>
+
+
+
+        <h4>Capturing text input</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This prints to the console what you're typing.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;</span>
+
+<span class="code-js">document.querySelector('#search-text').addEventListener('input', function (e) {
+    console.log(e.target.value)
+})</span></pre>
+            </div>
+        </div>
+
+
     </section>
 
 

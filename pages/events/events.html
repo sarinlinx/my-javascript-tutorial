@@ -185,7 +185,27 @@ CTA.addEventListener("click" , <span class="standout">reveal</span>, false);</sp
                 <p>IE8 and later can't use addEventLister. They must use attachEvent.</p>
                 <p>https://www.lynda.com/JavaScript-tutorials/Using-events-old-browsers/140780/148715-4.html</p>
             </div>
-    </section>
+          </div>
+
+
+
+<h4>Example - changing the text of a button</h4>
+            <div class="row">
+                <div class="col-6">
+                    <p>When the button is clicked, the text changes.</p>
+                </div>
+
+                <div class="col-6">
+                    <pre class="example"><span class="code-html">&lt;button&gt;Create Note&lt;/button&gt;</span>
+
+<span class="code-js">document.querySelector('button').addEventListener('click', function (e) {
+  <span class="code-comment">//Take the Object 'e', then assign its property of textContent to a new string</span>
+  e.target.textContent = 'The button was clicked'
+})</span></pre>
+                </div>
+            </div>
+
+          </section>
 
 
 

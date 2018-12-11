@@ -39,7 +39,7 @@
         <div class="row">
             <div class="col-6">
                 <p>This creats a new element titled &lt;figcaption&gt; with text inside</p>
-                <p>If you check dev tools, you'll see the new code has been added to the DOM.</p>            
+                <p>If you check dev tools, you'll see the new code has been added to the DOM.</p>
             </div>
 
             <div class="col-6">
@@ -66,6 +66,41 @@ captionElement.appendChild(captionText);
 <span class="code-comment">//Add new figcaption element to the featured image figure</span>
 FEATURED.appendChild(captionElement);</span></span></pre>
 
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3>Adding a new DOM element</h3>
+
+<div class="row">
+    <div class="col-6">
+        <p>This adds another paragraph to the page using appendChild()</p>
+    </div>
+
+    <div class="col-6">
+        <pre class="example"><span class="code-js"><span class="code-comment">// Add a new element</span>
+const newParagraph = document.createElement('p')
+newParagraph.textContent = 'This is a new element from JavaScript'
+document.querySelector('body').appendChild(newParagraph)</span></span></pre>
 </div>
 </div>
 </section>

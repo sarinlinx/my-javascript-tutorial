@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../_css/style.css">
+
+    <title>Projects</title>
+</head>
+
+<body>
+    <a href="../index.html">Home page</a>
+
+    <section class="container">
+        <h1>Expense tracker</h1>
+
+
+
+          <div class="row">
+              <div class="col-5">
+                <p>This takes in Expenses, Incomen and prints the balance result.</p>
+              </div>
+              <div class="col-7">
+<pre class="example"><span class="code-js"><span class="code-comment">//Create Object</span>
+const account = {
+    name: 'Andrew Mead',
+    <span class="code-comment">//expenses is an Array. It will have a description and amount</span>
+
+    expenses: [],
+
+    income: [],
+
+    <span class="code-comment">//method - takes expense description and amount</span>
+    addExpense: function (description, amount) {
+        <span class="code-comment">//add Object into expenses Array above using push()</span>
+        this.expenses.push({
+            description: description,
+            amount: amount
+        })
+    },
+
+    addIncome: function (description, amount) {
+        //add Object into income Array above using push()
+        this.income.push({
+            description: description,
+            amount: amount
+        })
+    },
+
+    <span class="code-comment">//Totals all expenses</span>
+    getAccountSummary: function () {
+        let totalExpenses = 0
+        let totalIncome = 0
+        let accountBalance = 0
+
+        <span class="code-comment">//this.expense is the expense[] above
+        //Use forEach() to loop through it and add the amounts only (not the descriptions)</span>
+        this.expenses.forEach(function (newExpense) {
+            totalExpenses = totalExpenses + newExpense.amount
+        })
+
+
+        <span class="code-comment">//this.income is the income[] above
+        //use forEach() to loop through it and add the amounts only (not the descriptions)</span>
+        this.income.forEach(function (income) {
+            totalIncome = totalIncome + income.amount
+        })
+
+        accountBalance = totalIncome - totalExpenses
+
+        <span class="code-comment">//print result</span>
+        return `${this.name} has a balance of $${accountBalance}. $${totalIncome} in income. $${totalExpenses} in expenses.`
+    }
+}
+
+account.addExpense('Rent', 950)
+account.addExpense('Coffee', 2)
+account.addIncome('Job', 1000)
+console.log(account.getAccountSummary())</span></pre>
+              </div>
+          </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-5">
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-output">Andrew Mead has a balance of $48. $1000 in income. $952 in expenses.</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script src="../_js/jquery.js"></script>
+    <script src="../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

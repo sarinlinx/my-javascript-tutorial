@@ -10,51 +10,28 @@
 </head>
 
 <body>
-<p id="demo"></p>
+
+
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p>
+  <p>Paragraph 3</p>
+
+
+
+
 </body>
 
 
 
 <script>
 
-const notes = [{
-    title: 'My next trip',
-    body: 'I would like to go to Spain'
-}, {
-    title: 'Habbits to work on',
-    body: 'Exercise. Eating a bit better.'
-}, {
-    title: 'Office modification',
-    body: 'Get a new seat'
-}]
+const ps = document.querySelectorAll('p')
 
-
-//Create function that takes two params
-//param1 is the notes Array you're searching through
-//noteString is the string you're looking for in the Array
-const findNote = function (param1, noteString) {
-     //Search ARRAY.findIndex()
-     //param2 is the value of the current element. In this case, it's the
-     //Objects within the 'notes' Array.
-     //'index' stores the Object matche, otherwise -1 is returned
-     const indexVal = param1.findIndex(function (param2) {
-         //Checks all the titles of all Objects
-         //to see if any equal the string input
-         //If one does, it's returned
-         return param2.title.toLowerCase() === noteString.toLowerCase()
-     })
-     //return the Object title
-     //Return the note Array and the indexVal variable you created above
-     //to store the result of the search
-     return notes[indexVal]
- }
-
-//Run findNote() with 2 params
-//notes is the notes you're searching through in the Array
-//string you're looking for
-const note = findNote(notes, 'Office modification')
-console.log(note)
-
+ps.forEach(function (p) {
+    p.textContent = '******'
+    console.log(p.textContent)
+    p.remove()
+})
 
 </script>
 </html>

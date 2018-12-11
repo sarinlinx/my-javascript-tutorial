@@ -248,6 +248,7 @@ function myFunction(value, index, array) {
         <div class="row">
             <div class="col-6">
                 <p>filter() creates a new array, but only with elements that pass a specific test in the function.</p>
+                <p>The original array is not touched.</p>
                 <p>This example creates a new array from elements with a value larger than 18</p>
             </div>
             <div class="col-6">
@@ -282,7 +283,85 @@ console.log(over18);</span></pre>
                 <p>Just as above, the index and array parameters can be added or omitted.</p>
             </div>
         </div>
+
+
+
+
+
+
+
+        <h3>Searching an Array Object for a string</h1>
+
+        <div class="row">
+            <div class="col-5">
+                <p>This searches the Array named 'notes' for a string.</p>
+                <p>If found, the Object within that string is returned (from the new Array created by filter())</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js"><span class="code-comment">//Create an Array of Objects</span>
+const notes = [{
+    title: 'My next trip',
+    body: 'I would like to go to Spain'
+}, {
+    title: 'Habbits to work on',
+    body: 'Exercise. Eating a bit better.'
+}, {
+    title: 'Office modification',
+    body: 'Get a new seat'
+}]
+
+
+<span class="code-comment">//filter notes Array based on a string
+//notesArray is the Array param you're sending in
+//query is the string you're searching for
+//findNotes will contain the new Array created by filter()</span>
+const findNotes = function (notesArray, query) {
+    <span class="code-comment">//return a new array based off a new function
+    //1 params which is the Array Object
+    //This will return a boolean
+    //true means it will be kept and sent to the new array</span>
+    return notesArray.filter(function (notesObj) {
+        <span class="code-comment">//look at the title of the Object being passed into the function
+        //Method chaining - chain a 2nd method to the first method in one line
+        //includes() checks if the title includes a string noted by 'query'</span>
+        const isTitleMatch = notesObj.title.toLowerCase().includes(query.toLowerCase())
+        <span class="code-comment">//Do the same for body</span>
+        const isBodyMatch = notesObj.body.toLowerCase().includes(query.toLowerCase())
+        <span class="code-comment">//return true if title or body matches</span>
+        return isTitleMatch || isBodyMatch
+    })
+}
+
+<span class="code-comment">//Send the Array 'notes' into the function 'findNotes'
+//Send the string to search for into the function also</span>
+console.log(findNotes(notes, 'eating'))</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Object { title: "Habbits to work on", body: "Exercise. Eating a bit better." }</span></pre>
+            </div>
+        </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
 
 
     <section class="container">
