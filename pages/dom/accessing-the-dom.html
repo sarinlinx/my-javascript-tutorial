@@ -289,7 +289,8 @@ paragraphs.forEach(function (paragraph) {
             <div class="col-6">
                 <pre class="example"><span class="code-html">&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;</span>
 
-<span class="code-js">document.querySelector('#search-text').addEventListener('input', function (e) {
+<span class="code-js"><span class="code-comment">//the 'input' event fires on every character change</span>
+document.querySelector('#search-text').addEventListener('input', function (e) {
     console.log(e.target.value)
 })</span></pre>
             </div>

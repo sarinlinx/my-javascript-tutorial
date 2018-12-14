@@ -10,28 +10,92 @@
 </head>
 
 <body>
-
-
-  <p>Paragraph 1</p>
-  <p>Paragraph 2</p>
-  <p>Paragraph 3</p>
-
-
-
-
+    <h1>Todos</h1>
+    <input id="new-todo-text" type="text" placeholder="Enter something to do">
+    <button id="add-todo">Add Todo</button>
+    <input id="search-text" type="text" placeholder="Filter todos">
+    <div id="todos"></div>
 </body>
 
-
-
 <script>
+    const todos = [{
+        text: 'Order cat food',
+        completed: false
+    }, {
+        text: 'Clean kitchen',
+        completed: true
+    }, {
+        text: 'Buy food',
+        completed: true
+    }, {
+        text: 'Do work',
+        completed: false
+    }, {
+        text: 'Exercise',
+        completed: true
+    }]
 
-const ps = document.querySelectorAll('p')
+//Create Object to keep track of latest data
+//This changes as search input changes
+    const filters = {
+        searchText: ''
+    }
 
-ps.forEach(function (p) {
-    p.textContent = '******'
-    console.log(p.textContent)
-    p.remove()
-})
+    //Function to filter Array
+    const renderTodos = function(todos, filters) {
+        //filter
+        const filteredTodos = todos.filter(function(todo) {
+            //check if it contains input text value
+            return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+        })
 
+        //Check filtered todos
+        const incompleteTodos = filteredTodos.filter(function(todo) {
+            //return incomplete reamining todos
+            return !todo.completed
+        })
+
+        //clear div so duplicate items aren't added
+        document.querySelector('#todos').innerHTML = ''
+
+        //Create new h2
+        const summary = document.createElement('h2')
+        //add text to h2
+        summary.textContent = `You have ${incompleteTodos.length} todos left`
+        //append it to the #todos tag
+        document.querySelector('#todos').appendChild(summary)
+
+        //Loop through filtered todos
+        filteredTodos.forEach(function(todo) {
+            //create p
+            const p = document.createElement('p')
+            //add text to p
+            p.textContent = todo.text
+            //append it to the #todos tag
+            document.querySelector('#todos').appendChild(p)
+        })
+    }
+
+    //call initial rendering of Array elements
+    renderTodos(todos, filters)
+
+    // Listen for new todo creation
+    document.querySelector('#add-todo').addEventListener('click', function(e) {
+        console.log('Add a new todo...')
+    })
+
+    // Listen for todo text change
+    document.querySelector('#new-todo-text').addEventListener('input', function(e) {
+        console.log(e.target.value)
+    })
+
+    //Tracking input field
+    document.querySelector('#search-text').addEventListener('input', function(e) {
+        //Change filters Object property of searchText to input text
+        filters.searchText = e.target.value
+        //Run function to update Object
+        renderTodos(todos, filters)
+    })
 </script>
+
 </html>

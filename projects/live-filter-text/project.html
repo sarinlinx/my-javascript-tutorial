@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Live Filter Text</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+    <section class="container">
+        <h1>Expense tracker</h1>
+
+
+
+          <div class="row">
+              <div class="col-5">
+                <p>This project displays text blocks.</p>
+                <p>As the user types into the input field, the text section is updated to display any remaining blocks that contain the input text.</p>
+              </div>
+              <div class="col-7">
+<pre class="example"><span class="code-js">const notes = [{
+    title: 'my next trip',
+    body: 'I would like to go to Spain'
+}, {
+    title: 'Habbits to work on',
+    body: 'Exercise. Eating a bit better.'
+}, {
+    title: 'Office modification',
+    body: 'Get a new seat'
+}]
+
+<span class="code-comment">//Create Object to store the latest filter</span>
+const filters = {
+    <span class="code-comment">//this value changes over time</span>
+    searchText: ''
+}
+
+<span class="code-comment">//Create function to display text</span>
+const renderNotes = function (notes, filters) {
+    <span class="code-comment">//limit notes to just those that pass the filter</span>
+    const filteredNotes = notes.filter(function (note) {
+        <span class="code-comment">//check if current text is in the filters Object property of searchText
+        //If so, return the note title</span>
+        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
+    })
+
+    <span class="code-comment">//clear the div when new input is added
+    //set #notes to empty, otherwise any input would just be added to the
+    //bottom of the list</span>
+    document.querySelector('#notes').innerHTML = ''
+
+    <span class="code-comment">//loop over Array</span>
+    filteredNotes.forEach(function (note) {
+        <span class="code-comment">//create new element</span>
+        const noteEl = document.createElement('p')
+        <span class="code-comment">//Set new element to the note title</span>
+        noteEl.textContent = note.title
+        <span class="code-comment">//Print to page</span>
+        document.querySelector('#notes').appendChild(noteEl)
+    })
+}
+
+<span class="code-comment">//Run original function passing in 'notes' Array Object along with the 'filters' Object</span>
+renderNotes(notes, filters)
+
+document.querySelector('#search-text').addEventListener('input', function (e) {
+    <span class="code-comment">//Set the 'filters' Object property of 'searchText' to user input</span>
+    filters.searchText = e.target.value
+    <span class="code-comment">//run function to show updated/remaining text</span>
+    renderNotes(notes, filters)
+})
+</span></pre>
+              </div>
+          </div>
+
+    </section>
+
+<section class="container">
+<h3>Example</h3>  <div class="row">
+      <div class="col">
+        <input id="search-text" type="text" placeholder="search for text">
+        <div id="notes"></div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+<script>
+const notes = [{
+    title: 'my next trip',
+    body: 'I would like to go to Spain'
+}, {
+    title: 'Habbits to work on',
+    body: 'Exercise. Eating a bit better.'
+}, {
+    title: 'Office modification',
+    body: 'Get a new seat'
+}]
+const filters = {
+    searchText: ''
+}
+
+const renderNotes = function (notes, filters) {
+    const filteredNotes = notes.filter(function (note) {
+        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
+    })
+
+    document.querySelector('#notes').innerHTML = ''
+
+    filteredNotes.forEach(function (note) {
+        const noteEl = document.createElement('p')
+        noteEl.textContent = note.title
+        document.querySelector('#notes').appendChild(noteEl)
+    })
+}
+
+renderNotes(notes, filters)
+
+document.querySelector('#search-text').addEventListener('input', function (e) {
+    filters.searchText = e.target.value
+    renderNotes(notes, filters)
+})</script>
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
