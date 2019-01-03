@@ -6,55 +6,94 @@ body {
   background-color: #1a1a1a;
   color: #70c4ee;
   position: relative;
-  background-image: url("textures/asfalt-dark.png");
+  /* background-image: url("textures/asfalt-dark.png"); */
+}
+
+#tutorial-link-section {
+  padding: 25px;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  background-color: #262626;
+  background-image: url("textures/asfalt-light.png");
+  border-radius: 10px;
+}
+
+.tutorial-button {
+  padding: 0;
+border-style: none;
+color: #fff;
+border-color: #007bff;
+font-weight: 400;
+text-align: center;
+border: 1px solid #007bff;
+border-radius: 0.25rem;
+transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+
+
+
+
+
+.toc-heading1 {
+  text-align: center;
+  font-size: 3.5rem;
+  font-family: 'Lora', serif;
+  background: linear-gradient(to right, #c9c9c9 0%, #fc8500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 1px solid #eee;
+}
+
+.toc-heading2 {
+  font-size: 2.5rem;
+  font-family: 'Lora', serif;
+  background: linear-gradient(to bottom, #bdbdbd 0%, #0083ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 h1 {
-  font-size: 2.8rem;
-  margin-top: 80px;
+  font-size: 3.3rem;
+  font-family: 'Lora', serif;
+  margin-top: 60px;
   margin-bottom: 20px;
-  /* background-color: #c3c3c3; */
-  background-color: #000;
-  color: #ffb200;
-  background-image: url("textures/asfalt-dark.png");
-  border-left: 1px solid #ffb200;
-  border-right: 1px solid #ffb200;
-  border-bottom: 2px solid #ffb200;
+  border-bottom: 1px solid #eee;
+  /* background-image: url("textures/asfalt-light.png"); */
   padding: 10px 0;
   text-align: center;
-  border-radius: 10px;
+  background: linear-gradient(to right, #c9c9c9 0%, #fc8500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 h2 {
-  padding-bottom: 10px;
-  padding-left: 8px;
-  margin-top: 50px;
-  font-size: 2.3rem;
-  /* background-color: #00a1df; */
+  font-size: 3rem;
+  font-family: 'Lora', serif;
   background-color: #0e0e0e;
   background-image: url("textures/asfalt-dark.png");
-  color: #00a1df;
   margin-bottom: 20px;
-  border-left: 1px solid #00a1df;
-  /* border-right: 1px solid #00a1df; */
-  border-bottom: 2px solid #00a1df;
-  /* text-align: center; */
-  border-radius: 10px;
+  background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 1px solid #eee;
 }
 
 h3 {
-  font-size: 1.8rem;
-  color: #00ff88;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  font-size: 2rem;
+  font-family: 'Lora', serif;
+  background: linear-gradient(to right, #65e470 0%, #000b1d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 h4 {
+  font-family: 'Lora', serif;
   font-size: 1.3rem;
-  color: #ff6767;
-  padding: 1rem 0;
+  background: linear-gradient(to right, #fb8e8e 0%, #a50000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 h5 {
@@ -112,6 +151,7 @@ ___________________________________________________*/
   list-style: none;
   font-weight: bolder;
 }
+
 /*___________________________________________________
 Note boxes
 ___________________________________________________*/
