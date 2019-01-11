@@ -1,16 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>#1 Note taking app</title>
-        <style>
-        .note {
-          background-color: blue;
-        }
-        </style>
-    </head>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../../_css/style.css">
+    <title>#1 Note taking app</title>
+    <style>
+    .note {
+      background-color: blue;
+    }
+    </style>
+</head>
     <body>
+<a href="../../../index.html">Home page</a>
+
+<section class="container">
+    <div class="row">
+        <div class="col">
+
       <h1>Notes App (basic functionality)</h1>
       <h2>Take notes and never forget</h2>
       <input id="search-text" type="text" placeholder="Filter todos">
@@ -20,5 +32,78 @@
       <button id="remove-all">Remove All Notes</button>
       <script src="notes-app.js"></script>
         <script src="notes-app.js"></script>
+</div></div></section>
+
+
+
+
+<section class="container">
+    <h1>Note taking App (basic functionality)</h1>
+    <h2>WORK IN PROGRESS</h2>
+    <h3>HTML</h3>
+    <div class="row">
+        <div class="col-5">
+
+            <p>Basic HTML code</p>
+        </div>
+
+        <div class="col-7">
+            <pre class="example"><span class="code-html">&lt;h1&gt;Notes App (basic functionality)&lt;/h1&gt;
+&lt;h2&gt;Take notes and never forget&lt;/h2&gt;
+
+&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;
+&lt;p class="note"&gt;This application was created by Andrew Mead&lt;/p&gt;
+&lt;p class="note"&gt;Some note text&lt;/p&gt;
+
+&lt;button id="create-note"&gt;Create Note&lt;/button&gt;
+&lt;button id="remove-all"&gt;Remove All Notes&lt;/button&gt;</pre>
+</div>
+    </div>
+
+
+
+
+    <h3>JS</h3>
+            <div class="row">
+                <div class="col-5">
+
+                    <p>lkjljljl</p>
+                </div>
+                <div class="col-7">
+                    <pre class="example"><span class="code-js"><span class="code-comment">//Change the text of the button when clicked</span>
+document.querySelector('#create-note').addEventListener('click', function (e) {
+   e.target.textContent = 'The button was clicked'
+})
+
+<span class="code-comment">//when remove button is clicked, all notes are removed</span>
+document.querySelector('#remove-all').addEventListener('click', function () {
+    document.querySelectorAll('.note').forEach(function(x) {
+        x.remove()
+    })
+})
+
+<span class="code-comment">//prints to console the text typed into box</span>
+document.querySelector('#search-text').addEventListener('input', function (e) {
+    console.log(e.target.value)
+})</pre></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </body>
 </html>
