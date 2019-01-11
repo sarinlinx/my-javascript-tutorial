@@ -17,144 +17,50 @@
     <a href="../../../index.html">Home page</a>
 
     <section class="container">
+        <div class="row">
+            <div class="col">
+
+                <h1>Todos</h1>
+                <input id="new-todo-text" type="text" placeholder="Enter something to do">
+                <button id="add-todo">Add Todo</button>
+                <input id="search-text" type="text" placeholder="Filter todos">
+                <div id="todos"></div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container">
         <h1>Todo App (basic functionality)</h1>
+        <h2>WORK IN PROGRESS</h2>
+        <h3>HTML</h3>
+        <div class="row">
+            <div class="col-5">
 
+                <p>Basic HTML code.</p>
+            </div>
 
+            <div class="col-7">
+                <pre class="example"><span class="code-html">&lt;input id="new-todo-text" type="text" placeholder="Enter something to do"&gt;
+&lt;button id="add-todo"&gt;Add Todo&lt;/button&gt;
+&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;
+&lt;div id="todos"&gt;</span></pre>
+</div>
+        </div>
 
-          <div class="row">
-              <div class="col-5">
-                <p>WORK IN PROGRESS</p>
-                <p>This displays a text box to input a new todo.</p>
+<h3>JS</h3>
+        <div class="row">
+            <div class="col-5">
+
+                <p>This displays a text box to input a new todo (which currently does nothing).</p>
                 <p>A filter field displays allowing you to search the text.</p>
-                <p>When searched, an h2 tag shows how many todos are left in your list. This checks the 'compelted' boolean property.</p>
-              </div>
-              <div class="col-7">
-<pre class="example"><span class="code-js">const todos = [{
-    text: 'Order cat food',
-    completed: false
-}, {
-    text: 'Clean kitchen',
-    completed: true
-}, {
-    text: 'Buy food',
-    completed: true
-}, {
-    text: 'Do work',
-    completed: false
-}, {
-    text: 'Exercise',
-    completed: true
-}]
-
-<span class="code-comment">//Create Object to keep track of latest data
-//This changes as search input changes</span>
-const filters = {
-    searchText: ''
-}
-
-<span class="code-comment">//Function to filter Array</span>
-const renderTodos = function(todos, filters) {
-    <span class="code-comment">//filter</span>
-    const filteredTodos = todos.filter(function(todo) {
-        <span class="code-comment">//check if it contains input text value</span>
-        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
-    })
-
-    <span class="code-comment">//Check filtered todos</span>
-    const incompleteTodos = filteredTodos.filter(function(todo) {
-        <span class="code-comment">//return incomplete reamining todos</span>
-        return !todo.completed
-    })
-
-    <span class="code-comment">//clear div so duplicate items aren't added</span>
-    document.querySelector('#todos').innerHTML = ''
-
-    <span class="code-comment">//Create new h2</span>
-    const summary = document.createElement('h2')
-    <span class="code-comment">//add text to h2</span>
-    summary.textContent = `You have ${incompleteTodos.length} todos left`
-    <span class="code-comment">//append it to the #todos tag</span>
-    document.querySelector('#todos').appendChild(summary)
-
-    <span class="code-comment">//Loop through filtered todos</span>
-    filteredTodos.forEach(function(todo) {
-        <span class="code-comment">//create p</span>
-        const p = document.createElement('p')
-        <span class="code-comment">//add text to p</span>
-        p.textContent = todo.text
-        <span class="code-comment">//append it to the #todos tag</span>
-        document.querySelector('#todos').appendChild(p)
-    })
-}
-
-<span class="code-comment">//call initial rendering of Array elements</span>
-renderTodos(todos, filters)
-
-<span class="code-comment">// Listen for new todo creation</span>
-document.querySelector('#add-todo').addEventListener('click', function(e) {
-    console.log('Add a new todo...')
-})
-
-<span class="code-comment">// Listen for todo text change</span>
-document.querySelector('#new-todo-text').addEventListener('input', function(e) {
-    console.log(e.target.value)
-})
-
-<span class="code-comment">//Tracking input field</span>
-document.querySelector('#search-text').addEventListener('input', function(e) {
-    <span class="code-comment">//Change filters Object property of searchText to input text</span>
-    filters.searchText = e.target.value
-    <span class="code-comment">//Run function to update Object</span>
-    renderTodos(todos, filters)
-})</span></pre></div></div>
-</section>
-
-
-<section class="container">
-  <div class="row">
-    <div class="col">
-
-      <h1>Todos</h1>
-      <input id="new-todo-text" type="text" placeholder="Enter something to do">
-      <button id="add-todo">Add Todo</button>
-      <input id="search-text" type="text" placeholder="Filter todos">
-      <div id="todos"></div>
-
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
+                <p>When searched, an h2 tag shows how many todos are left in your list.</p>
+                <p>This checks the 'completed' boolean property.</p>
+                <p>(NOTE: Only some of the values have been marked as 'completed' in the code. This is why the 'todos left' values do not match the amount of todos shown.)</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js"><span class="code-comment">//create array of todos</span>
 const todos = [{
     text: 'Order cat food',
     completed: false
@@ -172,47 +78,152 @@ const todos = [{
     completed: true
 }]
 
+<span class="code-comment">//Create Object to keep track of latest data
+//This searchText property changes as search input changes</span>
 const filters = {
     searchText: ''
 }
 
+<span class="code-comment">//Function to filter Array
+//This takes in 2 params, the Array 'todos' and the Object 'filter'</span>
 const renderTodos = function(todos, filters) {
-    const filteredTodos = todos.filter(function(todo) {
-        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+    <span class="code-comment">//filter using the filter() which creates a
+    //new Array named filteredTodos
+    //x is the full todos Array</span>
+    const filteredTodos = todos.filter(function(x) {
+        <span class="code-comment">//use includes() to check if it contains your input text value
+        //stored in the property 'searchText' </span>
+        return x.text.toLowerCase().includes(filters.searchText.toLowerCase())
     })
 
-    const incompleteTodos = filteredTodos.filter(function(todo) {
-        return !todo.completed
+    <span class="code-comment">//Check the filteredTodos Array you just created
+    //at first the param z is the full Array (since nothing has been typed)
+    //When you start typing, the new Array is created and is assigned to filteredTodos
+    //This function then filters that new Array and returns only todos that
+    //have a boolean value set to false into a new Object named incompleteTodos</span>
+    const incompleteTodos = filteredTodos.filter(function(z) {
+        <span class="code-comment">//return incomplete reamining todos</span>
+        return !z.completed
     })
 
+    <span class="code-comment">//clear div so duplicate items aren't added
+    //if you don't do this, each character you enter creates a new
+    //div under the current div</span>
     document.querySelector('#todos').innerHTML = ''
 
+    <span class="code-comment">//Create new h2</span>
     const summary = document.createElement('h2')
+    <span class="code-comment">//add text to h2</span>
     summary.textContent = `You have ${incompleteTodos.length} todos left`
+    <span class="code-comment">//append it to the #todos tag</span>
     document.querySelector('#todos').appendChild(summary)
 
-    filteredTodos.forEach(function(todo) {
+    <span class="code-comment">//Loop through filtered todos</span>
+    filteredTodos.forEach(function(z) {
+        <span class="code-comment">//for each item returned, create a new p tag</span>
         const p = document.createElement('p')
-        p.textContent = todo.text
+        <span class="code-comment">//add text to p tag
+        //the text is the new filtered Array filteredTodos</span>
+        p.textContent = z.text
+        <span class="code-comment">//append it to the #todos tag</span>
         document.querySelector('#todos').appendChild(p)
     })
 }
 
+<span class="code-comment">//call initial rendering of Array elements</span>
 renderTodos(todos, filters)
 
+<span class="code-comment">//Listen for new todo creation
+//this currently does nothing</span>
 document.querySelector('#add-todo').addEventListener('click', function(e) {
     console.log('Add a new todo...')
 })
 
+<span class="code-comment">//Listen for todo text change
+//this currently does nothing</span>
 document.querySelector('#new-todo-text').addEventListener('input', function(e) {
     console.log(e.target.value)
 })
 
-//Tracking input field
+<span class="code-comment">//Tracking input field</span>
 document.querySelector('#search-text').addEventListener('input', function(e) {
+    <span class="code-comment">//Change filters Object property of searchText to input text</span>
     filters.searchText = e.target.value
+    <span class="code-comment">//Run function to update Object</span>
     renderTodos(todos, filters)
-})</script>
+})</span></pre></div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        const todos = [{
+            text: 'Order cat food',
+            completed: false
+        }, {
+            text: 'Clean kitchen',
+            completed: true
+        }, {
+            text: 'Buy food',
+            completed: true
+        }, {
+            text: 'Do work',
+            completed: false
+        }, {
+            text: 'Exercise',
+            completed: true
+        }]
+
+        const filters = {
+            searchText: ''
+        }
+
+        const renderTodos = function(todos, filters) {
+            const filteredTodos = todos.filter(function(x) {
+                return x.text.toLowerCase().includes(filters.searchText.toLowerCase())
+            })
+
+            const incompleteTodos = filteredTodos.filter(function(z) {
+                return !z.completed
+            })
+
+            document.querySelector('#todos').innerHTML = ''
+
+            const summary = document.createElement('h2')
+            summary.textContent = `You have ${incompleteTodos.length} todos left`
+            document.querySelector('#todos').appendChild(summary)
+
+            filteredTodos.forEach(function(z) {
+                const p = document.createElement('p')
+                p.textContent = z.text
+                document.querySelector('#todos').appendChild(p)
+            })
+        }
+
+        renderTodos(todos, filters)
+
+        document.querySelector('#add-todo').addEventListener('click', function(e) {
+            console.log('Add a new todo...')
+        })
+
+        document.querySelector('#new-todo-text').addEventListener('input', function(e) {
+            console.log(e.target.value)
+        })
+
+        //Tracking input field
+        document.querySelector('#search-text').addEventListener('input', function(e) {
+            filters.searchText = e.target.value
+            renderTodos(todos, filters)
+        })
+    </script>
 
 
     <script src="../../../_js/jquery.js"></script>
