@@ -46,7 +46,7 @@
 
             <div class="col-8">
                 <pre class="example"><span class="code-html">&lt;input id="search-text" type="text" placeholder="search for text"&gt;
-&lt;div id="notes"&gt;</span></pre></div>
+&lt;div id="notes"&gt;&lt;/div&gt;</span></pre></div>
         </div>
 
         <h3>JS</h3>
@@ -67,17 +67,17 @@
     body: 'Get a new seat'
 }]
 
-<span class="code-comment">//Create Object to store the latest filter
+<span class="code-comment">//<span class="standout">Create Object to store the latest filter</span>
 //this value changes over time</span>
 const filters = {
     searchText: ''
 }
 
-<span class="code-comment">//Create function to display text
+<span class="code-comment">//<span class="standout">Create function to display text, then filter</span>
 //x and y correspond to the args used when calling the function
 //y is what is typed into the search box</span>
 const renderNotes = function (x, y) {
-    <span class="code-comment">//limit notes to just those that pass the filter
+    <span class="code-comment">//<span class="standout">limit notes to just those that pass the filter</span>
     //filter() creates a new array, but only with elements that pass
     //a specific test in the function
     //z stores all the Objects in the Array</span>
@@ -87,15 +87,35 @@ const renderNotes = function (x, y) {
         return z.title.toLowerCase().includes(y.searchText.toLowerCase())
     })
 
+    <span class="code-comment"><span class="standout">//create new array to store # of reamining todos</span>
+    //Check the filteredNotes Array you just created
+    //at first the param z is the full Array (since nothing has been typed)
+    //When you start typing, the new Array is created and is assigned to filteredNotes
+    //This function then filters that new Array and returns only todos that
+    //have a boolean value set to false into a new Object named incompleteTodos</span>
+    const incompleteTodos = filteredNotes.filter(function(z) {
+      <span class="code-comment">//return incomplete reamining todos</span>
+      return !z.completed
+    })
+
     <span class="code-comment">//clear the div when new input is added
     //set #notes to empty, otherwise any input would just be added to the
     //bottom of the list</span>
     document.querySelector('#notes').innerHTML = ''
 
-    <span class="code-comment">//loop over Array
+    <span class="code-comment">//Create new h2</span>
+    const summary = document.createElement('h2')
+    <span class="code-comment">//add text to h2</span>
+    summary.textContent = `You have ${incompleteTodos.length} todos left`
+    <span class="code-comment">//append it to the #notes tag</span>
+    document.querySelector('#notes').appendChild(summary)
+
+    <span class="code-comment"><span class="standout">//print to page</span>
+    //loop over Array
     //The forEach() method calls a function once for each array element
-    //i is the filtered Object
-    //at first it's blank, as you type it changes</span>
+    //i is the filtered Object (which at first is everything)
+    //This causes the original and full Array to print by default
+    //As you type, only the Object with the typed text is displayed</span>
     filteredNotes.forEach(function (i) {
         <span class="code-comment">//create new element</span>
         const noteEl = document.createElement('p')
@@ -145,23 +165,25 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
         }
 
         const renderNotes = function(x, y) {
-            //console.log(y)
             const filteredNotes = x.filter(function(z) {
-                //this always prints the full Objects in the Array
-                //console.log(z)
                 return z.title.toLowerCase().includes(y.searchText.toLowerCase())
+            })
+
+            const incompleteTodos = filteredNotes.filter(function(z) {
+                return !z.completed
             })
 
             document.querySelector('#notes').innerHTML = ''
 
-            //This prints the Objects to the page
+            const summary = document.createElement('h2')
+            summary.textContent = `You have ${incompleteTodos.length} todos left`
+            document.querySelector('#notes').appendChild(summary)
+
             filteredNotes.forEach(function(i) {
-              console.log(i)
                 const noteEl = document.createElement('p')
                 noteEl.textContent = i.title
                 document.querySelector('#notes').appendChild(noteEl)
             })
-
         }
 
         renderNotes(notes, filters)

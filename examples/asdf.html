@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../_css/style.css">
+
+    <title>Live Filter Text</title>
+</head>
+
+<body>
+    <a href="../../../index.html">Home page</a>
+
+    <section class="container">
+        <div class="row">
+            <div class="col">
+
+                <h1>Todos</h1>
+                <input id="new-todo-text" type="text" placeholder="Enter something to do">
+                <button id="add-todo">Add Todo</button>
+                <input id="search-text" type="text" placeholder="Filter todos">
+                <div id="todos"></div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container">
+        <h1>Todo App (basic functionality)</h1>
+        <h2>WORK IN PROGRESS</h2>
+        <h3>HTML</h3>
+        <div class="row">
+            <div class="col-5">
+
+                <p>Basic HTML code.</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-html">&lt;input id="new-todo-text" type="text" placeholder="Enter something to do"&gt;
+&lt;button id="add-todo"&gt;Add Todo&lt;/button&gt;
+&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;
+&lt;div id="todos"&gt;&lt;/div&gt;</span></pre>
+</div>
+        </div>
+
+<h3>JS</h3>
+        <div class="row">
+            <div class="col-5">
+
+                <p>This displays a text box to input a new todo (which currently does nothing).</p>
+                <p>A filter field displays allowing you to search the text.</p>
+                <p>When searched, an h2 tag shows how many todos are left in your list.</p>
+                <p>This checks the 'completed' boolean property.</p>
+                <p>(NOTE: Only some of the values have been marked as 'completed' in the code. This is why the 'todos left' values do not match the amount of todos shown.)</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js">
+
+    <span class="code-comment">//Loop through filtered todos</span>
+    filteredNotes.forEach(function(z) {
+        <span class="code-comment">//for each item returned, create a new p tag</span>
+        const p = document.createElement('p')
+        <span class="code-comment">//add text to p tag
+        //the text is the new filtered Array filteredTodos</span>
+        p.textContent = z.text
+        <span class="code-comment">//append it to the #todos tag</span>
+        document.querySelector('#todos').appendChild(p)
+    })
+}
+
+
+</pre></div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script>const notes = [{
+    title: 'my next trip',
+    body: 'I would like to go to Spain'
+}, {
+    title: 'Habbits to work on',
+    body: 'Exercise. Eating a bit better.'
+}, {
+    title: 'Office modification',
+    body: 'Get a new seat'
+}]
+
+//Create Object to store the latest filter
+//this value changes over time
+const filters = {
+    searchText: ''
+}
+
+//Create function to display text
+//x and y correspond to the args used when calling the function
+//y is what is typed into the search box
+const renderNotes = function (x, y) {
+    //limit notes to just those that pass the filter
+    //filter() creates a new array, but only with elements that pass
+    //a specific test in the function
+    //z stores all the Objects in the Array
+    const filteredNotes = x.filter(function (z) {
+        //if the Object title includes the typed
+        //text from the search box, return the Object title
+        return z.title.toLowerCase().includes(y.searchText.toLowerCase())
+    })
+
+
+    //Check the filteredNotes Array you just created
+    //at first the param z is the full Array (since nothing has been typed)
+    //When you start typing, the new Array is created and is assigned to filteredNotes
+    //This function then filters that new Array and returns only todos that
+    //have a boolean value set to false into a new Object named incompleteTodos
+    const incompleteTodos = filteredNotes.filter(function(z) {
+      //return incomplete reamining todos
+      return !z.completed
+    })
+
+
+
+    //clear the div when new input is added
+    //set #notes to empty, otherwise any input would just be added to the
+    //bottom of the list
+    document.querySelector('#notes').innerHTML = ''
+
+
+    //Create new h2
+    const summary = document.createElement('h2')
+    //add text to h2
+    summary.textContent = `You have ${incompleteTodos.length} todos left`
+    //append it to the #notes tag
+    document.querySelector('#notes').appendChild(summary)
+
+
+    //loop over Array
+    //The forEach() method calls a function once for each array element
+    //i is the filtered Object (which at first is everything)
+    //This causes the original and full Array to print by default
+    //As you type, only the Object with the typed text is displayed
+    filteredNotes.forEach(function (i) {
+        //create new element
+        const noteEl = document.createElement('p')
+        //Set new element to the Object title property
+        noteEl.textContent = i.title
+        //Print to page
+        document.querySelector('#notes').appendChild(noteEl)
+    })
+}
+
+//Run original function passing in 'notes' Array Object along with the 'filters' Object
+renderNotes(notes, filters)
+
+document.querySelector('#search-text').addEventListener('input', function (e) {
+    //Set the 'filters' Object property of 'searchText' to user input
+    filters.searchText = e.target.value
+    //run function to show updated/remaining text
+    renderNotes(notes, filters)
+})
+    </script>
+
+
+    <script src="../../../_js/jquery.js"></script>
+    <script src="../../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
