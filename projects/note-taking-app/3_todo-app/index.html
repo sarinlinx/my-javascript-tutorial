@@ -22,16 +22,30 @@
 
         <h1>Todos</h1>
         <input id="search-text" type="text" placeholder="Filter todos">
+
+        <label>
+            <input type="checkbox" id="hide-completed"> Hide completed
+        </label>
+
         <div id="todos"></div>
+
         <form id="new-todo">
             <input type="text" placeholder="Something to do" name="text">
             <button>Add Todo</button>
         </form>
-        <script src="todo-app.js"></script>
 
+        <script src="todo-app.js"></script>
       </div>
   </div>
 </section>
+
+
+
+
+
+
+
+
 
 
 
@@ -86,83 +100,62 @@
 }]
 
 const filters = {
-    searchText: ''
+    searchText: '',
+    <span class="code-comment">//create default filter with a status of false
+    //this hides the todos by default</span>
+    hideCompleted: false
 }
 
-<span class="code-comment">//Function to filter Array
-//This takes in 2 params, the Array 'todos' and the Object 'filter'</span>
-const renderTodos = function(todos, filters) {
-    <span class="code-comment">//filter using the filter() which creates a
-    //new Array named filteredTodos
-    //x is the full todos Array</span>
-    const filteredTodos = todos.filter(function(x) {
-        <span class="code-comment">//use includes() to check if it contains your input text value
-        //stored in the property 'searchText' </span>
-        return x.text.toLowerCase().includes(filters.searchText.toLowerCase())
+const renderTodos = function (todos, filters) {
+    const filteredTodos = todos.filter(function (todo) {
+        const searchTextMatch = todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+        const hideCompletedMatch = !filters.hideCompleted || !todo.completed
+
+        return searchTextMatch && hideCompletedMatch
     })
 
-    <span class="code-comment">//Check the filteredTodos Array you just created
-    //at first the param z is the full Array (since nothing has been typed)
-    //When you start typing, the new Array is created and is assigned to filteredTodos
-    //This function then filters that new Array and returns only todos that
-    //have a boolean value set to false into a new Object named incompleteTodos</span>
-    const incompleteTodos = filteredTodos.filter(function(z) {
-        <span class="code-comment">//return incomplete reamining todos</span>
-        return !z.completed
+    const incompleteTodos = filteredTodos.filter(function (todo) {
+        return !todo.completed
     })
 
-    <span class="code-comment">//clear div so duplicate items aren't added
-    //if you don't do this, each character you enter creates a new
-    //div under the current div</span>
     document.querySelector('#todos').innerHTML = ''
 
-    <span class="code-comment">//Create new h2</span>
     const summary = document.createElement('h2')
-    <span class="code-comment">//add text to h2</span>
     summary.textContent = `You have ${incompleteTodos.length} todos left`
-    <span class="code-comment">//append it to the #todos tag</span>
     document.querySelector('#todos').appendChild(summary)
 
-    <span class="code-comment">//Loop through filtered todos</span>
-    filteredTodos.forEach(function(z) {
-        <span class="code-comment">//for each item returned, create a new p tag</span>
+    filteredTodos.forEach(function (todo) {
         const p = document.createElement('p')
-        <span class="code-comment">//add text to p tag
-        //the text is the new filtered Array filteredTodos</span>
-        p.textContent = z.text
-        <span class="code-comment">//append it to the #todos tag</span>
+        p.textContent = todo.text
         document.querySelector('#todos').appendChild(p)
     })
 }
 
 renderTodos(todos, filters)
 
-<span class="code-comment">//Run renderTodos() each time text is entered</span>
 document.querySelector('#search-text').addEventListener('input', function (e) {
     filters.searchText = e.target.value
     renderTodos(todos, filters)
 })
 
-<span class="code-comment">//when todo form is submitted, do something
-//this pushes new data to the Array and re-renders the application</span>
 document.querySelector('#new-todo').addEventListener('submit', function (e) {
-    <span class="code-comment">//cancel submit button so you can acccess its data</span>
     e.preventDefault()
-    <span class="code-comment">add something new to todos Array
-    //since this is an Array of Objects, you must add a new Object</span>
     todos.push({
-        <span class="code-comment">//e.target to get the form
-        //elements gets the form fields
-        //text is the name given to the form field in HTML</span>
         text: e.target.elements.text.value,
         completed: false
     })
-    <span class="code-comment">//re-redner the list by called renderTodos()
-    //with updated Array and new filters</span>
     renderTodos(todos, filters)
-    <span class="code-comment">//clear the input field value</span>
     e.target.elements.text.value = ''
-})</span></pre></div></div></section>
+})
+
+<span class="code-comment">//when checkbox status is 'changed', call <thead>
+//renderTodos()</span>
+</thead>
+document.querySelector('#hide-completed').addEventListener('change', function (e) {
+    <span class="code-comment">//this sets the hideCompleted property to TRUE if checked</span>
+    filters.hideCompleted = e.target.checked
+    renderTodos(todos, filters)
+})</pre></div></div></section>
 
 
     <script src="../../../_js/jquery.js"></script>

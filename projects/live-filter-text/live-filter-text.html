@@ -16,18 +16,47 @@
 <body>
     <a href="../../index.html">Home page</a>
 
+
+    <section class="container">
+        <h1>Example</h1>
+        <div class="row">
+            <div class="col">
+                <p>This filters the list of Array Object 'title' properties.</p>
+            </div>
+        </div>
+        <h4>Example</h4>
+        <div class="row">
+            <div class="col">
+                <input id="search-text" type="text" placeholder="search for text">
+                <div id="notes"></div>
+            </div>
+        </div>
+    </section>
+
+
     <section class="container">
         <h1>Live Text Filter</h1>
+        <h3>HTML</h3>
 
+        <div class="row">
+            <div class="col-4">
 
+                <p>HTML code</p>
+            </div>
 
-          <div class="row">
-              <div class="col-5">
+            <div class="col-8">
+                <pre class="example"><span class="code-html">&lt;input id="search-text" type="text" placeholder="search for text"&gt;
+&lt;div id="notes"&gt;</span></pre></div>
+        </div>
+
+        <h3>JS</h3>
+        <div class="row">
+            <div class="col-4">
                 <p>This project displays text blocks.</p>
                 <p>As the user types into the input field, the text section is updated to display any remaining blocks that contain the input text.</p>
-              </div>
-              <div class="col-7">
-<pre class="example"><span class="code-js">const notes = [{
+            </div>
+            <div class="col-8">
+                <pre class="example"><span class="code-js">const notes = [{
     title: 'my next trip',
     body: 'I would like to go to Spain'
 }, {
@@ -38,19 +67,24 @@
     body: 'Get a new seat'
 }]
 
-<span class="code-comment">//Create Object to store the latest filter</span>
+<span class="code-comment">//Create Object to store the latest filter
+//this value changes over time</span>
 const filters = {
-    <span class="code-comment">//this value changes over time</span>
     searchText: ''
 }
 
-<span class="code-comment">//Create function to display text</span>
-const renderNotes = function (notes, filters) {
-    <span class="code-comment">//limit notes to just those that pass the filter</span>
-    const filteredNotes = notes.filter(function (note) {
-        <span class="code-comment">//check if current text is in the filters Object property of searchText
-        //If so, return the note title</span>
-        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
+<span class="code-comment">//Create function to display text
+//x and y correspond to the args used when calling the function
+//y is what is typed into the search box</span>
+const renderNotes = function (x, y) {
+    <span class="code-comment">//limit notes to just those that pass the filter
+    //filter() creates a new array, but only with elements that pass
+    //a specific test in the function
+    //z stores all the Objects in the Array</span>
+    const filteredNotes = x.filter(function (z) {
+        <span class="code-comment">//if the Object title includes the typed
+        //text from the search box, return the Object title</span>
+        return z.title.toLowerCase().includes(y.searchText.toLowerCase())
     })
 
     <span class="code-comment">//clear the div when new input is added
@@ -58,12 +92,15 @@ const renderNotes = function (notes, filters) {
     //bottom of the list</span>
     document.querySelector('#notes').innerHTML = ''
 
-    <span class="code-comment">//loop over Array</span>
-    filteredNotes.forEach(function (note) {
+    <span class="code-comment">//loop over Array
+    //The forEach() method calls a function once for each array element
+    //i is the filtered Object
+    //at first it's blank, as you type it changes</span>
+    filteredNotes.forEach(function (i) {
         <span class="code-comment">//create new element</span>
         const noteEl = document.createElement('p')
-        <span class="code-comment">//Set new element to the note title</span>
-        noteEl.textContent = note.title
+        <span class="code-comment">//Set new element to the Object title property</span>
+        noteEl.textContent = i.title
         <span class="code-comment">//Print to page</span>
         document.querySelector('#notes').appendChild(noteEl)
     })
@@ -79,60 +116,61 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
     renderNotes(notes, filters)
 })
 </span></pre>
-              </div>
-          </div>
+            </div>
+        </div>
 
     </section>
 
-<section class="container">
-<h3>Example</h3>  <div class="row">
-      <div class="col">
-        <input id="search-text" type="text" placeholder="search for text">
-        <div id="notes"></div>
-      </div>
-    </div>
-  </section>
 
 
 
 
 
 
-<script>
-const notes = [{
-    title: 'my next trip',
-    body: 'I would like to go to Spain'
-}, {
-    title: 'Habbits to work on',
-    body: 'Exercise. Eating a bit better.'
-}, {
-    title: 'Office modification',
-    body: 'Get a new seat'
-}]
-const filters = {
-    searchText: ''
-}
 
-const renderNotes = function (notes, filters) {
-    const filteredNotes = notes.filter(function (note) {
-        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
-    })
+    <script>
+        const notes = [{
+            title: 'my next trip',
+            body: 'I would like to go to Spain'
+        }, {
+            title: 'Habbits to work on',
+            body: 'Exercise. Eating a bit better.'
+        }, {
+            title: 'Office modification',
+            body: 'Get a new seat'
+        }]
 
-    document.querySelector('#notes').innerHTML = ''
+        const filters = {
+            searchText: ''
+        }
 
-    filteredNotes.forEach(function (note) {
-        const noteEl = document.createElement('p')
-        noteEl.textContent = note.title
-        document.querySelector('#notes').appendChild(noteEl)
-    })
-}
+        const renderNotes = function(x, y) {
+            //console.log(y)
+            const filteredNotes = x.filter(function(z) {
+                //this always prints the full Objects in the Array
+                //console.log(z)
+                return z.title.toLowerCase().includes(y.searchText.toLowerCase())
+            })
 
-renderNotes(notes, filters)
+            document.querySelector('#notes').innerHTML = ''
 
-document.querySelector('#search-text').addEventListener('input', function (e) {
-    filters.searchText = e.target.value
-    renderNotes(notes, filters)
-})</script>
+            //This prints the Objects to the page
+            filteredNotes.forEach(function(i) {
+              console.log(i)
+                const noteEl = document.createElement('p')
+                noteEl.textContent = i.title
+                document.querySelector('#notes').appendChild(noteEl)
+            })
+
+        }
+
+        renderNotes(notes, filters)
+
+        document.querySelector('#search-text').addEventListener('input', function(e) {
+            filters.searchText = e.target.value
+            renderNotes(notes, filters)
+        })
+    </script>
 
     <script src="../../_js/jquery.js"></script>
     <script src="../../_js/bootstrap.bundle.js"></script>

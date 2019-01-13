@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+    <title>Change text of button when clicked</title>
+</head>
+    <body>
+<a href="../../../index.html">Home page</a>
+
+<section class="container">
+    <div class="row">
+        <div class="col">
+
+      <button id="create-note">Create Note</button>
+
+</div></div></section>
+
+
+
+
+<section class="container">
+    <h1>Change text of button when clicked</h1>
+
+    <h3>HTML</h3>
+    <div class="row">
+        <div class="col-5">
+
+            <p>Basic HTML code</p>
+        </div>
+
+        <div class="col-7">
+            <pre class="example"><span class="code-html">&lt;button id="create-note"&gt;Create Note&lt;/button&gt;</pre>
+</div>
+    </div>
+
+
+
+
+    <h3>JS</h3>
+            <div class="row">
+                <div class="col-5">
+
+                    <p>lkjljljl</p>
+                </div>
+                <div class="col-7">
+                    <pre class="example"><span class="code-js"><span class="code-comment">//Change the text of the button when clicked</span>
+document.querySelector('#create-note').addEventListener('click', function (e) {
+   e.target.textContent = 'The button was clicked'
+})</pre></div>
+</div>
+</section>
+
+<script>document.querySelector('#create-note').addEventListener('click', function (e) {
+e.target.textContent = 'The button was clicked'
+})</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+</html>

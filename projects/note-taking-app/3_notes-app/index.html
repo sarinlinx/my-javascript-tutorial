@@ -9,72 +9,76 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../../../_css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../../../_css/style.css">
-    <title>#2 Note taking app</title>
+    <title>#3 Note taking app</title>
 </head>
-    <body>
-<a href="../../../index.html">Home page</a>
 
-<section class="container">
-    <div class="row">
-        <div class="col">
-    <body>
-        <h1>Notes App</h1>
-        <h2>Take notes and never forget</h2>
-        <input id="search-text" type="text" placeholder="Filter todos">
-        <div id="notes"></div>
-        <button id="create-note">Create Note</button>
+<body>
+    <a href="../../../index.html">Home page</a>
 
-        <form id="name-form">
-            <input type="text" placeholder="First name" name="firstName">
-            <button>Submit</button>
-        </form>
+    <section class="container">
+        <div class="row">
+            <div class="col">
 
-        <script src="notes-app.js"></script>
-        </div></div></section>
+                <body>
+                    <h1>Notes App</h1>
+                    <h2>Take notes and never forget</h2>
+                    <input id="search-text" type="text" placeholder="Filter notes">
+                    <div id="notes"></div>
+                    <button id="create-note">Create Note</button>
 
+                    <label>
+            <input id="for-fun" type="checkbox"> Check me for fun
+        </label>
 
-
-
-
+                    <script src="notes-app.js"></script>
+            </div>
+        </div>
+    </section>
 
 
-        <section class="container">
-            <h1>Note taking App (basic functionality)</h1>
-            <h2>WORK IN PROGRESS</h2>
-            <h3>HTML</h3>
-            <div class="row">
-                <div class="col-5">
 
-                    <p>Basic HTML code</p>
-                    <p>This time we create a form. JS then searches through the form.</p>
-                </div>
 
-                <div class="col-7">
-                    <pre class="example"><span class="code-html">&lt;h1&gt;Notes App&lt;/h1&gt;
+
+
+
+
+
+
+    <section class="container">
+        <h1>Note taking App (basic functionality)</h1>
+        <h2>WORK IN PROGRESS</h2>
+        <h3>HTML</h3>
+        <div class="row">
+            <div class="col-5">
+
+                <p>Basic HTML code</p>
+                <p>This time we create a form. JS then searches through the form.</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-html">&lt;h1&gt;Notes App&lt;/h1&gt;
 &lt;h2&gt;Take notes and never forget&lt;/h2&gt;
-
-&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;
+&lt;input id="search-text" type="text" placeholder="Filter notes"&gt;
 &lt;div id="notes"&gt;&lt;/div&gt;
 &lt;button id="create-note"&gt;Create Note&lt;/button&gt;
 
-&lt;form id="name-form"&gt;
-  &lt;input type="text" placeholder="First name" name="firstName"&gt;
-  &lt;button&gt;Submit&lt;/button&gt;
-&lt;/form&gt;</pre>
-        </div>
+&lt;label&gt;
+    &lt;input id="for-fun" type="checkbox"&gt; Check me for fun
+&lt;/label&gt;</pre>
             </div>
+        </div>
 
 
 
 
-            <h3>JS</h3>
-                    <div class="row">
-                        <div class="col-5">
+        <h3>JS</h3>
+        <div class="row">
+            <div class="col-5">
 
-                            <p>lkjljljl</p>
-                        </div>
-                        <div class="col-7">
-                            <pre class="example"><span class="code-js">const notes = [{
+                <p>lkjljljl</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js">const notes = [{
     title: 'my next trip',
     body: 'I would like to go to Spain'
 }, {
@@ -127,16 +131,10 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
     renderNotes(notes, filters)
 })
 
-document.querySelector('#name-form').addEventListener('submit', function (e) {
-    <span class="code-comment">//cancel default submit</span>
-    e.preventDefault()
-    console.log(e.target.elements.firstName.value)
-    <span class="code-comment">//access form data
-    //the elements property allows you to access all the fields in the form
-    //this specifically grabs the firstName element using the value property
-    //it is then set to an empty string. This is so the field is cleared when
-    //submit button is clicked</span>
-    e.target.elements.firstName.value = ''
+<span class="code-comment">//target the checkbox
+//the evento listen for is called change</span>
+document.querySelector('#for-fun').addEventListener('change', function (e) {
+    console.log(e.target.checked)
 })</pre></div>
         </div>
 
@@ -149,16 +147,10 @@ document.querySelector('#name-form').addEventListener('submit', function (e) {
 
 
 
+        </body>
 
+</html>
 
+</body>
 
-
-
-
-
-
-            </body>
-        </html>
-
-    </body>
 </html>
