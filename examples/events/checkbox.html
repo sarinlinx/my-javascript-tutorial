@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+    <title>Checkbox</title>
+</head>
+    <body>
+<a href="../../index.html">Home page</a>
+
+<section class="container">
+    <div class="row">
+        <div class="col">
+
+          <label>
+              <input id="for-fun" type="checkbox"> Check me for fun
+          </label>
+
+
+          <script>document.querySelector('#for-fun').addEventListener('change', function (e) {
+    console.log(e.target.checked)
+})</script>
+
+</div></div></section>
+
+
+
+
+<section class="container">
+    <h1>Note taking App (basic functionality)</h1>
+    <h3>HTML</h3>
+    <div class="row">
+        <div class="col-5">
+
+            <p>Clicking the checkbox displays TRUE or FALSE in the console.</p>
+        </div>
+
+        <div class="col-7">
+            <pre class="example"><span class="code-html">&lt;label&gt;
+    &lt;input id="for-fun" type="checkbox"&gt; Check me for fun
+&lt;/label&gt;</pre>
+</div>
+    </div>
+
+
+
+
+    <h3>JS</h3>
+            <div class="row">
+                <div class="col-5">
+
+                    <p>Open console to view state of Checkbox. CHECKED=TRUE</p>
+                </div>
+                <div class="col-7">
+                    <pre class="example"><span class="code-js"><span class="code-comment">//target the checkbox
+//the evento listen for is called change</span>
+document.querySelector('#for-fun').addEventListener('change', function (e) {
+    console.log(e.target.checked)
+})</pre></div>
+</div>
+
+
+</section>
+
+
+
+    </body>
+</html>

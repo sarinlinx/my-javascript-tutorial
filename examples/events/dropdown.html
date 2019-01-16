@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+    <title>Checkbox</title>
+</head>
+    <body>
+<a href="../../index.html">Home page</a>
+
+<section class="container">
+    <div class="row">
+        <div class="col">
+
+          <select id="filter-by">
+              <option value="byEdited">Sort by last edited</option>
+              <option value="byCreated">Sort by recently created</option>
+              <option value="alphabetical">Sort alphabetically</option>
+          </select>
+
+
+          <script>
+          //target dropdown
+          //check for its change event
+          document.querySelector('#filter-by').addEventListener('change', function (e) {
+              //this targets the value assigned to the dropdown option in HTML
+              console.log(e.target.value)
+          })</script>
+
+</div></div></section>
+
+
+
+
+<section class="container">
+    <h1>Note taking App (basic functionality)</h1>
+    <h3>HTML</h3>
+    <div class="row">
+        <div class="col-5">
+
+            <p>Clicking the dropdown displays the value assigned to it in the console.</p>
+        </div>
+
+        <div class="col-7">
+            <pre class="example"><span class="code-html">&lt;select id="filter-by"&gt;
+  &lt;option value="byEdited"&gt;Sort by last edited&lt;/option&gt;
+  &lt;option value="byCreated"&gt;Sort by recently created&lt;/option&gt;
+  &lt;option value="alphabetical"&gt;Sort alphabetically&lt;/option&gt;
+&lt;/select&gt;</pre>
+</div>
+    </div>
+
+
+
+
+    <h3>JS</h3>
+            <div class="row">
+                <div class="col-5">
+
+                    <p>Open console to view the value of the current dropdown</p>
+                </div>
+                <div class="col-7">
+                    <pre class="example"><span class="code-js"><span class="code-comment">//target dropdown
+//check for its change event</span>
+document.querySelector('#filter-by').addEventListener('change', function (e) {
+  <span class="code-comment">//this targets the value assigned to the dropdown option in HTML</span>
+  console.log(e.target.value)
+})</pre></div>
+</div>
+
+
+</section>
+
+
+
+    </body>
+</html>
