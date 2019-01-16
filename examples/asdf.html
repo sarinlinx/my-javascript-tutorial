@@ -14,23 +14,25 @@
 </head>
 
 <body>
-    <a href="../index.html">Home page</a>
+    <a href="../../index.html">Home page</a>
 
 
     <section class="container">
         <h1>Example</h1>
+
         <div class="row">
             <div class="col">
                 <p>This filters the list of Array Object 'title' properties.</p>
             </div>
         </div>
+
         <h4>Example</h4>
         <div class="row">
             <div class="col">
                 <input id="search-text" type="text" placeholder="search for text">
 
                 <label>
-                    <input type="checkbox" id="hide-completed"> Hide completed
+                    <input type="checkbox" id="hide-completed">Hide completed
                 </label>
 
                 <div id="notes"></div>
@@ -80,10 +82,12 @@
     body: 'Get a new seat'
 }]
 
-<span class="code-comment">//<span class="standout">Create Object to store the latest filter</span>
+<span class="code-comment">//<span class="standout">Create Object to store the latest filter and checkbox state</span>
 //this value changes over time</span>
 const filters = {
-    searchText: ''
+    searchText: '',
+    <span class="code-comment">//Add property to confirm the checkbox state</span>
+    hideCompleted: false
 }
 
 <span class="code-comment">//<span class="standout">Create function to display text, then filter</span>
@@ -96,8 +100,11 @@ const renderNotes = function (x, y) {
     //z stores all the Objects in the Array</span>
     const filteredNotes = x.filter(function (z) {
         <span class="code-comment">//if the Object title includes the typed
-        //text from the search box, return the Object title</span>
-        return z.title.toLowerCase().includes(y.searchText.toLowerCase())
+        //text from the search box, return the Object title and checkbox state</span>
+        const searchTextMatch = z.title.toLowerCase().includes(filters.searchText.toLowerCase())
+        const hideCompletedMatch = !filters.hideCompleted || !z.completed
+
+        return searchTextMatch && hideCompletedMatch
     })
 
     <span class="code-comment"><span class="standout">//create new array to store # of reamining todos</span>
@@ -148,6 +155,23 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
     <span class="code-comment">//run function to show updated/remaining text</span>
     renderNotes(notes, filters)
 })
+
+<span class="code-comment">//Push new text to Notes Array when Submit button is clicked</span>
+document.querySelector('#new-todo').addEventListener('submit', function (e) {
+    e.preventDefault()
+    notes.push({
+        title: e.target.elements.text.value,
+        completed: false
+    })
+    renderNotes(notes, filters)
+    e.target.elements.text.value = ''
+})
+
+<span class="code-comment">//Confirm the checkbox state, then run renderNotes()</span>
+document.querySelector('#hide-completed').addEventListener('change', function (e) {
+    filters.hideCompleted = e.target.checked
+    renderNotes(notes, filters)
+})
 </span></pre>
             </div>
         </div>
@@ -162,7 +186,7 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
 
 
     <script>
-        const notes = [{
+        let notes = [{
             title: 'my next trip',
             body: 'I would like to go to Spain',
             completed: true
@@ -178,14 +202,24 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
 
         const filters = {
             searchText: '',
-//Add property to confirm the checkbox state
             hideCompleted: false
         }
 
+//Check for previously saved localStorage
+//Pick a generic keyname to look for
+const todosJSON = localStorage.getItem('todos')
+//Create if statement to check what storage you get back
+if (todosJSON !== null) {
+  //If the key 'todos' exists in storage,
+  //use parse() to convert it into an Array
+  todos = JSON.parse(todosJSON)
+}
+
+
+
+
         const renderNotes = function(x, y) {
             const filteredNotes = x.filter(function(z) {
-                //return z.title.toLowerCase().includes(y.searchText.toLowerCase())
-//these 3 lines added
                 const searchTextMatch = z.title.toLowerCase().includes(filters.searchText.toLowerCase())
                 const hideCompletedMatch = !filters.hideCompleted || !z.completed
 
@@ -222,11 +256,15 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
                 title: e.target.elements.text.value,
                 completed: false
             })
+//write to localStorage
+//The value passes the converted string of the Array
+localStorage.setItem('todos', JSON.stringify(notes))
+
+
             renderNotes(notes, filters)
             e.target.elements.text.value = ''
         })
 
-//new
         document.querySelector('#hide-completed').addEventListener('change', function (e) {
             filters.hideCompleted = e.target.checked
             renderNotes(notes, filters)

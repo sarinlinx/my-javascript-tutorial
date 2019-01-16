@@ -90,6 +90,17 @@ const filters = {
     hideCompleted: false
 }
 
+<span class="code-comment">//<span class="standout">Check for local storage, if exists, update</span>
+//Check for previously saved localStorage
+//Pick a generic keyname to look for</span>
+const todosJSON = localStorage.getItem('todos')
+<span class="code-comment">//Create if statement to check what storage you get back</span>
+if (todosJSON !== null) {
+  <span class="code-comment">//If the key 'todos' exists in storage,
+  //use parse() to convert it into an Array</span>
+  todos = JSON.parse(todosJSON)
+}
+
 <span class="code-comment">//<span class="standout">Create function to display text, then filter</span>
 //x and y correspond to the args used when calling the function
 //y is what is typed into the search box</span>
@@ -163,6 +174,10 @@ document.querySelector('#new-todo').addEventListener('submit', function (e) {
         title: e.target.elements.text.value,
         completed: false
     })
+    <span class="code-comment">//write to localStorage
+    //The value passes the converted string of the Array</span>
+    localStorage.setItem('todos', JSON.stringify(notes))
+
     renderNotes(notes, filters)
     e.target.elements.text.value = ''
 })
@@ -205,6 +220,19 @@ document.querySelector('#hide-completed').addEventListener('change', function (e
             hideCompleted: false
         }
 
+
+        //Check for previously saved localStorage
+        //Pick a generic keyname to look for
+        const todosJSON = localStorage.getItem('todos')
+        //Create if statement to check what storage you get back
+        if (todosJSON !== null) {
+          //If the key 'todos' exists in storage,
+          //use parse() to convert it into an Array
+          todos = JSON.parse(todosJSON)
+        }
+
+
+
         const renderNotes = function(x, y) {
             const filteredNotes = x.filter(function(z) {
                 const searchTextMatch = z.title.toLowerCase().includes(filters.searchText.toLowerCase())
@@ -243,6 +271,7 @@ document.querySelector('#hide-completed').addEventListener('change', function (e
                 title: e.target.elements.text.value,
                 completed: false
             })
+            localStorage.setItem('todos', JSON.stringify(notes))
             renderNotes(notes, filters)
             e.target.elements.text.value = ''
         })

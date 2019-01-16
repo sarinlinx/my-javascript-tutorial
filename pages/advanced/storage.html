@@ -9,63 +9,209 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../../_css/style.css">
-
     <title>Storage</title>
 </head>
 
 <body>
     <a href="../../index.html">Home page</a>
 
-
-
     <section class="container">
-        <h1>Storage</h1>
         <div class="row">
             <div class="col">
-                <p>lkjljljljlkj</p>
+
+
+
+
+                <script>
+                </script>
 
             </div>
         </div>
     </section>
+
 
 
 
     <section class="container">
-
+        <h1>Basics</h1>
+        <h3>Overview</h3>
         <div class="row">
-            <div class="col-6">
-                <p>lkjlkjkljlkj</p>
+            <div class="col">
 
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">lkjkljlkjkljlk</pre>
+                <p>Any data storage must be able to perform 4 basic operations</p>
+                <p>CRUD</p>
+                <ul>
+                    <li>Create</li>
+                    <li>Read</li>
+                    <li>Update</li>
+                    <li>Delete</li>
+                </ul>
+                <p>All methods use a Global variable named localStorage.</p>
+                <p>Local storage only stores string values. You can store Array data, but you need to convert it to a string first.</p>
             </div>
         </div>
 
+        <h3>Viewing local storage in Chrome's Dev Tools</h3>
+        <div class="row">
+            <div class="col">
+
+                <p>Open Dev Tools. There is a tab called 'Storage'. Click this to view what is currently in your local storage.</p>
+                <p>On this tab, click the 'Local Storage', then click the URL to view its data.</p>
+                <p>NOTE: If you change the value here, it updates the actual local storage value.</p>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <h1>Using localStorage</h1>
+        <h3>Create or update storage</h3>
+        <div class="row">
+            <div class="col-5">
+
+                <p>Use setItem() to create or update storage.</p>
+                <p>Pass two arguments: key and value</p>
+                <p>The key in this one is named location.</p>
+                <p>The value in this example is Philadelphia.</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-js">localStorage.setItem('location', 'Philadelphia')</pre>
+            </div>
+        </div>
+
+        <h3>Read storage</h3>
+        <div class="row">
+            <div class="col-5">
+
+                <p>Use getItem() to read storage.</p>
+                <p>This just takes 1 arg which is the key.</p>
+                <p>This example looks for the location that was stored.</p>
+                <p>The value is what comes back from this method.</p>
+                <p>This example prints to the console: Philadelphia</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-js">localStorage.setItem('location', 'Philadelphia')
+console.log(localStorage.getItem('location'))</pre>
+            </div>
+        </div>
+
+        <h3>Delete storage</h3>
+        <div class="row">
+            <div class="col-5">
+
+                <p>Use removeItem().</p>
+                <p>This just takes 1 arg which is the key.</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-js">localStorage.removeItem('location'))</pre>
+            </div>
+        </div>
+
+        <h3>Clear all data in local storage</h3>
+        <div class="row">
+            <div class="col-5">
+
+                <p>Use clear().</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-js">localStorage.clear()</pre>
+            </div>
+        </div>
+
+
+
+
+        <h1>Storing an Object</h1>
+        <h3>Convert the Object into a string</h3>
+        <div class="row">
+            <div class="col-5">
+
+                <p>To store an Object, you need to first convert it to a string.</p>
+                <p>Use JSON on the global variable.</p>
+                <p>You then use two methods of JSON. stringify() and parse()</p>
+                <p>stringify() takes in your Object or Array and returns a string.</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-js">const user = {
+  name: 'Chris',
+  age:  '27'
+}
+
+const userJSON = JSON.stringify(user)
+console.log(userJSON)</span></pre>
+            </div>
+        </div>
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-5">
+
+                <p>Output:</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-output">{"name":"Chris","age":"27"}</span></pre></div>
+        </div>
+
+        <h3>Save the string data into local storage</h3>
+        <div class="row">
+            <div class="col-5">
+
+                <p>Use setItem.</p>
+                <p>The key can be anything.</p>
+                <p>The value is the variable name of the Object's string you saved.</p>
+                <p>View local storage in your browser and you'll see the full string content.</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-js">localStorage.setItem('user', userJSON)</span></pre>
+            </div>
+        </div>
+
+
+        <h1>Printing the stored string data</h1>
+        <h3>Convert the Object into a string</h3>
+        <div class="row">
+            <div class="col-5">
+
+                <p>Use getItem() to read the data.</p>
+                <p>Since 'users' was already saved, retrieve 'users'.</p>
+                <p>Convert the JSON string back into an Object using parse(). You put the variable you stored the JSON data in as its argument.</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-js">const getUser = localStorage.getItem('user')
+const userData = JSON.parse(userJSON)
+console.log(`${userData.name} is {userData.age}`)</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <script>
+            localStorage.setItem('location', 'Philadelphia')
+            console.log(localStorage.getItem('location'))
+        </script>
     </section>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="../../_js/jquery.js"></script>
-    <script src="../../_js/bootstrap.bundle.js"></script>
 </body>
 
 </html>

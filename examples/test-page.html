@@ -11,59 +11,21 @@
 
 <body>
 
-  <div class="row">
-      <div class="col">
-          <input id="search-text" type="text" placeholder="search for text">
-          <div id="notes"></div>
-      </div>
-  </div>
 
 </body>
 
 <script>
 
-const filters = {
-    searchText: ''
+const user = {
+  name: 'Chris',
+  age:  '27'
 }
 
-const notes = [{
-    title: 'my next trip',
-    body: 'I would like to go to Spain'
-}, {
-    title: 'Habbits to work on',
-    body: 'Exercise. Eating a bit better.'
-}, {
-    title: 'Office modification',
-    body: 'Get a new seat'
-}]
-
-
-
-const renderNotes = function(x, y) {
-  console.log(x)
-  console.log(y)
-  /*  const filteredNotes = x.filter(function(z) {
-        return z.title.toLowerCase().includes(y.searchText.toLowerCase())
-    })
-
-    document.querySelector('#notes').innerHTML = ''
-
-    filteredNotes.forEach(function(note) {
-        const noteEl = document.createElement('p')
-        noteEl.textContent = note.title
-        document.querySelector('#notes').appendChild(noteEl)
-    })
-*/
-}
-
-renderNotes(filters,notes)
-/*
-document.querySelector('#search-text').addEventListener('input', function(e) {
-    filters.searchText = e.target.value
-    renderNotes(notes, filters)
-})
-*/
-
+const userJSON = JSON.stringify(user)
+localStorage.setItem('user', userJSON)
+const getUser = localStorage.getItem('user')
+const userData = JSON.parse(userJSON)
+console.log(`${userData.name} is ${userData.age}`)
 
 </script>
 
