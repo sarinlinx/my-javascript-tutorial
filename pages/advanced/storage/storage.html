@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../../_css/style.css">
     <title>Storage</title>
 </head>
 
 <body>
-    <a href="../../index.html">Home page</a>
+    <a href="../../../index.html">Home page</a>
 
     <section class="container">
         <div class="row">
@@ -31,13 +31,20 @@
 
 
 
-
     <section class="container">
         <h1>Basics</h1>
         <h3>Overview</h3>
         <div class="row">
             <div class="col">
+                <p>There are two types of web storage APIS.</p>
+                <ul>
+                    <li>localStorage - data persits until you remove it</li>
+                    <li>sessionStorage - data persists until you close the browser</li>
+                </ul>
+                <p>Use localStorage to control how long the state of your application remains. You can use timers to set the time frame of how long its stored. Non-sesitive data is also good for localStorage.</p>
+                <p>Use sessionStorage when privacy of data is a concern.</p>
 
+<h3>CRUD</h3>
                 <p>Any data storage must be able to perform 4 basic operations</p>
                 <p>CRUD</p>
                 <ul>
@@ -67,7 +74,8 @@
 
 
 
-        <h1>Using localStorage</h1>
+        <h1>localStorage</h1>
+        <h2>Basics</h2>
         <h3>Create or update storage</h3>
         <div class="row">
             <div class="col-5">
@@ -128,7 +136,7 @@ console.log(localStorage.getItem('location'))</pre>
 
 
 
-        <h1>Storing an Object</h1>
+        <h2>Storing an Object</h2>
         <h3>Convert the Object into a string</h3>
         <div class="row">
             <div class="col-5">
@@ -176,8 +184,8 @@ console.log(userJSON)</span></pre>
         </div>
 
 
-        <h1>Printing the stored string data</h1>
-        <h3>Convert the Object into a string</h3>
+
+        <h2>Printing the stored string data by converting the Object into a string</h2>
         <div class="row">
             <div class="col-5">
 
@@ -202,11 +210,143 @@ console.log(`${userData.name} is {userData.age}`)</span></pre>
 
 
 
+        <section class="container">
+            <h1>sessionStorage</h1>
+            <h2>Methods</h2>
+            <div class="row">
+                <div class="col">
+                    <p>The methods for sessionStorage are the same as localStorage. For example.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <p>set</p>
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">sessionStorage.setItem('location', 'Philadelphia')</span></pre>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <p>get</p>
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">sessionStorage.getItem('location')</span></pre>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <p>remove</p>
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">sessionStorage.removeItem('location')</span></pre>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <p>clear</p>
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">sessionStorage.clear()</span></pre>
+                </div>
+            </div>
+
+            <h2>Basics</h2>
+            <h5 id="title"></h5>
+
+            <form>
+                <label for="myName">Enter your name:</label>
+                <input id="sessionName" type="text" required>
+                <input id="submitName" type="submit" value="Click Here">
+                <button id="removeName" type="submit">Remove</button>
+            </form>
+
+            <h3>HTML</h3>
+            <div class="row">
+                <div class="col-5">
+
+                    <p>Create a form with an input field and a submit and remove button</p>
+                </div>
+
+                <div class="col-7">
+                    <pre class="example"><span class="code-html">&lt;form&gt;
+  &lt;label for="myName"&gt;Enter your name:&lt;/label&gt;
+  &lt;input id="sessionName" type="text" required&gt;
+  &lt;input id="submitName" type="submit" value="Click Here"&gt;
+  &lt;button id="removeName" type="submit"&gt;Remove&lt;/button&gt;
+&lt;/form&gt;</pre>
+                </div>
+            </div>
+
+            <h3>JS</h3>
+            <div class="row">
+                <div class="col-5">
+
+                    <p>This will set in sessionStorage any text entered.</p>
+                    <p>The remove button removes the current sessionStorage</p>
+                </div>
+
+                <div class="col-7">
+                    <pre class="example"><span class="code-js">const input = document.querySelector('#sessionName')
+const form = document.querySelector('form')
+const submit = document.querySelector('#submitName')
+const remove = document.querySelector('#removeName')
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+})
+
+submit.addEventListener('click', () => {
+    sessionStorage.setItem('myName', input.value)
+})
+
+remove.addEventListener('click', () => {
+    sessionStorage.removeItem('myName')
+})
+
+const name = sessionStorage.getItem('myName')
+const h1 = document.querySelector('#title')
+
+//if name key exists in sessionStorage, ternary
+name ? h5.textContent = `Welcome ${myName}` : h5.textContent = 'So sad nobody to welcome'</pre>
+                </div>
+            </div>
+        </section>
+
+
 
 
         <script>
+            //localStorage example
             localStorage.setItem('location', 'Philadelphia')
             console.log(localStorage.getItem('location'))
+
+            //sessionStorage example
+            const input = document.querySelector('#sessionName')
+            const form = document.querySelector('form')
+            const submit = document.querySelector('#submitName')
+            const remove = document.querySelector('#removeName')
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault()
+            })
+
+            submit.addEventListener('click', () => {
+                sessionStorage.setItem('myName', input.value)
+            })
+
+            remove.addEventListener('click', () => {
+                sessionStorage.removeItem('myName')
+            })
+
+            const name = sessionStorage.getItem('myName')
+            const h1 = document.querySelector('#title')
+
+            //if name key exists in sessionStorage, ternary
+            name ? h1.textContent = `Welcome ${myName}` : h1.textContent = 'So sad nobody to welcome'
         </script>
     </section>
 

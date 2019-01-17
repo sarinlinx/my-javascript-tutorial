@@ -11,22 +11,104 @@
 
 <body>
 
+    <h1 id="title"></h1>
 
+    <form class="new-contact">
+        <div>
+            <label for="firstName">Enter your first name:</label>
+            <input id="firstName" type="text" required>
+        </div>
+        <div>
+            <label for="lastName">Enter your first name:</label>
+            <input id="lastName" type="text" required>
+        </div>
+        <button id="addName">New contact</button>
+
+        <section class="contacts">
+            <ul>
+            </ul>
+        </section>
+    </form>
 </body>
 
+
+
+
+
 <script>
+    let db;
+    const firstNameInput = document.querySelector('#firstName')
+    const lastNameInput = document.querySelector('#lastName')
+    const form = document.querySelector('form')
 
-const user = {
-  name: 'Chris',
-  age:  '27'
-}
+    //create database
+    window.onload = () => {
+        //contacts is name of database
+        let request = window.indexedDB.open('contacts', 1)
 
-const userJSON = JSON.stringify(user)
-localStorage.setItem('user', userJSON)
-const getUser = localStorage.getItem('user')
-const userData = JSON.parse(userJSON)
-console.log(`${userData.name} is ${userData.age}`)
+        //if there's an error, run function
+        request.onerror = function() {
+            console.log('Database failed to open')
+        }
 
+        //if successful
+        request.onsuccess = function() {
+            console.log('Database opened successfully')
+            //pass results in database to db
+            db = request.result
+        }
+
+        //anything in here only needs to run once to define the schema
+        request.onupgradeneeded = function(e) {
+            let db = e.target.result;
+
+            let objectStore = db.createObjectStore('contacts', {
+                keyPath: 'id',
+                autoIncrement: true
+            })
+            //create two items in db
+            objectStore.createIndex('firstName', 'firstName', {
+                unique: false
+            })
+            objectStore.createIndex('lastName', 'lastName', {
+                unique: false
+            })
+            console.log('Database setup complete')
+        }
+
+
+    //when form is submitted, run function addData()
+    form.onsubmit = addData
+
+    //Add function to add new data
+    function addData(e) {
+        //prevent browser from refreshing
+        e.preventDefault()
+        //create Object which holds values in form
+        let newItem = {
+            firstName: firstNameInput.value,
+            lastName: lastNameInput.value
+        }
+
+        //create Object that will hold database and transaction
+        let transaction = db.transaction(['contacts'], 'readwrite')
+        //holds database info
+        let objectStore = transaction.objectStore('contacts')
+        let request = objectStore.add(newItem)
+        //check if everythin worked
+        request.onsuccess = () => {
+            //clear form once everything has been added to database
+            firstNameInput.value = ''
+            lastNameInput.value = ''
+        }
+        transaction.oncomplete = () => {
+            console.log('Transaction cmpletel on the database')
+        }
+        transaction.onerror = () => {
+            console.log('Transaction not completed, error')
+        }
+    }
+  }
 </script>
 
 </html>
