@@ -34,6 +34,9 @@ document.querySelector('#search-text').addEventListener('input', function(e) {
 document.querySelector('#new-todo').addEventListener('submit', function (e) {
     e.preventDefault()
     notes.push({
+        //create id property for UUID
+        //the value is the function that returns the UUID
+        id: uuidv4(),
         title: e.target.elements.text.value,
         completed: false
     })

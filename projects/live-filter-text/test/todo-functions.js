@@ -11,6 +11,20 @@ const savedTodos = function(todos) {
   localStorage.setItem('todos', JSON.stringify(notes))
 }
 
+//Create function to remove an item by its UUID
+const removeTodo = function(id) {
+  //
+  const todoIndex = notes.findIndex(function(notes) {
+    //return true if the UUID = the id passed in
+    return notes.id === id
+  })
+
+  if (todoIndex > -1) {
+    notes.splice(todoIndex, 1)
+  }
+}
+
+
 const renderNotes = function(x, y) {
   const filteredNotes = x.filter(function(z) {
     const searchTextMatch = z.title.toLowerCase().includes(filters.searchText.toLowerCase())
@@ -20,17 +34,13 @@ const renderNotes = function(x, y) {
   })
 
 
-
   const incompleteTodos = filteredNotes.filter(function(z) {
     return !z.completed
   })
 
 
-
   document.querySelector('#notes').innerHTML = ''
   document.querySelector('#notes').appendChild(generateSummaryDOM(incompleteTodos))
-
-
 
   filteredNotes.forEach(function(i) {
     document.querySelector('#notes').appendChild(generateTodoDOM(i))
@@ -38,37 +48,34 @@ const renderNotes = function(x, y) {
 }
 
 
-//Print content to page
 const generateTodoDOM = function(i) {
-
-  //Create a root div tag, this is what everything is appended to
   const todoEl = document.createElement('div')
-  //Create checkbox
   const checkbox = document.createElement('input')
-  //Create element for todo text
   const todoText = document.createElement('span')
-  //Create remove button
   const removeButton = document.createElement('button')
 
-  //set the checkbox
   checkbox.setAttribute('type', 'checkbox')
-  //Print to page
   todoEl.appendChild(checkbox)
-  //set todo text
   todoText.textContent = i.title
-  //Print to page
   todoEl.appendChild(todoText)
-  //set remove button
   removeButton.textContent = 'x'
-  //print button to page
   todoEl.appendChild(removeButton)
+
+  //Create event to remove Object when button is clicked
+  removeButton.addEventListener('click', function() {
+    //call function above to remove the todo item by UUID
+    //i comes from the parent scope
+    removeTodo(i.id)
+    //save todos
+    savedTodos(notes)
+    renderNotes(notes, filters)
+  })
+
 
   return todoEl
 }
 
 
-
-///Get the DOM elements for a list summary
 const generateSummaryDOM = function(incompleteTodos) {
   const summary = document.createElement('h2')
   summary.textContent = `You have ${incompleteTodos.length} todos left`

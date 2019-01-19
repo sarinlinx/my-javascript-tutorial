@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../../../_css/style.css">
+    <title>UUID</title>
+</head>
+
+<body>
+    <a href="../../../../index.html">Home page</a>
+
+    <h1>UUID</h1>
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <p>A UUID is a Universally Unique Identifier.</p>
+                <p>You can use this in your script to give each item a unique ID before calling it in JavaScript.</p>
+
+
+            </div>
+        </div>
+        <h2>How to add a UUID?</h2>
+        <div class="row">
+            <div class="col">
+                <p>First, add a 3rd party script to your page. Visit the following site:</p>
+                <ul>
+                    <li><a href="https://github.com/kelektiv/node-uuid#quickstart---browser-ready-versions">node-uuid Browser Ready Versions</a></li>
+                </ul>
+                <p>The different versions are better, they are just different ways to generate a Unique ID.</p>
+                <p>For example, version 4 is a random generator.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="container">
+        <h1>Adding the script tag</h1>
+        <div class="row">
+            <div class="col">
+                <p>Visit <a href="https://github.com/kelektiv/node-uuid#quickstart---browser-ready-versions">node-uuid Browser Ready Versions</a> and choose version 4 to create a random UUID.</p>
+            </div>
+        </div>
+
+        <h3>The offical version doesn't work</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Visit the site to obtain the script tag</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">&lt;script src="http://wzrd.in/standalone/uuid%2Fv4@latest"&gt;&lt;/script&gt;
+&lt;script&gt;
+uuidv4(); <span class="code-comment">// -> v4 UUID</span>
+&lt;/script&gt;</pre>
+            </div>
+        </div>
+
+        <h3>Try this instead</h3>
+        <div class="row">
+            <div class="col">
+                <p>Visit the <a href="https://gist.github.com/andrewjmead/d64087c46129fc58df67c361cb01e889">Andrew Mead site</a> to obtain the script tag</p>
+                <p>Here is the raw code.</p>
+                <p><a href="uuidv4.js" target="_blank">uuidv4.js</a></p>
+            </div>
+
+        </div>
+
+
+        <h3>Call the script</h3>
+        <div class="row">
+            <div class="col-5">
+
+                <p>Add the script to your HTML code. Then call it in the JS like this:</p>
+                <p>Open your console to see a unique ID on every page refresh.</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-js">console.log(uuidv4())</div>
+            </div>
+        </section>
+
+
+
+
+<script src="uuidv4.js"></script>
+<script>console.log(uuidv4())</script>
+
+</body>
+
+</html>

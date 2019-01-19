@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_css/style.css">
 
 
-    <title>Live Filter Text</title>
+    <title>Test</title>
 </head>
 
 <body>
@@ -62,7 +62,9 @@
 
 &lt;label&gt;
     &lt;input type="checkbox" id="hide-completed"&gt; Hide completed
-&lt;/label&gt;</span></pre></div>
+&lt;/label&gt;
+
+&lt;script src="uuidv4.js"&gt;&lt;/script&gt;</span></pre></div>
         </div>
 
 
@@ -119,6 +121,9 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
 document.querySelector('#new-todo').addEventListener('submit', function (e) {
     e.preventDefault()
     notes.push({
+        <span class="code-comment">//create id property for UUID
+        //the value is the function that returns the UUID</span>
+        id: uuidv4(),
         title: e.target.elements.text.value,
         completed: false
     })
@@ -166,6 +171,18 @@ const savedTodos = function(todos) {
   <span class="code-comment">//write to localStorage
   //The value passes the converted string of the Array</span>
   localStorage.setItem('todos', JSON.stringify(notes))
+}
+
+<span class="code-comment">//Create function to remove an item by its UUID</span>
+const removeTodo = function(id) {
+  const todoIndex = notes.findIndex(function(notes) {
+    <span class="code-comment">//return true if the UUID = the id passed in</span>
+    return notes.id === id
+  })
+
+  if (todoIndex > -1) {
+    notes.splice(todoIndex, 1)
+  }
 }
 
 <span class="code-comment">//<span class="standout">Create function to display text, then filter</span>
@@ -239,6 +256,16 @@ const generateTodoDOM = function(i) {
   <span class="code-comment">//print button to page</span>
   todoEl.appendChild(removeButton)
 
+  <span class="code-comment">//Create event to remove Object when button is clicked</span>
+  removeButton.addEventListener('click', function() {
+    <span class="code-comment">//call function above to remove the todo item by UUID
+    //i comes from the parent scope</span>
+    removeTodo(i.id)
+    <span class="code-comment">//save todos</span>
+    savedTodos(notes)
+    renderNotes(notes, filters)
+  })
+
   return todoEl
 }
 
@@ -262,6 +289,7 @@ const generateSummaryDOM = function(incompleteTodos) {
 
     <script src="../../../_js/jquery.js"></script>
     <script src="../../../_js/bootstrap.bundle.js"></script>
+    <script src="../../../_files/uuidv4.js"></script>
 </body>
 
 </html>
