@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../../_css/style.css">
 
+
     <title>Live Filter Text</title>
 </head>
 
@@ -64,23 +65,37 @@
 &lt;/label&gt;</span></pre></div>
         </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <h3>JS</h3>
         <div class="row">
-            <div class="col-4">
-                <p>This project displays text blocks.</p>
-                <p>As the user types into the input field, the text section is updated to display any remaining blocks that contain the input text.</p>
+            <div class="col">
+                <p>The following code blocks have been refactored to simplify the JavaScript.</p>
             </div>
-            <div class="col-8">
-                <pre class="example"><span class="code-js">const notes = [{
-    title: 'my next trip',
-    body: 'I would like to go to Spain'
-}, {
-    title: 'Habbits to work on',
-    body: 'Exercise. Eating a bit better.'
-}, {
-    title: 'Office modification',
-    body: 'Get a new seat'
-}]
+          </div>
+
+
+<h3>todos.js</h3>
+          <div class="row">
+            <div class="col">
+                <pre class="example"><span class="code-js"><span class="code-comment">//call function from other file</span>
+let notes = getSavedTodos()
 
 <span class="code-comment">//<span class="standout">Create Object to store the latest filter and checkbox state</span>
 //this value changes over time</span>
@@ -90,15 +105,67 @@ const filters = {
     hideCompleted: false
 }
 
-<span class="code-comment">//<span class="standout">Check for local storage, if exists, update</span>
-//Check for previously saved localStorage
-//Pick a generic keyname to look for</span>
-const todosJSON = localStorage.getItem('todos')
-<span class="code-comment">//Create if statement to check what storage you get back</span>
-if (todosJSON !== null) {
-  <span class="code-comment">//If the key 'todos' exists in storage,
-  //use parse() to convert it into an Array</span>
-  todos = JSON.parse(todosJSON)
+<span class="code-comment">//Run original function passing in 'notes' Array Object along with the 'filters' Object</span>
+renderNotes(notes, filters)
+
+document.querySelector('#search-text').addEventListener('input', function (e) {
+    <span class="code-comment">//Set the 'filters' Object property of 'searchText' to user input</span>
+    filters.searchText = e.target.value
+    <span class="code-comment">//run function to show updated/remaining text</span>
+    renderNotes(notes, filters)
+})
+
+<span class="code-comment">//Push new text to Notes Array when Submit button is clicked</span>
+document.querySelector('#new-todo').addEventListener('submit', function (e) {
+    e.preventDefault()
+    notes.push({
+        title: e.target.elements.text.value,
+        completed: false
+    })
+
+    <span class="code-comment">//call to savedTodos() in other file, passing in notes Array</span>
+    savedTodos(notes)
+
+    renderNotes(notes, filters)
+    e.target.elements.text.value = ''
+})
+
+<span class="code-comment">//Confirm the checkbox state, then run renderNotes()</span>
+document.querySelector('#hide-completed').addEventListener('change', function (e) {
+    filters.hideCompleted = e.target.checked
+    renderNotes(notes, filters)
+})
+</span></pre>
+            </div>
+        </div>
+
+
+
+<h3>todo-functions.js</h3>
+<div class="row">
+<div class="col">
+<pre class="example"><span class="code-js"><span class="code-comment">//getSavedTodos
+//put in function</span>
+
+const getSavedTodos = function() {
+  <span class="code-comment">//Check for previously saved localStorage
+  //Pick a generic keyname to look for</span>
+  const todosJSON = localStorage.getItem('todos')
+  <span class="code-comment">//Create if statement to check what storage you get back</span>
+  if (todosJSON !== null) {
+    <span class="code-comment">//If the key 'todos' exists in storage,
+    //use parse() to convert it into an Array</span>
+    return JSON.parse(todosJSON)
+  } else {
+    return []
+  }
+}
+
+<span class="code-comment">//save todos to localStorage</span>
+const savedTodos = function(todos) {
+  <span class="code-comment">//write to localStorage
+  //The value passes the converted string of the Array</span>
+  localStorage.setItem('todos', JSON.stringify(notes))
 }
 
 <span class="code-comment">//<span class="standout">Create function to display text, then filter</span>
@@ -133,13 +200,7 @@ const renderNotes = function (x, y) {
     //set #notes to empty, otherwise any input would just be added to the
     //bottom of the list</span>
     document.querySelector('#notes').innerHTML = ''
-
-    <span class="code-comment">//Create new h2</span>
-    const summary = document.createElement('h2')
-    <span class="code-comment">//add text to h2</span>
-    summary.textContent = `You have ${incompleteTodos.length} todos left`
-    <span class="code-comment">//append it to the #notes tag</span>
-    document.querySelector('#notes').appendChild(summary)
+    document.querySelector('#notes').appendChild(generateSummaryDOM(incompleteTodos))
 
     <span class="code-comment"><span class="standout">//print to page</span>
     //loop over Array
@@ -148,139 +209,37 @@ const renderNotes = function (x, y) {
     //This causes the original and full Array to print by default
     //As you type, only the Object with the typed text is displayed</span>
     filteredNotes.forEach(function (i) {
-        <span class="code-comment">//create new element</span>
-        const noteEl = document.createElement('p')
-        <span class="code-comment">//Set new element to the Object title property</span>
-        noteEl.textContent = i.title
         <span class="code-comment">//Print to page</span>
-        document.querySelector('#notes').appendChild(noteEl)
+        document.querySelector('#notes').appendChild(generateTodoDOM(i))
     })
 }
 
-<span class="code-comment">//Run original function passing in 'notes' Array Object along with the 'filters' Object</span>
-renderNotes(notes, filters)
+<span class="code-comment">//Get the DOM elements for an individual note</span>
+const generateTodoDOM = function(i) {
+  <span class="code-comment">//create new element</span>
+  const noteEl = document.createElement('p')
+  <span class="code-comment">//Set new element to the Object title property</span>
+  noteEl.textContent = i.title
+  return noteEl
+}
 
-document.querySelector('#search-text').addEventListener('input', function (e) {
-    <span class="code-comment">//Set the 'filters' Object property of 'searchText' to user input</span>
-    filters.searchText = e.target.value
-    <span class="code-comment">//run function to show updated/remaining text</span>
-    renderNotes(notes, filters)
-})
-
-<span class="code-comment">//Push new text to Notes Array when Submit button is clicked</span>
-document.querySelector('#new-todo').addEventListener('submit', function (e) {
-    e.preventDefault()
-    notes.push({
-        title: e.target.elements.text.value,
-        completed: false
-    })
-    <span class="code-comment">//write to localStorage
-    //The value passes the converted string of the Array</span>
-    localStorage.setItem('todos', JSON.stringify(notes))
-
-    renderNotes(notes, filters)
-    e.target.elements.text.value = ''
-})
-
-<span class="code-comment">//Confirm the checkbox state, then run renderNotes()</span>
-document.querySelector('#hide-completed').addEventListener('change', function (e) {
-    filters.hideCompleted = e.target.checked
-    renderNotes(notes, filters)
-})
-</span></pre>
+<span class="code-comment">//Get the DOM elements for a list summary</span>
+const generateSummaryDOM = function(incompleteTodos) {
+  <span class="code-comment">//Create new h2</span>
+  const summary = document.createElement('h2')
+  <span class="code-comment">//add text to h2</span>
+  summary.textContent = `You have ${incompleteTodos.length} todos left`
+  return summary
+}</pre></div>
             </div>
-        </div>
-
     </section>
 
 
+<script src="todo-functions.js"></script>
+    <script src="todos.js"></script>
 
 
 
-
-
-
-    <script>
-        const notes = [{
-            title: 'my next trip',
-            body: 'I would like to go to Spain',
-            completed: true
-        }, {
-            title: 'Habbits to work on',
-            body: 'Exercise. Eating a bit better.',
-            completed: true
-        }, {
-            title: 'Office modification',
-            body: 'Get a new seat',
-            completed: false
-        }]
-
-        const filters = {
-            searchText: '',
-            hideCompleted: false
-        }
-
-
-        //Check for previously saved localStorage
-        //Pick a generic keyname to look for
-        const todosJSON = localStorage.getItem('todos')
-        //Create if statement to check what storage you get back
-        if (todosJSON !== null) {
-          //If the key 'todos' exists in storage,
-          //use parse() to convert it into an Array
-          todos = JSON.parse(todosJSON)
-        }
-
-
-
-        const renderNotes = function(x, y) {
-            const filteredNotes = x.filter(function(z) {
-                const searchTextMatch = z.title.toLowerCase().includes(filters.searchText.toLowerCase())
-                const hideCompletedMatch = !filters.hideCompleted || !z.completed
-
-                return searchTextMatch && hideCompletedMatch
-            })
-
-            const incompleteTodos = filteredNotes.filter(function(z) {
-                return !z.completed
-            })
-
-            document.querySelector('#notes').innerHTML = ''
-
-            const summary = document.createElement('h2')
-            summary.textContent = `You have ${incompleteTodos.length} todos left`
-            document.querySelector('#notes').appendChild(summary)
-
-            filteredNotes.forEach(function(i) {
-                const noteEl = document.createElement('p')
-                noteEl.textContent = i.title
-                document.querySelector('#notes').appendChild(noteEl)
-            })
-        }
-
-        renderNotes(notes, filters)
-
-        document.querySelector('#search-text').addEventListener('input', function(e) {
-            filters.searchText = e.target.value
-            renderNotes(notes, filters)
-        })
-
-        document.querySelector('#new-todo').addEventListener('submit', function (e) {
-            e.preventDefault()
-            notes.push({
-                title: e.target.elements.text.value,
-                completed: false
-            })
-            localStorage.setItem('todos', JSON.stringify(notes))
-            renderNotes(notes, filters)
-            e.target.elements.text.value = ''
-        })
-
-        document.querySelector('#hide-completed').addEventListener('change', function (e) {
-            filters.hideCompleted = e.target.checked
-            renderNotes(notes, filters)
-        })
-    </script>
 
     <script src="../../_js/jquery.js"></script>
     <script src="../../_js/bootstrap.bundle.js"></script>
