@@ -38,34 +38,7 @@ const renderNotes = function(x, y) {
 }
 
 
-
 //Print content to page
-const generateTodoDOM = function(i) {
-
-  //Create a root div tag, this is what everything is appended to
-  const todoEl = document.createElement('div')
-  //Create checkbox
-  const checkbox = document.createElement('input')
-  //Create element for todo text
-  const todoText = document.createElement('span')
-  //Create remove button
-  const removeButton = document.createElement('button')
-
-  //set the checkbox
-  checkbox.setAttribute('type', 'checkbox')
-  //Print to page
-  todoEl.appendChild(checkbox)
-  //set todo text
-  todoText.textContent = i.title
-  //Print to page
-  todoEl.appendChild(todoText)
-  //set remove button
-  removeButton.textContent = 'x'
-  //print button to page
-  todoEl.appendChild(removeButton)
-
-  return todoEl
-}//Print content to page
 const generateTodoDOM = function(i) {
 
   //Create a root div tag, this is what everything is appended to

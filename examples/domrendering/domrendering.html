@@ -17,42 +17,34 @@
     <a href="../../index.html">Home page</a>
 
     <section class="container">
+        <h1>Example</h1>
+
         <div class="row">
             <div class="col">
+                <p>This prints data to the page in the div tag with an id of 'content'.</p>
+            </div>
+        </div>
 
-                <h1>Todos</h1>
-
-                <form id="new-todo">
-                    <input type="text" placeholder="Something to do" name="text">
-                    <button>Add Todo</button>
-                </form>
-
+        <h4>Example</h4>
+        <div class="row">
+            <div class="col">
+                <div id="content"></div>
             </div>
         </div>
     </section>
 
 
-
-
-
-
     <section class="container">
-        <h1>Todo App (basic functionality)</h1>
-
+        <h1>Live Text Filter</h1>
         <h3>HTML</h3>
+
         <div class="row">
-            <div class="col-5">
-
-                <p>Basic HTML code.</p>
-
+            <div class="col-4">
+                <p>HTML code</p>
             </div>
 
-            <div class="col-7">
-                <pre class="example"><span class="code-html">&lt;form id="new-todo"&gt;
-    &lt;input type="text" placeholder="Something to do" name="text"&gt;
-    &lt;button&gt;Add Todo&lt;/button&gt;
-&lt;/form&gt;</pre>
-            </div>
+            <div class="col-8">
+                <pre class="example"><span class="code-html">&lt;div id="content"&gt;&lt;/div&gt;</span></pre></div>
         </div>
 
         <h3>JS</h3>
@@ -63,13 +55,54 @@
                 <p>When submit button is clicked, the text field is cleared</p>
             </div>
             <div class="col-8">
-                <pre class="example"><span class="code-js"><span class="code-comment">//Listen for Submit button click</span>
-document.querySelector('#new-todo').addEventListener('submit', function (e) {
-    <span class="code-comment">//cancel submit button so you can acccess its data</span>
-    e.preventDefault()
-    <span class="code-comment">//clear the input field value</span>
-    e.target.elements.text.value = ''
-})</span></pre></div>
+                <pre class="example"><span class="code-js"><span class="code-comment">//Create Array with data</span>
+  let notes = [{
+      title: 'my next trip',
+      body: 'I would like to go to Spain',
+      completed: true
+  }, {
+      title: 'Habbits to work on',
+      body: 'Exercise. Eating a bit better.',
+      completed: true
+  }, {
+      title: 'Office modification',
+      body: 'Get a new seat',
+      completed: false
+  }]
+
+  <span class="code-comment">//Create var to store function that loops through array
+  //and runs the append function generateTodoDOM</span>
+  const savedTodos = function(x) {
+      x.forEach(function(i) {
+          document.querySelector('#content').appendChild(generateTodoDOM(i))
+      })
+  }
+
+  <span class="code-comment">//Print content to page</span>
+  const generateTodoDOM = function(i) {
+
+  <span class="code-comment">//Create a root div tag, this is what everything is appended to</span>
+  const todoEl = document.createElement('div')
+  <span class="code-comment">//Create checkbox, span, and button</span>
+  const checkbox = document.createElement('input')
+  const todoText = document.createElement('span')
+  const removeButton = document.createElement('button')
+
+  <span class="code-comment">//set the checkbox attribute, span and button content</span>
+  checkbox.setAttribute('type', 'checkbox')
+  todoText.textContent = i.title
+  removeButton.textContent = 'x'
+
+  <span class="code-comment">//Print to page</span>
+  todoEl.appendChild(checkbox)
+  todoEl.appendChild(todoText)
+  todoEl.appendChild(removeButton)
+
+  return todoEl
+}
+
+<span class="code-comment">//Run savedTodos()</span>
+savedTodos(notes)</pre></div>
         </div>
     </section>
 
@@ -78,20 +111,56 @@ document.querySelector('#new-todo').addEventListener('submit', function (e) {
 
 
     <script>
-        document.querySelector('#new-todo').addEventListener('submit', function(e) {
-            e.preventDefault()
-            add something new to todos Array
-            todos.push({
-                text: e.target.elements.text.value,
-                completed: false
+        //Create Array with data
+        let notes = [{
+            title: 'my next trip',
+            body: 'I would like to go to Spain',
+            completed: true
+        }, {
+            title: 'Habbits to work on',
+            body: 'Exercise. Eating a bit better.',
+            completed: true
+        }, {
+            title: 'Office modification',
+            body: 'Get a new seat',
+            completed: false
+        }]
+
+        //Create var to store function that loops through array
+        //and runs the append function generateTodoDOM
+        const savedTodos = function(x) {
+            x.forEach(function(i) {
+                document.querySelector('#content').appendChild(generateTodoDOM(i))
             })
-            renderTodos(todos, filters)
-            e.target.elements.text.value = ''
-        })
+        }
+
+        //Print content to page
+        const generateTodoDOM = function(i) {
+
+            //Create a root div tag, this is what everything is appended to
+            const todoEl = document.createElement('div')
+            //Create checkbox, span, and button
+            const checkbox = document.createElement('input')
+            const todoText = document.createElement('span')
+            const removeButton = document.createElement('button')
+
+            //set the checkbox attribute, span and button content
+            checkbox.setAttribute('type', 'checkbox')
+            todoText.textContent = i.title
+            removeButton.textContent = 'x'
+
+            //Print to page
+            todoEl.appendChild(checkbox)
+            todoEl.appendChild(todoText)
+            todoEl.appendChild(removeButton)
+
+            return todoEl
+        }
+
+        //Run savedTodos()
+        savedTodos(notes)
     </script>
 
-    <script src="../../../_js/jquery.js"></script>
-    <script src="../../../_js/bootstrap.bundle.js"></script>
 </body>
 
 </html>
