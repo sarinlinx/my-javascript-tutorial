@@ -12,6 +12,7 @@ const savedTodos = function(todos) {
 }
 
 const removeTodo = function(id) {
+  //
   const todoIndex = notes.findIndex(function(notes) {
     return notes.id === id
   })
@@ -21,26 +22,33 @@ const removeTodo = function(id) {
   }
 }
 
+//Toggle the completed value for given todo
+const toggleTodo = function(id) {
+  //find object and modify it
+  //return true when match is found
+  const todo = notes.find(function(todo) {
+    //check if todo ID is the same as the one passed in
+    return todo.id === id
+  })
+  //only toggle IF
+  if (todo !== undefined) {
+    todo.completed = !todo.completed
+  }
+}
+
 const renderNotes = function(x, y) {
   const filteredNotes = x.filter(function(z) {
     const searchTextMatch = z.title.toLowerCase().includes(filters.searchText.toLowerCase())
     const hideCompletedMatch = !filters.hideCompleted || !z.completed
-
     return searchTextMatch && hideCompletedMatch
   })
-
-
 
   const incompleteTodos = filteredNotes.filter(function(z) {
     return !z.completed
   })
 
-
-
   document.querySelector('#notes').innerHTML = ''
   document.querySelector('#notes').appendChild(generateSummaryDOM(incompleteTodos))
-
-
 
   filteredNotes.forEach(function(i) {
     document.querySelector('#notes').appendChild(generateTodoDOM(i))
@@ -49,14 +57,27 @@ const renderNotes = function(x, y) {
 
 
 const generateTodoDOM = function(i) {
-
   const todoEl = document.createElement('div')
   const checkbox = document.createElement('input')
   const todoText = document.createElement('span')
   const removeButton = document.createElement('button')
 
   checkbox.setAttribute('type', 'checkbox')
+  //Set state of checkbox to what's stored under
+  //completed in the Object
+  //if TRUE, the checkbox is checked
+  checkbox.checked = i.completed
   todoEl.appendChild(checkbox)
+  //Add event listener to checkbox
+  checkbox.addEventListener('change', function() {
+    //toggle todo by its ID
+    toggleTodo(i.id)
+    savedTodos(notes)
+    renderNotes(notes, filters)
+  })
+
+
+
   todoText.textContent = i.title
   todoEl.appendChild(todoText)
   removeButton.textContent = 'x'
@@ -67,6 +88,8 @@ const generateTodoDOM = function(i) {
     savedTodos(notes)
     renderNotes(notes, filters)
   })
+
+
   return todoEl
 }
 

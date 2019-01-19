@@ -76,25 +76,16 @@
 
 
 
-
-
-
-
-
-
-
-
-
         <h3>JS</h3>
         <div class="row">
             <div class="col">
                 <p>The following code blocks have been refactored to simplify the JavaScript.</p>
             </div>
-          </div>
+        </div>
 
 
-<h3>todos.js</h3>
-          <div class="row">
+        <h3>todos.js</h3>
+        <div class="row">
             <div class="col">
                 <pre class="example"><span class="code-js"><span class="code-comment">//call function from other file</span>
 let notes = getSavedTodos()
@@ -148,8 +139,8 @@ document.querySelector('#hide-completed').addEventListener('change', function (e
 
 <h3>todo-functions.js</h3>
 <div class="row">
-<div class="col">
-<pre class="example"><span class="code-js"><span class="code-comment">//getSavedTodos
+    <div class="col">
+        <pre class="example"><span class="code-js"><span class="code-comment">//getSavedTodos
 //put in function</span>
 
 const getSavedTodos = function() {
@@ -182,6 +173,20 @@ const removeTodo = function(id) {
 
   if (todoIndex > -1) {
     notes.splice(todoIndex, 1)
+  }
+}
+
+<span class="code-comment">//Toggle the completed value for given todo</span>
+const toggleTodo = function(id) {
+  <span class="code-comment">//find object and modify it</span>
+  //return true when match is found
+  const todo = notes.find(function(todo) {
+    <span class="code-comment">//check if todo ID is the same as the one passed in</span>
+    return todo.id === id
+  })
+  <span class="code-comment">//only toggle IF</span>
+  if (todo !== undefined) {
+    todo.completed = !todo.completed
   }
 }
 
@@ -243,17 +248,26 @@ const generateTodoDOM = function(i) {
   <span class="code-comment">//Create remove button</span>
   const removeButton = document.createElement('button')
 
-  <span class="code-comment">//set the checkbox</span>
+  <span class="code-comment">//set the content</span>
   checkbox.setAttribute('type', 'checkbox')
+  <span class="code-comment">//Set state of checkbox to what's stored under
+  //completed in the Object
+  //if TRUE, the checkbox is checked</span>
+  checkbox.checked = i.completed
+  <span class="code-comment">//Add event listener to checkbox</span>
+  checkbox.addEventListener('change', function() {
+    <span class="code-comment">//toggle todo by its ID</span>
+    toggleTodo(i.id)
+    savedTodos(notes)
+    renderNotes(notes, filters)
+  })
+
+  todoText.textContent = i.title
+  removeButton.textContent = 'x'
+
   <span class="code-comment">//Print to page</span>
   todoEl.appendChild(checkbox)
-  <span class="code-comment">//set todo text</span>
-  todoText.textContent = i.title
-  <span class="code-comment">//Print to page</span>
   todoEl.appendChild(todoText)
-  <span class="code-comment">//set remove button</span>
-  removeButton.textContent = 'x'
-  <span class="code-comment">//print button to page</span>
   todoEl.appendChild(removeButton)
 
   <span class="code-comment">//Create event to remove Object when button is clicked</span>
@@ -277,11 +291,11 @@ const generateSummaryDOM = function(incompleteTodos) {
   summary.textContent = `You have ${incompleteTodos.length} todos left`
   return summary
 }</pre></div>
-            </div>
+        </div>
     </section>
 
 
-<script src="todo-functions.js"></script>
+    <script src="todo-functions.js"></script>
     <script src="todos.js"></script>
 
 
@@ -289,7 +303,7 @@ const generateSummaryDOM = function(incompleteTodos) {
 
     <script src="../../_js/jquery.js"></script>
     <script src="../../_js/bootstrap.bundle.js"></script>
-      <script src="../../_files/uuidv4.js"></script>
+    <script src="../../_files/uuidv4.js"></script>
 </body>
 
 </html>

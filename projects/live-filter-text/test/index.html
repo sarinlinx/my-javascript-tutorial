@@ -185,6 +185,20 @@ const removeTodo = function(id) {
   }
 }
 
+<span class="code-comment">//Toggle the completed value for given todo</span>
+const toggleTodo = function(id) {
+  <span class="code-comment">//find object and modify it</span>
+  //return true when match is found
+  const todo = notes.find(function(todo) {
+    <span class="code-comment">//check if todo ID is the same as the one passed in</span>
+    return todo.id === id
+  })
+  <span class="code-comment">//only toggle IF</span>
+  if (todo !== undefined) {
+    todo.completed = !todo.completed
+  }
+}
+
 <span class="code-comment">//<span class="standout">Create function to display text, then filter</span>
 //x and y correspond to the args used when calling the function
 //y is what is typed into the search box</span>
@@ -243,17 +257,26 @@ const generateTodoDOM = function(i) {
   <span class="code-comment">//Create remove button</span>
   const removeButton = document.createElement('button')
 
-  <span class="code-comment">//set the checkbox</span>
+  <span class="code-comment">//set the content</span>
   checkbox.setAttribute('type', 'checkbox')
+  <span class="code-comment">//Set state of checkbox to what's stored under
+  //completed in the Object
+  //if TRUE, the checkbox is checked</span>
+  checkbox.checked = i.completed
+  <span class="code-comment">//Add event listener to checkbox</span>
+  checkbox.addEventListener('change', function() {
+    <span class="code-comment">//toggle todo by its ID</span>
+    toggleTodo(i.id)
+    savedTodos(notes)
+    renderNotes(notes, filters)
+  })
+
+  todoText.textContent = i.title
+  removeButton.textContent = 'x'
+
   <span class="code-comment">//Print to page</span>
   todoEl.appendChild(checkbox)
-  <span class="code-comment">//set todo text</span>
-  todoText.textContent = i.title
-  <span class="code-comment">//Print to page</span>
   todoEl.appendChild(todoText)
-  <span class="code-comment">//set remove button</span>
-  removeButton.textContent = 'x'
-  <span class="code-comment">//print button to page</span>
   todoEl.appendChild(removeButton)
 
   <span class="code-comment">//Create event to remove Object when button is clicked</span>
