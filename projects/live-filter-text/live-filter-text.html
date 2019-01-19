@@ -214,13 +214,32 @@ const renderNotes = function (x, y) {
     })
 }
 
-<span class="code-comment">//Get the DOM elements for an individual note</span>
+<span class="code-comment">//Print content to page</span>
 const generateTodoDOM = function(i) {
-  <span class="code-comment">//create new element</span>
-  const noteEl = document.createElement('p')
-  <span class="code-comment">//Set new element to the Object title property</span>
-  noteEl.textContent = i.title
-  return noteEl
+
+  <span class="code-comment">//Create a root div tag, this is what everything is appended to</span>
+  const todoEl = document.createElement('div')
+  <span class="code-comment">//Create checkbox</span>
+  const checkbox = document.createElement('input')
+  <span class="code-comment">//Create element for todo text</span>
+  const todoText = document.createElement('span')
+  <span class="code-comment">//Create remove button</span>
+  const removeButton = document.createElement('button')
+
+  <span class="code-comment">//set the checkbox</span>
+  checkbox.setAttribute('type', 'checkbox')
+  <span class="code-comment">//Print to page</span>
+  todoEl.appendChild(checkbox)
+  <span class="code-comment">//set todo text</span>
+  todoText.textContent = i.title
+  <span class="code-comment">//Print to page</span>
+  todoEl.appendChild(todoText)
+  <span class="code-comment">//set remove button</span>
+  removeButton.textContent = 'x'
+  <span class="code-comment">//print button to page</span>
+  todoEl.appendChild(removeButton)
+
+  return todoEl
 }
 
 <span class="code-comment">//Get the DOM elements for a list summary</span>
