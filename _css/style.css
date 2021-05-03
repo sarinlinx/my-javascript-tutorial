@@ -3,273 +3,280 @@ General Styles
 ___________________________________________________*/
 
 body {
-  background-color: #1a1a1a;
-  color: #70c4ee;
-  position: relative;
-  /* background-image: url("textures/asfalt-dark.png"); */
+    background-color: #1a1a1a;
+    color: #70c4ee;
+    position: relative;
+    /* background-image: url("textures/asfalt-dark.png"); */
 }
 
 #tutorial-link-section {
-  padding: 25px;
-  font-size: 1.5rem;
-  margin-top: 2rem;
-  margin-bottom: 5rem;
-  background-color: #262626;
-  background-image: url("textures/asfalt-light.png");
-  border-radius: 10px;
+    padding: 25px;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    background-color: #262626;
+    background-image: url("textures/asfalt-light.png");
+    border-radius: 10px;
 }
 
 .tutorial-button {
-  padding: 0;
-border-style: none;
-color: #fff;
-border-color: #007bff;
-font-weight: 400;
-text-align: center;
-border: 1px solid #007bff;
-border-radius: 0.25rem;
-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    padding: 0;
+    border-style: none;
+    color: #fff;
+    border-color: #007bff;
+    font-weight: 400;
+    text-align: center;
+    border: 1px solid #007bff;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-
-
-
-
-
 .toc-heading1 {
-  text-align: center;
-  font-size: 3.5rem;
-  font-family: 'Lora', serif;
-  background: linear-gradient(to right, #c9c9c9 0%, #fc8500 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  border-bottom: 1px solid #eee;
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: 'Lora', serif;
+    background: linear-gradient(to right, #c9c9c9 0%, #fc8500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 1px solid #eee;
 }
 
 .toc-heading2 {
-  font-size: 2.5rem;
-  font-family: 'Lora', serif;
-  background: linear-gradient(to bottom, #bdbdbd 0%, #0083ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    font-size: 1.6rem;
+    font-family: 'Lora', serif;
+    background: linear-gradient(to bottom, #bdbdbd 0%, #0083ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 h1 {
-  font-size: 3.3rem;
-  font-family: 'Lora', serif;
-  margin-top: 60px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #eee;
-  /* background-image: url("textures/asfalt-light.png"); */
-  padding: 10px 0;
-  text-align: center;
-  background: linear-gradient(to right, #c9c9c9 0%, #fc8500 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    font-size: 2.5rem;
+    font-family: 'Lora', serif;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    /* background-image: url("textures/asfalt-light.png"); */
+    padding: 10px 0;
+    text-align: center;
+    background: linear-gradient(to right, #c9c9c9 0%, #fc8500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 h2 {
-  font-size: 3rem;
-  font-family: 'Lora', serif;
-  background-color: #0e0e0e;
-  background-image: url("textures/asfalt-dark.png");
-  margin-bottom: 20px;
-  background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  border-bottom: 1px solid #eee;
+    font-size: 1.9rem;
+    font-family: 'Lora', serif;
+    background-color: #0e0e0e;
+    background-image: url("textures/asfalt-dark.png");
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 1px solid #eee;
 }
 
 h3 {
-  font-size: 2rem;
-  font-family: 'Lora', serif;
-  background: linear-gradient(to right, #65e470 0%, #000b1d 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    font-size: 1.5rem;
+    font-family: 'Lora', serif;
+    background: linear-gradient(to right, #65e470 0%, #000b1d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 h4 {
-  font-family: 'Lora', serif;
-  font-size: 1.3rem;
-  background: linear-gradient(to right, #fb8e8e 0%, #a50000 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    background: linear-gradient(to right, #fb8e8e 0%, #a50000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 h5 {
-  color: #bbbbbb;
+    color: #bbbbbb;
 }
+
 
 /*___________________________________________________
 Customizations
 ___________________________________________________*/
 
 .highlight-word {
-  font-size: 22px;
-  font-weight: bold;
+    font-size: 22px;
+    font-weight: bold;
 }
 
 .standout {
-  font-weight: bolder;
-  font-size: 1.2rem;
+    font-weight: bolder;
+    font-size: 1.2rem;
 }
 
 .bg-shade {
-  background-color: #1d1d1d;
-  padding: 1.5rem 0;
+    background-color: #1d1d1d;
+    padding: 1.5rem 0;
 }
 
 .margin-top {
-  margin-top: 30px;
+    margin-top: 30px;
 }
 
 .code-css {
-  color: #ffe500;
+    color: #ffe500;
 }
 
 .code-js {
-  color: #ff2c2c;
+    color: #ff6f6f;
 }
 
 .code-comment {
-  color: gray;
+    color: gray;
 }
 
 .code-output {
-  color: #9c9c9c;
+    color: #9c9c9c;
 }
 
 .breadcrumb-container {
-  background-color: #000;
+    background-color: #000;
 }
 
 .breadcrumb-link {
-  color: #ffbf00;
+    color: #ffbf00;
 }
 
 .no-bullets {
-  list-style: none;
-  font-weight: bolder;
+    list-style: none;
+    font-weight: bolder;
 }
+
 
 /*___________________________________________________
 Note boxes
 ___________________________________________________*/
 
-.alert-important, .alert-note, .alert-tip, .alert-warning {
-  position: relative;
-  padding: 15px;
-  /* border: 1px solid #DCDCDC; */
-  border: 1px solid #ff0000;
-  height: auto;
-  min-height: 90px;
-  display: table;
-  margin: 15px 0 15px 0;
-  /* background-color: #a0e1cd; */
+.alert-important,
+.alert-note,
+.alert-tip,
+.alert-warning {
+    position: relative;
+    padding: 15px;
+    /* border: 1px solid #DCDCDC; */
+    border: 1px solid #ff0000;
+    height: auto;
+    min-height: 90px;
+    display: table;
+    margin: 15px 0 15px 0;
+    /* background-color: #a0e1cd; */
 }
+
 
 /* vertical divider between icon and text */
 
 .alert-content {
-  margin-left: 80px;
-  line-height: 22px;
-  font-size: 95%;
-  padding-left: 20px;
-  /* border-left: 1px solid #DCDCDC; */
-  border-left: 1px solid #ff0000;
-  display: table-cell;
-  vertical-align: middle;
-  /* color: #000; */
-  color: #fff;
+    margin-left: 80px;
+    line-height: 22px;
+    font-size: 95%;
+    padding-left: 20px;
+    /* border-left: 1px solid #DCDCDC; */
+    border-left: 1px solid #ff0000;
+    display: table-cell;
+    vertical-align: middle;
+    /* color: #000; */
+    color: #fff;
 }
 
-.alert-content ul, .alert-content ol {
-  margin-bottom: 0;
+.alert-content ul,
+.alert-content ol {
+    margin-bottom: 0;
 }
 
 .alert-content li {
-  padding: 0;
+    padding: 0;
 }
 
 .alert-icon {
-  display: table-cell;
-  width: 8%;
-  min-width: 75px;
-  vertical-align: middle;
+    display: table-cell;
+    width: 8%;
+    min-width: 75px;
+    vertical-align: middle;
 }
+
 
 /*___________________________________________________
 Colors
 ___________________________________________________*/
 
 .red {
-  color: red;
+    color: red;
 }
 
 .green {
-  color: green;
+    color: green;
 }
+
 
 /*___________________________________________________
 Examples
 ___________________________________________________*/
 
 .example {
-  background-color: #000;
-  color: #ffbf00;
-  padding: 5px;
-  box-shadow: 0 0 4px 2px #1f1f1f;
+    background-color: #000;
+    color: #ffbf00;
+    padding: 5px;
+    box-shadow: 0 0 4px 2px #1f1f1f;
 }
+
 
 /*___________________________________________________
 Text Colors
 ___________________________________________________*/
 
 .code-css {
-  color: yellow;
+    color: yellow;
 }
 
 .code-html {
-  color: #ff9d39;
+    color: #ff9d39;
 }
 
 .code-keyboard-command {
-  color: #d0d0d0;
+    color: #d0d0d0;
 }
 
 .blue {
-  color: blue;
-  font-weight: bold;
+    color: blue;
+    font-weight: bold;
 }
 
 .cyan {
-  color: cyan;
+    color: cyan;
 }
 
 .green {
-  color: green;
-  font-weight: bold;
+    color: green;
+    font-weight: bold;
 }
 
 .red {
-  color: red;
+    color: red;
 }
 
 .white {
-  color: white;
+    color: white;
 }
 
 .yellow {
-  color: yellow;
+    color: yellow;
 }
 
 .border-green {
-  border: 3px solid green;
+    border: 3px solid green;
 }
+
 
 /*___________________________________________________
 Lists
 ___________________________________________________*/
+
 
 /*Main <ul> list on navigation pages
 .main-nav {
@@ -277,6 +284,7 @@ ___________________________________________________*/
   width: 40%;
   list-style-type: none;
 }*/
+
 
 /* Primary list navigation topics
 This affects ALL <li> items
@@ -287,10 +295,12 @@ This affects ALL <li> items
   font-weight: bold;
 }*/
 
+
 /* sub-topics <ul>
 .sub-nav {
   list-style-type: none;
 }*/
+
 
 /* sub-topics <li>
 .sub-nav li{
@@ -301,913 +311,935 @@ This affects ALL <li> items
   list-style: none;
 }*/
 
+
 /*___________________________________________________
 Code Examples
 ___________________________________________________*/
 
+
 /* Main container for side by side text and code examples */
 
 .example-container {
-  background: rgba(125, 115, 115, 0.15);
-  /*border: 1px solid blue;*/
-  position: relative;
-  /*These two lines allow the .code-container child to
+    background: rgba(125, 115, 115, 0.15);
+    /*border: 1px solid blue;*/
+    position: relative;
+    /*These two lines allow the .code-container child to
   inherit the height of the parent*/
-  display: inline-block;
-  width: 100%;
-  min-height: 20px;
+    display: inline-block;
+    width: 100%;
+    min-height: 20px;
 }
+
 
 /* Text container for code examples */
 
 .example-text {
-  /*border: 1px solid green;*/
-  display: inline-block;
-  width: 48%;
-  padding: 5px;
-  float: left;
+    /*border: 1px solid green;*/
+    display: inline-block;
+    width: 48%;
+    padding: 5px;
+    float: left;
 }
 
 .codebox {
-  /*border: 1px solid white;*/
-  width: 48%;
-  overflow: auto;
-  background: #000;
-  padding: 10px 5px 10px 5px;
+    /*border: 1px solid white;*/
+    width: 48%;
+    overflow: auto;
+    background: #000;
+    padding: 10px 5px 10px 5px;
 }
 
 .codebox-white {
-  /*border: 1px solid white;*/
-  /* width: 48%; */
-  overflow: auto;
-  background: #fff;
-  padding: 10px 5px 10px 5px;
+    /*border: 1px solid white;*/
+    /* width: 48%; */
+    overflow: auto;
+    background: #fff;
+    padding: 10px 5px 10px 5px;
 }
 
 .codebox-fixed-height {
-  /*border: 1px solid white;*/
-  /* width: 48%; */
-  height: 150px;
-  overflow: auto;
-  background: #000;
-  padding: 10px 5px 10px 5px;
+    /*border: 1px solid white;*/
+    /* width: 48%; */
+    height: 150px;
+    overflow: auto;
+    background: #000;
+    padding: 10px 5px 10px 5px;
 }
 
 .codebox-no-overflow {
-  /*border: 1px solid white;*/
-  width: 48%;
-  background: #000;
-  padding: 10px 5px 10px 5px;
+    /*border: 1px solid white;*/
+    width: 48%;
+    background: #000;
+    padding: 10px 5px 10px 5px;
 }
+
 
 /*___________________________________________________
 Note boxes
 ___________________________________________________*/
 
-.alert-important, .alert-note, .alert-tip, .alert-warning {
-  position: relative;
-  padding: 15px;
-  border: 1px solid #DCDCDC;
-  height: auto;
-  min-height: 90px;
-  display: table;
-  margin: 15px 0 15px 0;
-  background-color: rgba(125, 115, 115, 0.15);
+.alert-important,
+.alert-note,
+.alert-tip,
+.alert-warning {
+    position: relative;
+    padding: 15px;
+    border: 1px solid #DCDCDC;
+    height: auto;
+    min-height: 90px;
+    display: table;
+    margin: 15px 0 15px 0;
+    background-color: rgba(125, 115, 115, 0.15);
 }
 
 .alert-content {
-  margin-left: 80px;
-  line-height: 22px;
-  font-size: 95%;
-  padding-left: 20px;
-  border-left: 1px solid #DCDCDC;
-  display: table-cell;
-  vertical-align: middle;
+    margin-left: 80px;
+    line-height: 22px;
+    font-size: 95%;
+    padding-left: 20px;
+    border-left: 1px solid #DCDCDC;
+    display: table-cell;
+    vertical-align: middle;
 }
 
-.alert-content ul, .alert-content ol {
-  margin-bottom: 0;
+.alert-content ul,
+.alert-content ol {
+    margin-bottom: 0;
 }
 
 .alert-content li {
-  padding: 0;
+    padding: 0;
 }
 
 .alert-icon {
-  display: table-cell;
-  width: 8%;
-  min-width: 75px;
-  vertical-align: middle;
+    display: table-cell;
+    width: 8%;
+    min-width: 75px;
+    vertical-align: middle;
 }
+
 
 /*___________________________________________________
 Examples in preformatted boxes
 ___________________________________________________*/
 
+
 /* background transparency example */
 
 .image-bg {
-  background: url("../_img/backgrounds/examples/white-bg.jpg");
-  color: #000;
+    background: url("../_img/backgrounds/examples/white-bg.jpg");
+    color: #000;
 }
 
 .rgba-transparency {
-  background: rgba(199, 21, 133, .25);
+    background: rgba(199, 21, 133, .25);
 }
+
 
 /* gradient color over image */
 
 .linear-gradient {
-  height: 40px;
-  background: linear-gradient(red, green);
+    height: 40px;
+    background: linear-gradient(red, green);
 }
 
 .linear-gradient-3colors {
-  height: 40px;
-  background: linear-gradient(red, yellow, green);
-  color: #fff;
+    height: 40px;
+    background: linear-gradient(red, yellow, green);
+    color: #fff;
 }
 
 .transparent-linear-gradient {
-  height: 40px;
-  background: linear-gradient(rgba(255, 0, 0, 0.35), /*red*/
-  rgba(255, 255, 0, 0.35), /*yellow*/
-  rgba(0, 0, 255, 0.35)), /*blue*/
-  url("../_img/backgrounds/examples/white-bg.jpg");
+    height: 40px;
+    background: linear-gradient(rgba(255, 0, 0, 0.35), /*red*/
+    rgba(255, 255, 0, 0.35), /*yellow*/
+    rgba(0, 0, 255, 0.35)), /*blue*/
+    url("../_img/backgrounds/examples/white-bg.jpg");
 }
 
 .image-bg-repeat {
-  background: url("../_img/backgrounds/examples/purple-dot.jpg");
+    background: url("../_img/backgrounds/examples/purple-dot.jpg");
 }
 
 .image-bg-repeat-x {
-  background: url("../_img/backgrounds/examples/purple-dot.jpg");
-  background-repeat: repeat-x;
+    background: url("../_img/backgrounds/examples/purple-dot.jpg");
+    background-repeat: repeat-x;
 }
 
 .image-bg-repeat-y {
-  background: url("../_img/backgrounds/examples/purple-dot.jpg");
-  background-repeat: repeat-y;
+    background: url("../_img/backgrounds/examples/purple-dot.jpg");
+    background-repeat: repeat-y;
 }
 
 .image-bg-no-repeat {
-  background: url("../_img/backgrounds/examples/purple-dot.jpg");
-  background-repeat: no-repeat;
+    background: url("../_img/backgrounds/examples/purple-dot.jpg");
+    background-repeat: no-repeat;
 }
 
 .image-bg-scroll {
-  background: url("../_img/backgrounds/examples/purple-dot.jpg");
-  background-repeat: no-repeat;
-  background-attachment: scroll;
+    background: url("../_img/backgrounds/examples/purple-dot.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
 }
 
 .image-bg-position-words {
-  background: url("../_img/backgrounds/examples/purple-dot.jpg");
-  background-repeat: no-repeat;
-  background-position: top right;
+    background: url("../_img/backgrounds/examples/purple-dot.jpg");
+    background-repeat: no-repeat;
+    background-position: top right;
 }
 
 .image-bg-position-percent {
-  background: url("../_img/backgrounds/examples/purple-dot.jpg");
-  background-repeat: no-repeat;
-  background-position: 10% 10%;
+    background: url("../_img/backgrounds/examples/purple-dot.jpg");
+    background-repeat: no-repeat;
+    background-position: 10% 10%;
 }
 
 .image-bg-position-pixels {
-  background: url("../_img/backgrounds/examples/purple-dot.jpg");
-  background-repeat: no-repeat;
-  background-position: 20px 50px;
+    background: url("../_img/backgrounds/examples/purple-dot.jpg");
+    background-repeat: no-repeat;
+    background-position: 20px 50px;
 }
 
 .image-bg-background-size-auto {
-  background: url("../_img/backgrounds/examples/purple-dot.jpg");
-  background-repeat: no-repeat;
-  background-size: auto;
+    background: url("../_img/backgrounds/examples/purple-dot.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
 }
 
 .image-bg-background-size-cover {
-  background: url("../_img/backgrounds/examples/purple-dot.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+    background: url("../_img/backgrounds/examples/purple-dot.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .image-bg-background-size-contain {
-  background: url("../_img/backgrounds/examples/purple-dot.jpg");
-  background-repeat: no-repeat;
-  background-size: contain;
+    background: url("../_img/backgrounds/examples/purple-dot.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .image-bg-background-size-onevalue {
-  background: url("../_img/backgrounds/examples/purple-dot.jpg");
-  background-repeat: no-repeat;
-  background-size: 80px;
+    background: url("../_img/backgrounds/examples/purple-dot.jpg");
+    background-repeat: no-repeat;
+    background-size: 80px;
 }
 
 .image-bg-background-size-twovalue {
-  background: url("../_img/backgrounds/examples/purple-dot.jpg");
-  background-repeat: no-repeat;
-  background-size: 80px 120px;
+    background: url("../_img/backgrounds/examples/purple-dot.jpg");
+    background-repeat: no-repeat;
+    background-size: 80px 120px;
 }
 
 .reshapeimg-per {
-  width: 50px;
-  border-radius: 50%;
+    width: 50px;
+    border-radius: 50%;
 }
 
 .reshapeimg-px {
-  width: 50px;
-  border-radius: 22px;
+    width: 50px;
+    border-radius: 22px;
 }
 
 .alignimg-txt {
-  width: 50px;
-  text-align: center;
-  color: #fff;
+    width: 50px;
+    text-align: center;
+    color: #fff;
 }
 
 .alignimg-margin {
-  width: 50px;
-  display: block;
-  margin: 0 auto;
+    width: 50px;
+    display: block;
+    margin: 0 auto;
 }
 
-a.link-btn:link, a.link-btn:visited {
-  background-color: #f44336;
-  color: white;
-  padding: 14px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
+a.link-btn:link,
+a.link-btn:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }
 
-a.link-btn:hover, a.link-btn:active {
-  background-color: red;
+a.link-btn:hover,
+a.link-btn:active {
+    background-color: red;
 }
 
 .horz-nav-display-no-inline-block {
-  background-color: green;
-  text-align: center;
+    background-color: green;
+    text-align: center;
 }
 
 .horz-nav-display-no-inline-block a {
-  border: 1px solid red;
-  padding: 10px;
-  background-color: yellow;
-  margin-right: 5px;
+    border: 1px solid red;
+    padding: 10px;
+    background-color: yellow;
+    margin-right: 5px;
 }
 
 .horz-nav-display-inline-block {
-  background-color: green;
-  text-align: center;
+    background-color: green;
+    text-align: center;
 }
 
 .horz-nav-display-inline-block a {
-  border: 1px solid red;
-  padding: 10px;
-  display: inline-block;
-  background-color: yellow;
-  margin-right: 5px;
+    border: 1px solid red;
+    padding: 10px;
+    display: inline-block;
+    background-color: yellow;
+    margin-right: 5px;
 }
 
 .horz-nav-display-center {
-  background-color: green;
-  text-align: center;
-  font-size: 0;
+    background-color: green;
+    text-align: center;
+    font-size: 0;
 }
 
 .horz-nav-display-center a {
-  border: 1px solid red;
-  padding: 10px;
-  display: inline-block;
-  background-color: yellow;
-  font-size: 16px;
+    border: 1px solid red;
+    padding: 10px;
+    display: inline-block;
+    background-color: yellow;
+    font-size: 16px;
 }
 
 .horz-nav-no-float {
-  background-color: yellow;
+    background-color: yellow;
 }
 
 .horz-nav-no-float a {
-  margin-left: 0px;
-  background-color: red;
+    margin-left: 0px;
+    background-color: red;
 }
 
 #no-left-float-margin {
-  margin-left: -13px;
+    margin-left: -13px;
 }
 
 .horz-nav-float {}
 
 .horz-nav-float a {
-  background-color: red;
-  float: left;
+    background-color: red;
+    float: left;
 }
 
 .horz-nav-float-overflow {
-  background-color: yellow;
-  overflow: hidden;
+    background-color: yellow;
+    overflow: hidden;
 }
 
 .horz-nav-float-overflow a {
-  background-color: red;
-  float: left;
+    background-color: red;
+    float: left;
 }
 
 .horz-nav-list-float {
-  list-style-type: none;
-  background-color: yellow;
-  overflow: hidden;
+    list-style-type: none;
+    background-color: yellow;
+    overflow: hidden;
 }
 
 .horz-nav-list-float a {
-  background-color: red;
-  float: left;
-  padding-right: 5px;
+    background-color: red;
+    float: left;
+    padding-right: 5px;
 }
 
 ul.unordered-list-a {
-  list-style-type: circle;
-  color: white;
+    list-style-type: circle;
+    color: white;
 }
 
 ul.unordered-list-b {
-  list-style-type: square;
-  color: white;
+    list-style-type: square;
+    color: white;
 }
 
 ol.ordered-list-c {
-  list-style-type: upper-roman;
-  color: white;
+    list-style-type: upper-roman;
+    color: white;
 }
 
 ol.ordered-list-d {
-  list-style-type: lower-alpha;
-  color: white;
+    list-style-type: lower-alpha;
+    color: white;
 }
 
 ol.custom-list-image {
-  list-style-image: url('../_img/backgrounds/examples/purple-dot.jpg');
-  color: white;
+    list-style-image: url('../_img/backgrounds/examples/purple-dot.jpg');
+    color: white;
 }
 
 ol.shorthand-for-custom-image {
-  list-style: circle outside url('../_img/backgrounds/examples/purple-dot.jpg');
-  color: white;
+    list-style: circle outside url('../_img/backgrounds/examples/purple-dot.jpg');
+    color: white;
 }
 
 .hsl-colors-p1 {
-  background-color: hsl(120, 100%, 50%);
-  color: #000;
+    background-color: hsl(120, 100%, 50%);
+    color: #000;
 }
+
 
 /* green */
 
 .hsl-colors-p2 {
-  background-color: hsl(120, 100%, 75%);
-  color: #000;
+    background-color: hsl(120, 100%, 75%);
+    color: #000;
 }
+
 
 /* light green */
 
 .hsl-colors-p3 {
-  background-color: hsl(120, 100%, 25%);
+    background-color: hsl(120, 100%, 25%);
 }
+
 
 /* dark green */
 
 .hsl-colors-p4 {
-  background-color: hsl(120, 60%, 70%);
-  color: #000;
+    background-color: hsl(120, 60%, 70%);
+    color: #000;
 }
+
 
 /* pastel green */
 
 .hsla-colors-p1 {
-  background-color: hsl(120, 100%, 50%, 0.3);
+    background-color: hsl(120, 100%, 50%, 0.3);
 }
+
 
 /* green */
 
 .hsla-colors-p2 {
-  background-color: hsl(120, 100%, 75%, 0.3);
+    background-color: hsl(120, 100%, 75%, 0.3);
 }
+
 
 /* light green */
 
 .hsla-colors-p3 {
-  background-color: hsl(120, 100%, 25%, 0.3);
+    background-color: hsl(120, 100%, 25%, 0.3);
 }
+
 
 /* dark green */
 
 .hsla-colors-p4 {
-  background-color: hsl(120, 60%, 70%, 0.3);
+    background-color: hsl(120, 60%, 70%, 0.3);
 }
+
 
 /* pastel green */
 
 .text-decoration-overline {
-  text-decoration: overline;
-  color: #fff;
+    text-decoration: overline;
+    color: #fff;
 }
 
 .text-decoration-line-through {
-  text-decoration: line-through;
-  color: #fff;
+    text-decoration: line-through;
+    color: #fff;
 }
 
 .text-decoration-underline {
-  text-decoration: underline;
-  color: #fff;
+    text-decoration: underline;
+    color: #fff;
 }
 
 .text-decoration-none {
-  text-decoration: none;
-  color: #fff;
+    text-decoration: none;
+    color: #fff;
 }
 
 .text-indent-section {
-  text-indent: 25px;
-  color: white;
+    text-indent: 25px;
+    color: white;
 }
 
 .letter-spacing-pixels {
-  color: white;
-  letter-spacing: 3px;
+    color: white;
+    letter-spacing: 3px;
 }
 
 .letter-spacing-none {
-  color: white;
-  letter-spacing: normal;
+    color: white;
+    letter-spacing: normal;
 }
 
 .font-variant-small-caps {
-  color: white;
-  font-variant: small-caps;
+    color: white;
+    font-variant: small-caps;
 }
 
 .font-icon-example {
-  background-color: white;
+    background-color: white;
 }
 
 .line-height-small {
-  color: white;
-  line-height: 5px;
+    color: white;
+    line-height: 5px;
 }
 
 .line-height-medium {
-  color: white;
-  line-height: 25px;
+    color: white;
+    line-height: 25px;
 }
 
 .line-height-large {
-  color: white;
-  line-height: 45px;
+    color: white;
+    line-height: 45px;
 }
 
 .word-spacing-small {
-  color: white;
-  word-spacing: -5px;
+    color: white;
+    word-spacing: -5px;
 }
 
 .word-spacing-large {
-  color: white;
-  word-spacing: 15px;
+    color: white;
+    word-spacing: 15px;
 }
 
 .txt-dir-right {
-  color: white;
-  direction: rtl;
+    color: white;
+    direction: rtl;
 }
 
 .txt-dir-left {
-  direction: ltr;
-  color: white;
+    direction: ltr;
+    color: white;
 }
 
 .txt-shadow-hor-right-red {
-  font-size: 20px;
-  color: white;
-  text-shadow: 3px 0px red;
+    font-size: 20px;
+    color: white;
+    text-shadow: 3px 0px red;
 }
 
 .txt-shadow-hor-left-red {
-  font-size: 20px;
-  color: white;
-  text-shadow: -3px 0px red;
+    font-size: 20px;
+    color: white;
+    text-shadow: -3px 0px red;
 }
 
 .txt-shadow-vert-down-red {
-  font-size: 20px;
-  color: white;
-  text-shadow: 0px 3px red;
+    font-size: 20px;
+    color: white;
+    text-shadow: 0px 3px red;
 }
 
 .txt-shadow-vert-up-red {
-  font-size: 20px;
-  color: white;
-  text-shadow: 0px -3px red;
+    font-size: 20px;
+    color: white;
+    text-shadow: 0px -3px red;
 }
 
 .txt-shadow-blur-red {
-  font-size: 20px;
-  color: white;
-  text-shadow: 3px 3px 3px yellow;
+    font-size: 20px;
+    color: white;
+    text-shadow: 3px 3px 3px yellow;
 }
 
 .white-space-no-wrap {
-  color: white;
-  white-space: nowrap;
+    color: white;
+    white-space: nowrap;
 }
 
 .white-space-pre {
-  color: white;
-  white-space: pre;
+    color: white;
+    white-space: pre;
 }
 
 .white-space-pre-line {
-  color: white;
-  white-space: pre-line;
+    color: white;
+    white-space: pre-line;
 }
 
 .white-space-pre-wrap {
-  color: white;
-  white-space: pre-wrap;
+    color: white;
+    white-space: pre-wrap;
 }
 
 .text-overflow-clip {
-  text-overflow: clip;
-  color: white;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 335px;
-  border: 1px solid #000000;
+    text-overflow: clip;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 335px;
+    border: 1px solid #000000;
 }
 
 .text-overflow-ellipsis {
-  text-overflow: ellipsis;
-  color: white;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 335px;
-  border: 1px solid #000000;
+    text-overflow: ellipsis;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 335px;
+    border: 1px solid #000000;
 }
 
 .text-decoration-overline {
-  color: white;
-  text-decoration: overline red;
+    color: white;
+    text-decoration: overline red;
 }
 
 .text-decoration-underline {
-  color: white;
-  text-decoration: underline green;
+    color: white;
+    text-decoration: underline green;
 }
 
 .text-decoration-line-through {
-  color: white;
-  text-decoration: line-through blue;
+    color: white;
+    text-decoration: line-through blue;
 }
 
 .descendent-selector-anchor-in-p {
-  color: red;
+    color: red;
 }
 
 .descendent-selector-p-and-anchor-in-section {
-  color: blue;
+    color: blue;
 }
 
 .pseudo-link-hover {
-  color: white;
+    color: white;
 }
 
 .pseudo-link-hover:hover {
-  color: green;
+    color: green;
 }
 
 .first-last-child-pseudo-elements {
-  color: white;
+    color: white;
 }
 
 .first-last-child-pseudo-elements:first-child {
-  color: red;
+    color: red;
 }
 
 .first-last-child-pseudo-elements:last-child {
-  color: blue;
+    color: blue;
 }
 
 .first-last-type-pseudo-elements {
-  color: white;
+    color: white;
 }
 
 .first-last-type-pseudo-elements:first-of-type {
-  color: red;
+    color: red;
 }
 
 .first-last-type-pseudo-elements:last-of-type {
-  color: blue;
+    color: blue;
 }
 
 .overflow-visible {
-  color: blue;
-  width: 200px;
-  height: 50px;
-  /* background-color: #eee; */
-  overflow: visible;
+    color: blue;
+    width: 200px;
+    height: 50px;
+    /* background-color: #eee; */
+    overflow: visible;
 }
 
 .overflow-hidden {
-  color: blue;
-  width: 200px;
-  height: 50px;
-  /* background-color: #eee; */
-  overflow: hidden;
+    color: blue;
+    width: 200px;
+    height: 50px;
+    /* background-color: #eee; */
+    overflow: hidden;
 }
 
 .overflow-scroll {
-  color: blue;
-  width: 250px;
-  height: 100px;
-  background-color: #eee;
-  overflow: scroll;
+    color: blue;
+    width: 250px;
+    height: 100px;
+    background-color: #eee;
+    overflow: scroll;
 }
 
 .overflow-auto {
-  color: blue;
-  width: 250px;
-  height: 100px;
-  background-color: #eee;
-  overflow: auto;
+    color: blue;
+    width: 250px;
+    height: 100px;
+    background-color: #eee;
+    overflow: auto;
 }
 
 .overflow-xscroll {
-  color: blue;
-  width: 250px;
-  height: 100px;
-  background-color: #eee;
-  overflow-x: scroll;
-  /* Hide horizontal scrollbar */
-  overflow-y: hidden;
-  /* Add vertical scrollbar */
-  white-space: nowrap;
+    color: blue;
+    width: 250px;
+    height: 100px;
+    background-color: #eee;
+    overflow-x: scroll;
+    /* Hide horizontal scrollbar */
+    overflow-y: hidden;
+    /* Add vertical scrollbar */
+    white-space: nowrap;
 }
 
 .nthrow-table {
-  background-color: white;
-  border: 1px solid black;
-  margin: 5px;
-  color: #000;
+    background-color: white;
+    border: 1px solid black;
+    margin: 5px;
+    color: #000;
 }
 
 .nthrow-table tr:nth-child(odd) {
-  background-color: gray;
+    background-color: gray;
 }
 
 .nthrow-table-number {
-  background-color: white;
-  border: 1px solid black;
-  margin: 5px;
-  color: #000;
+    background-color: white;
+    border: 1px solid black;
+    margin: 5px;
+    color: #000;
 }
 
 .nthrow-table-number tr:nth-child(3) {
-  background-color: gray;
+    background-color: gray;
 }
 
 .beforeafter {
-  color: white;
+    color: white;
 }
 
 .beforeafter::before {
-  content: "words for the pseudo selector ";
-  color: green;
+    content: "words for the pseudo selector ";
+    color: green;
 }
 
 .beforeafter-quotes {
-  color: white;
+    color: white;
 }
 
 .beforeafter-quotes::before {
-  content: "\"";
-  color: red;
+    content: "\"";
+    color: red;
 }
 
 .beforeafter-quotes::after {
-  content: "\"";
-  color: red;
+    content: "\"";
+    color: red;
 }
+
 
 /* Transition examples */
 
 .trans-ex-01 {
-  width: 100px;
-  height: 100px;
-  background: red;
-  transition: width 2s;
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 2s;
 }
 
 .trans-ex-01:hover {
-  width: 300px;
+    width: 300px;
 }
 
 .trans-ex-multi-value {
-  background-color: green;
-  width: 50px;
-  height: 50px;
-  border-radius: 0%;
-  transition: background-color 2s, left 3s, width 3s, height 3s, border-radius 3s;
+    background-color: green;
+    width: 50px;
+    height: 50px;
+    border-radius: 0%;
+    transition: background-color 2s, left 3s, width 3s, height 3s, border-radius 3s;
 }
 
 .trans-ex-multi-value:hover {
-  background-color: blue;
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
+    background-color: blue;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
 }
 
 .trans-ex-ease {
-  width: 100px;
-  height: 100px;
-  background: red;
-  transition: width 2s ease;
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 2s ease;
 }
 
 .trans-ex-ease:hover {
-  width: 300px;
+    width: 300px;
 }
 
 .trans-ex-linear {
-  width: 100px;
-  height: 100px;
-  background: red;
-  transition: width 2s linear;
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 2s linear;
 }
 
 .trans-ex-linear:hover {
-  width: 300px;
+    width: 300px;
 }
 
 .trans-ex-ease-in {
-  width: 100px;
-  height: 100px;
-  background: red;
-  transition: width 2s ease-in;
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 2s ease-in;
 }
 
 .trans-ex-ease-in:hover {
-  width: 300px;
+    width: 300px;
 }
 
 .trans-ex-ease-out {
-  width: 100px;
-  height: 100px;
-  background: red;
-  transition: width 2s ease-out;
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 2s ease-out;
 }
 
 .trans-ex-ease-out:hover {
-  width: 300px;
+    width: 300px;
 }
 
 .trans-ex-ease-in-out {
-  width: 100px;
-  height: 100px;
-  background: red;
-  transition: width 2s ease-in-out;
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 2s ease-in-out;
 }
 
 .trans-ex-ease-in-out:hover {
-  width: 300px;
+    width: 300px;
 }
 
 .cubic-bezier {
-  width: 100px;
-  height: 100px;
-  background: red;
-  transition: width 2s cubic-bezier(0.1, 0.7, 1.0, 0.1);
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 2s cubic-bezier(0.1, 0.7, 1.0, 0.1);
 }
 
 .cubic-bezier:hover {
-  width: 300px;
+    width: 300px;
 }
 
 .trans-step-start {
-  width: 100px;
-  height: 100px;
-  background: red;
-  transition: width 2s step-start;
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 2s step-start;
 }
 
 .trans-step-start:hover {
-  width: 300px;
+    width: 300px;
 }
 
 .trans-step-end {
-  width: 100px;
-  height: 100px;
-  background: red;
-  transition: width 2s step-end;
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 2s step-end;
 }
 
 .trans-step-end:hover {
-  width: 300px;
+    width: 300px;
 }
 
 .trans-steps-6-start {
-  width: 100px;
-  height: 100px;
-  background: red;
-  transition: width 2s steps(6, start);
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 2s steps(6, start);
 }
 
 .trans-steps-6-start:hover {
-  width: 300px;
+    width: 300px;
 }
 
 .trans-steps-6-end {
-  width: 100px;
-  height: 100px;
-  background: red;
-  transition: width 2s steps(6, end);
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 2s steps(6, end);
 }
 
 .trans-steps-6-end:hover {
-  width: 300px;
+    width: 300px;
 }
 
 .trans-delay {
-  width: 100px;
-  height: 100px;
-  background: red;
-  transition: width 1s ease 0s, height 1s ease 1s, background 1s ease 2s;
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 1s ease 0s, height 1s ease 1s, background 1s ease 2s;
 }
 
 .trans-delay:hover {
-  width: 300px;
-  height: 150px;
-  background: blue;
+    width: 300px;
+    height: 150px;
+    background: blue;
 }
 
 .trans-asymmetric {
-  width: 100px;
-  height: 100px;
-  background: red;
-  transition: width 1s ease 0s, height 1s ease 0s, background 1s ease 3s;
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 1s ease 0s, height 1s ease 0s, background 1s ease 3s;
 }
 
 .trans-asymmetric:hover {
-  width: 300px;
-  height: 150px;
-  background: blue;
-  border-radius: 25%;
-  transition: border-radius 1s ease-in 0s, width 1s ease-out 1s, height 1s ease-out 2s, background 1s ease-in-out 3s;
+    width: 300px;
+    height: 150px;
+    background: blue;
+    border-radius: 25%;
+    transition: border-radius 1s ease-in 0s, width 1s ease-out 1s, height 1s ease-out 2s, background 1s ease-in-out 3s;
 }
 
 .transform-translateX {
-  transform: translateX(55px);
+    transform: translateX(55px);
 }
 
 .transform-translateY {
-  transform: translateY(55px);
+    transform: translateY(55px);
 }
 
 .transform-translate {
-  transform: translate(50px, 50px);
+    transform: translate(50px, 50px);
 }
 
 .transform-scaleX {
-  transform: scaleX(1.5);
+    transform: scaleX(1.5);
 }
 
 .transform-scaleY {
-  transform: scaleY(1.5);
+    transform: scaleY(1.5);
 }
 
 .transform-scale {
-  transform: scale(1.5, -1.5);
+    transform: scale(1.5, -1.5);
 }
 
 .transform-skewX {
-  transform: skewX(20deg);
+    transform: skewX(20deg);
 }
 
 .transform-skewY {
-  transform: skewY(20deg);
+    transform: skewY(20deg);
 }
 
 .transform-skew {
-  transform: skew(20deg, 20deg);
+    transform: skew(20deg, 20deg);
 }
 
 .transform-rotate {
-  transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 div#img-container {
-  transform: perspective(1200px rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-  transform-style: flat;
+    transform: perspective(1200px rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    transform-style: flat;
 }
 
 div#img-container img {
-  transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
 }

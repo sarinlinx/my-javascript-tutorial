@@ -19,6 +19,14 @@
 
     <section class="container">
         <h1>Global and Local scope</h1>
+
+        <h2>Lexical Scope</h2>
+        <div class="row">
+            <div class="col">
+                <p>JavaScript uses Lexical scope.</p>
+            </div>
+        </div>
+
         <h2>Global Scope</h2>
         <div class="row">
             <div class="col">
@@ -36,6 +44,10 @@
         </div>
 
     </section>
+
+
+
+
 
 
 
@@ -63,7 +75,7 @@ console.log(varTwo)</span></pre>
             </div>
         </div>
 
-<h4>Variable shadowing</h4>
+        <h4>Variable shadowing</h4>
         <div class="row">
             <div class="col-6">
                 <p>Variable shadowing is when a local variable uses the same name as a Global variable, but the local value is used.</p>
@@ -87,6 +99,15 @@ if (true) {
 
 
 
+
+
+
+
+
+
+
+
+
     <section class="container">
         <h1>Scope Chain</h1>
         <div class="row">
@@ -96,6 +117,10 @@ if (true) {
             </div>
         </div>
     </section>
+
+
+
+
 
 
 
@@ -125,6 +150,10 @@ myDog();</span></span></pre>
         </div>
 
     </section>
+
+
+
+
 
     <section class="container">
         <h3>Example of Scope Chain</h3>
@@ -161,6 +190,50 @@ myDog();</span></span></pre>
 
 
 
+    <section class="container">
+        <h3>Leaked Globals</h3>
+        <p>When a value is assigned to a GLOBAL, but that variable was never explicitly assigned.</p>
+        <div class="row">
+            <div class="col-6">
+                <p>But what if the variable was NEVER declared?</p>
+                <p>The following prints 'Jen' twice, even though the variable was never declared!!!</p>
+                <p>The following is what happens:</p>
+                <ul>
+                    <li>JS looks in the local scope for the declared variable. It does not find it.</li>
+                    <li>It then looks in the parent scope. It does not find it.</li>
+                    <li>It will continue up all scopes to locate it.</li>
+                    <li>When it has not found it in the global scope, JS automatically declares it.</li>
+                </ul>
+
+                <p>This means you can accidentally create a GLOBAL variable by not declaring it.</p>
+
+
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">if (true) {  
+
+  if (true) {
+    name = 'Jen'
+    console.log(name)
+  }
+}
+
+if (true) {
+  console.log(name)
+}</span></span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -179,7 +252,7 @@ myDog();</span></span></pre>
                 <p>NOTE that isFreezing is never printed because nothing returns this value. It's just there to explain scope.</p>
             </div>
             <div class="col-6">
-<pre class="example"><span class="code-js"><span class="code-comment">// Global scope (convertFahrenheitToCelsius, tempOne, tempTwo)
+                <pre class="example"><span class="code-js"><span class="code-comment">// Global scope (convertFahrenheitToCelsius, tempOne, tempTwo)
   // Local scope (fahrenheit, celsius)
     // Local scope (isFreezing)</span>
 
