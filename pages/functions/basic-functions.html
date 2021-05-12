@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../../_css/style.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <title>Basic Functions</title>
 </head>
 
@@ -180,7 +180,7 @@ console.log(plus(2, 2, 3));</span></pre>
 }
 
 getScoreText();</span></pre>
-</div>
+            </div>
         </div>
 
         <h5>Output</h5>
@@ -212,7 +212,7 @@ getScoreText();</span></pre>
 
 let scoreText = getScoreText(undefined, 99)
 console.log(scoreText)</span></pre>
-      </div>
+            </div>
         </div>
 
         <h5>Output</h5>
@@ -235,78 +235,6 @@ console.log(scoreText)</span></pre>
     </section>
 
 
-
-    <section class="container">
-        <h1 type="button" data-toggle="collapse" data-target="#3-types-of-functions" aria-expanded="false" aria-controls="3-types-of-functions">3 types of Functions&nbsp;<i class="far fa-arrow-alt-circle-down"></i></h1>
-
-
-        <div class="collapse" id="3-types-of-functions">
-
-
-            <div class="row">
-                <div class="col">
-                    <p>Steps to add a new DOM element.</p>
-                    <ul>
-                        <li><span class="standout">Named</span> - executed when called by name. Usefull when the function needs to be called multiple times.</li>
-                        <li><span class="standout">Anonymous</span> - ran after being triggered by an event. Parenthesis are right after the word function.</li>
-                        <li><span class="standout">Immediately</span> - invoked function expressions run the moment the browser encounters them. These are anonymous functions with another () at the end to trigger them. And it's all wrapped in parenthesis.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3>Named</h3>
-            <div class="row">
-                <div class="col-6">
-                    <p>This function has a name of 'multiply'.</p>
-                </div>
-
-                <div class="col-6">
-                    <pre class="example"><span class="code-js">function <span class="standout">multiply</span>(a,b) {
-  var result = a*b;
-  console.log(result);
-  return result;
-}
-
-var multiplied = multipy(3,4);</span></pre>
-                </div>
-            </div>
-
-            <h3>Anonymous</h3>
-            <div class="row">
-                <div class="col-6">
-                    <p>This function does not have a name. It's triggered after assigning a variable to it, then running that variable function name.</p>
-                </div>
-
-                <div class="col-6">
-                    <pre class="example"><span class="code-js">var <span class="standout">divided</span> = function() {
-    var result = 3/4;
-    console.log("3 divided by 4 is ", result);
-}
-
-divided();</span></pre>
-                </div>
-            </div>
-
-            <h3>Immediately invoked</h3>
-            <div class="row">
-                <div class="col-6">
-                    <p>Two ways to write the part that immediately invokes it:</p>
-                    <ul>
-                        <li>(function () { /* ... */ })();</li>
-                        <li>(function () { /* ... */ }());</li>
-                    </ul>
-                </div>
-
-                <div class="col-6">
-                    <pre class="example"><span class="code-js">(function() {
-  var result = 12 / 0.75;
-  console.log("12 divided by 0.75 is ", result);
-} () )</span></pre>
-                </div>
-            </div>
-    </section>
-    <!-- End collapse section -->
-    </div>
 
 
 
@@ -464,43 +392,6 @@ hi("dude") <span class="code-comment">// call the function</span></span></pre>
 
     </section>
 
-
-    <section class="container">
-        <h1>Where to call (invoke) the function?</h1>
-        <div class="row">
-            <div class="col">
-                <p>It doesn't matter. The browser loads all JS, then runs it.</p>
-                <p>But for readability, it's easier to put the function before it's called in the script.</p>
-            </div>
-        </div>
-
-
-
-
-
-        <h3>Accessing the function without ()</h3>
-        <div class="row">
-            <div class="col-6">
-                <p>To access a function you would use (). For example, if the function is named testFunction, you would call it using: testFunction().</p>
-                <p>However, if you leave off the (), the function definition instead is returned.</p>
-
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">function test() {
-  var y = 2;
-  var z = 2;
-  var x = y + z;
-  return x;
-}
-
-console.log(test());
-console.log(test);</span></pre>
-            </div>
-            <img src="../../_img/call-function-without-parenthesis.png">
-        </div>
-
-
-    </section>
 
 
 

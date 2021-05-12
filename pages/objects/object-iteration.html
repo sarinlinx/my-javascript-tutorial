@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Objects</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+    <section class="container">
+        <h1>Iterating over Object key:value pairs</h1>
+
+        <div class="row">
+            <div class="col-6">
+                <p>You can loop through key:value pairs by using a for loop with the 'key' keyword.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var menu = {
+  width:  300,
+  height: 200,
+  title: "Menu"
+};
+
+for(var key in menu) {
+var val = menu[key];
+
+console.log("Key: " + key + " \nValue: " + val);
+}</span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p>The code above prints out the following:</p>
+                <pre class="example">Key: width
+Value: 300
+
+Key: height
+Value: 200
+
+Key: title
+Value: Menu</pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

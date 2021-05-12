@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Objects</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Change a property in an Object</h1>
+        <h3>This changes a single property (by reference)</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Sending an Object to a function's parameter creates a reference to the Object.</p>
+                <p>Any change to the reference makes a change to the actual Object.</p>
+                <p>This outputs twice:</p>
+                <ul>
+                    <li>{ name: 'Andrew Mead', expenses: 2.5, income: 0 }</li>
+                    <li>{ name: 'Andrew Mead', expenses: 2.5, income: 0 }</li>
+                </ul>
+                <p>This shows the new value within the function also permanenty changed the actual Object.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let myAccount = {
+  name: 'Andrew Mead',
+  expenses: 0,
+  income: 0
+}
+
+<span class="code-comment">//The account param is passing a reference to the myAccount Object in memory</span>
+let addExpense = function (account, amount) {
+  <span class="code-comment">//change expenses property</span>
+  account.expenses = account.expenses + amount
+  <span class="code-comment">//Print value of Object within this function</span>
+  console.log(account)
+}
+
+<span class="code-comment">//Send the myAccount Object into the function as the first param
+//Send 2.50 to the 2nd param</span>
+addExpense(myAccount, 2.50)
+<span class="code-comment">//Check the Object now and see the expenses property has changed</span>
+console.log(myAccount)</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+    <section class="container">
+        <h3>This does not change the Object since it breaks the reference</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>You can only change properties of the Object within the function.</p>
+                <p>If you assign the Object to a new Object, it DOES NOT change the original Object because the reference is then broken.</p>
+                <p>This outputs</p>
+                <ul>
+                    <li>{}</li>
+                    <li>{ name: 'Andrew Mead', expenses: 2.5, income: 0 }</li>
+                </ul>
+                <p>Using the assignment operator on the param name creates a new local Object. It breaks the reference to the actual Object.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let myAccount = {
+  name: 'Andrew Mead',
+  expenses: 0,
+  income: 0
+}
+
+let addExpense = function (account, amount) {
+  <span class="code-comment">//set account (the reference) to an empty Object</span>
+  account = {}
+  <span class="code-comment">//Print value of Object within this function</span>
+  console.log(account)
+}
+
+addExpense(myAccount, 2.50)
+console.log(myAccount)</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="container">
+        <h3>Changing the property by reference (without a function)</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>By assigning a variable to the Object, you create a reference to the Object.</p>
+                <p>This outputs</p>
+                <ul>
+                    <li>{ name: 'Andrew Mead', expenses: 2.5, income: 1000 }</li>
+                    <li>{ name: 'Andrew Mead', expenses: 2.5, income: 1000 }</li>
+                </ul>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let myAccount = {
+  name: 'Andrew Mead',
+  expenses: 0,
+  income: 0
+}
+
+<span class="code-comment">//Create a reference (binding) to the original Object</span>
+let otherAccount = myAccount
+<span class="code-comment">//Change a property of this reference</span>
+otherAccount.income = 1000
+
+let addExpense = function (account, amount) {
+  account.expenses = account.expenses + amount
+  console.log(account)
+}
+
+addExpense(myAccount, 2.50)
+console.log(myAccount)</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

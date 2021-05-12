@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>String Methods</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Searching Strings</h1>
+
+        <h2>Accessing a single character in a string</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>There are 2 ways to do this.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "string text"
+    alert( str.charAt(2) )
+
+    var str = "string text"
+    alert(str[2])</pre>
+            </div>
+        </div>
+
+
+
+        <h2>Searching for the index value String in a String</h2>
+        <h3>indexOf()</h3>
+
+        <div class="row">
+            <div class="col-6">
+                <p>Use indexOf() to search for a sub-string within a string.</p>
+                <p>It returns the position of a first occurence of a substring or -1 if nothing found.</p>
+                <p>This example returns the following:</p>
+                <ul>
+                    <li>returns 0</li>
+                    <li>returns 1 because the second character starts with 'id'</li>
+                    <li>returns -1</li>
+                </ul>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Widget with id"
+
+    alert( str.indexOf("Widget") )
+    alert( str.indexOf("id") )
+    alert( str.indexOf("Lalala") ) </pre>
+            </div>
+        </div>
+
+        <h4>Find sub-string after beginning at a specific index</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This starts searching at character 2.</p>
+                <p>It returns 12 because that's the first character position (after 2) that starts with 'id'.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Widget with id"
+    alert( str.indexOf("id", 2) ) </pre>
+            </div>
+        </div>
+
+
+
+        <h4>Finding the first index value of a String in a String (indexOf)</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>The indexOf() method returns the index of (the position of) the first occurrence of a specified text in a string.</p>
+                <p>This returns: 7</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Please locate where 'locate' occurs!";
+            var pos = str.indexOf("locate");</pre>
+            </div>
+        </div>
+
+
+
+        <h4>Finding the last index value of a String in a String (lastIndexOf)</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>The lastIndexOf() method returns the index of the last occurrence of a specified text in a string.</p>
+                <p>This returns 21 since it finds the second (or last) occurrence of the word 'locate'.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Please locate where 'locate' occurs!";
+            var pos = str.lastIndexOf("locate");</pre>
+            </div>
+        </div>
+
+
+        <h4>If a String in a String doesn't exist</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Both indexOf(), and lastIndexOf() return -1 if the text is not found.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Please locate where 'locate' occurs!";
+            var pos = str.lastIndexOf("John");</pre>
+            </div>
+        </div>
+
+
+        <h4>Setting a starting index</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Both methods accept a second parameter as the starting position for the search.</p>
+                <p>This returns 21.<span class="red">WHY???</span></p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Please locate where 'locate' occurs!";
+            var pos = str.indexOf("locate",15);</pre>
+            </div>
+        </div>
+
+
+        <h4>Using search() instead of indexOf()</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>The search() method searches a string for a specified value and returns the position of the match.</p>
+                <p>This returns 7</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "Please locate where 'locate' occurs!";
+            var pos = str.search("locate");</pre>
+            </div>
+        </div>
+
+        <h3>Difference between search() and indexOf()</h3>
+        <div class="row">
+            <div class="col">
+                <p>The search() method cannot take a second start position argument.</p>
+                <p>The indexOf() method cannot take powerful search values (regular expressions).</p>
+            </div>
+        </div>
+
+
+
+</body>
+
+</html>

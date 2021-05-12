@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Operators</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Boolean operators</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>AND &&</p>
+                <p>OR ||</p>
+                <p>NOT !</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert( true && false ); // false
+
+alert( false || true ); // true
+
+alert( !false ); // true</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+        <h3>Default TRUE (truthy) values</h3>
+        <div class="row">
+            <div class="col">
+                <p>The following values are always truthy:</p>
+                <ul>
+                    <li>'0' (a string containing a single zero)</li>
+                    <li>'false' (a string containing the text “false”)</li>
+                    <li>[] (an empty array)</li>
+                    <li>{} (an empty object)</li>
+                    <li>function(){} (an “empty” function)</li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <h3>Default FALSE (falsy) values</h3>
+        <div class="row">
+            <div class="col">
+                <p>The following values are always falsy:</p>
+                <ul>
+                    <li>false</li>
+                    <li>0 (zero)</li>
+                    <li>'' or "" (empty string)</li>
+                    <li>null</li>
+                    <li>undefined</li>
+                    <li>NaN (e.g. the result of 1/0)</li>
+                </ul>
+
+            </div>
+        </div>
+
+
+
+
+
+
+        <h3>AND</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>AND returns last TRUE value in a series of TRUE</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">// Left operand is true,
+// AND needs to check the right operand also
+// It then returns that last TRUE value
+
+alert(1 && 0) // 0, the last evaluated value
+alert(1 && 5) // 5, the last evaluated value</span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>AND returns FALSE if the first value is FALSE.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">// Left operand is false,
+// AND stops immediately and returns it
+
+alert(null && 5) // Since the first value if FALSE (null), it is the last evaluated value</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <h3>Logical OR with falsy operands</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>When using OR with falsy operands, it looks for the TRUE value.</p>
+                <p>In this example, the left operand is TRUE, so OR stops and returns it immediately.</p>
+                <p>The result is 1.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert(1 || 0)</span></pre>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>In this example, the left operand is FALSE, so OR continues to the next operand which is TRUE and returns it.</p>
+                <p>The result is 1.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert(0 || 1)</span></pre>
+            </div>
+        </div>
+
+        <h4>If both are false</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>In this example, the left operand is FALSE, so OR continues to the next operand which is also FALSE.</p>
+                <p>Since there is no TRUE value, the result is null.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert(0 || 1)</span></pre>
+            </div>
+        </div>
+
+        <h4>When to use?</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This is useful when you have multiple variables and need to get the first one that is true.</p>
+                <p>This returns 'Oh-la-la' since it's the last value that isn't falsy.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var b = false
+var n = 0
+var s = "O-la-la"
+
+var result = b || n || s
+
+alert(result) // "O-la-la"</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <h3>NOT</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>NOT converts its operand into boolean, then negates it.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert( !true ) // returns false
+alert( !0 ) // returns true</span></pre>
+            </div>
+        </div>
+
+        <h3>Double NOT</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>A Double NOT converts its value into boolean.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert( !!"string" ) //	returns true
+alert( !!null ) // returns false</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+        <h3>Boolean conversion</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Traditionally, it is possible to put a value into if. In this case, it gets converted into boolean.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var x = 1
+
+if (x) {
+  alert('true')
+}</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

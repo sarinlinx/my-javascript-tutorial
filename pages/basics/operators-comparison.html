@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Operators</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Comparison operators</h1>
+        <div class="row">
+            <div class="col">
+                <p>></p>
+                <p>
+                    <</p>
+                        <p>
+                            <=</p>
+                                <p>>=</p>
+            </div>
+        </div>
+        <h3>String comparison</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Strings are compared in phone book alpha order.</p>
+                <p>This results in TRUE since Anna is alphabetically after Abba.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert( "Anna" > "Abba" )</span></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p>This is also case sensitive. This result is TRUE</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alter( "abba" > "Zend" )</span></pre>
+            </div>
+        </div>
+
+
+        <h3>Comparing different types</h3>
+        <h4>Number comparison</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This returns TRUE becuase 8 is less than or equal to 10.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(8 <= 10)</span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>The interpreter converts values to numbers. In this case, "01" becomes the numerical value of 1.</p>
+                <p>This results in TRUE.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert( "01" < 2 );</span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <p>This also results in TRUE because true converts to 1 in boolean.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert(1 == true);</span></pre>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>NOTE: Be careful with string numbers since it will go in alpha numeric order.</p>
+                <p>This results is TRUE since 2 is > than 14 when using lexigraphical order (dictionary sorting).</p>
+                <p>This is because lexicographical order puts everything in alpha numberic order. So ANY number that start with a 1 comes before ANY number that starts with a 2.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert ( "2" > "14" );</span></pre>
+            </div>
+        </div>
+
+
+        <h3>Uncomparable</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>undefined values can't be compared with numbers.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">undefined > 0 // is false
+undefined == 0 // is false</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Comparison Equality operators</h1>
+        <div class="row">
+            <div class="col">
+                <p>==</p>
+                <p>===</p>
+                <p>!=</p>
+                <p>!==</p>
+            </div>
+        </div>
+        <h3>==</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Two equal signs is a general equality operator.</p>
+                <p>This result is TRUE.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert(0 == false);</span></pre>
+            </div>
+        </div>
+
+        <h3>Strict equality operator ===</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Three equal signs is a strict equality operator. The values must match exactly.</p>
+                <p>This result is FALSE since values of different type are always unequal.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert(0 === false);</span></pre>
+            </div>
+        </div>
+
+
+        <h3>In-equality operator !=</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This is false since zero does equal a false boolean value. The type doesn't matter.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(0 != false)</span></pre>
+            </div>
+        </div>
+
+        <h3>Strict in-equality operator !==</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This is true since zero is not equal to false since they are different types.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(0 !== false);</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="container">
+        <h1>Special values</h1>
+        <div class="row">
+            <div class="col">
+                <p>This is weird and something to remember to look out for.</p>
+                <p>null > 0 is false</p>
+                <p>null == 0 is false</p>
+                <p>but...</p>
+                <p>null >= 0 is true</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

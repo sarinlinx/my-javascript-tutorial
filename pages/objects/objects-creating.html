@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Objects</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Creating Objects</h1>
+        <div class="row">
+            <div class="col">
+                <p>Objects store data such as properties and methods.</p>
+                <ul>
+                    <li>Properties: Info about the object we can retrieve and use</li>
+                    <li>Methods: functions that belong to the object</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container">
+        <h2>Long way to create an Object</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>Use {} to create an Object.</p>
+                <p>When a JavaScript variable is declared with the keyword "new", the variable is created as an object. However this isn't necessary since you can assign properties while creating it.</p>
+                <p>This creates and Object named 'course'.</p>
+
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var course = new Object();</span></pre>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>You can then run commands to assign it properties using dot or bracket notation.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">course.title = "JavaScript Essential Training";
+course.instructor = "Name of teacher";
+course.level = 1;
+course["Where it is"] = "At the school";</span></pre>
+            </div>
+        </div>
+
+
+
+
+        <h2>Short way to create an Object</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>The short hand way is to assign the properties while creating the Object.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var course = {
+  title: "JavaScript Essential Training",
+  instructor: "Name of teacher",
+  level: 1,
+  views: 0,
+}</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

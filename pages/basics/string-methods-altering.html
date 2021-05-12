@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>String Methods</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+    <section class="container">
+        <h1>String methods</h1>
+        <div class="row">
+            <div class="col">
+                <p>With JavaScript, methods and properties are available to primitive values, because JavaScript treats primitive values as objects when executing methods and properties.</p>
+            </div>
+        </div>
+
+        <div class="alert alert-note">
+            <div class="alert-icon">
+                <img src="../../_img/note-icon.png" width="60" height="60">
+            </div>
+            <div class="alert-content">
+                <p>All string methods return a new string. They don't modify the original string. Formally said: Strings are immutable: Strings cannot be changed, only replaced. </p>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+    <section class="container">
+        <h1>Altering Strings</h1>
+
+        <h3>charAt()</h2>
+            <div class="row">
+                <div class="col-6">
+                    <p>It's not possible to change the text of a string.</p>
+                    <p>However, you can re-created the string one part at a time.</p>
+                    <p>This changes the text 'string' into 'ring'.</p>
+                </div>
+
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">var str = "string"
+  str = str.charAt(2) + str.charAt(3) + str.charAt(4) + str.charAt(5)
+  alert(str)</pre>
+                </div>
+            </div>
+
+
+
+            <section class="container">
+                <h2>Changing string case</h2>
+                <h3>Uppercase</h3>
+                <div class="row">
+                    <div class="col-6">
+                        <p>Use the method toUpperCase to change the string to uppercase text.</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">alert( "Hey-ho!".toUpperCase() )</pre>
+                    </div>
+                </div>
+
+                <h3>Lowercase</h3>
+                <div class="row">
+                    <div class="col-6">
+                        <p>Use the method toLowerCase to change the string to lowercase text.</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">alert( "Hey-ho!".toLowerCase() )</pre>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+            <h1>Concat</h1>
+            <section class="container">
+
+                <div class="row">
+                    <div class="col-6">
+                        <p>concat() joins two or more strings.</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">var text1 = "Hello";
+var text2 = "World!";
+var text3 = text1.concat(" ",text2);</pre>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-6">
+                        <p>The concat() method can be used instead of the plus operator. These two lines do the same.</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">var text = "Hello" + " " + "World!";
+var text = "Hello".concat(" ", "World!"); </pre>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+            <h1>trim()</h1>
+            <section class="container">
+
+                <div class="row">
+                    <div class="col-6">
+                        <p>String.trim() removes whitespace from both sides of a string.</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">var str = "    Hello World!    ";
+alert(str);</pre>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+            <h1>includes()</h1>
+            <section class="container">
+
+                <div class="row">
+                    <div class="col-6">
+                        <p>This returns 'false' since 'xyz' is not part of the string named 'password'.</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">let password = 'abc123asdf098'
+console.log(password.includes('xyz'))</pre>
+                    </div>
+                </div>
+
+                <h3>Example of includes() and length()</h3>
+                <div class="row">
+                    <div class="col-6">
+                        <p>This returns 'false' since 'xyz' is not part of the string named 'password'.</p>
+                        <p>This returns: false, true, false.</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">let isValidPassword = function (password) {
+  <span class="code-comment">//length must be over 8 char AND cannot contain the string xyz</span>
+  return password.length > 8 && !password.includes('xyz')
+}
+
+<span class="code-comment">//Returns true because it's under 8 char</span>
+console.log(isValidPassword('asdfp'))
+<span class="code-comment">//Returns true because it's over 8 char, and it DOES NOT contain 'xyz'</span>
+console.log(isValidPassword('abc123!@#$%^z'))
+<span class="code-comment">//Returns false because DOES contain the string 'xyz'</span>
+console.log(isValidPassword('asdfpasdfpoij_xyz'))</pre>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+
+
+
+
+
+            <script src="../../_js/jquery.js "></script>
+            <script src="../../_js/bootstrap.bundle.js "></script>
+</body>
+
+</html>

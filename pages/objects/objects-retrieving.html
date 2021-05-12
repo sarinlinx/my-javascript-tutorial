@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Objects</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Retrieving data from Objects</h1>
+
+        <h3>Retrieving the full Object</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>You can retrieve the full Object just like a variable.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(course);</span></pre>
+            </div>
+        </div>
+
+        <h3>Retrieving properties using dot notation</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>You can use dot notation to retrieve a specific property.</p>
+                <p>The syntax is: <span class="standout">objectName.propertyName</span></p>
+                <p>Dot notation works well for properly named properties.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(course.title);</span></pre>
+            </div>
+        </div>
+
+        <h3>Retrieving properties using bracket notation</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>You can use bracket notation to retrieve a specific property.</p>
+                <p>The syntax is: <span class="standout">objectName["propertyName"]</span></p>
+                <p>Bracket notation works well for when we might have to convert the property name into a string.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(person["lastName"];);</span></pre>
+            </div>
+        </div>
+
+
+        <h3>Full example how ot create and retrieve Object data</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This creates an Object named myBook with data.</p>
+                <p>The data is retrieved using a string template and dot notation.</p>
+                <p>The value of 'title' is then changed manually. When checked, the new value displays.</p>
+                <p>This outputs:</p>
+                <ul>
+                    <li>1984 by George Orwell</li>
+                    <li>Animal Farm by George Orwell</li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let myBook = {
+  title: '1984',
+  author: 'George Orwell',
+  pageCount: 326
+}
+
+console.log(`${myBook.title} by ${myBook.author}`)
+
+myBook.title = 'Animal Farm'
+
+console.log(`${myBook.title} by ${myBook.author}`)</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+        <h3>Returning 2 Objects using a function</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Instead of writing several console.log statements, you can create a function to gather the data.</p>
+                <p>This returns:</p>
+                <ul>
+                    <li>1984 by George Orwell</li>
+                    <li>A Peoples History by Howard Zinn</li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let myBook = {
+  title: '1984',
+  author: 'George Orwell',
+  pageCount: 326
+}
+
+let otherBook = {
+  title: 'A Peoples History',
+  author: 'Howard Zinn',
+  pageCount: 723
+}
+
+let getSummary = function (book) {
+  console.log(`${book.title} by ${book.author}`)
+}
+
+getSummary(myBook)
+getSummary(otherBook)</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <h3>Create and return 2 new properties using a function</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This creates two new propties within the function.</p>
+                <ul>
+                    <li>summary</li>
+                    <li>pageCountSummary</li>
+                </ul>
+
+                <p>This returns:</p>
+                <ul>
+                    <li>1984 by George Orwell</li>
+                    <li>1984 is 326 pages long</li>
+                    <li>A Peoples History is 723 pages long</li>
+                    <li>A Peoples History by Howard Zinn</li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let myBook = {
+  title: '1984',
+  author: 'George Orwell',
+  pageCount: 326
+}
+
+let otherBook = {
+  title: 'A Peoples History',
+  author: 'Howard Zinn',
+  pageCount: 723
+}
+
+let getSummary = function (book) {
+    return {
+      <span class="code-comment">//return different summaries by creating different properties
+      //set the new summary property to a template string</span>
+      summary: `${book.title} by ${book.author}`,
+      <span class="code-comment">//create new pageCountSummary property</span>
+      pageCountSummary: `${book.title} is ${book.pageCount} pages long`
+    }
+}
+
+<span class="code-comment">//bookSummary is an Object because it returns Object data from the function</span>
+let bookSummary = getSummary(myBook)
+let otherBookSummary = getSummary(otherBook)
+
+console.log(bookSummary.summary)
+console.log(bookSummary.pageCountSummary)
+
+console.log(otherBookSummary.summary)
+console.log(otherBookSummary.pageCountSummary)</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>

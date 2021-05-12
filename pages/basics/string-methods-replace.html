@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>String Methods</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+    <section class="container">
+        <h1>Replacing content with replace()</h1>
+        <div class="row ">
+            <div class="col">
+                <p>The replace() method replaces a specific sub-string with another string.</p>
+                <p>By default, the replace() function replaces only the first match.</p>
+                <p>By default, the replace() function is case sensitive.</p>
+            </div>
+        </div>
+
+        <div class="alert alert-note">
+            <div class="alert-icon">
+                <img src="../../_img/note-icon.png" width="60" height="60">
+            </div>
+            <div class="alert-content">
+                <p>The replace() method does not change the string it is called on. It returns a new string.</p>
+            </div>
+        </div>
+
+
+
+        <div class="row ">
+            <div class="col-6 ">
+                <p>This replaces 'cake' with 'pie'.</p>
+                <p>This returns: I like pie!</p>
+            </div>
+            <div class="col-6 ">
+                <pre class="example "><span class="code-js ">str = "I like cake!";
+var n = str.replace("cake", "pie");</pre>
+            </div>
+        </div>
+
+        <h4>Replace case-sensitive text</h4>
+        <div class="row ">
+            <div class="col-6 ">
+                <p>Use a regular expression with an /i flag (insensitive)</p>
+                <p>Do not use quotes.</p>
+            </div>
+            <div class="col-6 ">
+                <pre class="example "><span class="code-js ">str = "I like CAKE!";
+var n = str.replace(/cAke/i, "pie");</pre>
+            </div>
+        </div>
+
+
+        <h4>Replace all instances of a word</h4>
+        <div class="row ">
+            <div class="col-6 ">
+                <p>To replace all matches, use a regular expression with a /g flag (global match).</p>
+                <p>The /g flag is case sensitive. Add /i to find all references.</p>
+            </div>
+            <div class="col-6 ">
+                <pre class="example "><span class="code-js ">str = "I like CAKE with extra cake!";
+var n = str.replace(/cake/gi, "pie");</pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js "></script>
+    <script src="../../_js/bootstrap.bundle.js "></script>
+</body>
+
+</html>

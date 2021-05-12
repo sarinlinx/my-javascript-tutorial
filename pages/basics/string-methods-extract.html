@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>String Methods</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <div class="container">
+        <section>
+
+
+
+
+            <h1>Extracting a Sub-string from a String</h1>
+            <h3>substring()</h3>
+            <div class="row">
+                <div class="col">
+                    <p>substring() extracts a sub-string from a string using index values.</p>
+                    <p>substring() cannot use negative values.</p>
+                    <p>The first value is the index it begins to cut from.</p>
+                    <p>The last index value is what index to stop at, but does not include that index value.</p>
+                </div>
+            </div>
+
+
+            <h4>Find a sub-string between specific characters</h4>
+            <div class="row">
+                <div class="col-6">
+                    <p>This prints the letter 's'.</p>
+                    <p>It starts at index 0, then cuts out 1 index value.</p>
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">var str = "stringify"
+alert(str.substring(0,1))</pre>
+                </div>
+            </div>
+
+            <h4>Another example of two values</h4>
+            <div class="row">
+                <div class="col-6">
+                    <p>It starts at index 2, stops cutting at 4 (which is not included. So only index 2 and 3 are cut.</p>
+                    <p>This prints the letters 'ri'.</p>
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">var str = "stringify"
+alert(str.substring(2,4))</pre>
+                </div>
+            </div>
+
+
+            <h4>What if only 1 index value is specified?</h4>
+            <div class="row">
+                <div class="col-6">
+                    <p>If only 1 index value is given, it starts cutting from there to the end of the string.</p>
+                    <p>This prints ringify since only the first value was specified.</p>
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">var str = "stringify"
+alert(str.substring(2))</pre>
+                </div>
+            </div>
+
+            <h4>What if first value is larger than second?</h4>
+            <div class="row">
+                <div class="col-6">
+                    <p>If the first value is larger, the values are swapped.</p>
+                    <p>-1 becomes zero, then the values are swapped.</p>
+                    <p>This returns 'stri'.</p>
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">var str = "stringify"
+alert(str.substring(4, -1))</pre>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <h3>substr()</h3>
+            <div class="row">
+                <div class="col">
+                    <p>substr() is not the same as substring()</p>
+                    <p>With substr(), the second parameter specifies the length of the extracted part.</p>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-6 ">
+                    <p><strong>Syntax</strong></p>
+                </div>
+                <div class="col-6 ">
+                    <pre class="example "><span class="code-js ">substr(beginning_value , how_many_to_extract)</pre>
+                </div>
+            </div>
+
+
+            <h4>Find a sub-string starting at a specific character</h4>
+            <div class="row ">
+                <div class="col-6 ">
+                    <p>This starts at index 2, then cuts 4 index values.</p>
+                    <p>This prints 'ring'.</p>
+                </div>
+                <div class="col-6 ">
+                    <pre class="example "><span class="code-js ">var str = "stringify"
+str = str.substr(2,4)
+alert(str)</pre>
+                </div>
+            </div>
+
+            <h4>What if only 1 index value is given?</h4>
+            <div class="row ">
+                <div class="col-6 ">
+                    <p>It will start at the index value and cut everything after.</p>
+                    <p>This prints: Banana, Kiwi</p>
+                </div>
+                <div class="col-6 ">
+                    <pre class="example "><span class="code-js ">var str = "Apple, Banana, Kiwi";
+var res = str.substr(7);</pre>
+                </div>
+            </div>
+
+            <h4>If index value is negative</h4>
+            <div class="row ">
+                <div class="col-6 ">
+                    <p>It counts backwards from the end of the string.</p>
+                    <p>This prints: gify</p>
+                </div>
+                <div class="col-6 ">
+                    <pre class="example "><span class="code-js ">var str = "stringify";
+str = str.substr(-4);</pre>
+                </div>
+            </div>
+
+            <h4>If a negative and positive index is used</h4>
+            <div class="row ">
+                <div class="col-6 ">
+                    <p>It counts backwards from the end of the string.</p>
+                    <p>The 2nd index counts how many to cut.</p>
+                    <p>This prints: gi</p>
+                </div>
+                <div class="col-6 ">
+                    <pre class="example "><span class="code-js ">var str = "stringify";
+str = str.substr(-4, 2);</pre>
+                </div>
+            </div>
+
+            <div class="alert alert-note">
+                <div class="alert-icon">
+                    <img src="../../_img/note-icon.png" width="60" height="60">
+                </div>
+                <div class="alert-content">
+                    <p>Two negative values will not work with substr()</p>
+                </div>
+            </div>
+
+
+
+            <h3>slice()</h3>
+            <div class="row ">
+                <div class="col ">
+                    <p>slice() extracts a part of a string and returns the extracted part in a new string.</p>
+                    <p>You can use a single value, or 2 values.</p>
+                    <p>The values and be positive or negative.</p>
+                    <p>The first value is where it starts to cut from.</p>
+                    <p>The second index value is where to stop (but does not include that index value).</p>
+                </div>
+            </div>
+
+            <h4>Using a single value with slice()</h4>
+            <div class="row ">
+                <div class="col-6 ">
+                    <p>The index is where it begins to cut from.</p>
+                    <p>This returns: Banana, Kiwi</p>
+                </div>
+                <div class="col-6 ">
+                    <pre class="example "><span class="code-js ">var str = "Apple, Banana, Kiwi ";
+var res = str.slice(7);</pre>
+                </div>
+            </div>
+
+
+            <h4>Using two index values with slice()</h4>
+            <div class="row ">
+                <div class="col-6 ">
+                    <p>The method takes 2 parameters: the starting index (position), and the ending index (position).</p>
+                    <p>The first index is where it begins to cut from.</p>
+                    <p>The last index is where it stops, meaning it does not cut that final value.</p>
+                    <p>This example slices out a portion of a string from position 7 to position 13: </p>
+                    <p>This returns 'Banana'.</p>
+                </div>
+                <div class="col-6 ">
+                    <pre class="example "><span class="code-js ">var str = "Apple, Banana, Kiwi ";
+var res = str.slice(7, 13);</pre>
+                </div>
+            </div>
+
+            <h4>Using a single negative value with slice()</h4>
+            <div class="row ">
+                <div class="col-6 ">
+                    <p>When couting, do not use 0 as the first value. Count back starting at 1.</p>
+                    <p>If a single negative value is specified, you count backwards to that index, then cut the rest of the string out.</p>
+                    <p>This returns: Kiwi</p>
+                </div>
+                <div class="col-6 ">
+                    <pre class="example "><span class="code-js ">var str = "Apple, Banana, Kiwi";
+var res = str.slice(-4);</pre>
+                </div>
+            </div>
+
+            <h4>Using two negative values with slice()</h4>
+            <div class="row ">
+                <div class="col-6 ">
+                    <p>If a parameter is negative, the position is counted from the end of the string.</p>
+                    <p>This example slices out a portion of a string from position -12 to position -6:</p>
+                    <p>When couting, do not use 0 as the first value. Count back starting at 1.</p>
+                    <p>The first index is where the string starts to cut from.</p>
+                    <p>The last index is where it stops, so it is not included in the returned string.</p>
+                    <p>This returns: Banana</p>
+                </div>
+                <div class="col-6 ">
+                    <pre class="example "><span class="code-js ">var str = "Apple, Banana, Kiwi";
+var res = str.slice(-12, -6);</pre>
+                </div>
+            </div>
+
+            <div class="alert alert-note">
+                <div class="alert-icon">
+                    <img src="../../_img/note-icon.png" width="60" height="60">
+                </div>
+                <div class="alert-content">
+                    <p>A negative with a positive value will not work with slice()</p>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            <h3>Difference between slice() and substring()</h3>
+            <div class="row ">
+                <div class="col ">
+                    <p>The difference between slice() and substring() is how they treat negative and overflow values.</p>
+                    <p>Negative values using substring() become zero.</p>
+                    <p>Negative values using slice() count backwards.</p>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-6 ">
+                    <p>This returns 'testme' because -2 becomes 0, and there's no second value.</p>
+                </div>
+                <div class="col-6 ">
+                    <pre class="example "><span class="code-js ">alert( "testme ".substring(-2) ) </pre>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-6 ">
+                    <p>slice is the same with positive values.</p>
+                    <p>This returns 'test'.</p>
+
+                </div>
+                <div class="col-6 ">
+                    <pre class="example "><span class="code-js ">alert ( "testme ".slice(0, 4));</pre>
+                </div>
+            </div>
+
+
+
+            <div class="row ">
+                <div class="col-6 ">
+                    <p>With slice() and negative values, it counts back from the end.</p>
+                    <p>This returns 'me'.</p>
+
+                </div>
+                <div class="col-6 ">
+                    <pre class="example "><span class="code-js ">alert( "testme ".slice(-2) )  </pre>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-6 ">
+                    <p><span class="red ">why does this return 'm'?</span></p>
+
+                </div>
+                <div class="col-6 ">
+                    <pre class="example "><span class="code-js ">alert ( "testme ".slice(4, -1));</pre>
+                </div>
+            </div>
+
+        </section>
+
+
+
+
+
+    </div>
+
+
+</body>
+
+</html>

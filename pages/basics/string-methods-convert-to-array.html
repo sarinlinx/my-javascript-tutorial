@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>String Methods</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <h1>Converting a String to an Array</h1>
+    <section class="container">
+        <h4>comma</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Display the first array element, after a string split from a comma.</p>
+                <p>This returns: a</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "a,b,c,d,e,f";
+var arr = str.split(",");</pre>
+            </div>
+        </div>
+        <h4>pipe</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Display the first array element, after a string split from a |.</p>
+                <p>This returns: a,b,c</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "a,b,c|d,e,f";
+var arr = str.split("|");</pre>
+            </div>
+        </div>
+        <h4>space</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>Display the first array elements, after a string split from a space.</p>
+                <p>This returns: a,b,c,d,e</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var str = "a,b,c,d,e f";
+var arr = str.split(" ");</pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js "></script>
+    <script src="../../_js/bootstrap.bundle.js "></script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Operators</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Artithmatic operators</h1>
+        <h3>Remainder</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>The modulous symbol % returns the remainder.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">5 % 2; //returns 1</span></pre>
+            </div>
+        </div>
+
+        <h3>Exponentiation</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>For a natural number b, the result of a ** b is a multiplied by itself b times.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">alert( 2 ** 2 );     // 4  (2 * 2)
+alert( 2 ** 3 );     // 8  (2 * 2 * 2)
+alert( 2 ** 4 );     // 16 (2 * 2 * 2 * 2)
+alert( 4 ** (1/2) ); // 2 (power of 1/2 is the same as a square root, that's maths)
+alert( 8 ** (1/3) ); // 2 (power of 1/3 is the same as a cubic root)</span></pre>
+            </div>
+        </div>
+
+
+        <h3>Increment/decrement</h3>
+        <div class="row">
+            <div class="col">
+                <p>Increment/decrement can be applied only to a variable. An attempt to use it on a value like 5++ will give an error.</p>
+                <p>Operators ++ and -- can be placed both after and before the variable.</p>
+                <ul>
+                    <li><span class="standout">prefix form</span> -When the operator stands before the variable: ++counter.</li>
+                    <li><span class="standout">postfix form</span> - When the operator goes after the variable: counter++.</li>
+
+                </ul>
+                <p>The difference is the 'prefix form' returns the new value while the 'postfix form' returns the old value.</p>
+                <p>If you do not need the result of the increment/decrement, then it doesn't matter which form you use.</p>
+            </div>
+        </div>
+
+
+
+        <h4>Prefix example</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This returns the new value after increment.</p>
+                <p>Use this if you need to increase the value, and use the result of the operator right now.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let counter = 1;
+let a = ++counter;
+
+alert(a); // 2</span></pre>
+            </div>
+        </div>
+
+
+
+        <h4>Postfix example</h4>
+        <div class="row">
+            <div class="col-6">
+                <p>This returns the old value prior to increment.</p>
+                <p>Use this if you need to increase the value, but use the previous result.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let counter = 1;
+let a = counter++;
+
+alert(a); // 1</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+        <h3>Modify-in-place</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Modifying-in-place shortens your notation.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let n = 2;
+n += 5; // now n = 7 (same as n = n + 5)
+n *= 2; // now n = 14 (same as n = n * 2)
+
+alert( n ); // 14</span></pre>
+            </div>
+        </div>
+
+
+
+        <h3>Comma</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This used mostly in Frameworks for more complex constructs.</p>
+                <p>It's odd and difficult to read so it should generally not be used.</p>
+                <p>Put several expressions in parenthesis and separate by a comma. Only the last expression is returned.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let a = (1 + 2, 3 + 4);
+
+alert( a ); // 7 (the result of 3 + 4)</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+</body>
+
+</html>

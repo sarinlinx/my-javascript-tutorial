@@ -68,7 +68,7 @@ h2 {
     font-family: 'Lora', serif;
     background-color: #0e0e0e;
     background-image: url("textures/asfalt-dark.png");
-    margin-bottom: 20px;
+    margin: 20px 0;
     background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

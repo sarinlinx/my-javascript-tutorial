@@ -75,15 +75,16 @@ price = 200;</pre>
         </div>
 
 
-<h2>var is no longer used</h2>
-<div class="row">
-    <div class="col">
-      <p>var was used in the past, but no longer used due to its quirks. It still works, but modern devs do not use it any longer.</p>
-      <p>One reason is that you can re-declare a variable with the same name to a different value. let and const do not allow this.</p>
-      <p>var is function scoped, not block scoped. If var is used in a function, you cannot access it outside of that function. If var is used in an if block statement, you can still access it outside. If let us used in the if statement, it's not accessible outside of it.</p>
-      <p>When a var is created, its declaration is hoisted to the top of the scope. So you can call that variables before it's declared and it will display as undefined. This would throw an error with let.</p>
-    </div>
-</div>
+        <h2>var is no longer used</h2>
+        <div class="row">
+            <div class="col">
+                <p>var was used in the past, but no longer used due to its quirks. It still works, but modern devs do not use it any longer.</p>
+                <p>One reason is that you can re-declare a variable with the same name to a different value. let and const do not allow this.</p>
+                <p>var is function scoped, not block scoped. If var is used in a function, you cannot access it outside of that function. If var is used in an if block statement, you can still access it outside. If let us used in the if statement, it's not
+                    accessible outside of it.</p>
+                <p>When a var is created, its declaration is hoisted to the top of the scope. So you can call that variables before it's declared and it will display as undefined. This would throw an error with let.</p>
+            </div>
+        </div>
 
 
 
@@ -164,31 +165,32 @@ logScope();</span></pre>
 
 
 
-    <section class="container">
-        <h1>Variable Scope</h1>
-        <div class="row">
-            <div class="col">
-                <p>Scope determines where in your code your variable is available.</p>
-                <p>The location of the variable and how it is declared determines the scope.</p>
-                <p>There are 3 types of scope in JavaScript.</p>
-                <ul>
-                    <li>Global - This is when you declare the variable outside of any function. You can then access it in any script. However, if you update the variable within any function, the global value changes. So, any other references to that variable
-                        are updated as well.</li>
-                    <li>Local - This is when you declare the variable inside a function. It's only then available within that function.</li>
-                    <li>Block - new scope added with ES2015 used with 'const' and 'let' variables. The scope is limited to a small block of code, even within a function.</li>
-                </ul>
 
+    <section class="container">
+        <h1>Clearing a variable using 'null'</h1>
+
+        <h3>null</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>Use 'null' to explicitly clear a variable.</p>
+                <p>You then know if you see 'undefined', it means JavaScript is notifying you that a variable does not have a value.</p>
+                <p>But, if you see 'null', you'll know the developer set it on purpose.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">// Null set as an assigned value
+let age = 27
+
+age = null
+
+console.log(age)</span></pre>
             </div>
         </div>
-    </section>
 
 
 
 
 
-
-    <script src="../../_js/jquery.js"></script>
-    <script src="../../_js/bootstrap.bundle.js"></script>
+        <script src="../../_js/bootstrap.bundle.js"></script>
 </body>
 
 </html>
