@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Projects</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+    <section class="container">
+        <h1>Todo List</h1>
+
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>Only return the Todo List items that are not completed.</p>
+                <p>These are marked as false.</p>
+            </div>
+
+
+
+
+
+
+
+
+
+            <div class="col-8">
+                <pre class="example"><span class="code-js">const todos = [{
+    text: 'Order cat food',
+    completed: false
+}, {
+    text: 'Clean kitchen',
+    completed: true
+}, {
+    text: 'Buy food',
+    completed: true
+}, {
+    text: 'Do work',
+    completed: false
+}, {
+    text: 'Exercise',
+    completed: true
+}]
+
+
+
+const getThingsToDo = function(todosArray) {
+  return todosArray.filter(function(todoz) {
+      return todoz.completed === false
+      <span class="code-comment">// you could also do it this way
+      // return !todo.completed</span>
+  })
+}
+
+
+console.log(getThingsToDo(todos))</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-4">
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-8">
+                <pre class="example">[
+  { text: 'Order cat food', completed: false },
+  { text: 'Do work', completed: false }
+]
+</pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

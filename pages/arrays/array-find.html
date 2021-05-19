@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Array Iteration</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+    <section class="container">
+        <h1>find()</h1>
+
+        <div class="row">
+            <div class="col-6">
+                <p>find() returns the value of the first array element that passes a test function.</p>
+                <p>This example finds (returns the value of ) the first element that is larger than 18.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var numbers = [4, 9, 16, 25, 29];
+var first = numbers.find(myFunction);
+
+function myFunction(value, index, array) {
+    return value > 18;
+}
+
+console.log(first);</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">25</span></pre>
+            </div>
+        </div>
+        <h4>The index and array params</h4>
+        <div class="row">
+            <div class="col">
+                <p>Just as above, the index and array parameters can be added or omitted.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Using find() in an Array of Objects</h1>
+
+        <div class="row">
+            <div class="col-6">
+                <p>This can be used instead of indexOf() when searching an Array of Objects.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">const notes = [{
+    title: 'My next trip',
+    body: 'I would like to go to Spain'
+}, {
+    title: 'Habbits to work on',
+    body: 'Exercise. Eating a bit better.'
+}, {
+    title: 'Office modification',
+    body: 'Get a new seat'
+}]
+
+
+<span class="code-comment">// create function
+// 1st argument takes in the Array of Objects
+// 2nd argument is a text string you're searching for
+// return note object if found
+// return undefined otherwise</span>
+const findNote = function(notesArray, noteTitle) {
+  <span class="code-comment">// you don't need to add index unless you're using it
+    // run findIndex() on the 'notes' Array. It returns the index of the first array element that passes a test function.
+    // notez is the full Array of Objects
+
+    // immediately return whatever comes back from find()</span>
+    return notesArray.find(function(notez, index) {
+        return notez.title.toLowerCase() === noteTitle.toLowerCase()
+    })
+}
+
+<span class="code-comment">// call function
+// 1st argument is the Array of Objects
+// 2nd argument is the text string to search for</span>
+const note = findNote(notes, 'Office modification')
+console.log(note)</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">{ title: 'Office modification', body: 'Get a new seat' }
+                </span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+    </section>
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

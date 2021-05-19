@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Array Iteration</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+    <section class="container">
+        <h1>for loop</h1>
+        <h3>Using a for loop to print Array elements</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>You can use a 'for' loop to print out each index value <strong>a specific number of times</strong> This is not possible with forEach() since that only prints the exact amount of indexes in the Array.</p>
+                <p>This returns:</p>
+                <ul>
+                    <li>Pineapple</li>
+                    <li>Lemon</li>
+                    <li>Apple</li>
+                    <li>Orange</li>
+                    <li>Peach</li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var fruits = ["Pineapple", "Lemon", "Apple", "Orange", "Peach"]
+
+for(var i=0; i &lt; fruits.length; i++) {
+console.log(fruits[i])
+}</span></pre>
+            </div>
+        </div>
+
+        <h3>Using a forEach() function</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>You can also use a 'for' loop to print out each index value.</p>
+                <p>This returns the elments in an HTML unordered list. For example.</p>
+                <p>&lt;ul&gt;&lt;li&gt;Banana&lt;/li&gt;&lt;li&gt;Orange&lt;/li&gt;&lt;li&gt;Apple&lt;/li&gt;&lt;li&gt;Mango&lt;/li&gt;&lt;/ul&gt;</p>
+
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var fruits, text;
+fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+text = "&lt;ul&gt;";
+fruits.forEach(myFunction);
+text += "&lt;/ul&gt;";
+
+function myFunction(value) {
+  text += "&lt;li&gt;" + value + "&lt;/li&gt;";
+}
+
+console.log(text);</span></pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+
+                <p>For this reason, it makes sense to use getElementById to add this information to a page.</p>
+                <p>For example, this prints the unordered list to the HTML page.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;p id="demo"&gt;</span>
+
+<span class="code-js">var fruits, text;
+fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+text = "&lt;ul&gt;";
+fruits.forEach(myFunction);
+text += "&lt;/ul&gt;";
+document.getElementById("demo").innerHTML = text;
+
+function myFunction(value) {
+  text += "&lt;li&gt;" + value + "&lt;/li&gt;";
+} </span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+</body>
+
+</html>

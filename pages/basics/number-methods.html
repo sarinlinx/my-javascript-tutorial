@@ -118,10 +118,33 @@ console.log(Math.round(num))</span></pre>
             </div>
         </div>
 
+
+
+
         <h2>ceil()</h2>
         <div class="row">
             <div class="col-6">
                 <p>ceil() is ceiling method. It rounds UP to the nearest integer.</p>
+                <p>So even though the decimal is .2, this rounds UP to 104.</p>
+
+
+            </div>
+
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let num = 103.2
+console.log(Math.ceil(num))</span></pre>
+            </div>
+        </div>
+
+
+
+        <h2>floor()</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>rounds down to the nearest integer.</p>
+                <p>So even though the decimal is .8, this rounds DOWN to 103.</p>
+
 
             </div>
 
@@ -132,19 +155,6 @@ console.log(Math.floor(num))</span></pre>
         </div>
 
 
-        <h2>floor()</h2>
-        <div class="row">
-            <div class="col-6">
-                <p>rounds down to the nearest integer.</p>
-                <p>So even though the decimal is .2, this roudns UP to 104.</p>
-
-            </div>
-
-            <div class="col-6">
-                <pre class="example"><span class="code-js">let num = 103.2
-console.log(Math.ceil(num))</span></pre>
-            </div>
-        </div>
 
 
 
@@ -154,8 +164,8 @@ console.log(Math.ceil(num))</span></pre>
             <div class="col">
                 <p>Math.min() and Math.max() can be used to find the lowest or highest value in a list of arguments</p>
             </div>
-          </div>
-<h4>Find lowest number in a list</h4>
+        </div>
+        <h4>Find lowest number in a list</h4>
         <div class="row">
             <div class="col-6">
                 <p>Math.min() returns the lowest value in a list of arguments:</p>
@@ -167,16 +177,16 @@ console.log(minValue)</span></pre>
             </div>
         </div>
         <h4>Find largest number in a list</h4>
-                <div class="row">
-                    <div class="col-6">
-                        <p>Math.mzx() returns the lowest value in a list of arguments:</p>
-                        <p>This returns 150.</p>
-                    </div>
-                    <div class="col-6">
-                        <pre class="example"><span class="code-js">let maxValue = Math.max(0, 150, 30, 20, -8, -200)
+        <div class="row">
+            <div class="col-6">
+                <p>Math.mzx() returns the lowest value in a list of arguments:</p>
+                <p>This returns 150.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let maxValue = Math.max(0, 150, 30, 20, -8, -200)
 console.log(maxValue)</span></pre>
-                    </div>
-                </div>
+            </div>
+        </div>
 
 
 
@@ -190,7 +200,7 @@ console.log(maxValue)</span></pre>
         <h1>random()</h1>
         <div class="row">
             <div class="col-6">
-                <p>This generates a value between 0 and 1, which you can then scale to your desired range.</p>
+                <p>This generates a value between 0 and under 1 (.99999), which you can then scale to your desired range.</p>
                 <p>This returns a number such as: 0.08616273575050071</p>
             </div>
             <div class="col-6">
@@ -241,7 +251,7 @@ console.log(randomNum)</span></pre>
         <div class="row">
             <div class="col-6">
                 <p>This generates a value between 15 and 27.</p>
-                          </div>
+            </div>
 
             <div class="col-6">
                 <pre class="example"><span class="code-js">function getRndInteger(min, max) {

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Projects</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+    <section class="container">
+        <h1>Expense tracker</h1>
+
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>This takes in Expenses, Incomen and prints the balance result.</p>
+            </div>
+            <div class="col-8">
+                <pre class="example"><span class="code-js"><span class="code-comment">// create Object</span>
+const account = {
+  name: 'Andrew Mead',
+
+  <span class="code-comment">// the 'expenses' property is an Array. It will have a description and amount</span>
+  expenses: [],
+
+  <span class="code-comment">// the 'income' property is an Array</span>
+  income: [],
+
+  <span class="code-comment">// method - takes expense description and amount</span>
+  addExpense: function(description, amount) {
+      <span class="code-comment">// add Object into 'expenses' Array property above using push()</span>
+      this.expenses.push({
+          <span class="code-comment">// create properties</span>
+          description: description,
+          amount: amount
+      })
+  },
+
+  <span class="code-comment">// method - takes income description and amount</span>
+  addIncome: function(description, amount) {
+      <span class="code-comment">// add Object into income Array above using push()</span>
+      this.income.push({
+          <span class="code-comment">// create properties</span>
+          description: description,
+          amount: amount
+      })
+  },
+
+
+  <span class="code-comment">// totals all expenses</span>
+  getAccountSummary: function() {
+      let totalExpenses = 0
+      let totalIncome = 0
+      let accountBalance = 0
+
+      <span class="code-comment">// this.expenses is the expenses[] above
+      // use forEach() to loop through it and add the amounts only (not the descriptions)
+      // newExpense has access to the original 'expenses' Array of Objects</span>
+      this.expenses.forEach(function(newExpense) {
+          <span class="code-comment">// update 'totalExpenses with only the 'amount' values in expenses[]</span>
+          totalExpenses = totalExpenses + newExpense.amount
+      })
+
+      <span class="code-comment">// this.income is the income[] above
+      // use forEach() to loop through it and add the amounts only (not the descriptions)
+      // 'income' has access to the original 'income' Array of Objects</span>
+      this.income.forEach(function(income) {
+          totalIncome = totalIncome + income.amount
+      })
+
+      accountBalance = totalIncome - totalExpenses
+
+
+
+      <span class="code-comment">// print result</span>
+      return `${this.name} has a balance of $${accountBalance}. $${totalIncome} in income. $${totalExpenses} in expenses.`
+  }
+
+
+} <span class="code-comment">// close 'account' Array</span>
+
+
+<span class="code-comment">// run the 'addExpense' property method
+// this adds the new properties of 'description' and 'amount' into the 'expenses' property Array
+// which is located in the 'account' Array of Objects</span>
+account.addExpense('Rent', 950)
+account.addExpense('Coffee', 2)
+
+account.addIncome('Job', 1000)
+
+console.log(account.getAccountSummary())
+
+console.log(account)</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-4">
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-8">
+                <pre class="example"><span class="code-output">Andrew Mead has a balance of $48. $1000 in income. $952 in expenses.
+{
+  name: 'Andrew Mead',
+  expenses: [
+    { description: 'Rent', amount: 950 },
+    { description: 'Coffee', amount: 2 }
+  ],
+  income: [ { description: 'Job', amount: 1000 } ],
+  addExpense: [Function: addExpense],
+  addIncome: [Function: addIncome],
+  getAccountSummary: [Function: getAccountSummary]
+}
+</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

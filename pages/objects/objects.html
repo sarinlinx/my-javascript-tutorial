@@ -69,6 +69,36 @@ var z = new Boolean(); <span class="code-comment">// Declares z as a Boolean obj
 
 
 
+    <section class="container">
+        <h1>Comparing Objects to each other using ===</h1>
+        <div class="row">
+
+            <div class="col-6">
+                <p>Comparing two objects with === does not work. This is because even if the Objects have the exact same properties and values, they are stored in memory in different locations.</p>
+                <p>What makes them equal is if they are the same object stored in memory.</p>
+                <p>For example, this will never work.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log( {} === {})</span></pre></div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-6">
+                <p>This will work since they are referecing the same Object in memory.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let someObject = {}let otherObject = someObject
+console.log(someObject === otherObject)
+</span></pre></div>
+        </div>
+    </section>
+
+
+
+
 
 
 

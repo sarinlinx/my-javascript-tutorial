@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Array Iteration</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+    <section class="container">
+        <h1>forEach()</h1>
+        <h3>Print only the values</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>The forEach() method calls a function (a callback function) once for each array element.</p>
+                <p>A callback function is that gets passed into another function.</p>
+
+                <p>The function takes 3 arguments:</p>
+                <ul>
+                    <li>The item value</li>
+                    <li>The item index</li>
+                    <li>The array itself</li>
+                </ul>
+                <p>syntax: <span class="standout">arrayName.forEach(functionName)</span></p>
+                <p>This example uses only the value parameter since that is what is specifically typed out.</p>
+                <p>Notice the callback function is called within the forEach() API. You do not call the callback function directly.</p>
+
+                <p><span class="red">Why does txt need to be before 'value' when outputting?</span></p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var txt = "";
+var numbers = [45, 4, 9, 16, 25];
+
+<span class="code-comment">//call the function myFunction() once for each element using forEach()
+//syntax: ARRAY.forEach(functionName)
+//This call MUST BE BEFORE the function or nothing is called</span>
+<span class="standout">numbers.forEach(myFunction);</span>
+
+document.getElementById("demo").innerHTML = txt;
+
+function myFunction(value, index, array) {
+  <span class="code-comment">//This only prints the 'value' since that's what's specifically typed out
+  //txt is necessary before the value, otherwise only the last element would be displayed</span>
+  txt = txt + value + "&lt;br&gt;";
+}</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs: 45, 4, 9, 16, 25</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">45
+4
+9
+16
+25</span></pre>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-6">
+                <p>Since only the 'value' is specifically printed, you could rewrite the function to remove 'index' and 'array'.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var txt = "";
+var numbers = [45, 4, 9, 16, 25];
+
+<span class="code-comment">//call the function myFunction() once for each element using forEach()
+//syntax: ARRAY.forEach(functionName)
+//This call MUST BE BEFORE the function or nothing is called</span>
+<span class="standout">numbers.forEach(myFunction);</span>
+
+document.getElementById("demo").innerHTML = txt;
+
+function myFunction(value) {
+  <span class="code-comment">//This only prints the 'value' since that's what's specifically typed out
+  //txt is necessary before the value, otherwise only the last element would be displayed</span>
+txt = txt + value + "&lt;br&gt;";
+}</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="container">
+        <h3>Print the values and index</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This does the same as above, but it also prints out the index#.</p>
+                <p>You just need to specify it within the function output.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var txt = "";
+var numbers = [45, 4, 9, 16, 25];
+
+numbers.forEach(myFunction);
+
+document.getElementById("demo").innerHTML = txt;
+
+function myFunction(value, index, array) {
+  txt = txt + "Value is: " + value + " Index is: " + <span class="standout">index</span> + "&lt;br&gt;";
+}</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Value is: 45 Index is: 0
+Value is: 4 Index is: 1
+Value is: 9 Index is: 2
+Value is: 16 Index is: 3
+Value is: 25 Index is: 4</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container">
+        <h3>Print the values, index, and array</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This does the same as above, but it also prints out the full array.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var txt = "";
+var numbers = [45, 4, 9, 16, 25];
+
+numbers.forEach(myFunction);
+
+document.getElementById("demo").innerHTML = txt;
+
+function myFunction(value, index, array) {
+txt = txt + "Value is: " + value + " Index is: " + index + " Array is: " + array + "&lt;br&gt;";
+}</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Value is: 45 Index is: 0 Array is: 45,4,9,16,25
+Value is: 4 Index is: 1 Array is: 45,4,9,16,25
+Value is: 9 Index is: 2 Array is: 45,4,9,16,25
+Value is: 16 Index is: 3 Array is: 45,4,9,16,25
+Value is: 25 Index is: 4 Array is: 45,4,9,16,25</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

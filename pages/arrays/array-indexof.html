@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Array Iteration</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>indexOf()</h1>
+
+        <div class="row">
+            <div class="col-6">
+                <p>indexOf() searches an array for an element value and returns its position.</p>
+                <p>Syntax: array.indexOf(item, start)</p>
+                <p>The 'item' is required.</p>
+                <p>'start' is optional. It's where to start searching from. Negative values will start at the given position counting from the end, and search to the end.</p>
+                <p>indexOf() returns -1 if the item isn't found.</p>
+                <p>If the item is present more than once, it returns the position of the first occurrence.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var fruits = ["Apple", "Orange", "Apple", "Mango"];
+var a = fruits.indexOf("Apple");
+<span class="code-comment">//You don't need to +1, but it helps to show the actual position (not counting from zero)</span>
+console.log(a + 1);</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">1</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

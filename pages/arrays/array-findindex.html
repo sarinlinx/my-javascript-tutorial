@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Array Iteration</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+    <section class="container">
+        <h1>findIndex()</h1>
+
+        <div class="row">
+            <div class="col-6">
+                <p>findIndex() returns the index of the first array element that passes a test function.</p>
+                <p>This example finds the first element that is larger than 18 and returns its index.</p>
+                <p>The return statement is needed to return the index value.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var numbers = [4, 9, 16, 25, 29];
+var first = numbers.findIndex(myFunction);
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+
+console.log(first);</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">3</span></pre>
+            </div>
+        </div>
+        <h4>The index and array params</h4>
+        <div class="row">
+            <div class="col">
+                <p>Just as above, the index and array parameters can be added or omitted.</p>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <h1>findIndex() on an Array of Objects</h1>
+        <h2>Example 1</h3>
+            <div class="row">
+
+                <div class="col-6">
+                    <p>findIndex() must be used to search for the index number something is stored at.</p>
+                </div>
+
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">const notes = [{
+    title: 'My next trip',
+    body: 'I would like to go to Spain'
+}, {
+    title: 'Habbits to work on',
+    body: 'Exercise. Eating a bit better.'
+}, {
+    title: 'Office modification',
+    body: 'Get a new seat'
+}]
+
+
+
+
+const index = notes.findIndex(function (note, index) {
+    <span class="code-comment">//the return statement returns the index value</span>
+    return note.title === 'Habbits to work on'
+})
+console.log(index)</span></pre>
+                </div>
+            </div>
+
+            <h5>Output</h5>
+            <div class="row">
+                <div class="col-6">
+
+                    <p class="code-output">This example outputs:</p>
+                </div>
+
+                <div class="col-6">
+                    <pre class="example"><span class="code-output">2</span></pre>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <h2>Example 2</h3>
+                <div class="row">
+
+                    <div class="col-4">
+                        <p>findIndex() must be used to search for the index number something is stored at.</p>
+                    </div>
+
+                    <div class="col-8">
+                        <pre class="example"><span class="code-js">const notes = [{
+    title: 'My next trip',
+    body: 'I would like to go to Spain'
+}, {
+    title: 'Habbits to work on',
+    body: 'Exercise. Eating a bit better.'
+}, {
+    title: 'Office modification',
+    body: 'Get a new seat'
+}]
+
+
+<span class="code-comment">// create function
+// 1st argument takes in the Array of Objects
+// 2nd argument is a text string you're searching for
+// return note object if found
+// return undefined otherwise</span>
+const findNote = function(notesArray, noteTitle) {
+    <span class="code-comment">// you don't need to add index unless you're using it
+    // run findIndex() on the 'notes' Array. It returns the index of the first array element that passes a test function.
+    // notez is the full Array of Objects</span>
+    const index = notesArray.findIndex(function(notez, index) {
+        <span class="code-comment">//check if the a Title matches the string you're searching for
+        // If so the index value is stored to the const index
+        // If not const index equals -1
+        // use toLowerCase() so it's not case sensitive</span>
+        return notez.title.toLowerCase() === noteTitle.toLowerCase()
+    })
+    <span class="code-comment">// return the index of the search string</span>
+    console.log(index)
+    <span class="code-comment">// retrun the index of the Array called 'notes'</span>
+    return notes[index]
+}
+
+
+<span class="code-comment">// call function
+// 1st argument is the Array of Objects
+// 2nd argument is the text string to search for</span>
+const note = findNote(notes, 'Office modification')
+console.log(note)</span></pre>
+                    </div>
+                </div>
+
+                <h5>Output</h5>
+                <div class="row">
+                    <div class="col-4">
+
+                        <p class="code-output">This example outputs:</p>
+                    </div>
+
+                    <div class="col-8">
+                        <pre class="example"><span class="code-output">2</span>
+
+{ title: 'Office modification', body: 'Get a new seat' }</pre>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <h2>Example 3</h3>
+                    <div class="row">
+
+                        <div class="col-4">
+                            <p>Use findIndex() to locate an index with a text value, then delete it.</p>
+                        </div>
+
+                        <div class="col-8">
+                            <pre class="example"><span class="code-js">const todos = [{
+    text: 'Order cat food',
+    completed: false
+}, {
+    text: 'Clean kitchen',
+    completed: true
+}, {
+    text: 'Buy food',
+    completed: true
+}, {
+    text: 'Do work',
+    completed: false
+}, {
+    text: 'Exercise',
+    completed: true
+}]
+
+
+
+<span class="code-comment">// arg 1 'todosArray' takes in the Array of Objects</span> 
+const deleteTodo = function(todosArray, todoText) {
+
+  <span class="code-comment">// use findIndex to locate the index if it exists
+    // 'todoz' is full array</span>
+    const index = todosArray.findIndex(function(todoz) {
+
+      <span class="code-comment">// return the index value if it equals what is being searched for
+      // findIndex will continue to cycle through each 'text' value until it's found (or not found)  </span>
+        return todoz.text.toLowerCase() === todoText.toLowerCase()
+    })
+
+    <span class="code-comment">// return the index of the search string</span>
+    console.log(index)
+    
+    <span class="code-comment">// if index is greated than -1 there is a match</span>
+    if (index > -1) {
+      <span class="code-comment">// use splice() to remove the item. This is possible since Arrays 
+      are 'passed by reference' and can modified</span>
+        todosArray.splice(index, 1)
+    }
+}
+
+deleteTodo(todos, 'buy food')
+console.log(todos)</span></pre>
+                        </div>
+                    </div>
+
+                    <h5>Output</h5>
+                    <div class="row">
+                        <div class="col-4">
+
+                            <p class="code-output">This example outputs the Array without the index container "buy food".</p>
+                        </div>
+
+                        <div class="col-8">
+                            <pre class="example"><span class="code-output">2</span>
+
+[
+  { text: 'Order cat food', completed: false },
+  { text: 'Clean kitchen', completed: true },
+  { text: 'Do work', completed: false },
+  { text: 'Exercise', completed: true }
+]</pre>
+                        </div>
+                    </div>
+
+
+
+
+
+
+    </section>
+
+</body>
+
+</html>
