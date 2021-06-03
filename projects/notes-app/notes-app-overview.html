@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>notes app</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+    <section class="container">
+        <h1>notes app</h1>
+        <h2>V1</h2>
+
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>Replaces paragraphs text with ******</p>
+                <p>View the example here:</p>
+                <ul>
+                    <li>
+                        <a href="index-01.html">notes-app (v1)</a></li>
+                </ul>
+            </div>
+
+
+
+            <div class="col-8">
+                <pre class="example"><span class="code-js"><span class="code-comment">// Query all and remove</span>
+const ps = document.querySelectorAll('p')
+
+ps.forEach(function (p) {
+  p.textContent = '******'
+})</span>
+
+<span class="code-html">&lt;h1&gt;Notes App&lt;/h1&gt;
+&lt;h2&gt;Take notes and never forget&lt;/h2&gt;
+&lt;p&gt;This application was created by Andrew Mead&lt;/p&gt;
+&lt;p&gt;Some note text&lt;/p&gt;</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-4">
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-8">
+                <pre class="example"><span class="code-output">Notes App
+Take notes and never forget                  
+******                  
+******</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h2>V2</h2>
+
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>Replaces paragraphs text with ******</p>
+                <p>It then ADDS a new element to the bottom of the page.</p>
+                <p>View the example here:</p>
+                <ul>
+                    <li>
+                        <a href="index-02.html">notes-app (v2)</a></li>
+                </ul>
+            </div>
+
+
+
+            <div class="col-8">
+                <pre class="example"><span class="code-js"><span class="code-comment">// Query all and remove</span>
+const ps = document.querySelectorAll('p')
+
+ps.forEach(function (p) {
+p.textContent = '******'
+})
+
+<span class="code-comment">// 3 steps to add a new element
+  
+// create new element</span>
+const newParagraph = document.createElement('p')
+
+<span class="code-comment">// Give the new element some text content</span>
+newParagraph.textContent = 'This is a new element from JavaScript'
+
+<span class="code-comment">// add the new element to the page
+// querySelector targets the body
+// appenChild adds element to bottom of body</span>
+document.querySelector('body').appendChild(newParagraph)</span>
+
+<span class="code-html">&lt;h1&gt;Notes App&lt;/h1&gt;
+&lt;h2&gt;Take notes and never forget&lt;/h2&gt;
+&lt;p&gt;This application was created by Andrew Mead&lt;/p&gt;
+&lt;p&gt;Some note text&lt;/p&gt;</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-4">
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-8">
+                <pre class="example"><span class="code-output">Notes App
+Take notes and never forget                  
+******                  
+******
+This is a new element from JavaScript</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/jquery.js"></script>
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

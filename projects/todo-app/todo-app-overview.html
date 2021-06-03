@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>todo app</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+    <section class="container">
+        <h1>Todo List</h1>
+
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>Only return the Todo List items that are not completed.</p>
+                <p>These are marked as false.</p>
+            </div>
+
+
+
+
+
+
+
+
+
+            <div class="col-8">
+                <pre class="example"><span class="code-js">const todos = [{
+  text: 'Order cat food',
+  completed: false
+}, {
+  text: 'Clean kitchen',
+  completed: true
+}, {
+  text: 'Buy food',
+  completed: true
+}, {
+  text: 'Do work',
+  completed: false
+}, {
+  text: 'Exercise',
+  completed: true
+}]
+
+
+
+const getThingsToDo = function(todosArray) {
+return todosArray.filter(function(todoz) {
+    return todoz.completed === false
+    <span class="code-comment">// you could also do it this way
+    // return !todo.completed</span>
+})
+}
+
+
+console.log(getThingsToDo(todos))</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-4">
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-8">
+                <pre class="example">[
+{ text: 'Order cat food', completed: false },
+{ text: 'Do work', completed: false }
+]
+</pre>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="container">
+        <h1>todo app</h1>
+        <h2>V1</h2>
+
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>This removes all paragraphs with the word 'the'.</p>
+                <p>View the example here:</p>
+                <ul>
+                    <li>
+                        <a href="index-01.html">todo-app (v1)</a></li>
+                </ul>
+            </div>
+
+
+
+            <div class="col-8">
+                <pre class="example"><span class="code-html">&lt;h1&gt;Todos&lt;/h1&gt;
+&lt;p&gt;Clean the kitchen&lt;/p&gt;
+&lt;p&gt;Book flights&lt;/p&gt;
+&lt;p&gt;Reserach museums&lt;/p&gt;
+&lt;p&gt;Walk the dog&lt;/p&gt;
+&lt;p&gt;Finish this course!&lt;/p&gt;</span>
+
+<span class="code-js"><span class="code-comment">// target all paragraphs</span>
+const paragraphs = document.querySelectorAll('p')
+              
+paragraphs.forEach(function(paragraph) {
+  <span class="code-comment">// used 'textContent.includes()' to check if the paragraph's
+  // text includes the word 'the'</span>
+  if (paragraph.textContent.includes('the')) {
+    <span class="code-comment">// remove those paragraphs</span>
+      paragraph.remove()
+  }
+})</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-4">
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-8">
+                <pre class="example"><span class="code-output">Todos
+Book flights
+Reserach museums
+Finish this course!</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h2>V2</h2>
+
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>This first prints how many Todos are left to complete.</p>
+                <p>It then prints ALL todos.</p>
+                <p>View the example here:</p>
+                <ul>
+                    <li>
+                        <a href="index-02.html">todo-app (v2)</a></li>
+                </ul>
+            </div>
+
+
+
+            <div class="col-8">
+                <pre class="example">
+                  <span class="code-html">&lt;h1&gt;h1Todos&lt;/h1&gt;</span>
+                  
+  <span class="code-js">const todos = [{
+  text: 'Order cat food',
+  completed: false
+}, {
+  text: 'Clean kitchen',
+  completed: true
+}, {
+  text: 'Buy food',
+  completed: true
+}, {
+  text: 'Do work',
+  completed: false
+}, {
+  text: 'Exercise',
+  completed: true
+}]
+
+<span class="code-comment">// store items NOT complete in const</span>
+const incompleteTodos = todos.filter(function(todo) {
+  return !todo.completed
+})
+
+<span class="code-comment">// create an h2 element</span>
+const summary = document.createElement('h2')
+
+<span class="code-comment">// add text content</span>
+summary.textContent = `You have ${incompleteTodos.length} todos left`
+
+<span class="code-comment">// add element to the bottom of the page</span>
+document.querySelector('body').appendChild(summary)
+
+<span class="code-comment">// loop over Array of Objects to add ALL to the page</span>
+todos.forEach(function(todo) {
+  const p = document.createElement('p')
+  p.textContent = todo.text
+  document.querySelector('body').appendChild(p)
+})</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-4">
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-8">
+                <pre class="example"><span class="code-output">Todos
+You have 2 todos left                  
+Order cat food                  
+Clean kitchen                  
+Buy food                  
+Do work                  
+Exercise</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
