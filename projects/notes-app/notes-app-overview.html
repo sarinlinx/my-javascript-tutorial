@@ -169,7 +169,90 @@ This is a new element from JavaScript</span></pre>
 
 
 
-    <script src="../../_js/jquery.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h2>V3 - button click</h2>
+
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>This changes the text of the button when clicked.</p>
+                <p>View the example here:</p>
+                <ul>
+                    <li>
+                        <a href="index-03.html">notes-app (v3)</a></li>
+                </ul>
+            </div>
+
+
+
+            <div class="col-8">
+                <pre class="example"><span class="code-js"><span class="code-comment">// select the first button on the page
+// (e) is the callback argument that represents the event. Info about what event happened and why
+// it can be called anything, but the standard is (e)</span>
+document.querySelector('button').addEventListener('click', function(e) {
+    <span class="code-comment">// target is a representation of the DOM element</span>
+    e.target.textContent = 'The button was clicked'
+})</span>
+
+                
+<span class="code-html">&lt;h1&gt;Notes App&lt;/h1&gt;
+&lt;h2&gt;Take notes and never forget&lt;/h2&gt;
+&lt;p&gt;This application was created by Andrew Mead&lt;/p&gt;
+&lt;p&gt;Some note text&lt;/p&gt;
+&lt;button&gt;Create Note&lt;/button&gt;
+&lt;script src="notes-app-03.js"&gt;&lt;/script&gt;</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-4">
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-8">
+                <pre class="example"><span class="code-output">#################</span></pre>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
     <script src="../../_js/bootstrap.bundle.js"></script>
 </body>
 

@@ -9,57 +9,61 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <style>
+        .note {
+            background-color: blue;
+        }
+    </style>
     <title>Change text of button when clicked</title>
 </head>
-    <body>
-<a href="../../../index.html">Home page</a>
 
-<section class="container">
-    <div class="row">
-        <div class="col">
-
-      <button id="create-note">Create Note</button>
-
-</div></div></section>
+<body>
+    <a href="../../index.html">Home page</a>
 
 
 
 
-<section class="container">
-    <h1>Change text of button when clicked</h1>
 
-    <h3>HTML</h3>
-    <div class="row">
-        <div class="col-5">
+    <section class="container">
+        <h1>Change text of button when clicked</h1>
 
-            <p>Basic HTML code</p>
+        <h2>Target button by its id</h2>
+        <div class="row">
+            <div class="col-5">
+
+                <p>Clicking the button changes the text based off the id of the button.</p>
+                <p>Use 'querySelector' for IDs</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-html">&lt;button id="create-note"&gt;Create Note&lt;/button&gt;
+
+<span class="code-js"><span class="code-comment">// select the button with an ID of create-note
+// (e) is the callback argument that represents the event. Info about what event happened and why
+// it can be called anything, but the standard is (e)</span>
+document.querySelector('#create-note').addEventListener('click', function (e) {
+    <span class="code-comment">// target is a representation of the DOM element</span>
+    e.target.textContent = 'The button was clicked'
+})</pre></div>
         </div>
 
-        <div class="col-7">
-            <pre class="example"><span class="code-html">&lt;button id="create-note"&gt;Create Note&lt;/button&gt;</pre>
-</div>
-    </div>
 
 
 
+        <div class="row">
+            <div class="col">
 
-    <h3>JS</h3>
-            <div class="row">
-                <div class="col-5">
+                <button id="create-note">Create Note</button>
 
-                    <p>lkjljljl</p>
-                </div>
-                <div class="col-7">
-                    <pre class="example"><span class="code-js"><span class="code-comment">//Change the text of the button when clicked</span>
-document.querySelector('#create-note').addEventListener('click', function (e) {
-   e.target.textContent = 'The button was clicked'
-})</pre></div>
-</div>
-</section>
+            </div>
+        </div>
 
-<script>document.querySelector('#create-note').addEventListener('click', function (e) {
-e.target.textContent = 'The button was clicked'
-})</script>
+        <script>
+            document.querySelector('#create-note').addEventListener('click', function(e) {
+                e.target.textContent = 'The button was clicked'
+            })
+        </script>
 
 
 
@@ -70,10 +74,93 @@ e.target.textContent = 'The button was clicked'
 
 
 
+        <h2>Target button by its CLASS</h2>
+        <div class="row">
+            <div class="col-5">
+
+                <p>Clicking the button changes the text based off the class of the button.</p>
+                <p>Use 'querySelectorAll' for classes</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-html">&lt;p class="note"&gt;This application was created by Andrew Mead&lt;/p&gt;
+&lt;p class="note"&gt;Some note text&lt;/p&gt;
+
+&lt;button id="remove-all"&gt;Remove All Notes&lt;/button&gt;
+
+<span class="code-js"><span class="code-comment">//when remove button is clicked, all notes are removed</span>
+document.querySelector('#remove-all').addEventListener('click', function () {
+    document.querySelectorAll('.note').forEach(function(x) {
+        x.remove()
+    })
+})
+</pre></div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col">
+
+                <p class="note">This application was created by Andrew Mead</p>
+                <p class="note">Some note text</p>
+                <button id="remove-all">Remove All Notes</button>
+                <script>
+                    document.querySelector('#remove-all').addEventListener('click', function() {
+                        document.querySelectorAll('.note').forEach(function(note) {
+                            note.remove()
+                        })
+                    })
+                </script>
+
+            </div>
+        </div>
 
 
 
 
 
-    </body>
+
+
+        <h2>Other ways to target</h2>
+        <div class="row">
+
+
+            <div class="col">
+                <pre class="example"><span class="code-html">
+<span class="code-comment">// all paragraph tags</span>
+p 
+<span class="code-comment">// by ID</span>
+#remove-item 
+<span class="code-comment">// by class </span>
+.note 
+<span class="code-comment">// the paragraph with the ID of #replace </span>
+p#replace  
+<span class="code-comment">// all buttons with a class of inventory</span>
+button.inventory 
+<span class="code-comment">// h1 with an ID and a CLASS 
+h1#first-title.application </pre></div>
+        </div>
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
 </html>
