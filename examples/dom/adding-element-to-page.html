@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Adding elements to page</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Adding a new HTML element to a page</h2>
+            <h2>3 steps to add a new element</h2>
+            <ol>
+                <li>Create a new element using <span class="standout">document.createElement()</span></li>
+                <li>Give the element text content using <span class="standout">textContent</span></li>
+                <li>Add the element to the page by using <span class="standout">querySelector</span> for the body, then <span class="standout">appendChild</span> to place it at the bottom</li>
+            </ol>
+
+
+
+
+            <div class="row">
+                <div class="col-4">
+
+                    <ol>
+                        <li>Create a new element</li>
+                        <li>Give the element text content</li>
+                        <li>Add the element to the page</li>
+                    </ol>
+                </div>
+
+
+
+                <div class="col-8">
+                    <pre class="example"><span class="code-js"><span class="code-comment">// 3 steps to add a new element
+  
+// create new element</span>
+const newParagraph = document.createElement('p')
+
+<span class="code-comment">// Give the new element some text content</span>
+newParagraph.textContent = 'This is a new element from JavaScript'
+
+<span class="code-comment">// add the new element to the page
+// querySelector targets the body
+// appenChild adds element to bottom of body</span>
+document.querySelector('body').appendChild(newParagraph)</span></pre>
+                </div>
+            </div>
+
+
+            <h5>Output</h5>
+            <div class="row">
+                <div class="col">
+                    <p class="code-output">The paragraph below was added to this page:</p>
+                </div>
+            </div>
+    </section>
+
+
+
+
+    <script>
+        const newParagraph = document.createElement('p')
+        newParagraph.textContent = 'This is a new element from JavaScript'
+        document.querySelector('body').appendChild(newParagraph)
+    </script>
+
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

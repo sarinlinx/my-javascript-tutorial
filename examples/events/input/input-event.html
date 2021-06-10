@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../../_css/style.css">
+
+    <style>
+
+    </style>
+    <title>input event</title>
+</head>
+
+<body>
+    <a href="../../../index.html">Home page</a>
+
+
+
+
+
+    <section class="container">
+        <h1>The 'input' event</h1>
+
+        <h2>Print text to console using the 'input' event</h2>
+        <div class="row">
+            <div class="col-5">
+
+                <p>Type text into the input field</p>
+                <p>The console immediately prints all the text you enter.</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-html">&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;
+
+<span class="code-js"><span class="code-comment">// locate #search-text element, look for input event
+// input event fires on every character entered. No need to press the ENTER button</span>
+document.querySelector('#search-text').addEventListener('input', function(e) {
+  <span class="code-comment">// print the target's 'value'. 'value' is similar to 'text-content'</span>
+  console.log(e.target.value)
+})</pre></div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

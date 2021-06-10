@@ -35,17 +35,19 @@
 
 
             <div class="col-8">
-                <pre class="example"><span class="code-js"><span class="code-comment">// Query all and remove</span>
+                <pre class="example"><span class="code-html">&lt;h1&gt;Notes App&lt;/h1&gt;
+&lt;h2&gt;Take notes and never forget&lt;/h2&gt;
+&lt;p&gt;This application was created by Andrew Mead&lt;/p&gt;
+&lt;p&gt;Some note text&lt;/p&gt;</span>
+
+
+
+<span class="code-js"><span class="code-comment">// Query all and remove</span>
 const ps = document.querySelectorAll('p')
 
 ps.forEach(function (p) {
   p.textContent = '******'
-})</span>
-
-<span class="code-html">&lt;h1&gt;Notes App&lt;/h1&gt;
-&lt;h2&gt;Take notes and never forget&lt;/h2&gt;
-&lt;p&gt;This application was created by Andrew Mead&lt;/p&gt;
-&lt;p&gt;Some note text&lt;/p&gt;</span></pre>
+})</span></pre>
             </div>
         </div>
 
@@ -64,23 +66,6 @@ Take notes and never forget
             </div>
         </div>
     </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -116,7 +101,14 @@ Take notes and never forget
 
 
             <div class="col-8">
-                <pre class="example"><span class="code-js"><span class="code-comment">// Query all and remove</span>
+                <pre class="example"><span class="code-html">&lt;h1&gt;Notes App&lt;/h1&gt;
+&lt;h2&gt;Take notes and never forget&lt;/h2&gt;
+&lt;p&gt;This application was created by Andrew Mead&lt;/p&gt;
+&lt;p&gt;Some note text&lt;/p&gt;</span>
+
+
+
+<span class="code-js"><span class="code-comment">// Query all and remove</span>
 const ps = document.querySelectorAll('p')
 
 ps.forEach(function (p) {
@@ -134,12 +126,7 @@ newParagraph.textContent = 'This is a new element from JavaScript'
 <span class="code-comment">// add the new element to the page
 // querySelector targets the body
 // appenChild adds element to bottom of body</span>
-document.querySelector('body').appendChild(newParagraph)</span>
-
-<span class="code-html">&lt;h1&gt;Notes App&lt;/h1&gt;
-&lt;h2&gt;Take notes and never forget&lt;/h2&gt;
-&lt;p&gt;This application was created by Andrew Mead&lt;/p&gt;
-&lt;p&gt;Some note text&lt;/p&gt;</span></pre>
+document.querySelector('body').appendChild(newParagraph)</span></pre>
             </div>
         </div>
 
@@ -181,23 +168,6 @@ This is a new element from JavaScript</span></pre>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <section class="container">
         <h2>V3 - button click</h2>
 
@@ -216,21 +186,22 @@ This is a new element from JavaScript</span></pre>
 
 
             <div class="col-8">
-                <pre class="example"><span class="code-js"><span class="code-comment">// select the first button on the page
+                <pre class="example"><<span class="code-html">&lt;h1&gt;Notes App&lt;/h1&gt;
+&lt;h2&gt;Take notes and never forget&lt;/h2&gt;
+&lt;p&gt;This application was created by Andrew Mead&lt;/p&gt;
+&lt;p&gt;Some note text&lt;/p&gt;
+&lt;button&gt;Create Note&lt;/button&gt;
+&lt;script src="notes-app-03.js"&gt;&lt;/script&gt;</span>
+                  
+          
+
+<span class="code-js"><span class="code-comment">// select the first button on the page
 // (e) is the callback argument that represents the event. Info about what event happened and why
 // it can be called anything, but the standard is (e)</span>
 document.querySelector('button').addEventListener('click', function(e) {
     <span class="code-comment">// target is a representation of the DOM element</span>
     e.target.textContent = 'The button was clicked'
-})</span>
-
-                
-<span class="code-html">&lt;h1&gt;Notes App&lt;/h1&gt;
-&lt;h2&gt;Take notes and never forget&lt;/h2&gt;
-&lt;p&gt;This application was created by Andrew Mead&lt;/p&gt;
-&lt;p&gt;Some note text&lt;/p&gt;
-&lt;button&gt;Create Note&lt;/button&gt;
-&lt;script src="notes-app-03.js"&gt;&lt;/script&gt;</span></pre>
+})</span></pre>
             </div>
         </div>
 
@@ -245,6 +216,122 @@ document.querySelector('button').addEventListener('click', function(e) {
                 <pre class="example"><span class="code-output">#################</span></pre>
             </div>
         </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h2>V4 - Filter list</h2>
+
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>This filters an existing list based off what the user types into the input field.</p>
+                <p>View the example here:</p>
+                <ul>
+                    <li>
+                        <a href="index-04.html">notes-app (v4)</a></li>
+                </ul>
+            </div>
+
+
+
+            <div class="col-8">
+                <pre class="example"><span class="code-html">&lt;h1&gt;Notes App&lt;/h1&gt;
+&lt;h2&gt;Take notes and never forget&lt;/h2&gt;
+&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;
+&lt;div id="notes"&gt;&lt;/div&gt;
+&lt;script src="notes-app.js"&gt;&lt;/script&gt;</span>
+
+
+  
+<span class="code-js"><span class="code-comment">// create an Array of Objects</span>
+const notes = [{
+  title: 'my next trip',
+  body: 'I would like to go to Spain'
+}, {
+  title: 'Habbits to work on',
+  body: 'Exercise. Eating a bit better.'
+}, {
+  title: 'Office modification',
+  body: 'Get a new seat'
+}]
+
+
+<span class="code-comment">// create filters Object to store search text</span>
+const filters = {
+  searchText: ''
+}
+
+<span class="code-comment">// function to check if search text exists in title</span>
+const renderNotes = function(notez, filterz) {
+  <span class="code-comment">// create a const to store a new Array created by filter()
+  // this limits the notes to just those that pass the filter</span>
+  const filteredNotes = notez.filter(function(notee) {
+    <span class="code-comment">// return TRUE if note  title contains search text</span>
+      return notee.title.toLowerCase().includes(filterz.searchText.toLowerCase())
+  })
+
+  <span class="code-comment">// CLEAR AN ELEMENT
+  // locate the HTML element with an ID of #notes
+  // target its innerHTML to delete everything
+  // this makes sure previous content doesn't exist while you enter new text
+  // this ensures only the NEW results are displayed and the old results removed</span>
+  document.querySelector('#notes').innerHTML = ''
+
+  <span class="code-comment">// CREATE NEW ELEMENT
+  // iterate over filteredNotes Array and print to new element</span>
+  filteredNotes.forEach(function(note) {
+      const noteEl = document.createElement('p')
+      noteEl.textContent = note.title
+      document.querySelector('#notes').appendChild(noteEl)
+  })
+}
+
+<span class="code-comment">// call function once to make sure the application initially renders something</span>
+renderNotes(notes, filters)
+
+<span class="code-comment">// re-run the function based off user input</span>
+document.querySelector('#search-text').addEventListener('input', function(e) {
+  <span class="code-comment">// update the 'filters' Object with the text searched for </span>
+  filters.searchText = e.target.value
+  <span class="code-comment">// the function is then called</span> 
+  renderNotes(notes, filters)
+})</span></pre>
+            </div>
+        </div>
+
+
+
     </section>
 
 
