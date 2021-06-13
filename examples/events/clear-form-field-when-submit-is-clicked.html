@@ -16,15 +16,69 @@
 <body>
     <a href="../../index.html">Home page</a>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>Clear form field when submit button is clicked</h1>
+
+
+        <h3>HTML</h3>
+        <div class="row">
+            <div class="col-5">
+
+                <p>Type into the form field and click the submit button.</p>
+                <p>Your text appears in the console.</p>
+                <p>The text you entered into the field is reset to the placeholder.</p>
+
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-html">&lt;form id="name-form"&gt;
+  &lt;input type="text" placeholder="First name" name="firstName"&gt;
+  &lt;button&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+
+<span class="code-js"><span class="code-comment">// target element with ID of #name-form and listen for 'submit' event</span>
+document.querySelector('#name-form').addEventListener('submit', function(e) {
+  <span class="code-comment">// cancel the default behavior of the form
+  // prevents full page refresh or adding variables to the URL string</span>
+  e.preventDefault()
+    <span class="code-comment">// e.target gets you the DOM element of the form
+    // form DOM elements have a property called .elements
+    // .elements allows you to access all fields
+    // target the value fields and get its value</span>
+    console.log(e.target.elements.firstName.value)
+    <span class="code-comment">// clear the form field after submit is clicked</span>
+    e.target.elements.firstName.value = ''
+})</pre>
+            </div>
+        </div>
+
+    </section>
+
+
     <section class="container">
         <div class="row">
             <div class="col">
 
-                <h1>Todos</h1>
-
-                <form id="new-todo">
-                    <input type="text" placeholder="Something to do" name="text">
-                    <button>Add Todo</button>
+                <form id="name-form">
+                    <input type="text" placeholder="First name" name="firstName">
+                    <button>Submit</button>
                 </form>
 
             </div>
@@ -34,61 +88,30 @@
 
 
 
-
-
-    <section class="container">
-        <h1>Todo App (basic functionality)</h1>
-
-        <h3>HTML</h3>
-        <div class="row">
-            <div class="col-5">
-
-                <p>Basic HTML code.</p>
-
-            </div>
-
-            <div class="col-7">
-                <pre class="example"><span class="code-html">&lt;form id="new-todo"&gt;
-    &lt;input type="text" placeholder="Something to do" name="text"&gt;
-    &lt;button&gt;Add Todo&lt;/button&gt;
-&lt;/form&gt;</pre>
-            </div>
-        </div>
-
-        <h3>JS</h3>
-        <div class="row">
-            <div class="col-4">
-
-                <p>Enter text in field</p>
-                <p>When submit button is clicked, the text field is cleared</p>
-            </div>
-            <div class="col-8">
-                <pre class="example"><span class="code-js"><span class="code-comment">//Listen for Submit button click</span>
-document.querySelector('#new-todo').addEventListener('submit', function (e) {
-    <span class="code-comment">//cancel submit button so you can acccess its data</span>
-    e.preventDefault()
-    <span class="code-comment">//clear the input field value</span>
-    e.target.elements.text.value = ''
-})</span></pre></div>
-        </div>
-    </section>
-
-
-
-
-
     <script>
-        document.querySelector('#new-todo').addEventListener('submit', function(e) {
+        // target element with ID of #name-form and listen for 'submit' event
+        document.querySelector('#name-form').addEventListener('submit', function(e) {
+            // cancel the default behavior of the form
+            // prevents full page refresh or adding variables to the URL string
             e.preventDefault()
-            add something new to todos Array
-            todos.push({
-                text: e.target.elements.text.value,
-                completed: false
-            })
-            renderTodos(todos, filters)
-            e.target.elements.text.value = ''
+                // e.target gets you the DOM element of the form
+                // form DOM elements have a property called .elements
+                // .elements allows you to access all fields
+                // target the value fields and get its value
+            console.log(e.target.elements.firstName.value)
+                // clear the form field after submit is clicked
+            e.target.elements.firstName.value = ''
         })
     </script>
+
+
+
+
+
+
+
+
+
 
     <script src="../../../_js/jquery.js"></script>
     <script src="../../../_js/bootstrap.bundle.js"></script>

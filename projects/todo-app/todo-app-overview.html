@@ -261,6 +261,333 @@ Exercise</span></pre>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h2>V3 - filter list of todos</h2>
+
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>This filters the Array of Objects based off user input.</p>
+                <p>If the text entered matches the text of a property, that result continues to show.</p>
+                <p>The amount of todos left is based off the property 'completed'. The h2 line updates based off the index values left in the incompleteTodos Array.</p>
+                <ul>
+                    <li>
+                        <a href="index-03.html" target="_blank">todo-app (v3)</a></li>
+                </ul>
+            </div>
+
+
+
+            <div class="col-8">
+                <pre class="example">
+<span class="code-html">&lt;h1&gt;Todos&lt;/h1&gt;
+&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;
+&lt;div id="todos"&gt;&lt;/div&gt;</span>
+                
+<span class="code-js">const todos = [{
+  text: 'Order cat food',
+  completed: false
+}, {
+  text: 'Clean kitchen',
+  completed: true
+}, {
+  text: 'Buy food',
+  completed: true
+}, {
+  text: 'Do work',
+  completed: false
+}, {
+  text: 'Exercise',
+  completed: true
+}]
+
+
+<span class="code-comment">// keeps track of latest data
+// this changes as search input changes</span>
+const filters = {
+  searchText: ''
+}
+
+
+const renderTodos = function(a, b) {
+  <span class="code-comment">// create const to store new filtered Array of the original todos Array</span>
+  const filteredTodos = a.filter(function(c) {
+    <span class="code-comment">// return boolean of TRUE if 
+      // the original todos Array includes text from the const 'filters'</span>
+      return c.text.toLowerCase().includes(b.searchText.toLowerCase())
+  })
+
+  <span class="code-comment">// only incomplete todos
+  // create const to store new Array of the filteredTodos Array
+  // that was already filtered based off user input</span> 
+  const incompleteTodos = filteredTodos.filter(function(d) {
+    <span class="code-comment">// only return if the 'completed' property is NOT true</span>
+      return !d.completed
+  })
+
+  <span class="code-comment">// clear this element</span>    
+  document.querySelector('#todos').innerHTML = ''
+
+
+  <span class="code-comment">// create new element</span>
+  const summary = document.createElement('h2')
+  <span class="code-comment">// incomleteTodos.length is the amount of index present in the filtered Array</span>
+  summary.textContent = `You have ${incompleteTodos.length} todos left`
+  <span class="code-comment">// append below element with ID of #todos</span>
+  document.querySelector('#todos').appendChild(summary)
+
+
+  <span class="code-comment">// loop through filteredTodos Array</span>
+  filteredTodos.forEach(function(f) {
+      <span class="code-comment">// create new element</span>
+      const p = document.createElement('p')
+      <span class="code-comment">// text is the user input</span>
+      p.textContent = f.text
+      <span class="code-comment">// append below element with ID of #todos</span>
+      document.querySelector('#todos').appendChild(p)
+  })
+}
+
+
+<span class="code-comment">// run function
+// the first argument is the name of the Array
+// the 2nd arg is the const named filters</span>
+renderTodos(todos, filters)
+
+
+<span class="code-comment">// target the #search-text element, look for its input text, store it in (e)
+// this is required for the list to display the new results</span>
+document.querySelector('#search-text').addEventListener('input', function(e) {
+  <span class="code-comment">// set the latest value for the 'filters' const</span>
+  filters.searchText = e.target.value
+  <span class="code-comment">// run the function</span>
+  renderTodos(todos, filters)
+})</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h2>V4 - add item to list of todos</h2>
+
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>The current list of todos are listed.</p>
+                <p>Enter text into the input field and click submit.</p>
+                <p>The text is added to the todos Array and prints to the page.</p>
+                <ul>
+                    <li>
+                        <a href="index-04.html" target="_blank">todo-app (v4)</a></li>
+                </ul>
+            </div>
+
+
+
+            <div class="col-8">
+                <pre class="example">
+<span class="code-html">&lt;div id="todos"&gt;&lt;/div&gt;
+
+&lt;form id="new-todo"&gt;
+  &lt;input type="text" placeholder="Something to do" name="text"&gt;
+  &lt;button&gt;Add Todo&lt;/button&gt;
+&lt;/form&gt;</span>
+              
+<span class="code-js">const todos = [{
+text: 'Order cat food',
+completed: false
+}, {
+text: 'Clean kitchen',
+completed: true
+}, {
+text: 'Buy food',
+completed: true
+}, {
+text: 'Do work',
+completed: false
+}, {
+text: 'Exercise',
+completed: true
+}]
+
+
+<span class="code-comment">// keeps track of latest data
+// this changes as search input changes</span>
+const filters = {
+searchText: ''
+}
+
+
+const renderTodos = function(a, b) {
+<span class="code-comment">// create const to store new filtered Array of the original todos Array</span>
+const filteredTodos = a.filter(function(c) {
+  <span class="code-comment">// return boolean of TRUE if 
+    // the original todos Array includes text from the const 'filters'</span>
+    return c.text.toLowerCase().includes(b.searchText.toLowerCase())
+})
+
+<span class="code-comment">// only incomplete todos
+// create const to store new Array of the filteredTodos Array
+// that was already filtered based off user input</span> 
+const incompleteTodos = filteredTodos.filter(function(d) {
+  <span class="code-comment">// only return if the 'completed' property is NOT true</span>
+    return !d.completed
+})
+
+<span class="code-comment">// clear this element</span>    
+document.querySelector('#todos').innerHTML = ''
+
+
+<span class="code-comment">// create new element</span>
+const summary = document.createElement('h2')
+<span class="code-comment">// incomleteTodos.length is the amount of index present in the filtered Array</span>
+summary.textContent = `You have ${incompleteTodos.length} todos left`
+<span class="code-comment">// append below element with ID of #todos</span>
+document.querySelector('#todos').appendChild(summary)
+
+
+<span class="code-comment">// loop through filteredTodos Array</span>
+filteredTodos.forEach(function(f) {
+  <span class="code-comment">// create new element</span>
+    const p = document.createElement('p')
+    <span class="code-comment">// text is the user input</span>
+    p.textContent = f.text
+    <span class="code-comment">// append below element with ID of #todos</span>
+    document.querySelector('#todos').appendChild(p)
+})
+}
+
+
+<span class="code-comment">// run function
+// the first argument is the name of the Array
+// the 2nd arg is the const named filters</span>
+renderTodos(todos, filters)
+
+
+<span class="code-comment">// target the #search-text element, look for its input text, store it in (e)
+// this is required for the list to display the new results</span>
+document.querySelector('#search-text').addEventListener('input', function(e) {
+<span class="code-comment">// set the latest value for the 'filters' const</span>
+filters.searchText = e.target.value
+<span class="code-comment">// run the function</span>
+renderTodos(todos, filters)
+})
+
+
+<span class="code-comment">// ADD ITEM TO TODOS LIST
+// target element with ID of #new-todo and listen for 'submit' event</span>
+document.querySelector('#new-todo').addEventListener('submit', function(e) {
+  <span class="code-comment">// prevent default submit action</span>
+    e.preventDefault()
+    <span class="code-comment">// add to Array with push()</span>
+    todos.push({
+        <span class="code-comment">// text and completed are properties of the original todos Array
+        // set the 'text' property to the input fields text</span>
+        text: e.target.elements.text.value,
+        completed: false
+        })
+        <span class="code-comment">// call function</span>
+    renderTodos(todos, filters)
+    <span class="code-comment">// clear input value</span>
+    e.target.elements.text.value = ''
+})</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
     <script src="../../_js/bootstrap.bundle.js"></script>
 </body>
 
