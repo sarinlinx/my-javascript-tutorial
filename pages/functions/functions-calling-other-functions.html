@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Functions calling other functions</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Functions calling other functions</h1>
+
+
+        <div class="row">
+            <div class="col-5">
+                <p>The first function cutFruitPieces() is the one that will be called.</p>
+                <p>The second function fruitProcessor() calls cutFruitPieces() twice.</p>
+                <p>You can then call fruitProcessor with two parameters.</p>
+                <p>Both functions run and the multiplied values (from the first function) are printed to the console.</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js">function cutFruitPieces(fruit) {
+  return fruit * 4;
+}
+
+function fruitProcessor(apples, oranges) {
+  <span class="code-comment">// call the first function</span>
+  const applePieces = <span class="code-highlight">cutFruitPieces(apples)</span>
+  const orangePieces = <span class="code-highlight">cutFruitPieces(oranges)</span>
+
+  const juice = `Juice with ${applePieces} piece of apples and ${orangePieces} pieces of oranges.`;
+  return juice;
+}
+
+console.log(fruitProcessor(2, 3))
+</span></pre>
+            </div>
+        </div>
+
+
+        <h4>Output</h4>
+
+
+        <div class="row">
+            <div class="col">
+                <pre class="example">Juice with 8 piece of apples and 12 pieces of oranges.</pre>
+            </div>
+            </row>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <script>
+                function cutFruitPieces(fruit) {
+                    return fruit * 4;
+                }
+
+                function fruitProcessor(apples, oranges) {
+                    const applePieces = cutFruitPieces(apples)
+                    const orangePieces = cutFruitPieces(oranges)
+
+                    // const juice = `Juice with ${apples} apples and ${oranges} oranges.`;
+                    // return juice;
+                    const juice = `Juice with ${applePieces} piece of apples and ${orangePieces} pieces of oranges.`;
+                    return juice;
+                }
+
+                console.log(fruitProcessor(2, 3))
+            </script>
+
+
+
+
+    </section>
+</body>
+
+</html>

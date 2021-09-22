@@ -107,7 +107,12 @@ ___________________________________________________*/
 
 .standout {
     font-weight: bolder;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+}
+
+.code-highlight {
+    font-weight: bolder;
+    font-size: 1rem;
 }
 
 .bg-shade {

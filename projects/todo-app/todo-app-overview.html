@@ -103,7 +103,8 @@ console.log(getThingsToDo(todos))</span></pre>
                 <p>View the example here:</p>
                 <ul>
                     <li>
-                        <a href="index-01.html">todo-app (v1)</a></li>
+                        <a href="index-01.html">todo-app (v1)</a>
+                    </li>
                 </ul>
             </div>
 
@@ -184,7 +185,8 @@ Finish this course!</span></pre>
                 <p>View the example here:</p>
                 <ul>
                     <li>
-                        <a href="index-02.html">todo-app (v2)</a></li>
+                        <a href="index-02.html">todo-app (v2)</a>
+                    </li>
                 </ul>
             </div>
 
@@ -310,7 +312,8 @@ Exercise</span></pre>
                 <p>The amount of todos left is based off the property 'completed'. The h2 line updates based off the index values left in the incompleteTodos Array.</p>
                 <ul>
                     <li>
-                        <a href="index-03.html" target="_blank">todo-app (v3)</a></li>
+                        <a href="index-03.html" target="_blank">todo-app (v3)</a>
+                    </li>
                 </ul>
             </div>
 
@@ -462,7 +465,8 @@ document.querySelector('#search-text').addEventListener('input', function(e) {
                 <p>The text is added to the todos Array and prints to the page.</p>
                 <ul>
                     <li>
-                        <a href="index-04.html" target="_blank">todo-app (v4)</a></li>
+                        <a href="index-04.html" target="_blank">todo-app (v4)</a>
+                    </li>
                 </ul>
             </div>
 
@@ -574,6 +578,567 @@ document.querySelector('#new-todo').addEventListener('submit', function(e) {
     renderTodos(todos, filters)
     <span class="code-comment">// clear input value</span>
     e.target.elements.text.value = ''
+})</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h2>V5.1 - add checkbox to exclude completed items</h2>
+        <h3>if-else to check the state of the checkbox</h3>
+
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>This is the same as v4 above, but adds a checkbox that exludes todos not complete.</p>
+                <p>This uses an if-else statment to filter.</p>
+                <ul>
+                    <li>
+                        <a href="index-05-1.html" target="_blank">todo-app (v5.1)</a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <div class="col-8">
+                <pre class="example">
+<span class="code-html">&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;
+
+&lt;label&gt;
+  &lt;input type="checkbox" id="hide-completed"&gt; Hide completed
+&lt;/label&gt;
+
+&lt;div id="todos"&gt;&lt;/div&gt;
+
+&lt;form id="new-todo"&gt;
+  &lt;input type="text" placeholder="Something to do" name="text"&gt;
+  &lt;button&gt;Add Todo&lt;/button&gt;
+&lt;/form&gt;</span>
+          
+<span class="code-js">const todos = [{
+  text: 'Order cat food',
+  completed: false
+}, {
+  text: 'Clean kitchen',
+  completed: true
+}, {
+  text: 'Buy food',
+  completed: true
+}, {
+  text: 'Do work',
+  completed: false
+}, {
+  text: 'Exercise',
+  completed: true
+}]
+
+const filters = {
+  searchText: '',
+  hideCompleted: false
+}
+
+const renderTodos = function(todos, filters) {
+  let filteredTodos = todos.filter(function(todo) {
+      <span class="code-comment">// CHECK FOR USER INPUT
+      // return boolean of TRUE if 
+      // the original todos Array includes text from the const 'filters'
+      // searchText is from the function below listening for user input</span>
+      return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+  })
+
+  <span class="code-comment">// set new value for filteredTodos
+  // filter it again</span>
+  <span class="code-highlight">filteredTodos = filteredTodos.filter(function(todo) {</span>
+
+    <span class="code-comment">// if filter is checked (TRUE), hide completed items</span>
+    <span class="code-highlight">if (filters.hideCompleted) {</span>
+        <span class="code-comment">// todo.completed returns TRUE for things are are completed
+          // flip boolean to !todo.completed so it returns items NOT completed</span>
+          <span class="code-highlight">return !todo.completed</span>
+      }
+      <span class="code-comment">// if checkbox not checked (FALSE), show all items</span>
+      <span class="code-highlight">else {
+          return true;
+      }
+  })</span>
+
+
+  const incompleteTodos = filteredTodos.filter(function(todo) {
+      return !todo.completed
+  })
+
+  document.querySelector('#todos').innerHTML = ''
+
+  const summary = document.createElement('h2')
+  summary.textContent = `You have ${incompleteTodos.length} todos left`
+  document.querySelector('#todos').appendChild(summary)
+
+  filteredTodos.forEach(function(todo) {
+      const p = document.createElement('p')
+      p.textContent = todo.text
+      document.querySelector('#todos').appendChild(p)
+  })
+}
+
+renderTodos(todos, filters)
+
+document.querySelector('#search-text').addEventListener('input', function(e) {
+  filters.searchText = e.target.value
+  renderTodos(todos, filters)
+})
+
+document.querySelector('#new-todo').addEventListener('submit', function(e) {
+  e.preventDefault()
+  todos.push({
+      text: e.target.elements.text.value,
+      completed: false
+  })
+  renderTodos(todos, filters)
+  e.target.elements.text.value = ''
+})
+
+document.querySelector('#hide-completed').addEventListener('change', function(e) {
+  filters.hideCompleted = e.target.checked
+  renderTodos(todos, filters)
+})</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h2>V5.2 - add checkbox to exclude completed items</h2>
+        <h3>2 filter calls with one-liner instead of if-else</h3>
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>This is the same as v5.2 above, but filters without an if-else statement</p>
+                <ul>
+                    <li>
+                        <a href="index-05-2.html" target="_blank">todo-app (v5.2)</a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <div class="col-8">
+                <pre class="example">
+<span class="code-html">&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;
+
+&lt;label&gt;
+    &lt;input type="checkbox" id="hide-completed"&gt; Hide completed
+  &lt;/label&gt;
+
+&lt;div id="todos"&gt;&lt;/div&gt;
+
+&lt;form id="new-todo"&gt;
+    &lt;input type="text" placeholder="Something to do" name="text"&gt;
+    &lt;button&gt;Add Todo&lt;/button&gt;
+&lt;/form&gt;</span>
+            
+<span class="code-js">const todos = [{
+  text: 'Order cat food',
+  completed: false
+}, {
+  text: 'Clean kitchen',
+  completed: true
+}, {
+  text: 'Buy food',
+  completed: true
+}, {
+  text: 'Do work',
+  completed: false
+}, {
+  text: 'Exercise',
+  completed: true
+}]
+
+const filters = {
+  searchText: '',
+  <span class="code-comment">// add new filter with default value of false</span>
+  hideCompleted: false
+}
+
+const renderTodos = function(a, b) {
+  <span class="code-comment">// change to let since this this variable will be re-assigned a new value below</span>
+  <span class="code-highlight">let filteredTodos = a.filter(function(c) {
+      return c.text.toLowerCase().includes(filters.searchText.toLowerCase())
+  })</span>
+
+  <span class="code-comment">// set new value for filteredTodos
+  // filter it again</span>
+  <span class="code-highlight">filteredTodos = filteredTodos.filter(function(d) {</span>
+      <span class="code-comment">// create const to store boolean if either of these cases are true
+      // !b.hideCompleted
+      // if checkbox is NOT checked, the const 'filters' property named 'hideCompleted' is true (because the default is set to false)
+      // if checkbox is checked, !b.hideCompleted returns false
+      // !c.completed
+      // always returns TRUE for incomplete todos</span>
+      <span class="code-highlight">return !b.hideCompleted || !d.completed
+  })</span>
+
+  const incompleteTodos = filteredTodos.filter(function(f) {
+    <span class="code-comment">// return true if NOT completed</span>
+      return !f.completed
+  })
+
+  document.querySelector('#todos').innerHTML = ''
+
+  const summary = document.createElement('h2')
+  summary.textContent = `You have ${incompleteTodos.length} todos left`
+  document.querySelector('#todos').appendChild(summary)
+
+  filteredTodos.forEach(function(todo) {
+      const p = document.createElement('p')
+      p.textContent = todo.text
+      document.querySelector('#todos').appendChild(p)
+  })
+}
+
+renderTodos(todos, filters)
+
+document.querySelector('#search-text').addEventListener('input', function(e) {
+  filters.searchText = e.target.value
+  renderTodos(todos, filters)
+})
+
+document.querySelector('#new-todo').addEventListener('submit', function(e) {
+  e.preventDefault()
+  todos.push({
+      text: e.target.elements.text.value,
+      completed: false
+  })
+  renderTodos(todos, filters)
+  e.target.elements.text.value = ''
+})
+
+
+document.querySelector('#hide-completed').addEventListener('change', function(e) {
+  filters.hideCompleted = e.target.checked
+  renderTodos(todos, filters)
+})</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h2>V5.3 - add checkbox to exclude completed items</h2>
+        <h3>1 filter calls with one-liner</h3>
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>This is the same as v5.3 above but uses a single filteredTodos call and a single one-liner</p>
+                <ul>
+                    <li>
+                        <a href="index-05-3.html" target="_blank">todo-app (v5.3)</a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <div class="col-8">
+                <pre class="example">
+<span class="code-html">&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;
+
+&lt;label&gt;
+  &lt;input type="checkbox" id="hide-completed"&gt; Hide completed
+&lt;/label&gt;
+
+&lt;div id="todos"&gt;&lt;/div&gt;
+
+&lt;form id="new-todo"&gt;
+  &lt;input type="text" placeholder="Something to do" name="text"&gt;
+  &lt;button&gt;Add Todo&lt;/button&gt;
+&lt;/form&gt;</span>
+          
+<span class="code-js">const todos = [{
+  text: 'Order cat food',
+  completed: false
+}, {
+  text: 'Clean kitchen',
+  completed: true
+}, {
+  text: 'Buy food',
+  completed: true
+}, {
+  text: 'Do work',
+  completed: false
+}, {
+  text: 'Exercise',
+  completed: true
+}]
+
+const filters = {
+  searchText: '',
+  <span class="code-comment">// add new filter with default value of false</span>
+  hideCompleted: false
+}
+
+const renderTodos = function(a, b) {
+  <span class="code-highlight">const filteredTodos = a.filter(function(c) {
+
+      const searchTextMatch = c.text.toLowerCase().includes(filters.searchText.toLowerCase())
+      const hideCompletedMatch = !b.hideCompleted || !c.completed</span>
+
+      <span class="code-comment">// return false for todos the are complete
+      // return true for todos NOT complete
+      // if search text matches todo AND hideComplete checkbox, it is displayed</span>
+      <span class="code-highlight">return searchTextMatch && hideCompletedMatch
+  })</span>
+
+  const incompleteTodos = filteredTodos.filter(function(f) {
+      <span class="code-comment">// return true if NOT completed</span>
+      return !f.completed
+  })
+
+  document.querySelector('#todos').innerHTML = ''
+
+  const summary = document.createElement('h2')
+  summary.textContent = `You have ${incompleteTodos.length} todos left`
+  document.querySelector('#todos').appendChild(summary)
+
+  filteredTodos.forEach(function(todo) {
+      const p = document.createElement('p')
+      p.textContent = todo.text
+      document.querySelector('#todos').appendChild(p)
+  })
+}
+
+renderTodos(todos, filters)
+
+document.querySelector('#search-text').addEventListener('input', function(e) {
+  filters.searchText = e.target.value
+  renderTodos(todos, filters)
+})
+
+document.querySelector('#new-todo').addEventListener('submit', function(e) {
+  e.preventDefault()
+  todos.push({
+      text: e.target.elements.text.value,
+      completed: false
+  })
+  renderTodos(todos, filters)
+  e.target.elements.text.value = ''
+})
+
+
+document.querySelector('#hide-completed').addEventListener('change', function(e) {
+  filters.hideCompleted = e.target.checked
+  renderTodos(todos, filters)
+})</span></pre>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h2>V5.4 - Adding local storage</h2>
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>This uses local storage so a new Todo you add does not dissappear when you refresh the page.</p>
+                <p>Change the Array from a const to let since you'll be changing its contents.</p>
+                <p>Create const todosJSON to obtain the localStorage item named 'todos' if it exists.</p>
+                <p>Add a line to add localStorage when you click the button.</p>
+                <ul>
+                    <li>
+                        <a href="index-05-4.html" target="_blank">todo-app (v5.4)</a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <div class="col-8">
+                <pre class="example">
+<span class="code-html">&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;
+
+&lt;label&gt;
+&lt;input type="checkbox" id="hide-completed"&gt; Hide completed
+&lt;/label&gt;
+
+&lt;div id="todos"&gt;&lt;/div&gt;
+
+&lt;form id="new-todo"&gt;
+&lt;input type="text" placeholder="Something to do" name="text"&gt;
+&lt;button&gt;Add Todo&lt;/button&gt;
+&lt;/form&gt;</span>
+        
+<span class="code-js">let todos = []
+
+const filters = {
+searchText: '',
+<span class="code-comment">// add new filter with default value of false</span>
+hideCompleted: false
+}
+
+  <span class="code-highlight"><span class="code-comment">// get localStorage for a key named 'todos'</span>
+  const todosJSON = localStorage.getItem('todos')  
+  <span class="code-comment">// check if the key exists</span>
+  if (todosJSON != null) {
+    <span class="code-comment">// parse from string to Array so you can use the data</span>
+    todos = JSON.parse(todosJSON)
+  }</span>
+
+  
+  const renderTodos = function(a, b) {
+  const filteredTodos = a.filter(function(c) {
+
+  const searchTextMatch = c.text.toLowerCase().includes(filters.searchText.toLowerCase())
+  const hideCompletedMatch = !b.hideCompleted || !c.completed
+  return searchTextMatch && hideCompletedMatch
+})
+
+const incompleteTodos = filteredTodos.filter(function(f) {    
+    return !f.completed
+})
+
+document.querySelector('#todos').innerHTML = ''
+
+const summary = document.createElement('h2')
+summary.textContent = `You have ${incompleteTodos.length} todos left`
+document.querySelector('#todos').appendChild(summary)
+
+filteredTodos.forEach(function(todo) {
+    const p = document.createElement('p')
+    p.textContent = todo.text
+    document.querySelector('#todos').appendChild(p)
+})
+}
+
+renderTodos(todos, filters)
+
+document.querySelector('#search-text').addEventListener('input', function(e) {
+filters.searchText = e.target.value
+renderTodos(todos, filters)
+})
+
+document.querySelector('#new-todo').addEventListener('submit', function(e) {
+e.preventDefault()
+todos.push({
+    text: e.target.elements.text.value,
+    completed: false
+})
+
+<span class="code-highlight"><span class="code-comment">// write to localStorage
+  //stringify todos arrray</span>
+  localStorage.setItem('todos', JSON.stringify(todos))</span>
+
+renderTodos(todos, filters)
+e.target.elements.text.value = ''
+})
+
+
+document.querySelector('#hide-completed').addEventListener('change', function(e) {
+filters.hideCompleted = e.target.checked
+renderTodos(todos, filters)
 })</span></pre>
             </div>
         </div>

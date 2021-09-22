@@ -340,6 +340,142 @@ document.querySelector('#search-text').addEventListener('input', function(e) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h2>V5 - Save to localStorage</h2>
+
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>This saves data to localStorage.</p>
+                <p>Click the 'Create Note' button.</p>
+                <p>This runs a function to create an Array titled 'notes'.</p>
+                <p>It is then saved to localStorage.</p>
+                <p>renderNote() is run which checks if 'note.title' exists.</p>
+                <p>Since it doesn't, 'unnamed note' is printed to the page.</p>
+                <p>Refresh the page and you'll see the it's still there since it's been saved in localStorage.</p>
+                <p>View the example here:</p>
+                <ul>
+                    <li>
+                        <a href="index-05.html" target="_blank">notes-app (v5)</a></li>
+                </ul>
+            </div>
+
+
+
+            <div class="col-8">
+                <pre class="example"><span class="code-html">&lt;h1&gt;Notes App&lt;/h1&gt;
+&lt;h2&gt;Take notes and never forget&lt;/h2&gt;
+
+&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;
+
+&lt;select id="filter-by"&gt;
+    &lt;option value="byEdited"&gt;Sort by last edited&lt;/option&gt;
+    &lt;option value="byCreated"&gt;Sort by recently created&lt;/option&gt;
+    &lt;option value="alphabetical"&gt;Sort alphabetically&lt;/option&gt;
+&lt;/select&gt;
+&lt;div id="notes"&gt;&lt;/div&gt;
+&lt;button id="create-note"&gt;Create Note&lt;/button&gt;
+
+&lt;script src="notes-app-05.js"&gt;&lt;/script&gt;</span>
+
+
+
+<span class="code-js"><span class="code-comment">// create an Array of Objects</span>
+const notes = [{
+title: 'my next trip',
+body: 'I would like to go to Spain'
+}, {
+title: 'Habbits to work on',
+body: 'Exercise. Eating a bit better.'
+}, {
+title: 'Office modification',
+body: 'Get a new seat'
+}]
+
+
+<span class="code-comment">// create filters Object to store search text</span>
+const filters = {
+searchText: ''
+}
+
+<span class="code-comment">// function to check if search text exists in title</span>
+const renderNotes = function(notez, filterz) {
+<span class="code-comment">// create a const to store a new Array created by filter()
+// this limits the notes to just those that pass the filter</span>
+const filteredNotes = notez.filter(function(notee) {
+  <span class="code-comment">// return TRUE if note  title contains search text</span>
+    return notee.title.toLowerCase().includes(filterz.searchText.toLowerCase())
+})
+
+<span class="code-comment">// CLEAR AN ELEMENT
+// locate the HTML element with an ID of #notes
+// target its innerHTML to delete everything
+// this makes sure previous content doesn't exist while you enter new text
+// this ensures only the NEW results are displayed and the old results removed</span>
+document.querySelector('#notes').innerHTML = ''
+
+<span class="code-comment">// CREATE NEW ELEMENT
+// iterate over filteredNotes Array and print to new element</span>
+filteredNotes.forEach(function(note) {
+  const noteEl = document.createElement('p')
+
+  <span class="code-comment">// check if the 'note' Array has a 'title' property </span>
+<span class="code-highlight">if (note.title.length > 0) {
+      noteEl.textContent = note.title
+  } else {
+    <span class="code-comment">// since it doesn't the screen prints 'Unnamed note'</span>
+      noteEl.textContent = 'Unnamed note'
+  }</span>
+    document.querySelector('#notes').appendChild(noteEl)
+})
+}
+
+<span class="code-comment">// call function once to make sure the application initially renders something</span>
+renderNotes(notes, filters)
+<span class="code-highlight">
+<span class="code-comment">// When button is clicked, push new item to 'notes' Array</span>
+document.querySelector('#create-note').addEventListener('click', function(e) {
+    notes.push({
+            title: '',
+            body: ''
+        })
+        // save 'notes' Array to localStorage
+    localStorage.setItem('notes', JSON.stringify(notes))
+    renderNotes(notes, filters)
+})</span>
+
+<span class="code-comment">// re-run the function based off user input</span>
+document.querySelector('#search-text').addEventListener('input', function(e) {
+<span class="code-comment">// update the 'filters' Object with the text searched for </span>
+filters.searchText = e.target.value
+
+<span class="code-comment">// the function is then called</span> 
+renderNotes(notes, filters)
+})</span></pre>
+            </div>
+        </div>
+
+
+
+    </section>
+
+
     <script src="../../_js/bootstrap.bundle.js"></script>
 </body>
 

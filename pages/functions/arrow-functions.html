@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Arrow Functions</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Arrow Functions</h1>
+
+        <div class="row">
+            <div class="col">
+                <p>Shorter version of a function expression.</p>
+                <p>Good for simple one-liner functions.</p>
+                <p>return keyword can be ommited.</p>
+                <p>Also, Arrow functions do not allow the <strong>this</strong> keyword.</p>
+            </div>
+        </div>
+
+
+
+
+
+        <h2>Comparison</h2>
+        <div class="row">
+            <div class="col-5">
+                <p>After the =>, write what you want to return.</p>
+                <p>The return keyword must be explicity set in a normal function.</p>
+                <p>The return keyword is implicity set in an Arrow function.</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js"><span class="code-comment">// Function expression</span>
+const calcAge2 = function (birthYear) {
+  return 2037 - birthYear;
+}
+
+<span class="code-comment">// Arrow function</span>
+<span class="code-highlight">const calcAge3 = birthYear => 2037 - birthYear;</span>
+const age3 = calcAge3(1991)
+console.log(age3)
+</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <h2>More complex example</h2>
+        <div class="row">
+            <div class="col-5">
+                <p>More calculations, so curly braces are needed.</p>
+                <p>return statement must also be used in this case.</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js">const yearsUntilRetirement = birthYear => {
+  const age = 2037 - birthYear;
+  const retirement = 65 - age;
+  return retirement;
+}
+
+console.log(yearsUntilRetirement(1991));</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <h2>Multiple parameters</h2>
+        <div class="row">
+            <div class="col-5">
+                <p>Must wrap in parenthesis</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js">const yearsUntilRetirement = (birthYear, firstName) => {
+  const age = 2037 - birthYear;
+  const retirement = 65 - age;
+  return `${firstName} retires in ${retirement} years`;
+}
+
+console.log(yearsUntilRetirement(1991, 'Jonas'));</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+</body>
+
+</html>

@@ -44,7 +44,7 @@
                 <p>Use localStorage to control how long the state of your application remains. You can use timers to set the time frame of how long its stored. Non-sesitive data is also good for localStorage.</p>
                 <p>Use sessionStorage when privacy of data is a concern.</p>
 
-<h3>CRUD</h3>
+                <h3>CRUD</h3>
                 <p>Any data storage must be able to perform 4 basic operations</p>
                 <p>CRUD</p>
                 <ul>
@@ -62,8 +62,8 @@
         <div class="row">
             <div class="col">
 
-                <p>Open Dev Tools. There is a tab called 'Storage'. Click this to view what is currently in your local storage.</p>
-                <p>On this tab, click the 'Local Storage', then click the URL to view its data.</p>
+                <p>Open Dev Tools. Click the 'Applications' tab. In the left menu is a section titled 'Storage'. Under this is 'Local Storage'.</p>
+                <p>Click this, then click the URL to view its data.</p>
                 <p>NOTE: If you change the value here, it updates the actual local storage value.</p>
             </div>
         </div>
@@ -188,10 +188,10 @@ console.log(userJSON)</span></pre>
         <h2>Printing the stored string data by converting the Object into a string</h2>
         <div class="row">
             <div class="col-5">
-
+                <p>You must convert the string back into an object to display.</p>
                 <p>Use getItem() to read the data.</p>
-                <p>Since 'users' was already saved, retrieve 'users'.</p>
-                <p>Convert the JSON string back into an Object using parse(). You put the variable you stored the JSON data in as its argument.</p>
+                <p>Convert the JSON string back into an Object using parse().</p>
+                <p>You put the variable you stored the JSON property in as its argument.</p>
             </div>
 
             <div class="col-7">

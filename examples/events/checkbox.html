@@ -11,64 +11,60 @@
     <link rel="stylesheet" type="text/css" href="../../_css/style.css">
     <title>Checkbox</title>
 </head>
-    <body>
-<a href="../../index.html">Home page</a>
 
-<section class="container">
-    <div class="row">
-        <div class="col">
-
-          <label>
-              <input id="for-fun" type="checkbox"> Check me for fun
-          </label>
-
-
-          <script>document.querySelector('#for-fun').addEventListener('change', function (e) {
-    console.log(e.target.checked)
-})</script>
-
-</div></div></section>
+<body>
+    <a href="../../index.html">Home page</a>
 
 
 
 
-<section class="container">
-    <h1>Note taking App (basic functionality)</h1>
-    <h3>HTML</h3>
-    <div class="row">
-        <div class="col-5">
+    <section class="container">
+        <h1>Checkbox functionality</h1>
+        <h2>Checkbox prints true or false to console</h2>
 
-            <p>Clicking the checkbox displays TRUE or FALSE in the console.</p>
+        <div class="row">
+            <div class="col-5">
+                <p>Add label to checkbox. This allows you to click any part of the text to check it.</p>
+                <p>Look for the 'change' event which fires immediately.</p>
+                <p>Open console to view state of Checkbox. CHECKED=TRUE</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-html">&lt;label&gt;
+  &lt;input id="for-fun" type="checkbox"&gt; Check me for fun
+&lt;/label&gt;
+              
+<span class="code-js"><span class="code-comment">// look for 'change' event. This should be used for checkboxes since it fires immediately</span>
+document.querySelector('#for-fun').addEventListener('change', function (e) {
+  <span class="code-comment">// Display the status of the event argument's target of 'checked'
+  // boolean, true if checked</span>
+  console.log(e.target.checked)
+})</pre></div>
         </div>
 
-        <div class="col-7">
-            <pre class="example"><span class="code-html">&lt;label&gt;
-    &lt;input id="for-fun" type="checkbox"&gt; Check me for fun
-&lt;/label&gt;</pre>
-</div>
-    </div>
+
+    </section>
 
 
+    <section class="container">
+        <div class="row">
+            <div class="col">
+
+                <label>
+            <input id="for-fun" type="checkbox"> Check me for fun
+        </label>
 
 
-    <h3>JS</h3>
-            <div class="row">
-                <div class="col-5">
+                <script>
+                    document.querySelector('#for-fun').addEventListener('change', function(e) {
+                        console.log(e.target.checked)
+                    })
+                </script>
 
-                    <p>Open console to view state of Checkbox. CHECKED=TRUE</p>
-                </div>
-                <div class="col-7">
-                    <pre class="example"><span class="code-js"><span class="code-comment">//target the checkbox
-//the evento listen for is called change</span>
-document.querySelector('#for-fun').addEventListener('change', function (e) {
-    console.log(e.target.checked)
-})</pre></div>
-</div>
+            </div>
+        </div>
+    </section>
 
 
-</section>
+</body>
 
-
-
-    </body>
 </html>

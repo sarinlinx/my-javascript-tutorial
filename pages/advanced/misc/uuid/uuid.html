@@ -30,9 +30,10 @@
             <div class="col">
                 <p>First, add a 3rd party script to your page. Visit the following site:</p>
                 <ul>
-                    <li><a href="https://github.com/kelektiv/node-uuid#quickstart---browser-ready-versions">node-uuid Browser Ready Versions</a></li>
+                    <li><a href="https://github.com/kelektiv/node-uuid#quickstart---browser-ready-versions">node-uuid Browser
+              Ready Versions</a></li>
                 </ul>
-                <p>The different versions are better, they are just different ways to generate a Unique ID.</p>
+                <p>The different versions aren't better, they are just different ways to generate a Unique ID.</p>
                 <p>For example, version 4 is a random generator.</p>
             </div>
         </div>
@@ -45,10 +46,12 @@
         <h1>Adding the script tag</h1>
         <div class="row">
             <div class="col">
-                <p>Visit <a href="https://github.com/kelektiv/node-uuid#quickstart---browser-ready-versions">node-uuid Browser Ready Versions</a> and choose version 4 to create a random UUID.</p>
+                <p>Visit <a href="https://github.com/kelektiv/node-uuid#quickstart---browser-ready-versions">node-uuid Browser
+            Ready Versions</a> and choose version 4 to create a random UUID.</p>
             </div>
         </div>
 
+        <!--
         <h3>The offical version doesn't work</h3>
         <div class="row">
             <div class="col-6">
@@ -70,27 +73,119 @@ uuidv4(); <span class="code-comment">// -> v4 UUID</span>
                 <p><a href="uuidv4.js" target="_blank">uuidv4.js</a></p>
             </div>
 
-        </div>
+        </div>-->
 
 
         <h3>Call the script</h3>
         <div class="row">
             <div class="col-5">
 
-                <p>Add the script to your HTML code. Then call it in the JS like this:</p>
+                <p>Add the CDN link to your HTML code. Then call it in the JS like this:</p>
                 <p>Open your console to see a unique ID on every page refresh.</p>
             </div>
 
             <div class="col-7">
-                <pre class="example"><span class="code-js">console.log(uuidv4())</div>
+                <pre class="example"><span class="code-html">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"&gtl;&lt;/script&gt;</span>
+<span class="code-js">console.log(uuidv4())</div>
             </div>
-        </section>
 
 
 
 
-<script src="uuidv4.js"></script>
-<script>console.log(uuidv4())</script>
+
+
+            <h1>Add UUID to button click</h1>
+            <div class="row">
+                <div class="col-5">    
+                    <p>Add an HTML button.</p>
+                </div>
+    
+                <div class="col-7">
+                    <pre class="example"><span class="code-html">&lt;button id="create-note"&gt;Create Note&lt;/button&gt;</span></pre>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-5">
+                <p>Add JS to push UUID to an Array in localStorage.</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-js">document.querySelector('#create-note').addEventListener('click', function(e) {
+  notes.push({
+          id: uuidv4(),
+          title: '',
+          body: ''
+      })
+      // save 'notes' Array to localStorage
+  localStorage.setItem('notes', JSON.stringify(notes))
+})
+
+const getSavedNotes = function() {
+  const notesJSON = localStorage.getItem('notes')
+
+  if (notesJSON !== null) {
+      return JSON.parse(notesJSON)
+  } else {
+      return []
+  }
+}
+const notes = getSavedNotes()</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- <script src="uuidv4.js"></script>
+    <script>
+        console.log(uuidv4())
+    </script> -->
+
+
+        <h3>Example</h3>
+        <div class="row">
+            <div class="col">
+                <p>Open Dev Tool. Click 'Application' tab to view Local Storage in left menu.</p>
+                <button id="create-note">Create Note</button>
+                <br><br><br><br><br>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js">
+        l;
+    </script>
+    <script>
+        // const notes = []
+
+
+        document.querySelector('#create-note').addEventListener('click', function(e) {
+            notes.push({
+                    id: uuidv4(),
+                    title: '',
+                    body: ''
+                })
+                // save 'notes' Array to localStorage
+            localStorage.setItem('notes', JSON.stringify(notes))
+        })
+
+        const getSavedNotes = function() {
+            const notesJSON = localStorage.getItem('notes')
+
+            if (notesJSON !== null) {
+                return JSON.parse(notesJSON)
+            } else {
+                return []
+            }
+        }
+        const notes = getSavedNotes()
+    </script>
 
 </body>
 

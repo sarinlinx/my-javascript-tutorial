@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Refactoring</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+    <section class="container">
+        <h1>Refactoring (Part 1)</h1>
+        <p>The goal is to take existing features in your code and break them out into something more readable/reasonable.
+        </p>
+
+
+        <h2>Original code</h2>
+
+
+
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-4">
+                <p>Original code to be refactored.</p>
+            </div>
+
+
+
+            <div class="col-8">
+                <pre class="example"><span class="code-html">&lt;h1&gt;Notes App&lt;/h1&gt;
+&lt;h2&gt;Take notes and never forget&lt;/h2&gt;
+
+&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;
+
+&lt;select id="filter-by"&gt;
+&lt;option value="byEdited"&gt;Sort by last edited&lt;/option&gt;
+&lt;option value="byCreated"&gt;Sort by recently created&lt;/option&gt;
+&lt;option value="alphabetical"&gt;Sort alphabetically&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;div id="notes"&gt;&lt;/div&gt;
+&lt;button id="create-note"&gt;Create Note&lt;/button&gt;
+
+&lt;script src="notes-app.js"&gt;&lt;/script&gt;</span>
+
+
+<span class="code-js">let notes = [{
+  title: 'my next trip',
+  body: 'I would like to go to Spain'
+}, {
+  title: 'Habbits to work on',
+  body: 'Exercise. Eating a bit better.'
+}, {
+  title: 'Office modification',
+  body: 'Get a new seat'
+}]
+
+const filters = {
+  searchText: ''
+}
+
+const notesJSON = localStorage.getItem('notes')
+
+if (notesJSON !== null) {
+  notes = JSON.parse(notesJSON)
+}
+
+const renderNotes = function(notez, filterz) {
+  const filteredNotes = notez.filter(function(notee) {
+      // return TRUE if note  title contains search text
+      return notee.title.toLowerCase().includes(filterz.searchText.toLowerCase())
+  })
+
+  document.querySelector('#notes').innerHTML = ''
+
+  filteredNotes.forEach(function(note) {
+      const noteEl = document.createElement('p')
+
+      if (note.title.length > 0) {
+          noteEl.textContent = note.title
+      } else {
+          noteEl.textContent = 'Unnamed note'
+      }
+
+      document.querySelector('#notes').appendChild(noteEl)
+  })
+}
+
+renderNotes(notes, filters)
+
+document.querySelector('#create-note').addEventListener('click', function(e) {
+  notes.push({
+          title: '',
+          body: ''
+      })
+  localStorage.setItem('notes', JSON.stringify(notes))
+  renderNotes(notes, filters)
+})
+
+document.querySelector('#search-text').addEventListener('input', function(e) {
+  filters.searchText = e.target.value
+  renderNotes(notes, filters)
+})</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h2>Refactoring (part1)</h2>
+        <div class="row">
+            <div class="col-4">
+                <p>Create a new file named functions.js that get used by the primary js file.</p>
+                <p>Add that script tag to the HTML file.</p>
+            </div>
+            <div class="col-8">
+                <pre class="example"><span class="code-html">&lt;h1&gt;Notes App&lt;/h1&gt;
+&lt;h2&gt;Take notes and never forget&lt;/h2&gt;
+
+&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;
+
+&lt;select id="filter-by"&gt;
+  &lt;option value="byEdited"&gt;Sort by last edited&lt;/option&gt;
+  &lt;option value="byCreated"&gt;Sort by recently created&lt;/option&gt;
+  &lt;option value="alphabetical"&gt;Sort alphabetically&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;div id="notes"&gt;&lt;/div&gt;
+&lt;button id="create-note"&gt;Create Note&lt;/button&gt;
+
+<span class="code-highlight">&lt;script src="functions.js"&gt;&lt;/script&gt;</span>
+&lt;script src="notes-app.js"&gt;&lt;/script&gt;</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+        <h2>Refactoring (part2)</h2>
+        <div class="row">
+            <div class="col-4">
+                <p>The code at the top to obtain get the localStorage, check if it exists, and then parse it cotains 3 steps.
+                </p>
+                <p>This can be broken out into a single function call.</p>
+            </div>
+            <div class="col-8">
+                <pre class="example"><span class="code-js">const notesJSON = localStorage.getItem('notes')
+
+if (notesJSON !== null) {
+    notes = JSON.parse(notesJSON)
+}</span></pre>
+            </div>
+        </div>
+
+        <h3>Rewrite</h3>
+        <div class="row">
+            <div class="col-4">
+                <p>Add the function to the functions.js file.</p>
+                <p>You must also now rewrite it since the 'notes' Array doesn't exist.</p>
+                <p>So instead, add <strong>return</strong> so the parsed data can be retrieved instead.</p>
+                <p>Also add an 'else' clause to create an empty Array if no data currently exists.</p>
+            </div>
+            <div class="col-8">
+                <pre class="example"><span class="code-js">// Read existing notes from localStorage
+const getSavedNotes = function() {
+    const notesJSON = localStorage.getItem('notes')
+    
+    if (notesJSON !== null) {
+       <span class="code-highlight">return JSON.parse(notesJSON)
+    } else {
+      return []
+    }</span>
+}</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <h2>Update original file to call this function</h2>
+        <div class="row">
+            <div class="col-4">
+                <p>Update the original file.</p>
+                <p>The notes Array will now called getSavedNotes()</p>
+                <p>Also change it to a const.</p>
+                <p>Test to make sure it works.</p>
+                <ul>
+                    <li><a href="notes-app.html" target="_blank">Notes App</a></li>
+                </ul>
+            </div>
+            <div class="col-8">
+                <pre class="example"><span class="code-js" >const notes = getSavedNotes()</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <h1>Part 2</h2>
+            <div class="row">
+                <div class="col-4">
+                    <p>Next, refactor the next code block.</p>
+                    <p>Cut out highlighted code first to its own function.</p>
+                </div>
+                <div class="col-8">
+                    <pre class="example"><span class="code-js" >const renderNotes = function(notez, filterz) {
+  const filteredNotes = notez.filter(function(notee) {
+      return notee.title.toLowerCase().includes(filterz.searchText.toLowerCase())
+  })
+
+  document.querySelector('#notes').innerHTML = ''
+
+  filteredNotes.forEach(function(note) {
+      <span class="code-highlight">const noteEl = document.createElement('p')
+
+      if (note.title.length > 0) {
+          noteEl.textContent = note.title
+      } else {
+          noteEl.textContent = 'Unnamed note'
+      }</span>
+
+      document.querySelector('#notes').appendChild(noteEl)
+  })
+}</span></pre>
+                </div>
+            </div>
+
+
+
+
+
+            <h2>Create 2nd function</h3>
+                <div class="row">
+                    <div class="col-4">
+                        <p>Cut the code out into a new function in the functions.js file.</p>
+                        <p>Add a <strong>return</strong> statement so the data can be retrieved.</p>
+                    </div>
+                    <div class="col-8">
+                        <pre class="example"><span class="code-js" >// Generate the DOM structure for a note 
+const generateNoteDOM = function(note) {
+  const noteEl = document.createElement('p')
+
+  if (note.title.length > 0) {
+      noteEl.textContent = note.title
+  } else {
+      noteEl.textContent = 'Unnamed note'
+  }
+
+  <span class="code-highlight">return noteEl</span>
+}</span></pre>
+                    </div>
+                </div>
+
+
+
+
+
+                <h2>Call the new function</h3>
+                    <div class="row">
+                        <div class="col-4">
+                            <p>Call the new function within the renderNotes() function</p>
+                        </div>
+                        <div class="col-8">
+                            <pre class="example"><span class="code-js" >const renderNotes = function(notez, filterz) {
+  const filteredNotes = notez.filter(function(notee) {
+      return notee.title.toLowerCase().includes(filterz.searchText.toLowerCase())
+  })
+
+  document.querySelector('#notes').innerHTML = ''
+
+  filteredNotes.forEach(function(note) {
+
+      <span class="code-highlight">const noteEl = generateNoteDOM(note)</span>
+
+      document.querySelector('#notes').appendChild(noteEl)
+  })
+}</span></pre>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <h1>Part 3</h1>
+                </h2>
+                <div class="row">
+                    <div class="col-4">
+                        <p>Cut out entire renderNotes() function.</p>
+                        <p>Place in functions.js file.</p>
+                    </div>
+                    <div class="col-8">
+                        <pre class="example"><span class="code-js" >const renderNotes = function(notez, filterz) {
+const filteredNotes = notez.filter(function(notee) {
+    return notee.title.toLowerCase().includes(filterz.searchText.toLowerCase())
+})
+
+document.querySelector('#notes').innerHTML = ''
+
+filteredNotes.forEach(function(note) {
+
+    const noteEl = generateNoteDOM(note)
+
+    document.querySelector('#notes').appendChild(noteEl)
+})
+}</span></pre>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+</body>
+
+</html>
