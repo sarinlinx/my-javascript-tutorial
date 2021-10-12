@@ -60,6 +60,34 @@
         </div>
 
 
+
+        <h2>Advantage of bracket notation</h2>
+
+        <div class="row">
+            <div class="col-5">
+                <p>You can place any expression you like using bracket notation.</p>
+                <p>This means you do not have to write the specific string, you can compute it from some operation.</p>
+                <p>In this example, you nave 'Name' in two different properties. Store this in a variable.</p>
+                <p>Then, use this variable to retrieve both the first and last name.</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js">const jonas = {
+  firstName = 'Jonsas',
+  lastName = 'Smith',
+  age: 2037 - 1991,
+  job: 'teacher',
+  friends: ['Michael', 'Peter', 'Steven']  
+}
+
+const nameKey = 'Name'
+console.log(jonas['first' + naneKey])
+console.log(jonas['last' + naneKey])</span></pre>
+            </div>
+        </div>
+
+
+
+        <h1>Examples</h1>
         <h3>Full example how ot create and retrieve Object data</h3>
         <div class="row">
             <div class="col-6">
@@ -181,6 +209,23 @@ console.log(otherBookSummary.summary)
 console.log(otherBookSummary.pageCountSummary)</span></pre>
             </div>
         </div>
+
+
+
+
+
+
+
+
+        <h1>console.table()</h1>
+        <div class="row">
+            <div class="col">
+                <p>Instead of using console.log to return an Object, use console.table. The console will then print a table formatted example of the Object.</p>
+                <p>This can make it easier to view.</p>
+            </div>
+        </div>
+
+
 
     </section>
 

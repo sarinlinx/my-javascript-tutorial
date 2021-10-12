@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../../_css/style.css">
+    <title>Syncing data across pages</title>
+</head>
+
+<body>
+    <a href="../../../index.html">Home page</a>
+
+
+    <section class="container">
+        <h1>Syncing data across pages</h1>
+
+
+
+        <h1>Syncing data using the window object</h1>
+
+        <div class="row">
+            <div class="col-5">
+                <p>Use the window event called 'storage'.</p>
+                <p>The storage even fires when any data in localStorage changes.</p>
+                <p>The storage event only fires on OTHER PAGES.</p>
+                <p>If you view (e) in the console you'll see lots of properties.</p>
+                <p>There are 3 specific to the storage event.</p>
+                <ul>
+                    <li>key</li>
+                    <li>newValue</li>
+                    <li>oldValue</li>
+                </ul>
+                <p>Parse the newValue property and assign it to a 'notes' array.</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-js">let notes = getSavedNotes()
+
+
+window.addEventListener('storage', function(e) {
+  // check if 'notes' key property changed 
+  if (e.key === 'notes') {
+      // parse the data stored the newValue property
+      notes = JSON.parse(e.newValue)
+  }
+})
+</pre>
+            </div>
+        </div>
+
+
+
+        <h3>Example</h3>
+        <div class="row">
+            <div class="col">
+                <input id="search-text" type="text" placeholder="Filter todos">
+            </div>
+        </div>
+        <br><br><br>
+
+
+
+
+        <script>
+            window.addEventListener('storage', function(e) {
+                // check if 'notes' key property changed 
+                if (e.key === 'notes') {
+                    // parse the data stored the newValue property
+                    notes = JSON.parse(e.newValue)
+                }
+            })
+        </script>
+
+
+</body>
+
+</html>

@@ -333,14 +333,14 @@ const generateNoteDOM = function(note) {
 
 
                     <h1>Part 3</h1>
-                </h2>
-                <div class="row">
-                    <div class="col-4">
-                        <p>Cut out entire renderNotes() function.</p>
-                        <p>Place in functions.js file.</p>
-                    </div>
-                    <div class="col-8">
-                        <pre class="example"><span class="code-js" >const renderNotes = function(notez, filterz) {
+
+                    <div class="row">
+                        <div class="col-4">
+                            <p>Cut out entire renderNotes() function.</p>
+                            <p>Place in functions.js file.</p>
+                        </div>
+                        <div class="col-8">
+                            <pre class="example"><span class="code-js" >const renderNotes = function(notez, filterz) {
 const filteredNotes = notez.filter(function(notee) {
     return notee.title.toLowerCase().includes(filterz.searchText.toLowerCase())
 })
@@ -354,8 +354,145 @@ filteredNotes.forEach(function(note) {
     document.querySelector('#notes').appendChild(noteEl)
 })
 }</span></pre>
+                        </div>
                     </div>
-                </div>
+
+
+
+
+
+
+
+
+
+                    <h1>Adding a UUID</h1>
+
+                    <div class="row">
+
+                        <div class="col-4">
+                            <p>Add the CDN link to the UUID page above all other JS calls.</p>
+                            <p>Add a a id key to the push function.</p>
+                            <p>Rewrite generate DOM function to add X button before each 'Unnamed note' text.</p>
+
+                        </div>
+
+                        <div class="col-8">
+                            <pre class="example"><span class="code-html">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"&gt;&lt;/script&gt;</span>
+
+<span class="code-js" >document.querySelector('#create-note').addEventListener('click', function(e) {
+  notes.push({
+          <span class="code-highlight">id: uuidv4(),</span>
+          title: '',
+          body: ''
+      })
+      // save 'notes' Array to localStorage
+  localStorage.setItem('notes', JSON.stringify(notes))
+      renderNotes(notes, filters)
+})
+
+// Generate the DOM structure for a note 
+const generateNoteDOM = function(note) {
+  <span class="code-highlight">// change to div so you can place x button before text field
+  const noteEl = document.createElement('div')
+  // Create span so it will be on same line as button
+  const textEl = document.createElement('span')
+  // create button
+  const button = document.createElement('button')
+
+  // Setup the remove note button
+  button.textContent = 'x'
+  noteEl.appendChild(button)</span>
+
+  // setup the note title text
+  if (note.title.length > 0) {
+      textEl.textContent = note.title
+  } else {
+      textEl.textContent = 'Unnamed note'
+  }
+
+  <span class="code-highlight">// append noteEl to the span tag
+  noteEl.appendChild(textEl)</span>
+
+  return noteEl
+}</span></pre>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <h1 id="target-uuid">Targeting by UUID</h1>
+
+                    <div class="row">
+
+                        <div class="col-4">
+                            <p>to functions.js, add a saveNotes() function</p>
+                            <p>Add sectionto target UUID based off the note.id key that was clicked.</p>
+                            <p>When you click the X button, that specific UUID and text value will delete.</p>
+                            <p>Example</p>
+                            <ul>
+                                <li><a href="notes-app2.html">Notes</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-8">
+                            <pre class="example"><span class="code-js" ><span class="code-highlight">const saveNotes = function(notes) {
+    localStorage.setItem('note', JSON.stringify(notes))
+}</span>
+
+// Generate the DOM structure for a note 
+const generateNoteDOM = function(note) {
+    // change to div so you can place x button before text field
+    const noteEl = document.createElement('div')
+        // Create span so it will be on same line as button
+    const textEl = document.createElement('span')
+        // create button
+    const button = document.createElement('button')
+
+    // Setup the remove note button
+    button.textContent = 'x'
+    noteEl.appendChild(button)
+
+    <span class="code-highlight">// target UUID of x button clicked
+    button.addEventListener('click', function() {
+        // call function to specific UUID clicked
+        removeNote(note.id)
+            // save notes
+        saveNotes(notes)
+            // re-render list
+        renderNotes(notes, filters)
+    })</span>
+
+    // setup the note title text
+    if (note.title.length > 0) {
+        textEl.textContent = note.title
+    } else {
+        textEl.textContent = 'Unnamed note'
+    }
+
+    // append noteEl to the span tag
+    noteEl.appendChild(textEl)
+
+    return noteEl
+}</span></pre>
+                        </div>
+                    </div>
 
 
 

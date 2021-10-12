@@ -22,7 +22,8 @@
             <div class="col-5">
 
                 <p>Put the debugger statement anywhere you want to pause the code and check what variables equal.</p>
-                <p>In your code, simpley type <span class="standout">debugger</span>. This triggers debugging tools in your browser.</p>
+                <p>In your code, simpley type <span class="standout">debugger</span>. This triggers debugging tools in your browser.
+                </p>
                 <p>The browser will stop JavaScript execution at the point where you add this statement.</p>
             </div>
 
@@ -30,21 +31,41 @@
                 <pre class="example"><span class="code-js">debugger</pre>
             </div>
         </div>
-</section>
-
-<section class="container">
-  <h2>Working with Debugger</h2>
-
-    <div class="row">
-        <div class="col">
-          <p>In Firefox, open dev tools and click the 'Debugger' tab to view your JS files and content.</p>
-          <p>Click ESC so you can enter console code.</p>
-          <p>You can then print out information. For example, type the name of a variable to view its content.</p>
-          <p>This allows you to quickly search through your variables.</p>
-          <p>If everything looks good, click the PLAY button. This continues execution through the file. This is helpful if you add multiple 'debugger' statements. It will then go to the next one and stop execution there.</p>
-        </div>
-      </div>
     </section>
+
+    <section class="container">
+        <h2>Working with Debugger (Firefox)</h2>
+
+        <div class="row">
+            <div class="col">
+                <p>In Firefox, open dev tools and click the 'Debugger' tab to view your JS files and content.</p>
+                <p>Click ESC so you can enter console code.</p>
+                <p>You can then print out information. For example, type the name of a variable to view its content.</p>
+                <p>This allows you to quickly search through your variables.</p>
+                <p>If everything looks good, click the PLAY button. This continues execution through the file. This is helpful if you add multiple 'debugger' statements. It will then go to the next one and stop execution there.</p>
+            </div>
+        </div>
+
+
+
+
+        <h2>Working with Debugger (Chrome)</h2>
+
+        <div class="row">
+            <div class="col">
+                <p>Open dev tool. Sources tab. Click the script.js file.</p>
+                <p>Create a breakpoint by clicking to the left of a line. This creates a red dot notifying you a breakpoint has been set.</p>
+                <p>Reload page and execution will stop at that place.</p>
+                <p>Right pane, click PLAY button (or step button) to continue execution.</p>
+                <p>You can view info in right pane as the script continues each time. This helps you to figure out where the issue occurs.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
 </body>
 
 </html>

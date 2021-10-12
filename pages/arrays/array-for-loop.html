@@ -44,12 +44,14 @@ console.log(fruits[i])
             </div>
         </div>
 
-        <h3>Using a forEach() function</h3>
+        <h1>Using a forEach() function</h1>
         <div class="row">
             <div class="col-6">
                 <p>You can also use a 'for' loop to print out each index value.</p>
                 <p>This returns the elments in an HTML unordered list. For example.</p>
-                <p>&lt;ul&gt;&lt;li&gt;Banana&lt;/li&gt;&lt;li&gt;Orange&lt;/li&gt;&lt;li&gt;Apple&lt;/li&gt;&lt;li&gt;Mango&lt;/li&gt;&lt;/ul&gt;</p>
+                <p>
+                    &lt;ul&gt;&lt;li&gt;Banana&lt;/li&gt;&lt;li&gt;Orange&lt;/li&gt;&lt;li&gt;Apple&lt;/li&gt;&lt;li&gt;Mango&lt;/li&gt;&lt;/ul&gt;
+                </p>
 
 
             </div>
@@ -92,10 +94,73 @@ function myFunction(value) {
 } </span></pre>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h1>loop inside a loop</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>3 exercises with 5 reps each.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">for (let exercise = 1; exercise <= 3; exercise++) {
+    console.log(`----- Starting Exercise ${exercise}`)
+
+
+    for (let rep = 1; rep < 6; rep++) {
+        console.log(`Lifting weights reps ${rep}`)
+    }
+}</span></pre>
+            </div>
+        </div>
+
+
+
+
+        <h1>while loop version</h1>
+
+        <div class="row">
+            <div class="col-6">
+                <p>More versatile than for loop since it doesn't require a counter.</p>
+                <p>All it needs is a condition that doesn't need to be a counter.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let rep = 1
+
+while (rep &lt;= 10) {
+  console.log(`Lifting weights reps ${rep}`)
+  rep++
+}</span></pre>
+            </div>
+        </div>
+
+
     </section>
 
 
 
+
+
+
+
+    <script>
+    </script>
 
 </body>
 
