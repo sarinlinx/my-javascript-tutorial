@@ -19,24 +19,440 @@
 
 
     <section class="container">
+
+
+
+
         <h1>this</h1>
         <div class="row">
             <div class="col">
-                <p>'this' is a keyword.</p>
-                <p>The value of 'this' is determined by how a function is called. It cannot be directly set.</p>
-                <p>Any function may use this. It doesn’t matter if the function is assigned to the object or not.</p>
+                <p>The 'this' keyword is a special variable that is created for every execution context (every function). </p>
+                <p>It takes the value (points to) the "owner" of the function in which the 'this' keyword is used.</p>
+                <p>The value is NOT static. It depends on how the function is called.</p>
+                <p>Its value is only assigned when the function is actually called.</p>
+                <p>NOTE: 'this' will never point to the function in which you're using it. </p>
+                <p>NOTE: It will also never point to the variable environment of the function.</p>
             </div>
         </div>
 
-        <h2>Object method binding</h3>
-        <div class="row">
-            <div class="col-6">
-                <p>In this example, the 'this' keyword refers to the person Object.</p>
-                <p>The person object "owns" the fullName method.</p>
-                <p>This example returns: John Doe</p>
+        <h2>Different ways to call a function using 'this'</h3>
+            <div class="row">
+                <div class="col">
+                    <p>Ways to call a function</p>
+                    <ul>
+                        <li>As a Method: 'this' points to the object on which it was called.</li>
+                        <li>As a normal function: 'this' is then undefined (in strict mode). Otherwise it would point to the global Window Object</li>
+                        <li>As an Arrow function: They do NOT get their own 'this' keyword. If used, 'this' would be a keyword of the parent function</li>
+                        <li>As an event listener: 'this' points to the DOM element the handler is attched to</li>
+                        <li>Using the new keyword: #######</li>
+                        <li>Using the call keyword: #######</li>
+                        <li>Using the apply keyword: #######</li>
+                        <li>Using the bind keyword: #######</li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-6">
-              <pre class="example"><span class="code-js">var person = {
+
+            <h3>Method example</h3>
+            <div class="row">
+                <div class="col-6">
+                    <p>When called as a Method: 'this' is a function attached to an object.</p>
+                    <p>The 'this' keyword points to <strong>the Object calling the Method</strong>.</p>
+
+                    <p>In this example, console.log(this) prints the Object.</p>
+                    <p>this.year would equal 1980.</p>
+
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js"><span class="code-comment">// Method example</span>
+const myName = {
+  name: 'me',
+  year: 1980,
+  calcAge: function() {
+    console.log(this)
+    console.log(2037 - <span class="code-highlight">this</span>.year);
+  } 
+};
+
+myName.calcAge();
+</span></pre>
+                </div>
+            </div>
+
+
+
+            <h3>Method borrowing example</h3>
+            <div class="row">
+                <div class="col-6">
+                    <p>One Object can borrow a method from another Object.</p>
+                    <p>In this example, the Object 'matilda' does not have the method calcAge.</p>
+                    <p>Running matilda.calcAge = myName.calcAge allows the method to be used with the 'matilda' Object.</p>
+                    <p>The console prints the 'matilda' Object with the calcAge method borrowed from the myName Object.</p>
+                    <p>Running matilda.calcAge() returns the correct value for matilda.</p>
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">const myName = {
+    name: 'me',
+    year: 1980,
+    calcAge: function() {
+        console.log(this)
+        console.log(2037 - this.year);
+    }
+};
+
+myName.calcAge();
+
+const matilda = {
+    year: 2019
+}
+
+<span class="code-highlight">matilda.calcAge = myName.calcAge</span>
+console.log(matilda)
+matilda.calcAge()</span></pre>
+                </div>
+            </div>
+
+
+
+
+
+            <h3>Assigning a variable to the Object method</h3>
+            <div class="row">
+                <div class="col-6">
+                    <p>This assigns 'f' to the Object method.</p>
+                    <p>f() is now just a regular function which in strict mode is undefined.</p>
+                    <p>The console prints NaN, but if you run f() in the console it returns undefined.</p>
+                    <p><span class="red">why both?</span></p>
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">const myName = {
+    name: 'me',
+    year: 1980,
+    calcAge: function() {
+        console.log(this)
+        console.log(2037 - this.year);
+    }
+};
+
+myName.calcAge();
+
+const matilda = {
+    year: 2019
+}
+
+<span class="code-highlight">const f = myName.calcAge
+f()</span></pre>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <h3>Global Window Objcect</h3>
+            <div class="row">
+                <div class="col-6">
+                    <p>Within the document, it would call the Global Window Object.</p>
+
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">console.log(this)</span></pre>
+                </div>
+            </div>
+
+
+
+            <h3>Function</h3>
+            <div class="row">
+                <div class="col-6">
+                    <p>This returns undefined in strict mode. It would return a value in sloppy mode.</p>
+
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">const calcAge = function(birthYear) {
+  console.log(2037 - birthYear)
+  console.log(this)
+};
+calcAge(1991);
+</span></pre>
+                </div>
+            </div>
+
+
+
+
+            <h3>Arrow function</h3>
+            <div class="row">
+                <div class="col-6">
+                    <p>Since Arrow functions do not have their own 'this' keyword, 'this' returns the parent, which in this case is the Window Object.</p>
+
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">const calcAge = birthYear =>  {
+  console.log(2037 - birthYear)
+  console.log(this)
+};
+calcAge(1991);
+</span></pre>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <h3>Arrow function within an Object</h3>
+            <div class="row">
+                <div class="col-6">
+                    <p>The Arrow function 'this' keyword takes the parent 'this' keyword.</p>
+                    <p>In this case it's NOT the object because this is just an Object literal. This means all values in the Object are part of the Global Window.</p>
+                    <p>So this returns Hey undefined.</p>
+                    <p> And the console returns undefined for this.firstName since that property doesn't exist on the Global Window Object.</p>
+
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">const myName = {
+  firstName: 'me',
+  year: 1980,
+  calcAge: function() {
+  console.log(this)
+  console.log(2037 - this.year);
+  },
+  greet: () => console.log(`Hey ${this.firstName}`)
+};
+
+  myName.greet()
+  console.log(this.firstName)</span></pre>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <h3>Function inside a method</h3>
+            <div class="row">
+                <div class="col-6">
+                    <p>Adding a function (even if it's inside an Object method) is treated like a normal function.</p>
+                    <p>This returns "Cannot read properties of undefined (reading 'year') at isMillenial "</p>
+                    <p>This is because this is just a regular function call, so it returns undefined.</p>
+
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">'use strict';
+
+const myName = {
+    firstName: 'me',
+    year: 1980,
+    calcAge: function() {
+        console.log(this)
+        console.log(2037 - this.year);
+        <span class="code-highlight">const isMillenial = function() {
+            console.log(this)
+            console.log(this.year >= 1981 && this.year <= 1996)
+        }
+        isMillenial()</span>
+    },
+    greet: () => console.log(`Hey ${this.firstName}`)
+};
+
+
+myName.calcAge()</span></pre>
+                </div>
+            </div>
+
+
+
+
+            <h3>(pre-ES6 solution) Using the 'self' (or that) keyword with a Function inside a method</h3>
+            <div class="row">
+                <div class="col-6">
+                    <p>Using the 'self' (or that) keyword allows you to preserve the 'this' keyword inside a function.</p>
+                    <p>console.log(this) returns the Object.</p>
+                    <p>self can then be used in the isMillenial() to check the year.</p>
+
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">'use strict';
+
+const myName = {
+    firstName: 'me',
+    year: 1980,
+    calcAge: function() {
+        // console.log(this)
+        console.log(2037 - this.year);
+
+        <span class="code-highlight">const self = this</span>
+
+        const isMillenial = function() {
+            console.log(<span class="code-highlight">self</span>)
+            console.log(<span class="code-highlight">self</span>.year >= 1981 && <span class="code-highlight">self</span>.year <= 1996)
+        }
+        isMillenial()
+
+    },
+    greet: () => console.log(`Hey ${this.firstName}`)
+};
+
+
+myName.calcAge()</span></pre>
+                </div>
+            </div>
+
+
+
+
+            <h3>(ES6 solution) Use an Arrow function with a Function inside a method</h3>
+            <div class="row">
+                <div class="col-6">
+                    <p>When the Arrow function is used, 'this' looks for its parent scope.</p>
+                    <p>In this case it's the method and the 'this' keyword there is the Object.</p>
+
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">'use strict';
+
+const myName = {
+    firstName: 'me',
+    year: 1980,
+    calcAge: function() {
+        // console.log(this)
+        console.log(2037 - this.year);
+
+        const isMillenial = <span class="code-highlight">() =></span> {
+        console.log(this)
+        console.log(this.year >= 1981 && this.year <= 1996)
+      }
+      isMillenial()
+
+    },
+    greet: () => console.log(`Hey ${this.firstName}`)
+};
+
+
+myName.calcAge()</span></pre>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <h1>arguments keyword (split into own page)</h1>
+            <div class="row">
+                <div class="col-6">
+                    <p>Not used in modern JS since there are better ways to handle multiple parameters.</p>
+                    <p>Used when you need a function to accept more parameters than specified</p>
+                    <p>The first function returns an Array of all values.</p>
+                    <p>The Arrow Function does not get this keyword.</p>
+                    <p>The Arrow Function returns 'arguments' is not defined.</p>
+
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">'use strict';
+
+  const addExpr = function(a, b) {
+    console.log(arguments)
+    return a + b
+}
+addExpr(2, 5)
+addExpr(2, 5, 8, 12)
+
+
+var addArrow = (a, b) => {
+    console.log(arguments)
+    return a + b
+}
+addArrow()</span></pre>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <h1>this</h1>
+            <div class="row">
+                <div class="col">
+                    <p>'this' is a keyword.</p>
+                    <p>The value of 'this' is determined by how a function is called. It cannot be directly set.</p>
+                    <p>Any function may use this. It doesn’t matter if the function is assigned to the object or not.</p>
+                </div>
+            </div>
+
+            <h2>Object method binding</h3>
+                <div class="row">
+                    <div class="col-6">
+                        <p>In this example, the 'this' keyword refers to the person Object.</p>
+                        <p>The person object "owns" the fullName method.</p>
+                        <p>This example returns: John Doe</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">var person = {
   firstName: "John",
   lastName : "Doe",
   id       : 5566,
@@ -46,16 +462,16 @@
 };
 
 alert(person.fullName());</span></pre>
-            </div>
-        </div>
+                    </div>
+                </div>
 
-          <div class="row">
-            <div class="col-6">
-                <p>If a function is called from the object, the 'this' keyword refers to the object (which can be thought of as the owner of the function).</p>
-                <p>This example returns: John: hi!</p>
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js"><span class="code-comment">//Create an Object</span>
+                <div class="row">
+                    <div class="col-6">
+                        <p>If a function is called from the object, the 'this' keyword refers to the object (which can be thought of as the owner of the function).</p>
+                        <p>This example returns: John: hi!</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js"><span class="code-comment">//Create an Object</span>
 var john = {
   firstName: "John",
   age: 30
@@ -70,8 +486,8 @@ john.sayHi = function() {
 <span class="code-comment">//Finally, run the function
 //This retuns John: hi!</span>
 john.sayHi()</span></pre>
-            </div>
-        </div>
+                    </div>
+                </div>
 
 
 
@@ -80,47 +496,47 @@ john.sayHi()</span></pre>
 
 
 
-<h2>When used alone (Default Binding)</h2>
+                <h2>When used alone (Default Binding)</h2>
 
-        <div class="row">
-            <div class="col-6">
-                <p>When used alone, the 'this' keyword refers to the Global object.</p>
-                <p>In a browser the Global object is [object Window]:</p>
-                <p>This example returns [object Window]</p>
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">var x = this;
+                <div class="row">
+                    <div class="col-6">
+                        <p>When used alone, the 'this' keyword refers to the Global object.</p>
+                        <p>In a browser the Global object is [object Window]:</p>
+                        <p>This example returns [object Window]</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">var x = this;
 alert(this);</span></pre>
-            </div>
-        </div>
+                    </div>
+                </div>
 
-        <h3>When used as a function</h3>
+                <h3>When used as a function</h3>
 
-        <div class="row">
-            <div class="col-6">
-                <p>When used in a function, 'this' refers to the Global object.</p>
-                <p>This example returns [object Window]</p>
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">function myFunction() {
+                <div class="row">
+                    <div class="col-6">
+                        <p>When used in a function, 'this' refers to the Global object.</p>
+                        <p>This example returns [object Window]</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">function myFunction() {
     alert( this );
 }
 
 myFunction();</span></pre>
-            </div>
-        </div>
+                    </div>
+                </div>
 
-        <h4>Example</h4>
-        <div class="row">
-            <div class="col-6">
-                <p>The 'this' keyword is the Object that owns the current code.</p>
-                <p>The value of this, when used in a function, is the Object that owns the function.</p>
-                <p>'this' contains a copy of the Object you created.</p>
-                <p>What if 'this' is called without an owner object? Then the value of 'this' becomes the global object, which is global window object.</p>
-                <p>console.dir prints a list of all properties of the Object.</p>
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">var Dog = function() {
+                <h4>Example</h4>
+                <div class="row">
+                    <div class="col-6">
+                        <p>The 'this' keyword is the Object that owns the current code.</p>
+                        <p>The value of this, when used in a function, is the Object that owns the function.</p>
+                        <p>'this' contains a copy of the Object you created.</p>
+                        <p>What if 'this' is called without an owner object? Then the value of 'this' becomes the global object, which is global window object.</p>
+                        <p>console.dir prints a list of all properties of the Object.</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">var Dog = function() {
   var name, breed;
   return console.dir(this);
 }
@@ -128,25 +544,25 @@ myFunction();</span></pre>
 firstDog = new Dog;
 firstDog.name = "Rover";
 firstDog.breed = "Doberman";</span></pre>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <img class="img-fluid" src="../../_img/this-constructor-function.png">
-            </div>
-        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <img class="img-fluid" src="../../_img/this-constructor-function.png">
+                    </div>
+                </div>
 
 
 
 
 
-        <h4>Example</h4>
-        <div class="row">
-            <div class="col-6">
-                <p>The fullName method is a function.</p>
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">var myObject = {
+                <h4>Example</h4>
+                <div class="row">
+                    <div class="col-6">
+                        <p>The fullName method is a function.</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">var myObject = {
   firstName:"John",
   lastName: "Doe",
   fullName: function () {
@@ -157,39 +573,40 @@ firstDog.breed = "Doberman";</span></pre>
 <span class="code-comment">// Will return "John Doe" if you type it into the console
 //Otherwise it's stored in memory</span>
 myObject.fullName();</span></span></pre>
-            </div>
-        </div>
+                    </div>
+                </div>
 
 
 
-        <h3>When used in strict mode</h3>
+                <h3>When used in strict mode</h3>
 
-        <div class="row">
-            <div class="col-6">
-                <p>The 'this' keyword will be undefined when using 'strict mode'.</p>
-                <p>This is because 'strict mode' does not allow default binding.</p>
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">"use strict";
+                <div class="row">
+                    <div class="col-6">
+                        <p>The 'this' keyword will be undefined when using 'strict mode'.</p>
+                        <p>This is because 'strict mode' does not allow default binding.</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">"use strict";
 function myFunction() {
     alert (this);
 }
 
 myFunction();</span></pre>
-            </div>
-        </div>
+                    </div>
+                </div>
 
 
 
-        <h2>Explicit Function Binding</h2>
+                <h2>Explicit Function Binding</h2>
 
-        <div class="row">
-            <div class="col-6">
-                <p>The call() and apply() methods cna be used to call an object method with another object as the argument.</p>
-                <p>In this example, when calling person1.fullName with person2 as argument, this will refer to person2, even if it is a method of person1.</p>
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">var person1 = {
+                <div class="row">
+                    <div class="col-6">
+                        <p>The call() and apply() methods cna be used to call an object method with another object as the argument.
+                        </p>
+                        <p>In this example, when calling person1.fullName with person2 as argument, this will refer to person2, even if it is a method of person1.</p>
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">var person1 = {
   fullName: function() {
     return this.firstName + " " + this.lastName;
   }
@@ -201,17 +618,53 @@ var person2 = {
 }
 
 person1.fullName.call(person2);  <span class="code-comment">// Will return "John Doe"</span></span></pre>
-            </div>
-        </div>
+                    </div>
+                </div>
     </section>
 
 
 
 
+    <script>
+        'use strict';
+
+        // const myName = {
+        //     firstName: 'me',
+        //     year: 1980,
+        //     calcAge: function() {
+        //         // console.log(this)
+        //         console.log(2037 - this.year);
 
 
-    <script src="../../_js/jquery.js"></script>
-    <script src="../../_js/bootstrap.bundle.js"></script>
+        //         const isMillenial = () => {
+        //             console.log(this)
+        //             console.log(this.year >= 1981 && this.year <= 1996)
+        //         }
+        //         isMillenial()
+
+        //     },
+        //     greet: () => console.log(`Hey ${this.firstName}`)
+        // };
+
+
+
+        // myName.calcAge()
+
+
+        const addExpr = function(a, b) {
+            console.log(arguments)
+            return a + b
+        }
+        addExpr(2, 5)
+        addExpr(2, 5, 8, 12)
+
+
+        var addArrow = (a, b) => {
+            console.log(arguments)
+            return a + b
+        }
+        addArrow()
+    </script>
 </body>
 
 </html>

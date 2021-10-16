@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Object Destructuring</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Object Destructuring</h1>
+        <h4>This allows you to write less code to extract info from complex data like an API</h4>
+
+        <div class="row">
+            <div class="col">
+                <p>Use {} to destructure.</p>
+                <p>Then all we have to do is to provide the variable names that exactly match the property names that we want to retrieve from the object.</p>
+
+
+                <p><span class="red">NOTE!!! This only works if you add a semicolon to the line BEFORE the destructuring
+            command. Otherwise JavaScript parses the previous line with the destructuring line as a single call.</span>
+                </p>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#object_destructuring">MDN
+              Destructuring</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="container">
+
+        <h2>Destructuring example</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>The order doesn't matter, so you do not need to skip elements like when destructuring and Array.</p>
+                <p>This sets new variables for name, openingHours, and categories and prints them to the console.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js"> const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+  openingHours: {
+      thu: {
+          open: 12,
+          close: 22,
+      },
+      fri: {
+          open: 11,
+          close: 23,
+      },
+      sat: {
+          open: 0, // Open 24 hours
+          close: 24,
+      },
+  },
+
+  order: function(starterIndex, mainIndex) {
+      return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+}
+
+
+const {
+  name,
+  openingHours,
+  categories
+} = restaurant;
+
+console.log(name, openingHours, categories)</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h2>Set different variable names from property names</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>First use the property name, followed by a colon.</p>
+                <p>After that add your new variable name.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js"> const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+  openingHours: {
+      thu: {
+          open: 12,
+          close: 22,
+      },
+      fri: {
+          open: 11,
+          close: 23,
+      },
+      sat: {
+          open: 0, // Open 24 hours
+          close: 24,
+      },
+  },
+
+  order: function(starterIndex, mainIndex) {
+      return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+}
+
+<span class="code-highlight">const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags
+} = restaurant;
+
+console.log(restaurantName, hours, tags)</span></span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <h2>Set default values when you don't know property names</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>Use brackets to create a default value.</p>
+                <p>This example also uses a new variable name for starterMenu</p>
+                <p>This returns: [], [list of all starters here]</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js"> const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+  openingHours: {
+      thu: {
+          open: 12,
+          close: 22,
+      },
+      fri: {
+          open: 11,
+          close: 23,
+      },
+      sat: {
+          open: 0, // Open 24 hours
+          close: 24,
+      },
+  },
+
+  order: function(starterIndex, mainIndex) {
+      return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+}
+
+<span class="code-highlight"> const {
+  menu = [], starterMenu: starters = []
+} = restaurant;
+
+console.log(menu, starters)</span></span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h2>Mutating variables</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>This mutates the variables a and b to the new values within the Object.</p>
+                <p>To do this, you cannot use let {} to reassign the values like: let a {a,b} = obj. This is because the variable is already declared, and when you starrt a line with a brace, JavaScript will look for code block after the braces.</p>
+                <p>Since you cannot assign anything to a code block, you'll get an unexpected token error.</p>
+                <p>To fix, wrap everything in parenthesis.</p>
+                <p>This returns: 23 7</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">let a = 111;
+let b = 999;
+
+const obj = {
+    a: 23,
+    b: 7,
+    c: 14
+};
+
+<span class="code-highlight">({a, b} = obj);
+
+console.log(a, b);</span></span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <script>
+        'use strict'
+
+        let a = 111;
+        let b = 999;
+
+        const obj = {
+            a: 23,
+            b: 7,
+            c: 14
+        };
+
+        ({
+            a,
+            b
+        } = obj);
+
+
+        console.log(a, b);
+
+
+
+
+
+        const restaurant = {
+            name: 'Classico Italiano',
+            location: 'Via Angelo Tavanti 23, Firenze, Italy',
+            categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+            starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+            mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+            openingHours: {
+                thu: {
+                    open: 12,
+                    close: 22,
+                },
+                fri: {
+                    open: 11,
+                    close: 23,
+                },
+                sat: {
+                    open: 0, // Open 24 hours
+                    close: 24,
+                },
+            },
+
+            order: function(starterIndex, mainIndex) {
+                return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+            },
+        }
+
+
+        const {
+            menu = [], starterMenu: starters = []
+        } = restaurant;
+
+        console.log(menu, starters)
+            // console.log(restaurantName, hours, tags)
+    </script>
+</body>
+
+</html>

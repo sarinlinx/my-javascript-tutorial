@@ -80,6 +80,8 @@ price = 200;</pre>
             <div class="col">
                 <p>var was used in the past, but no longer used due to its quirks. It still works, but modern devs do not use it any longer.</p>
                 <p>One reason is that you can re-declare a variable with the same name to a different value. let and const do not allow this.</p>
+                <p>var also creates a property on the Global Window Object which could cause errors when using the 'this' keyword.
+                </p>
             </div>
         </div>
 
@@ -87,7 +89,8 @@ price = 200;</pre>
         <div class="row">
 
             <div class="col-6">
-                <p>var is function scoped, not block scoped. If var is used in a function, you cannot access it outside of that function.</p>
+                <p>var is function scoped, not block scoped. If var is used in a function, you cannot access it outside of that function.
+                </p>
                 <p>When you run this, you'll get the error <strong>ReferenceError: firstName is not defined</strong>.</p>
             </div>
 
@@ -97,7 +100,8 @@ var firstName = 'Jen'
 }
 
 setName()
-console.log(firstName)</span></pre></div>
+console.log(firstName)</span></pre>
+            </div>
         </div>
 
 
@@ -116,7 +120,8 @@ console.log(firstName)</span></pre></div>
 
 <span class="code-comment">This errors with 'age is not defined' since a let cannot be called before it's assigned</span>
 <span class="code-js">console.log(age)
-let age</span></pre></div>
+let age</span></pre>
+            </div>
 
         </div>
 
@@ -210,7 +215,8 @@ console.log(person)</span></pre>
         <div class="row">
             <div class="col-6">
                 <p>Use 'null' to explicitly clear a variable.</p>
-                <p>You then know if you see 'undefined', it means JavaScript is notifying you that a variable does not have a value.</p>
+                <p>You then know if you see 'undefined', it means JavaScript is notifying you that a variable does not have a value.
+                </p>
                 <p>But, if you see 'null', you'll know the developer set it on purpose.</p>
             </div>
             <div class="col-6">

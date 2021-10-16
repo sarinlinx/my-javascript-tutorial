@@ -27,6 +27,7 @@
                 <p>Good for simple one-liner functions.</p>
                 <p>return keyword can be ommited.</p>
                 <p>Also, Arrow functions do not allow the <strong>this</strong> keyword.</p>
+                <p>Never use an Arrow Function as an Object method. This will cause issues when using the 'this' keyword because it will look up to the parent scope for its 'this' keyword. If that's the Global Window Object you will get an unexpected result.</p>
             </div>
         </div>
 

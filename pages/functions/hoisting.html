@@ -19,23 +19,114 @@
 
 
     <section class="container">
+
+
+
+        <h1>Hoisting</h1>
+        <div class="row">
+            <div class="col">
+                <p>Hoisting makes some types of variables accessible in the code before they are declared.</p>
+                <p>They are "lifted" to the top of their scope.</p>
+                <p>Before execution, code is scanned for variable declarations, and for each variables, a new property is created in the variable environment object.</p>
+                <p>Hoisting was created so Function declarations could be used before they are declared. Also can make code more readable.
+                </p>
+            </div>
+        </div>
+
+        <h2>How Hosting works with different variable types</h2>
+        <div class="row">
+            <div class="col">
+                <p>Functions can be called before they are declared.</p>
+                <p>var variables are hoisted, but they return as undefined. This was done since it was the only way Hoisting could function at the time it was created (since var were used in functions).</p>
+                <p>let and const are hoisted into the TDZ.</p>
+                <p>Function expression and Arrow Functions. Depends on if var or let/const was used. They work the same way as their variable types used.</p>
+                <p>So you can only use Function declarations before they are declared.</p>
+                <img src="../../_img/hoisting.png" width="900px">
+            </div>
+        </div>
+
+
+
+        <h2>Temporal Dead Zone (TDZ)</h2>
+        <div class="row">
+            <div class="col">
+                <p>Region of code where the variable is defined, but cannot be used.</p>
+                <img src="../../_img/tdz.png" width="900px">
+                <p>The TDZ helps you to know the variable was created. If it wasn't you'd get undefined.</p>
+                <p>This also makes const variables work the way they should work since they cannot be reassigned. They are only assigned when execution meets the declaration.</p>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h1>#############</h1>
+        <div class="row">
+
+            <div class="col-5">
+                <p>###########</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-js">#############</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <h1>4 ways to invoking a Function</h1>
         <div class="row">
             <div class="col-6">
-<p>Variables can exist before you use them.</p>
-<p>If you put vars in the wrong order (like after console.log that calls variable), JS autmatically moves that variables definition BEFORE the console.log out put.</p>
-<p>So console.log returns undefined</p>
-<p>JS rewrites your code to move var myDog; before console.log</p>
-<p><span class="red">Find more examples. This outputs 'undefined'.</span></p>
+                <p>Variables can exist before you use them.</p>
+                <p>If you put vars in the wrong order (like after console.log that calls variable), JS autmatically moves that variables definition BEFORE the console.log out put.</p>
+                <p>So console.log returns undefined</p>
+                <p>JS rewrites your code to move var myDog; before console.log</p>
+                <p><span class="red">Find more examples. This outputs 'undefined'.</span></p>
             </div>
-            <div class="col-6"><pre class="example"><span class="code-js">function myFunction() {
+            <div class="col-6">
+                <pre class="example"><span class="code-js">function myFunction() {
   console.log(myDog);
   var myDog = "Rover";
 }
 
 myFunction();</span></pre>
+            </div>
         </div>
-      </div>
+
+
     </section>
 
 

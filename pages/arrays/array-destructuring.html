@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Array Destructuring</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Array Destructuring</h1>
+
+        <div class="row">
+            <div class="col">
+                <p>destructuring is an ESX feature and it's basically a way of unpacking values from an array or an object into separate variables.</p>
+                <p>So in other words destructuring is to break a complex data structure down into a smaller data structure like a variable.</p>
+                <p><span class="red">NOTE!!! This only works if you add a semicolon to the line BEFORE the destructuring
+            command. Otherwise JavaScript parses the previous line with the destructuring line as a single call.</span>
+                </p>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#object_destructuring">MDN
+              Destructuring</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="container">
+
+        <h2>Destructuring example</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>In the past, you would need to assign each index of an Array to a new variable: const 1 = arr[0].</p>
+                <p>This would take several lines are repeat code.</p>
+                <p>Destructuring makes this much easier. This prints 2, 3, 4.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">const arr = [2, 3, 4]                 
+
+<span class="code-highlight">const [x, y, z] = arr</span>
+console.log(x, y, z)</span></pre>
+            </div>
+        </div>
+
+
+
+        <h2>Destructuring using position values</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>You could also use values like first, second to destructure.</p>
+                <p>This returns Italian, Pizzeria.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js"> const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+}
+
+<span class="code-highlight">const [first, second] = restaurant.categories</span>
+console.log(first, second)</span></pre>
+            </div>
+        </div>
+
+
+        <h2>Destructuring while skipping position values</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>If you want to skip a value, just add a comma between them.</p>
+                <p>This returns Italian Vegetarian.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js"> const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+}
+
+<span class="code-highlight">const [first, , second] = restaurant.categories</span>
+console.log(first, second)</span></pre>
+            </div>
+        </div>
+
+
+
+
+        <h2>Switching values</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>Instead of creating and reassigning variables, you can switch them using destructuring.</p>
+                <p>Create new Array with 2 variables inverted.</p>
+                <p>This changes the main and secondary values.</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js"> const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+}
+
+let [main, , secondary] = restaurant.categories;
+  console.log(main, secondary);
+
+<span class="code-highlight">[main, secondary] = [secondary, main];
+  console.log(main, secondary)</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+        <h2>Function return an Array and then destruct the result into variables</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>Recieve 2 return values from a function.</p>
+                <p>This immediately creates 2 variables out of 1 function call.</p>
+                <p>This returns: Garlic Bread Pizza</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+  order: function(starterIndex, mainIndex) {
+      return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+}
+
+<span class="code-comment">// select index 2 from starter menu and index 0 from main menu 
+// this returns an Array
+// restaurant.order(2, 0)
+
+// deconstruct the new Array you create</span>
+<span class="code-highlight">const [starter, main] = restaurant.order(2, 0);
+console.log(starter, main)</span></span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+        <h2>Nested Array</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>This shows a nested Array</p>
+                <p>The code destructures it to print the first value, but the second value is the nested Array.</p>
+                <p>This prints: 2 [5, 6]</p>
+
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">const nested = [2, 4, [5, 6]];
+const [i, , j] = nested;
+console.log(i, j);</span></pre>
+            </div>
+        </div>
+
+        <h3>Print ALL values of the Nested Array</h2>
+            <div class="row">
+                <div class="col-6">
+                    <p>This is the same as above, but prints the values of the Nested Array.</p>
+                    <p>This prints: 2 5 6</p>
+
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">const nested = [2, 4, [5, 6]];
+const [i, , [j, k]] = nested;
+console.log(i, j, k);</span></pre>
+                </div>
+            </div>
+
+
+
+
+
+            <h2>Setting default values when destructuring</h2>
+            <div class="row">
+                <div class="col-6">
+                    <p>This is useful when you do not know the length of the Array. Like when working with an API.</p>
+                    <p>This example DOES NOT use default values, so the 3rd value is undefined.</p>
+                    <p>This returns: 8 9 undefined</p>
+
+                </div>
+                <div class="col-6">
+                    <pre class="example"><span class="code-js">const [p, q, r] = [8, 9];
+console.log(p, q, r);</span></pre>
+                </div>
+            </div>
+
+            <h3>Using default values</h2>
+                <div class="row">
+                    <div class="col-6">
+                        <p>This sets default values when destructuring.</p>
+                        <p>This returns: 8 9 1</p>
+
+                    </div>
+                    <div class="col-6">
+                        <pre class="example"><span class="code-js">const [p = 1, q = 1, r = 1] = [8, 9];
+console.log(p, q, r);</span></pre>
+                    </div>
+                </div>
+
+
+
+
+
+
+    </section>
+
+    <script>
+        'use strict'
+
+        const restaurant = {
+            name: 'Classico Italiano',
+            location: 'Via Angelo Tavanti 23, Firenze, Italy',
+            categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+            starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+            mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+            order: function(starterIndex, mainIndex) {
+                return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+            },
+        }
+
+
+        // deconstruct an Array that you do not know the contents of
+        const [p = 1, q = 1, r = 1] = [8, 9];
+        console.log(p, q, r);
+    </script>
+</body>
+
+</html>

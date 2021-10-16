@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Overview</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+
+
+
+        <section class="container">
+            <h1>JS Engine</h1>
+
+            <div class="row">
+                <div class="col">
+                    <p>A JS engine is a program that executes JS code.</p>
+                    <p>Every browser has their own engine.</p>
+                    <p>The most popular is Google Chrome's V8 engine. This also powers Node.js.</p>
+                </div>
+            </div>
+
+            <h2>Call Stack and Heap</h2>
+            <div class="row">
+                <div class="col">
+                    <p>Every JS engine contains a Call Stack and a Heap.</p>
+                    <p>The Call Stack is where your code is executed using 'Execution context'. It's the place were execution contexts get stacked on top of each other, to keep track of where we are in the execution.</p>
+                    <img src="../../_img/call-stack.png">
+                    <p>The Heap is an unstructured memory pool that stores all objects your application needs.</p>
+                </div>
+            </div>
+
+
+            <h2>How it works</h2>
+            <h3>Parsing</h3>
+            <div class="row">
+                <div class="col">
+                    <p>As your code enters the engine, it it first Parsed (read).</p>
+                    <p>It is parsed into a data structure called the Abstract Syntax Tree (AST).</p>
+                    <img src="../../_img/ast.png">
+                </div>
+            </div>
+
+            <h3>Compilation</h3>
+            <div class="row">
+                <div class="col">
+                    <p>This takes the generated AST and compiles it into machine code.</p>
+                    <p>JavaScript uses JIT compilation.</p>
+                </div>
+            </div>
+
+            <h3>Execution</h3>
+            <div class="row">
+                <div class="col">
+                    <p>This machine code is executed immediately.</p>
+                    <p>This happens in the Call Stack.</p>
+                    <p>During Execution, the code is also being optimized and re-complied.</p>
+                    <img src="../../_img/v8-engine.png" width="500px">
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <h1>JS Runtime</h1>
+
+            <div class="row">
+                <div class="col">
+                    <p>The Runtime is a container of everything needed to to run JS.</p>
+                    <p>The heart of a Runtime is the JS Engine.</p>
+                    <p>The other part is Web APIs. These are functionalities provided to the engine that are not part of the language.
+                    </p>
+                    <p>JS gets access to these APIs through the global Window Object.</p>
+                    <p>Also contains a Callback Queue. This is a data structure that contains all the callback functions ready to be executed. (like an event handler click function)</p>
+                    <p>When the Call Stack is empty, the event is passed into it. This is called the Event Loop.</p>
+                    <img src="../../_img/js-runtime.png" width="700px">
+                    <p>A Node.js Runtime is similar except it does not have access to Web APIs. So it uses C++ bindings and a thread pool instead.</p>
+                    <img src="../../_img/js-runtime-node.png" width="700px">
+                </div>
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+
+
+        <script src="../../_js/jquery.js"></script>
+        <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

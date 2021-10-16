@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Code Execution</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+
+
+
+        <section class="container">
+            <h1>Code Execution</h1>
+
+            <h2>Execution Context</h2>
+            <div class="row">
+                <div class="col">
+                    <p>After the code is compiled, a Global Execution Context is created for top-level-code to be executed.</p>
+                    <p>Top-level-code is code that is NOT inside a function.</p>
+                    <p>Code inside a function is ony executed when called.</p>
+                    <p>There is only one global execution content (EC).</p>
+                    <p>For each new function call, a new EC is created.</p>
+                </div>
+            </div>
+
+
+            <h2>What's inside the Execution Context</h2>
+            <h3>1: Variable Environment</h3>
+            <div class="row">
+                <div class="col">
+                    <p>let, const, and var declarations</p>
+                    <p>functions</p>
+                    <p>argumetns object</p>
+                </div>
+            </div>
+
+            <h3>2: Scope Chain</h3>
+            <div class="row">
+                <div class="col">
+                    <p>Reference to variables outside the current function.</p>
+                </div>
+            </div>
+
+            <h3>3: The this keyword</h3>
+            <div class="row">
+                <div class="col">
+                    <p>###</p>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col">
+                    <p>The above happens during a "creation phase" right before execution.</p>
+                    <p>NOTE: Execution Contexts belonging to arrow functions DO NOT get their own arguments object or 'this' keyword.
+                    </p>
+                    <p>Instead, they can use the arguments object and 'this' keyword from their parent.</p>
+                    <img src="../../_img/inside-execution-context.png">
+                </div>
+            </div>
+
+        </section>
+
+
+
+
+
+
+
+        <script src="../../_js/jquery.js"></script>
+        <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
