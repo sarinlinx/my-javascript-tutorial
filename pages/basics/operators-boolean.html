@@ -125,7 +125,8 @@ alert(null && 5) // Since the first value if FALSE (null), it is the last evalua
 
         <div class="row">
             <div class="col-6">
-                <p>In this example, the left operand is FALSE, so OR continues to the next operand which is TRUE and returns it.</p>
+                <p>In this example, the left operand is FALSE, so OR continues to the next operand which is TRUE and returns it.
+                </p>
                 <p>The result is 1.</p>
             </div>
             <div class="col-6">
@@ -212,13 +213,197 @@ if (x) {
 
 
 
+        <h1>Short Circuiting with ||</h1>
+        <p>Logical operators can do 3 things</p>
+        <p>Use any data type</p>
+        <p>Return any data type</p>
+        <p>short-cuiting (short-circuit evaluation)</p>
 
 
-    </section>
 
 
 
 
+        <h2>Short-circuiting example</h2>
+        <p>OR looks for true values to confirm if the statement is true.</p>
+        <p>This means short-circuting with OR looks for true values to return.</p>
+        <p>It returns the first truthy value of all operands, or the last value if all are falsey</p>
+        <p>You can use this to set default values.</p>
+
+        <h3>truthy values (1)</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This prints 3</p>
+                <p>If the first value is a truthy value it immediately returns this value</p>
+                <p>The 2nd value isn't even looked at.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(3 || 'Me')</span></pre>
+            </div>
+        </div>
+
+        <h3>truthy values (2)</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This prints true</p>
+                <p>If the first value is a truthy value it immediately returns this value</p>
+                <p>The 2nd value isn't even looked at.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(true || 0)</span></pre>
+            </div>
+        </div>
+
+
+        <h3>falsey values</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This prints Me</p>
+                <p>If the first value is a falsey value, the 2nd value is evaluated and returned.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log('' || 'Me')</span></pre>
+            </div>
+        </div>
+
+
+        <h3>falsey values</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This prints null since undefined is a falesy value.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(undefined || null)</span></pre>
+            </div>
+        </div>
+
+
+
+        <h3>falsey values</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>This prints Hello because the first 3 values are falesy.</p>
+                <p>Hello is the first truthy value.</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">console.log(undefined || 0 || '' || 'Hello' || 23 || null)</span></pre>
+            </div>
+        </div>
+
+
+
+        <h2>Setting a default value if the value doesn't exist</h2>
+        <div class="row">
+            <div class="col-6">
+                <p>This checks if restaurant.numGuests exists. If so, the number is returned. If not, the default value of is returned.
+                </p>
+                <p>This can be used instead of the ternery operator.</p>
+                <p>NOTE: This will not work if guests value is zero since that's a value. Look at <a href="nullish.html">nullish
+            operator</span> for solution.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js"><span class="code-comment">//ternery example</span>
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guest1)
+
+<span class="code-comment">// short circuiting example</span>
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2)
+</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <h1>Short Circuiting with &</h1>
+    <p>& short-circuits when the first value is falsey.</p>
+    <p>This is the opposite of ||</p>
+    <p>If the first value is false, the entire operation is false</p>
+    <p>Returns first falesy value or all if they are all truthy</p>
+    <p>You can use it to execute code in the 2nd operand if the first is true.</p>
+
+
+    <h2>falesy example</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>This returns 0</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">console.log(0 && 'me')</span></pre>
+      </div>
+    </div>
+
+
+    <h2>truthy example</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>This returns me since the last operand is true.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">console.log(7 && 'me')</span></pre>
+      </div>
+    </div>
+
+
+
+
+    <h2>example</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>This returns null since it's the first falsey value.</p>
+        <p>The operation short-circuits and stops there.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">console.log('Hello' && 7 && null && 'me')</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <h2>replacing if statement</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>You can use the && operator to replace the if statement</p>
+        <p>This says that if the first statement (restaurant.orderPizza) doesn't exist, the evaluation is
+          short-circuited and nothing happens.</p>
+        <p>If it does exist it is truthy and the next operand is evaluated and returned.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js"><span class="code-comment">// if statement</span>
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+                  
+<span class="code-comment">// && example</span>
+restaurant.orderPizza && restaurant.orderPizz('mushrooms', 'spinach')</span></pre>
+      </div>
+    </div>
+  </section>
+  <script>
+    // console.log(3 || 'Me')
+    // console.log('' || 'Me')
+    // console.log(true || 0)
+    // console.log(undefined || null)
+
+
+    // console.log(undefined || 0 || '' || 'Hello' || 23 || null)
+
+    console.log('Hello' && 7 && null && 'me')
+  </script>
 
 
 

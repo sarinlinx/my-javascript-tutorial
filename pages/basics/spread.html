@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Spread operator</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Spread operator</h1>
+
+
+        <div class="row">
+            <div class="col">
+                <p>we can use the spread operator to basically expand an array into all its elements. So basically unpacking all the array elements at one.</p>
+                <p>This can only be used whenever you would have to write multiple values separated by commas. (like writing out all values of an Array), or passing artuments into a function.</p>
+                <p>You can only use the spread operator when building an array, or when we pass values into a function.</p>
+            </div>
+        </div>
+
+
+
+
+
+        <h2>Create new array based off another, but add elements to beginning </h2>
+        <div class="row">
+            <div class="col-5">
+                <p>Create a new Array with 2 values.</p>
+                <p>Next, add the spread operator (...) followed by the original Array name.</p>
+                <p>This expands all values from the original Array and prints they as if you wrote them all out individually.
+                </p>
+                <p>You can use it again on the newArr to print all of those values.</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js"> const arr = [7, 8, 9];
+
+const newArr = [1, 2, ...arr];
+console.log(newArr)
+console.log(...newArr)</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <h2>Pass new item into menu</h2>
+        <div class="row">
+            <div class="col-5">
+                <p>Create a new Array from the old Array using the ... operator.</p>
+                <p>Add a new value at the end.</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js">const restaurant = {
+    name: 'Classico Italiano',
+    location: 'Via Angelo Tavanti 23, Firenze, Italy',
+    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+    starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+}
+
+
+// create new menu item
+<span class="code-highlight">const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu)</span></span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <h2>Join Array</h2>
+        <div class="row">
+            <div class="col-5">
+                <p>This creates and Array with both the starter menu and main menu.</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js">const restaurant = {
+    name: 'Classico Italiano',
+    location: 'Via Angelo Tavanti 23, Firenze, Italy',
+    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+    starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+}
+
+const mainMenuCopy = [...restaurant.mainMenu];
+
+const menu = [...restaurant.starterMenu, ...mainMenuCopy, ]
+console.log(menu)</span></span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <h1>Using ... with iterables</h1>
+
+        <h2>String example</h2>
+        <div class="row">
+            <div class="col-5">
+                <p>Iterables are:</p>
+                <ul>
+                    <li> arrays</li>
+                    <li> strings</li>
+                    <li>maps</li> and sets</li>
+                </ul>
+                <p>But not Objects</p>
+                <p>This creates a new Array of all values of the original string plus the new ones you've added.</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-js">const str = 'Joe';
+const letters = [...str, ' ', 'S.'];
+console.log(letters)</span></span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h2>Function accepts multiple arguments, use ... to pass arguments</h2>
+        <div class="row">
+            <div class="col-5">
+                <p>The prompt retrieves 3 user inputs</p>
+                <p>They are placed in an Array.</p>
+                <p>The restaurant.orderPasta method is then called</p>
+                <p>...ingredients is sent in for all individual values of the Array.</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-js">############</span></span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <h2>Spread operator with Objects</h2>
+        <div class="row">
+            <div class="col-5">
+                <p> create a new restaurant object with all the data from the original one plus some additional data.</p>
+                <p>This creates a new Object with a new restaurant name.</p>
+            </div>
+
+            <div class="col-7">
+                <pre class="example"><span class="code-js">const restaurant = {
+    name: 'Classico Italiano',
+    location: 'Via Angelo Tavanti 23, Firenze, Italy',
+    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+    starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+}
+
+
+// copy original Object
+<span class="code-highlight">const restaurantCopy = {
+    ...restaurant
+};
+
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);</span></span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+    </section>
+    <script>
+        const restaurant = {
+            name: 'Classico Italiano',
+            location: 'Via Angelo Tavanti 23, Firenze, Italy',
+            categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+            starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+            mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+        }
+
+
+        // copy original Object
+        const restaurantCopy = {
+            ...restaurant
+        };
+
+        restaurantCopy.name = 'Ristorante Roma';
+        console.log(restaurantCopy.name);
+        console.log(restaurant.name);
+
+
+
+
+        const newRestaurant = {
+            foundedIn: 1998,
+            ...restaurant,
+            founder: 'Guiseppe'
+        };
+
+        console.log(newRestaurant);
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

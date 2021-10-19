@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Rest Pattern</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+    <section class="container">
+        <h1>Rest Pattern</h1>
+
+
+        <div class="row">
+            <div class="col">
+                <p>Packs elements into an Array/Object.</p>
+                <p>It looks like the Spread operator but does opposite of spread operator.</p>
+                <p>It depends on where ... is used as to if it will be Spread or Rest.</p>
+                <p>Collects elements that are unused in the destructuring assignment.</p>
+                <p>The Rest pattern collects all unused variables AFTER the last variable. This is by 'Pasta' is missing.</p>
+                <p>Skipped elements are NOT included.</p>
+                <p>The Rest element must be the last element.</p>
+                <p>Spread used where you would write value names separated by a comma.</p>
+                <p>Rest used where you would write variable names separated by a comma.</p>
+            </div>
+        </div>
+
+
+
+
+
+        <h2>Rest Pattern example 1</h2>
+        <div class="row">
+            <div class="col-5">
+                <p>This example deconstrcuts an Array.</p>
+                <p>2 variables are created, then the Rest pattern is used for the rest of the element.</p>
+                <p>They are placed into their own Array.</p>
+                <p>This prints: 1 2 [3, 4, 5]</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js">const arr = [1, 2, ...[3, 4]]
+const [a, b, ...others] = [1, 2, 3, 4, 5]
+console.log(a, b, others)</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <h2>Rest Pattern example 2</h2>
+        <div class="row">
+            <div class="col-5">
+                <p>This prints: Pizza Risotto 'Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad']</p>
+                <p>The Rest pattern collects all unused variables AFTER the last variable. This is by 'Pasta' is missing.</p>
+                <p>Skipped elements are NOT included.</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js">const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+}
+
+const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu]
+console.log(pizza, risotto, otherFood)</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <h2>Object example</h2>
+        <div class="row">
+            <div class="col-5">
+                <p>This returns a new Object only containing Thursday and Friday.</p>
+                <p>This is because sat was already created as a variable, so the ... Rest operator took the rest of the element.
+                </p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js">   const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+  openingHours: {
+      thu: {
+          open: 12,
+          close: 22,
+      },
+      frid: {
+          open: 11,
+          close: 23,
+      },
+      sat: {
+          open: 0, // Open 24 hours
+          close: 24,
+      },
+  },
+}
+
+const {
+  sat,
+  ...weekdays
+} = restaurant.openingHours;
+console.log(weekdays)</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <h2>Function example</h2>
+        <div class="row">
+            <div class="col-5">
+                <p>This creates separate new Arrays based off an unknown # of arguments sent into the function.
+                </p>
+                <p>The Rest operator is used for Rest arguments in this case.</p>
+            </div>
+            <div class="col-7">
+                <pre class="example"><span class="code-js">const add = function(...numbers) {
+  console.log(numbers)
+}
+
+add(2, 3)
+add(5, 3, 7, 2)
+add(8, 2, 5, 3, 2, 1, 4)</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script>
+            // const arr = [1, 2, ...[3, 4]]
+            // const [a, b, ...others] = [1, 2, 3, 4, 5]
+            // console.log(a, b, others)
+
+            const restaurant = {
+                name: 'Classico Italiano',
+                location: 'Via Angelo Tavanti 23, Firenze, Italy',
+                categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+                starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+                mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+                openingHours: {
+                    thu: {
+                        open: 12,
+                        close: 22,
+                    },
+                    frid: {
+                        open: 11,
+                        close: 23,
+                    },
+                    sat: {
+                        open: 0, // Open 24 hours
+                        close: 24,
+                    },
+                },
+            }
+
+            const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu]
+            // console.log(pizza, risotto, otherFood)
+
+
+
+            const {
+                sat,
+                ...weekdays
+            } = restaurant.openingHours;
+            // console.log(weekdays)
+
+            // function send unknown # of arguments into function
+            const add = function(...numbers) {
+                console.log(numbers)
+            }
+
+            add(2, 3)
+            add(5, 3, 7, 2)
+            add(8, 2, 5, 3, 2, 1, 4)
+
+            const x = [23, 5, 7]
+        </script>
+
+
+
+</body>
+
+</html>

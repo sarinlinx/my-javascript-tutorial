@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Array Iteration</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+
+  <section class="container">
+    <h1>for of loop</h1>
+    <p>Designed to give you the current element</p>
+
+
+
+    <h2>Print full Array</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>The for of loops through the Array.</p>
+        <p>This prints all indexes in the starterMenu and mainMenu</p>
+        <p>At each iteration you have access to the current Array element. In this example it's specified as the word 'item'.</p>
+
+      </div>
+
+      <div class="col-7">
+<pre class="example"><span class="code-js">const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto']
+}
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+<span class="code-highlight">for (const item of menu)</span>
+console.log(item)</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <h2>Retrieve an Index (1)</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>This returns a new Array for each index with the index value in each Array</p>
+        <p>The keyword 'entries' is used.</p>
+       <img src="../../_img/for-of-index.png">
+
+      </div>
+
+      <div class="col-7">
+<pre class="example"><span class="code-js">const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto']
+}
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+<span class="code-highlight">for (const item of menu.entries()) {
+  console.log(item)
+}</span></pre>
+      </div>
+    </div>
+
+
+
+    <h2>Retrieve an Index (2)</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>This does the same thing but formats and prints the index values.</p>
+
+      </div>
+
+      <div class="col-7">
+<pre class="example"><span class="code-js">const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto']
+}
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+<span class="code-highlight">for (const item of menu.entries()) {
+  console.log(`${item[0] + 1}: ${item[1]} `);
+}</span></pre>
+      </div>
+    </div>
+
+
+
+    
+    <h2>Retrieve an Index (3)</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>This does the same thing but deconstructs the Array.</p>
+        <p>The variables i and el are used to retrieve the 2 first indexes of the Arrays.</p>
+
+      </div>
+
+      <div class="col-7">
+<pre class="example"><span class="code-js">const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto']
+}
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+<span class="code-highlight">for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el} `);
+}</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    
+    <script>
+      'use strict'
+      const restaurant = {
+        name: 'Classico Italiano',
+        location: 'Via Angelo Tavanti 23, Firenze, Italy',
+        categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+        starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+        mainMenu: ['Pizza', 'Pasta', 'Risotto']
+      }
+
+      const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el} `);
+}
+
+    </script>
+
+</body>
+
+</html>

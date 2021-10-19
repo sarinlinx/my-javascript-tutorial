@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>nullish</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+  <section class="container">
+
+    <h2>Setting a default value if the value doesn't exist</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>This checks if restaurant.numGuests exists. If so, the number is returned. If not, the default value of is
+          returned.
+        </p>
+        <p>This can be used instead of the ternery operator.</p>
+        <p>NOTE: This will not work if guests value is zero since that's a value. Look at nullish operator example below
+          for solution.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js"> const restaurant = {
+  numGuests: 1
+}
+              
+              <span class="code-comment">//ternery example</span>
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guest1)
+
+<span class="code-comment">// short circuiting example</span>
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2)
+</span></pre>
+      </div>
+    </div>
+
+
+
+
+    <h2>nullish with zero</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>This is the same as above but uses nullish operator for the zero value.</p>
+        <p>This correctly returns zero.</p>
+        <p>This works because the nullish operator works with nullish values, not falsey values. Nullish values are null
+          and undefined.</p>
+          <p>The DO NOT include zero or an empty string.</p>
+          <p>So it's not treating the zero as a falsey value.</p>
+
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js"> const restaurant = {
+  numGuests: 1
+}
+
+              
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2)
+</span></pre>
+      </div>
+    </div>
+
+
+
+  </section>
+  <script>
+    const restaurant = {
+      numGuests: 0
+    }
+    // short circuiting example
+    // const guests2 = restaurant.numGuests || 10;
+    // console.log(guests2)
+    const guestCorrect = restaurant.numGuests ?? 10;
+    console.log(guestCorrect)
+
+  </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
