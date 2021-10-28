@@ -2,34 +2,34 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
 
-    <title>Objects</title>
+  <title>Objects</title>
 </head>
 
 <body>
-    <a href="../../index.html">Home page</a>
+  <a href="../../index.html">Home page</a>
 
 
 
 
 
 
-    <section class="container">
-        <h1>Iterating over Object key:value pairs</h1>
+  <section class="container">
+    <h1>Iterating over Object key:value pairs</h1>
 
-        <div class="row">
-            <div class="col-6">
-                <p>You can loop through key:value pairs by using a for loop with the 'key' keyword.</p>
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">var menu = {
+    <div class="row">
+      <div class="col-6">
+        <p>You can loop through key:value pairs by using a for loop with the 'key' keyword.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">var menu = {
   width:  300,
   height: 200,
   title: "Menu"
@@ -40,13 +40,13 @@ var val = menu[key];
 
 console.log("Key: " + key + " \nValue: " + val);
 }</span></pre>
-            </div>
-        </div>
+      </div>
+    </div>
 
-        <div class="row">
-            <div class="col">
-                <p>The code above prints out the following:</p>
-                <pre class="example">Key: width
+    <div class="row">
+      <div class="col">
+        <p>The code above prints out the following:</p>
+        <pre class="example">Key: width
 Value: 300
 
 Key: height
@@ -54,9 +54,149 @@ Value: 200
 
 Key: title
 Value: Menu</pre>
-            </div>
-        </div>
-    </section>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <h1>Object.keys</h1>
+    <h2>Loop over property names (keys)</h2>
+    <div class="row">
+      <div class="col-6">
+        <P>This first prints an Array with [thur, fri, sat]</p>
+        <p>The for loop then iterates over the properties and prints: thur fri sat</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">const openingHours = {
+  thur: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
+<span class="code-highlight">const properties = Object.keys(openingHours)
+console.log(properties)
+
+for (const day of Object.keys(openingHours))</span>
+console.log(day)
+}</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <h1>Object.values</h1>
+    <h2>Loop over values</h2>
+    <div class="row">
+      <div class="col-6">
+        <P>This prints an Array of all values.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">const openingHours = {
+  thur: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
+<span class="code-highlight">const values = Object.values(openingHours)
+console.log(values)
+}</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <h1>Loop entire Object using entries</h1>
+    <div class="row">
+      <div class="col-6">
+        <P>Entries are properties and values.</p>
+        <p>This returns an Array of all properties and values.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">const openingHours = {
+  thur: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
+<span class="code-highlight">const entriesHere = Object.entries(openingHours)
+ console.log(entriesHere)</span></pre>
+      </div>
+    </div>
+
+
+
+
+    <h2>Destructure to print values as strings</h2>
+    <div class="row">
+      <div class="col-6">
+        <P>Specify open and close property names to destructe them.</p>
+        <p>They can then be used in the console.log string.</p>
+        <p>The first destructred variable is called key, but you can name it anything.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">const openingHours = {
+thur: {
+  open: 12,
+  close: 22,
+},
+fri: {
+  open: 11,
+  close: 23,
+},
+sat: {
+  open: 0, // Open 24 hours
+  close: 24,
+},
+};
+
+<span class="code-highlight">const entriesHere = Object.entries(openingHours)
+
+for(const [key, {open, close}] of entriesHere) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`)
+}</span></pre>
+      </div>
+    </div>
 
 
 
@@ -67,8 +207,42 @@ Value: Menu</pre>
 
 
 
-    <script src="../../_js/jquery.js"></script>
-    <script src="../../_js/bootstrap.bundle.js"></script>
+
+  </section>
+  <script>
+
+
+    const openingHours = {
+      thur: {
+        open: 12,
+        close: 22,
+      },
+      fri: {
+        open: 11,
+        close: 23,
+      },
+      sat: {
+        open: 0, // Open 24 hours
+        close: 24,
+      },
+    };
+
+    // const properties = Object.keys(openingHours)
+    // console.log(properties)
+
+    // for (const day of Object.keys(openingHours))
+    // console.log(day)
+
+    // const values = Object.values(openingHours)
+    // console.log(values)
+
+    const entriesHere = Object.entries(openingHours)
+    // console.log(entriesHere)
+
+    for (const [key, { open, close }] of entriesHere) {
+      console.log(`On ${key} we open at ${open} and close at ${close}`)
+    }
+  </script>
 </body>
 
 </html>

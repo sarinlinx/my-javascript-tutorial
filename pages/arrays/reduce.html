@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>filter()</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>filter()</h1>
+
+        <div class="row">
+            <div class="col-6">
+                <p>filter() creates a new array, but only with elements that pass a specific test in the function.</p>
+                <p>The original array is not touched.</p>
+                <p>This example creates a new array from elements with a value larger than 18</p>
+            </div>
+            <div class="col-6">
+                <pre class="example"><span class="code-js">var numbers = [45, 4, 9, 16, 25];
+var over18 = numbers.filter(myFunction);
+
+function myFunction(value) {
+  return value > 18;
+}
+
+console.log(over18);</span></pre>
+            </div>
+        </div>
+
+
+        <h5>Output</h5>
+        <div class="row">
+            <div class="col-6">
+
+                <p class="code-output">This example outputs:</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-output">Array [ 45, 25 ]</span></pre>
+            </div>
+        </div>
+
+
+        <h4>The index and array params</h4>
+        <div class="row">
+            <div class="col">
+                <p>Just as above, the index and array parameters can be added or omitted.</p>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <h3>Searching an Array Object for a string</h1>
+
+            <div class="row">
+                <div class="col-4">
+                    <p>This searches the Array named 'notes' for a string.</p>
+                    <p>If found, the Object within that string is returned (from the new Array created by filter())</p>
+                </div>
+                <div class="col-8">
+                    <pre class="example"><span class="code-js"><span class="code-comment">//Create an Array of Objects</span>
+const notes = [{
+    title: 'My next trip',
+    body: 'I would like to go to Spain'
+}, {
+    title: 'Habbits to work on',
+    body: 'Exercise. Eating a bit better.'
+}, {
+    title: 'Office modification',
+    body: 'Get a new seat'
+}]
+
+
+<span class="code-comment">// This filters the notes Array based on a string
+// notesArray is the Array param you're sending in
+// query is the string you're searching for
+// findNotes will contain the new Array created by filter()</span>
+const findNotes = function(notesArray, query) {
+    <span class="code-comment">// use filter() to return a new array based off a new function
+    // 1st param is the Array Object
+    // filter() returns a boolean
+    // if TRUE, it is kept and sent to the new array</span>
+    return notesArray.filter(function(notez, index) {
+        <span class="code-comment">// notez. is the full Object
+        // notez.title is a String (cycles through all)
+        // You can then run the String method toLowerCase()
+        // You can then 'chain' another String method of .includes since you're still working with a String
+        // Pass into includes() the search text using the 'query' argument</span>
+        const isTitleMatch = notez.title.toLowerCase().includes(query.toLowerCase())
+        const isBodyMatch = notez.body.toLowerCase().includes(query.toLowerCase())
+
+        <span class="code-comment">// includes returns a boolean
+        // If the boolean is TRUE for either const, it is returned</span>
+        return isTitleMatch || isBodyMatch
+    })
+}
+
+  <span class="code-comment">// Call the function</span>
+  console.log(findNotes(notes, 'eating'))</span></pre>
+                </div>
+            </div>
+
+
+            <h5>Output</h5>
+            <div class="row">
+                <div class="col-4">
+
+                    <p class="code-output">This example outputs:</p>
+                </div>
+
+                <div class="col-8">
+                    <pre class="example"><span class="code-output">[
+  {
+    title: 'Habbits to work on',
+    body: 'Exercise. Eating a bit better.'
+  }
+]</span></pre>
+                </div>
+            </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

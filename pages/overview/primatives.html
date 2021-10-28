@@ -2,111 +2,113 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
 
-    <title>Primatives</title>
+  <title>Primatives</title>
 </head>
 
 <body>
-    <a href="../../index.html">Home page</a>
+  <a href="../../index.html">Home page</a>
 
 
 
-    <section class="container">
+  <section class="container">
 
 
 
-        <h1>Primatives vs Objects</h1>
-        <h2>Primatives (Primative Types)</h2>
-        <div class="row">
-            <div class="col">
-                <p>Primatives (called Primative Types) are data types that are NOT an Object and have no methods. They include:
-                </p>
-                <ul>
-                    <li>numbers</li>
-                    <li>strings</li>
-                    <li>booleans</li>
-                    <li>bigint</li>
-                    <li>undefined</li>
-                    <li>symbol</li>
-                    <li>null</li>
-                </ul>
-                <p>These are stored in the Execution Context in which they were declared. FOr simplicity you could say they are stored in the Call Stack</p>
-                <p>They are immutable, meaning they cannot be changed.</p>
-            </div>
-        </div>
+    <h1>Primatives vs Objects</h1>
+    <h2>Primatives (Primative Types)</h2>
+    <div class="row">
+      <div class="col">
+        <p>Primatives (called Primative Types) are data types that are NOT an Object and have no methods. They include:
+        </p>
+        <ul>
+          <li>numbers</li>
+          <li>strings</li>
+          <li>booleans</li>
+          <li>bigint</li>
+          <li>undefined</li>
+          <li>symbol</li>
+          <li>null</li>
+        </ul>
+        <p>These are stored in the Execution Context in which they were declared. FOr simplicity you could say they are
+          stored in the Call Stack</p>
+        <p>They are immutable, meaning they cannot be changed.</p>
+      </div>
+    </div>
 
-        <h2>Objects (Reference Types)</h2>
-        <div class="row">
-            <div class="col">
-                <p>Everything else are Objects and are called Reference Types.</p>
+    <h2>Objects (Reference Types)</h2>
+    <div class="row">
+      <div class="col">
+        <p>Everything else are Objects and are called Reference Types.</p>
 
-                <ul>
-                    <li>Object literal</li>
-                    <li>Arrays</li>
-                    <li>Functions</li>
-                    <li>etc...</li>
-                </ul>
-                <p>These are stored in the HEAP since they could be too large to be stored in the Call Stack.</p>
-                <p>They are NOT immutable, meaning they CAN be changed.</p>
-                <img src="../../_img/primatives.png" width="700px">
-            </div>
+        <ul>
+          <li>Object literal</li>
+          <li>Arrays</li>
+          <li>Functions</li>
+          <li>etc...</li>
+        </ul>
+        <p>These are stored in the HEAP since they could be too large to be stored in the Call Stack.</p>
+        <p>They are NOT immutable, meaning they CAN be changed.</p>
+        <img src="../../_img/primatives.png" width="700px">
+      </div>
 
-        </div>
-
-
-
-
-
+    </div>
 
 
 
 
 
 
-        <h1>Primative vs Object example</h1>
-        <h2>Reference Type example</h2>
-        <div class="row">
-            <div class="col-6">
-                <p>This returns 30, then 31.</p>
-                <p>The original value of age is not altered since it appeared first in the code (and memory).</p>
 
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">let age = 30
+
+
+
+
+    <h1>Primative vs Object example</h1>
+    <h2>Reference Type example</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>This returns 30, then 31.</p>
+        <p>The original value of age is not altered since it appeared first in the code (and memory).</p>
+
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">let age = 30
 let oldAge = oldAge
 age = 31
 
 console.log(age)
 console.log(oldAge)</span></pre>
 
-            </div>
+      </div>
 
-        </div>
-
-
+    </div>
 
 
 
 
-        <h2>Reference Type example</h2>
-        <div class="row">
-            <div class="col-6">
-                <p>Both Objects return 27 even though the first is set to 30.</p>
-                <p>When friend.age is changed, it also changes the original 'friend' Object in the HEAP.</p>
-                <p>This shows you can change the value of a constant as long as you're not changing the memory address in the HEAP.
-                </p>
-                <p>NOTE: This means when you copy an Object, you're just creating a new variable that points to the Object.</p>
 
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">const me = {
+
+    <h2>Reference Type example</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>Both Objects return 27 even though the first is set to 30.</p>
+        <p>When friend.age is changed, it also changes the original 'friend' Object in the HEAP.</p>
+        <p>This shows you can change the value of a constant as long as you're not changing the memory address in the
+          HEAP.
+        </p>
+        <p>NOTE: This means when you copy an Object, you're just creating a new variable that points to the Object.</p>
+
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">const me = {
     name: 'MyName',
     age: 30
 }
@@ -116,9 +118,9 @@ friend.age = 27
 
 console.log('Friend: ', friend)
 console.log('Me', me)</span></pre>
-            </div>
-            <img src="../../_img/primatives-vs-object.png" width="900px">
-        </div>
+      </div>
+      <img src="../../_img/primatives-vs-object.png" width="900px">
+    </div>
 
 
 
@@ -126,18 +128,97 @@ console.log('Me', me)</span></pre>
 
 
 
-        <script>
-            const me = {
-                name: 'MyName',
-                age: 30
-            }
 
-            const friend = me
-            friend.age = 27
 
-            console.log('Friend: ', friend)
-            console.log('Me', me)
-        </script>
+    <h1>Primatives and Functions</h1>
+
+    <div class="row">
+      <div class="col-5">
+        <p>This returns:</p>
+        <p>Wrong passport: (different value) WHY? Video shows the opposite</p>
+
+        <p>LH234: (original value: flight is a primative. When passed into the function, a copy is created named
+          flightNum. So, since it's a completely different variable, it is NOT reflected in the variable named 'flight'
+          outside the function.</p>
+
+        <p>Object { name: "Mr. Jonas Schmedtmann", passport: 2734873843 }: (updated value: this is because jonas is a
+          reference to the Object. Since you're passing by reference, the Object is just copied in memory HEAP, so it
+          gets updated within the function.)</p>
+        <br>
+        <p>Passing a primative value into a function is the same as copying its value outside of the function. In this
+          case: const flightNum = flight;. The value is copied and there are now 2 variables with different values.</p>
+        <p>Passing an Object into a function is referencing the original Object. So the values are updated in both
+          locations. NOTE: This can be a bad idea when multiple function calls change the Object.</p>
+
+
+
+
+      </div>
+      <div class="col-7">
+        <pre class="example"><span class="code-js">const flight = 'LH234';
+
+const jonas = {
+  name: 'Jonas Schmedtmann',
+  passport: 12345
+}
+
+const checkIn = function (flightNum, passenger) {
+  flightNum = 'LH999';
+  passenger.name = 'Mr. ' + passenger.name;
+
+  if (passenger.passort === 12345) {
+    console.log('Check in');
+  }
+  {
+    console.log('Wrong passport')
+  }
+}
+
+checkIn(flight, jonas);
+console.log(flight)
+console.log(jonas)</span></pre>
+      </div>
+
+    </div>
+
+
+
+
+    <h1>Passing by value or reference</h1>
+    <p>JavaScript only allows passing by value.</p>
+    <p>It does NOT allow 'passing by reference' even though it looks like it.</p>
+    <p>When you pass in an Object, it appears like it's passing the reference, but it's actually passing a value into memory.</p>
+<p>So, JavaScript can pass an reference into a function, but this is not passing BY reference.</p>
+
+
+
+
+
+
+
+    <script>
+      const flight = 'LH234';
+
+      const jonas = {
+        name: 'Jonas Schmedtmann',
+        passport: 12345,
+      };
+
+      const checkIn = function (flightNum, passenger) {
+        flightNum = 'LH999';
+        passenger.name = 'Mr. ' + passenger.name;
+
+        if (passenger.passort === 12345) {
+          console.log('Check in');
+        } else {
+          console.log('Wrong passport');
+        }
+      };
+
+      checkIn(flight, jonas);
+      // console.log(flight)
+      // console.log(jonas)
+    </script>
 
 </body>
 

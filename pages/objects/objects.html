@@ -411,12 +411,53 @@ console.log(`On ${day}, we open at ${open}`);
       <div class="row">
 
           <div class="col-5">
-              <p>############################</p>
+              <p>Checks if a method exists before you call it.</p>
+              <p>If so it's called.</p>
+              <p>If not, the default value is printed.</p>
           </div>
 
           <div class="col-7">
-<pre class="example"><span class="code-js">#####################
-}</span></pre></div>
+<pre class="example"><span class="code-js">
+  const restaurant = {
+    name: 'Classico Italiano',
+    location: 'Via Angelo Tavanti 23, Firenze, Italy',
+    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+    starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  
+    // ES6 enhanced object literals
+    openingHours,
+  
+    order(starterIndex, mainIndex) {
+      return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+    },
+}
+
+<span class="code-highlight">console.log(restaurant.order?.(0,1) ?? "Method Does NOT Exist")</span></span></pre></div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+      
+        
+      <h2>Optional Chaining with Arrays</h2>
+      <div class="row">
+
+          <div class="col-5">
+              <p>Checks if a Array is empty</p>
+              <p>If not, the .name value is printed.</p>
+          </div>
+
+          <div class="col-7">
+<pre class="example"><span class="code-js">const users = [{name: 'MyName', email: 'hello@example.com'}];
+console.log(users[0]?.name ?? 'User Array empty')  </span></pre></div>
       </div>
 
 
@@ -450,18 +491,18 @@ const openingHours = {
 };
 
 const restaurant = {
-  // name: 'Classico Italiano',
-  // location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  // categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  // starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  // mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
   // ES6 enhanced object literals
   openingHours,
 
-  // order(starterIndex, mainIndex) {
-  //   return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  // },
+  order(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 
   // orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
   //   console.log(
@@ -488,10 +529,22 @@ for (const day of days) {
 // check specific index to see if openingHours.open exists
 // nullish operator ?? is needed for the value of zero
 const open = restaurant.openingHours[day]?.open ?? 'closed';
-console.log(`On ${day}, we open at ${open}`);
+// console.log(`On ${day}, we open at ${open}`);
 }
 
-  </script>
+
+// console.log(restaurant.order?.(0,1) ?? "Method Does NOT Exist")
+
+
+
+const users = [{name: 'MyName', email: 'hello@example.com'}];
+
+console.log(users[0]?.name ?? 'User Array empty')
+
+
+
+
+</script>
 
 </body>
 

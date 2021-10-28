@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Padding</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+  <h1>Padding a String</h1>
+  <p>Allows you to control the string size.</p>
+
+
+
+  <section class="container">
+
+
+    <h3>padStart</h3>
+
+    <div class="row">
+      <div class="col-6">
+        <p>First value is length of string.</p>
+        <p>2nd value is what you'll pad the string with.</p>
+        <p>This returns: ++++++++++++Go to gate 23</p>
+
+      </div>
+      <div class="col-6">
+<pre class="example"><span class="code-js">const message = 'Go to gate 23';
+console.log(message.padStart(25, '+'));</pre>
+      </div>
+    </div>
+
+
+    <h3>padEnd</h3>
+
+    <div class="row">
+      <div class="col-6">
+        <p>First value is length of string.</p>
+        <p>2nd value is what you'll pad the string with.</p>
+        <p>This returns: Go to gate 23++++++++++++</p>
+
+      </div>
+      <div class="col-6">
+<pre class="example"><span class="code-js">const message = 'Go to gate 23';
+console.log(message.padEnd(25, '+'));</pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <h3>Credit Card example</h3>
+
+    <div class="row">
+      <div class="col-6">
+        <p>Convert the # to a String.</p>
+        <p>Remove last 4 #s using slice() </p>
+        <p>Use pad to add * to the beginning values.</p>
+        <p>This outputs: ************3253</p>
+
+      </div>
+      <div class="col-6">
+<pre class="example"><span class="code-js">const maskCreditCard = function(number) {
+  <span class="code-comment">// convert number to String
+  // this works because if one of the operands of the + sign is a String, all operands are converted to a String</span>
+  const str = number + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+};
+
+console.log(maskCreditCard(1234567891243253));</pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+
+  <script>
+   const maskCreditCard = function(number) {
+     // convert number to String
+     // this works because if one of the operands of the + sign is a String, all operands are converted to a String
+     const str = number + '';
+const last = str.slice(-4);
+return last.padStart(str.length, '*');
+   };
+
+   console.log(maskCreditCard(1234567891243253));
+
+
+    </script>
+</body>
+
+</html>

@@ -35,6 +35,7 @@
                 <p>The array must have values for this to work.</p>
                 <p>This example multiplies each array value by 2, creates a new array, then prints that new array.</p>
             </div>
+
             <div class="col-6">
                 <pre class="example"><span class="code-js">var numbers1 = [45, 4, 9, 16, 25];
 <span class="code-comment">//Create new array using map()
@@ -69,7 +70,7 @@ function myFunction(value, index, array) {
                 <p>Just as above, the index and array parameters can be added or omitted.</p>
             </div>
         </div>
-    </section>
+    
 
 
 
@@ -77,6 +78,122 @@ function myFunction(value, index, array) {
 
 
 
+
+
+    <h3>Map Array example</h3>
+    <div class="row">
+        <div class="col-6">
+            <p>This maps the first Array and uses the value of eurToUsd to multiply all values into the new Array.</p>
+           
+        </div>
+
+        <div class="col-6">
+<pre class="example"><span class="code-js">const movements = [200, 450, -400];
+
+const eurToUsd = 1.5;
+
+const movementsUSD = movements.map(function(curEl){
+  return curEl * eurToUsd;
+})
+
+console.log(movements)
+console.log(movementsUSD)</span></pre>
+        </div>
+    </div>
+
+    <h5>Output</h5>
+    <div class="row">
+        <div class="col-6">
+
+            <p class="code-output">This example outputs:</p>
+        </div>
+
+        <div class="col-6">
+<pre class="example"><span class="code-output">[200, 450, -400];
+[300, 675, -600]</span></pre>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h3>Compute a username with a map</h3>
+    <div class="row">
+        <div class="col-6">
+            <p>T......................y.</p>
+           
+        </div>
+
+        <div class="col-6">
+<pre class="example"><span class="code-js">.................</span></pre>
+        </div>
+    </div>
+  </section>
+
+<script>
+'use strict'
+
+const movements = [200, 450, -400];
+
+const eurToUsd = 1.5;
+
+const movementsUSD = movements.map(function(curEl){
+  return curEl * eurToUsd;
+})
+
+console.log(movements)
+console.log(movementsUSD)
+
+
+
+
+
+
+
+
+
+const account1 = {
+  owner: 'Jonas Schmedtmann',
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+};
+
+const account2 = {
+  owner: 'Jessica Davis',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+};
+
+const account3 = {
+  owner: 'Steven Thomas Williams',
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333,
+};
+
+const account4 = {
+  owner: 'Sarah Smith',
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444,
+};
+</script>
 
 </body>
 

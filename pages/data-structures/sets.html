@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Sets</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+  <section class="container">
+    <h1>Sets</h1>
+    <p>A Set is a collection of unique values.</p>
+    <p>They CANNOT contain duplicate info.</p>
+    <p>They can contain mixed data types.</p>
+    <p>Order is elements does not matter.</p>
+
+
+
+    <h2>Creating a Set</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>Create a Set by writing: new Set()</p>
+        <p>Pass into it an Array.</p>
+        <p>This prints: Pasta, Pizza, Risotto.</p>
+        <p>The 2nd Pizza is removed since a Set cannot contain duplicates.</p>
+      </div>
+      <div class="col-6">
+<pre class="example"><span class="code-js">const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto']);
+console.log(ordersSet)</span></pre>
+      </div>
+    </div>
+
+    <h2>Set String example</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>This returns: Set(6) [ "M", "y", "N", "a", "m", "e" ]</p>
+      </div>
+      <div class="col-6">
+<pre class="example"><span class="code-js">console.log(new Set(`MyName`))</span></pre>
+      </div>
+    </div>
+
+
+
+    <h2>Get Set size</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>Use .size to return the size of the Set.</p>
+        <p>This returns 3.</p>
+      </div>
+      <div class="col-6">
+<pre class="example"><span class="code-js">const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto']);
+console.log(ordersSet.size)</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+    <h2>Check if an element exists in the Set</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>Use .has to check if an element exists.</p>
+        <p>This returns true.</p>
+      </div>
+      <div class="col-6">
+<pre class="example"><span class="code-js">const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto']);
+console.log(ordersSet.has('Pizza'))</span></pre>
+      </div>
+    </div>
+
+
+
+    <h2>Add an element to a Set</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>Use .add to check if an element exists.</p>
+        <p>This prints: Pasta, Pizza, Risotto, Bread</p>
+      </div>
+      <div class="col-6">
+<pre class="example"><span class="code-js">const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto']);
+  console.log(ordersSet.add('Bread'))</span></pre>
+      </div>
+    </div>
+
+    
+    <h2>Delete an element from a Set</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>Use .delete to remove an element.</p>
+        <p>This prints: Pasta, Pizza</p>
+      </div>
+      <div class="col-6">
+<pre class="example"><span class="code-js">const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto']);
+ordersSet.delete('Risotto')
+console.log(ordersSet)</span></pre>
+      </div>
+    </div>
+
+
+    <h2>Delete all elements from a Set</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>Use .clear to delete all elements.</p>
+        <p>This prints: Pasta, Pizza</p>
+      </div>
+      <div class="col-6">
+<pre class="example"><span class="code-js">const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto']);
+ordersSet.clear()
+</span></pre>
+      </div>
+    </div>
+
+
+    
+    <h2>Retrieve specific element from a Set</h2>
+    <div class="row">
+      <div class="col">
+        <p>It's not possible to retrieve data from a Set</p>
+        <p>This is because all values are unique and not in order.</p>
+        <p>You would use an Array if you need to retrieve a specific value.</p>
+      </div>   
+    </div>
+
+
+
+<h1>Iterating over a Set</h1>
+
+
+<div class="row">
+  <div class="col-6">
+    <p>Use for of loop.</p>
+  </div>
+  <div class="col-6">
+<pre class="example"><span class="code-js">const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto']);
+for(const x of ordersSet)
+console.log(x)</span></pre>
+  </div>
+</div>
+
+
+
+<h1>Example</h1>
+<p>Most common reason to use a Set is to remove elements from an Array.</p>
+
+
+<div class="row">
+  <div class="col-6">
+    <p>Return only unique positions.</p>
+  </div>
+  <div class="col-6">
+<pre class="example"><span class="code-js">const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+<span class="code-comment">// Only list the different positions</span>
+const staffUnique = new Set(staff);
+console.log(staffUnique)</span></pre>
+  </div>
+</div>
+
+
+<h2>Add the unique values into an Array by using the spread operator</h2>
+<div class="row">
+  <div class="col-6">
+    <p>Srround Set in brackets to create an Array</p>
+    <p>Use the ... operator to unpack all values.</p>
+  </div>
+  <div class="col-6">
+<pre class="example"><span class="code-js">const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+
+const staffUnique = <span class="code-highlight">[...new Set(staff)]</span>;
+console.log(staffUnique)</span></pre>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </section>
+  <script>
+    const ordersSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto']);
+   
+    const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+    // Only list the different positions
+    const staffUnique = [...new Set(staff)];
+    console.log(staffUnique)
+
+
+
+  </script>
+</body>
+
+</html>

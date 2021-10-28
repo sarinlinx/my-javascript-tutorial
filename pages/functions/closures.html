@@ -2,60 +2,87 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
 
-    <title>Closures</title>
+  <title>Closures</title>
 </head>
 
 <body>
-    <a href="../../index.html">Home page</a>
+  <a href="../../index.html">Home page</a>
 
 
 
-    <section class="container">
-        <h1>Closures</h1>
-        <div class="row">
-            <div class="col">
-                <p>A function inside a function that relies on variables in the outside function to work.</p>
-                <p>A closure is a function having access to the parent scope, even after the parent function has closed.</p>
-                <ul>
-                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">Closures</a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
+  <section class="container">
+    <h1>Closures</h1>
+    <div class="row">
+      <div class="col">
+        <p>A function inside a function that relies on variables in the outside function to work.</p>
+        <p>A closure is a function having access to the parent scope, even after the parent function has closed.</p>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">Closures</a></li>
+        </ul>
+        <p>A Closure isn't something you manually create. It's something that happens automatically certain situations.
+        </p>
+        <p>A Closure makes a Function remember all the variables that existed inside the originating Function that no
+          longer exists</p>
+
+        <p>Different ways to think about Closures.</p>
+        <img src="../../_img/closures.png" width="900px">
+
+      </div>
+    </div>
+  </section>
 
 
 
-    <section class="container">
-        <h2>Example 1 - No Closure used</h2>
-        <div class="row">
-            <div class="col">
-                <p>Namespacing allows you to protect any variables that you have in your modules from any global scoped variables.</p>
-                <p>This is really important because in any module, you might be using some variables that are already used by other things in that application.</p>
-            </div>
-        </div>
 
 
-        <div class="row">
-            <div class="col-6">
-                <p>(1) Browser discovers doSomeMath() but does nothing to it.</p>
-                <p>(2) The browser then sees doSomeMath() has been called and assigned to a variable, 'theResult'.</p>
-                <p>(3) The browser then runs doSomeMath().</p>
-                <p>(4) The contents of the 'sum' variable inside doSomeMath() is assigned to 'theResult'.</p>
-                <p>(5) The doSomeMath() is CLOSED DOWN and all contents inside are thrown away by the browser.</p>
-                <p>(6) The only thing left is the value inside of 'theResult'.</p>
-                <p>This returns: 'The result 9'</p>
-                <p>In this example, the variable 'ray' has been namespaced.</p>
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">function doSomeMath() {
+
+
+
+
+  <section class="container">
+
+
+
+
+
+
+
+
+
+
+
+    <h2>Example 1 - No Closure used</h2>
+    <div class="row">
+      <div class="col">
+        <p>Namespacing allows you to protect any variables that you have in your modules from any global scoped
+          variables.</p>
+        <p>This is really important because in any module, you might be using some variables that are already used by
+          other things in that application.</p>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-6">
+        <p>(1) Browser discovers doSomeMath() but does nothing to it.</p>
+        <p>(2) The browser then sees doSomeMath() has been called and assigned to a variable, 'theResult'.</p>
+        <p>(3) The browser then runs doSomeMath().</p>
+        <p>(4) The contents of the 'sum' variable inside doSomeMath() is assigned to 'theResult'.</p>
+        <p>(5) The doSomeMath() is CLOSED DOWN and all contents inside are thrown away by the browser.</p>
+        <p>(6) The only thing left is the value inside of 'theResult'.</p>
+        <p>This returns: 'The result 9'</p>
+        <p>In this example, the variable 'ray' has been namespaced.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">function doSomeMath() {
   var a = 5;
   var b = 4;
   var sum = a + b;
@@ -66,32 +93,36 @@
 var theResult = doSomeMath();
 
 console.log("The result: ", theResult);</span></span></pre>
-            </div>
-        </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
 
 
 
 
-    <section class="container">
-        <h2>Example 2 - Closure used</h2>
-        <div class="row">
-            <div class="col">
-                <p>Namespacing allows you to protect any variables that you have in your modules from any global scoped variables.</p>
-                <p>This is really important because in any module, you might be using some variables that are already used by other things in that application.</p>
-            </div>
-        </div>
+  <section class="container">
+    <h2>Example 2 - Closure used</h2>
+    <div class="row">
+      <div class="col">
+        <p>Namespacing allows you to protect any variables that you have in your modules from any global scoped
+          variables.</p>
+        <p>This is really important because in any module, you might be using some variables that are already used by
+          other things in that application.</p>
+      </div>
+    </div>
 
 
-        <div class="row">
-            <div class="col-6">
-                <p>Everything from var a = 5 to 'return multiply' is the Closure.</p>
-                <p>This inside function multiply() relies on variables that have been defined in the outside function. The browser is smart enough to understand these things are related.</p>
-                <p>Even though we've shut down the doSomeMath() function, the browser is going to keep these two variables alive so the multiply() function can still use them.</p>
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">function doSomeMath() {
+    <div class="row">
+      <div class="col-6">
+        <p>Everything from var a = 5 to 'return multiply' is the Closure.</p>
+        <p>This inside function multiply() relies on variables that have been defined in the outside function. The
+          browser is smart enough to understand these things are related.</p>
+        <p>Even though we've shut down the doSomeMath() function, the browser is going to keep these two variables alive
+          so the multiply() function can still use them.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">function doSomeMath() {
   var a = 5;
   var b = 4;
 
@@ -102,49 +133,53 @@ console.log("The result: ", theResult);</span></span></pre>
 
     return multiply;
 }</span></span></pre>
-            </div>
-        </div>
+      </div>
+    </div>
 
-        <h3>What is returned?</h3>
-        <div class="row">
-            <div class="col">
-                <p>The variable 'theResult' does NOT return the value. It returns the function multiply().</p>
+    <h3>What is returned?</h3>
+    <div class="row">
+      <div class="col">
+        <p>The variable 'theResult' does NOT return the value. It returns the function multiply().</p>
 
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-6">
-                <p>To view the result, you'd need to run the variable as a function using ().</p>
-                <p>The value of 20 is returned this time.</p>
-                <img src=../../_img/closure.png></div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">console.log("The result ", theResult<span class="standout">()</span>);</span></pre>
-            </div>
-        </div>
-    </section>
+      </div>
+    </div>
 
 
+    <div class="row">
+      <div class="col-6">
+        <p>To view the result, you'd need to run the variable as a function using ().</p>
+        <p>The value of 20 is returned this time.</p>
+        <img src=../../_img/closure.png>
+      </div>
+      <div class="col-6">
+        <pre
+          class="example"><span class="code-js">console.log("The result ", theResult<span class="standout">()</span>);</span></pre>
+      </div>
+    </div>
+  </section>
 
 
-    <section class="container">
-        <h2>Another example</h2>
-        <div class="row">
-            <div class="col">
-                <p>Namespacing allows you to protect any variables that you have in your modules from any global scoped variables.</p>
-                <p>This is really important because in any module, you might be using some variables that are already used by other things in that application.</p>
-            </div>
-        </div>
 
 
-        <div class="row">
-            <div class="col-6">
-                <p>Everything from var baseValue to return doTheMath is the Closure.</p>
-                <p>Use () on the variables to return the value of the inner function.</p>
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">function giveMeEms(pixels) {
+  <section class="container">
+    <h2>Another example</h2>
+    <div class="row">
+      <div class="col">
+        <p>Namespacing allows you to protect any variables that you have in your modules from any global scoped
+          variables.</p>
+        <p>This is really important because in any module, you might be using some variables that are already used by
+          other things in that application.</p>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-6">
+        <p>Everything from var baseValue to return doTheMath is the Closure.</p>
+        <p>Use () on the variables to return the value of the inner function.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">function giveMeEms(pixels) {
   var baseValue = 16;
 
   function doTheMath() {
@@ -160,29 +195,187 @@ var largeSize = giveMeEms(24);
 console.log("Small size: ", smallSize<span class="standout">()</span> );
 console.log("Medium size: ", mediumSize<span class="standout">()</span> );
 console.log("Large size: ", largeSize<span class="standout">()</span> );</span></span></pre>
-            </div>
-        </div>
+      </div>
+    </div>
 
 
-        <h2>Global variables</h2>
-        <div class="row">
-            <div class="col">
-                <p>A variable declared outside a function, becomes GLOBAL.</p>
-                <p>A global variable has global scope: All scripts and functions on a web page can access it.</p>
-                <p>Global variables can be used (and changed) by all scripts in the page (and in the window).</p>
-                <p>However, Global variables can be made local (private) with closures.</p>
-            </div>
-        </div>
 
-        <h3>The problem with Global variables</h3>
 
-        <div class="row">
-            <div class="col-6">
-                <p>The problem with Global variables is that ANY script can call them. When they do, the value changes. So you can't be assured of what the current value is.</p>
-                <p>For example, the function add() is ran three times. This changes the Global variable from 0 to 3.</p>
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">var counter = 0;
+
+
+
+
+
+
+    <h2>Another example</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>When secureBooking() is assigned to 'booker', the secureBooking() function is removed from memory.</p>
+        <p>But, 'booker' still has access to all of the variables within it. This is how Closures work. <strong>Any
+            function always has access to the variable environment of the Execution Context in which the function was
+            created.</strong> Even after that Execution Context no longer exists.</p>
+        <p>The Closure is then the variable environment attached to the function, exactly as it was at the time and
+          place the function was created.</p>
+        <p>So the scope chain is preserved by the Closure.</p>
+
+        <p>Booker is now a function in the Global scope.</p>
+        <p>This returns: 1 passengers, 1 passengers, 3 passengers.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++
+    console.log(`${passengerCount} passengers`);
+  }
+}
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <h2>View the variable environment of the booker function</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>View the function using console.dir in Chrome.</p>
+
+        <img src="../../_img/closure-scopes.png">
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">console.dir(booker)</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+    <h2>Example</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>f is created.</p>
+        <p>A function expression is created. Inside, f is reassigned.</p>
+        <p>Running g() assigns the value to f.</p>
+        <p>You can then see the result of f() is 46</p>
+        <p>This shows f() closes over any variables in the Execution Context in which it was defined.</p>
+        <p>This is true even when the variable was created OUTSIDE the original function.</p>
+
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">let f;
+
+const g = function() {
+  const a = 23;
+  f = function() {
+    console.log(a * 2);
+  }
+}
+
+g();
+f();</span></pre>
+      </div>
+    </div>
+
+
+
+
+    <h2>Re-assigning f a 2nd time</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>f is created.</p>
+        <p>A function expression is created. Inside, f is reassigned.</p>
+        <p>Running g() assigns the value to f.</p>
+        <p>You can then see the result of f() is 46</p>
+        <br>
+        <p>Then h() reassigns the value of 5 to a NEW function.</p>
+        <p>It's result then uses the variable b.</p>
+        <p>This retuns: 46 and 1554.</p>
+        <p>This also menas f() no longer has the value of a.</p>
+        <p>This shows how the Closure maintains the values of where the Function was born, or re-born.</p>
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">let f;
+
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  }
+}
+
+
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  }
+}
+
+
+g();
+f();
+
+// h() reassigns f to a new function
+h();
+f();</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h1>Global variables</h1>
+    <div class="row">
+      <div class="col">
+        <p>A variable declared outside a function, becomes GLOBAL.</p>
+        <p>A global variable has global scope: All scripts and functions on a web page can access it.</p>
+        <p>Global variables can be used (and changed) by all scripts in the page (and in the window).</p>
+        <p>However, Global variables can be made local (private) with closures.</p>
+      </div>
+    </div>
+
+    <h3>The problem with Global variables</h3>
+
+    <div class="row">
+      <div class="col-6">
+        <p>The problem with Global variables is that ANY script can call them. When they do, the value changes. So you
+          can't be assured of what the current value is.</p>
+        <p>For example, the function add() is ran three times. This changes the Global variable from 0 to 3.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">var counter = 0;
 
   function add() {
   counter += 1;
@@ -191,18 +384,18 @@ console.log("Large size: ", largeSize<span class="standout">()</span> );</span><
 add();
 add();
 add();</span></span></pre>
-            </div>
-        </div>
+      </div>
+    </div>
 
 
-        <h3>Local variable example</h3>
+    <h3>Local variable example</h3>
 
-        <div class="row">
-            <div class="col-6">
-                <p>The result is 1. Nothing adds since it resets itself every time locally within the function.</p>
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">function add() {
+    <div class="row">
+      <div class="col-6">
+        <p>The result is 1. Nothing adds since it resets itself every time locally within the function.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">function add() {
   var counter = 0;
   counter += 1;
   console.log(counter);
@@ -210,22 +403,24 @@ add();</span></span></pre>
 add();
 add();
 add();</span></span></pre>
-            </div>
-        </div>
+      </div>
+    </div>
 
-        <h3>Putt the Global variable in a Closure</h3>
+    <h3>Putt the Global variable in a Closure</h3>
 
-        <div class="row">
-            <div class="col-6">
-                <p>Putting the Global variable in a Closure forces is to read as a local variable.</p>
-                <p>The variable add is assigned the return value of a self-invoking function.</p>
-                <p>The self-invoking function only runs once. It sets the counter to zero (0), and returns a function expression.</p>
-                <p>The counter is protected by the scope of the anonymous function, and can only be changed using the add function.</p>
-                <p>Since add() is ran 3 times, the value of the add variable (when called as a function) is now 3.</p>
-                <p>However, if you run console.log(counter), it checks the Global value, which always remains zero.</p>
-            </div>
-            <div class="col-6">
-<pre class="example"><span class="code-js">var counter = 0;
+    <div class="row">
+      <div class="col-6">
+        <p>Putting the Global variable in a Closure forces is to read as a local variable.</p>
+        <p>The variable add is assigned the return value of a self-invoking function.</p>
+        <p>The self-invoking function only runs once. It sets the counter to zero (0), and returns a function
+          expression.</p>
+        <p>The counter is protected by the scope of the anonymous function, and can only be changed using the add
+          function.</p>
+        <p>Since add() is ran 3 times, the value of the add variable (when called as a function) is now 3.</p>
+        <p>However, if you run console.log(counter), it checks the Global value, which always remains zero.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">var counter = 0;
 
 var add = (function () {
   var counter = 0;
@@ -239,17 +434,75 @@ add();
 add();
 
 console.log(counter);</span></span></pre>
-            </div>
-        </div>
-      </section>
+      </div>
+    </div>
+  </section>
+
+
+
+  <script>
+    'use strict'
+
+    const secureBooking = function () {
+      let passengerCount = 0;
+
+      return function () {
+        passengerCount++
+        console.log(`${passengerCount} passengers`);
+      }
+    }
+
+    const booker = secureBooking();
+
+    // booker();
+    // booker();
+    // booker();
+
+
+    let f;
+
+    const g = function () {
+      const a = 23;
+      f = function () {
+        console.log(a * 2);
+      }
+    }
+
+
+    const h = function () {
+      const b = 777;
+      f = function () {
+        console.log(b * 2);
+      }
+    }
+
+
+    // g();
+    // f();
+
+    // // h() reassigns f to a new function
+    // h();
+    // f();
 
 
 
 
 
 
-        <script src="../../_js/jquery.js"></script>
-        <script src="../../_js/bootstrap.bundle.js"></script>
+    const boardPassengers = function (n, wait) {
+      const perGroup = n / 3;
+
+      // The setTimeout function has 2 args: A function to pass in and the time until it is executed
+      setTimeout(function () {
+
+        console.log(`We are now boarding all ${n} passengers`);
+        console.log(`There are 3 groups with ${perGroup} passengers`)
+      }, wait * 1000);
+      console.log(`Will start boarding in ${wait} seconds`);
+    }
+    
+    boardPassengers(180, 3)
+  </script>
 </body>
 
 </html>

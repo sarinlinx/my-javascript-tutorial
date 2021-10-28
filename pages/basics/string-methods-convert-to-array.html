@@ -2,72 +2,123 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
 
-    <title>String Methods</title>
+  <title>String Methods</title>
 </head>
 
 <body>
-    <a href="../../index.html">Home page</a>
+  <a href="../../index.html">Home page</a>
 
 
 
-    <h1>Converting a String to an Array</h1>
-    <section class="container">
-        <h4>comma</h4>
-        <div class="row">
-            <div class="col-6">
-                <p>Display the first array element, after a string split from a comma.</p>
-                <p>This returns: a</p>
+  <h1>Converting a String to an Array</h1>
+  <section class="container">
 
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">var str = "a,b,c,d,e,f";
-var arr = str.split(",");</pre>
-            </div>
-        </div>
-        <h4>pipe</h4>
-        <div class="row">
-            <div class="col-6">
-                <p>Display the first array element, after a string split from a |.</p>
-                <p>This returns: a,b,c</p>
 
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">var str = "a,b,c|d,e,f";
-var arr = str.split("|");</pre>
-            </div>
-        </div>
-        <h4>space</h4>
-        <div class="row">
-            <div class="col-6">
-                <p>Display the first array elements, after a string split from a space.</p>
-                <p>This returns: a,b,c,d,e</p>
+    <h3>comma</h3>
+    <div class="row">
+      <div class="col-6">
+        <p>This splits the string elements into an Array.</p>
+        <p>This returns an Array: [a, b, c, d, e, f]</p>
 
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">var str = "a,b,c,d,e f";
-var arr = str.split(" ");</pre>
-            </div>
-        </div>
-    </section>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">let str = "a,b,c,d,e,f";
+let arr = str.split(",");
+console.log(arr)</pre>
+      </div>
+    </div>
+
+
+
+
+    <h3>pipe</h3>
+    <div class="row">
+      <div class="col-6">
+        <p>This creates and Array where the first index is everything before the |, and the 2nd index is everything after.</p>
+        <p>This returns an Arry: ["a,b,c", "d,e,f"]</p>
+
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">let str = "a,b,c|d,e,f";
+let arr = str.split("|");
+console.log(arr)</pre>
+      </div>
+    </div>
 
 
 
 
 
+    <h3>space</h3>
+    <div class="row">
+      <div class="col-6">
+        <p>This creates and Array where the first index is everything before the space, and everything after is the 2nd index.</p>
+        <p>This returns: ["a, b, c, d, e", "f"]</p>
+
+      </div>
+      <div class="col-6">
+<pre class="example"><span class="code-js">let str = "a,b,c,d,e f";
+let arr = str.split(" ");
+console.log(arr)</pre>
+      </div>
+    </div>
 
 
 
 
-    <script src="../../_js/jquery.js "></script>
-    <script src="../../_js/bootstrap.bundle.js "></script>
+    
+    <h3>+ sign</h3>
+    <div class="row">
+      <div class="col-6">
+       <p>This returns: [ "a", "very", "nice", "string" ]</p>
+
+      </div>
+      <div class="col-6">
+<pre class="example"><span class="code-js">let str = "a+very+nice+string";
+let arr = str.split("+");
+console.log(arr)</pre>
+      </div>
+    </div>
+
+
+
+    <h3>Destructure to create the Array</h3>
+    <div class="row">
+      <div class="col-6">
+       <p>This returns: Firstname Lastname</p>
+
+      </div>
+      <div class="col-6">
+<pre class="example"><span class="code-js">const [firstName, lastName] = 'Firstname Lastname'.split(' ');
+console.log(firstName, lastName)</pre>
+      </div>
+    </div>
+
+
+
+  </section>
+
+
+
+
+
+
+  <script>
+    let str = "a+very+nice+string";
+    let arr = str.split("+");
+    console.log(arr)
+    
+    const [firstName, lastName] = 'Firstname Lastname'.split(' ');
+    console.log(firstName, lastName)
+    </script>
 </body>
 
 </html>

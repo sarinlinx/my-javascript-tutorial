@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>call and apply methods</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+  <section class="container">
+
+    <h1>call, apply, bind</h1>
+    <h2>Example the fails</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>This example creates an Object with a method named book.</p>
+        <p>This method uses the 'this' keyword.</p>
+        <p>The method is assigned to a variable named book.</p>
+        <p>It fails when called like this: book(23, 'Sarah Williams'). This is because it doesn't know how to use the
+          'this' keyword.</p>
+        <p>This fails with the error: Uncaught TypeError: Cannot read properties of undefined (reading 'airline')
+          at book (call-and-apply-methods.html:84)
+          at call-and-apply-methods.html:106</p>
+      </div>
+      <div class="col-7">
+        <pre class="example"><span class="code-js">const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  <span class="code-comment">//  book: function() {}</span>
+  book(flightNum, name) {
+    console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name })
+  }
+}
+
+lufthansa.book(239, 'Jonas');
+console.log(lufthansa)
+
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: []
+}
+
+<span class="code-comment">// create new function call to book()
+// since it's not a method anymore, you cannot use the 'this' keyword</span>
+const book = lufthansa.book;
+
+<span class="code-comment">// this call will not work because the function book() doesn't know how to refer to the 'this' keyword
+// how to tell JavaScript how 'this' should be used
+// use call, apply, or bind</span>
+book(23, 'Sarah Williams');</span></span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h1>The call method</h1>
+    <p>The call method allows you to choose where the 'this' keyword originates.</p>
+
+    <div class="row">
+      <div class="col-5">
+        <p>So this time, we did actually not call the book function ourselves. Instead, we called the call method and
+          it's then this call method, which will call the book function with the this keyword set to eurowings.</p>
+        <p>The first argument is what you want 'this' to point to.</p>
+        <p>The rest are normal arguments.</p>
+        <p>This prints: Sarah Williams booked a seat on undefined flight EW23.</p>
+        <p>Make sure the properties are the same.</p>
+      </div>
+      <div class="col-7">
+        <pre class="example"><span class="code-js">book.call(eurowings, 23, 'Sarah Williams');</span></span></pre>
+      </div>
+    </div>
+
+    <h2>Viewing the Object</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>This shows the eurowings Object with the Array named bookings filled with this new data.</p>
+        <p>This confirms the 'this' keyword was used on this Object.</p>
+      </div>
+      <div class="col-7">
+        <pre class="example"><span class="code-js">console.log(eurowings);</span></span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <h1>The apply method</h1>
+    <p>Similar to the call method, but it does not receive a list of arguments after the 'this' keyword</p>
+    <p>It takes an Array of arguments.</p>
+    <p>First argument is where 'this' keyword points to.</p>
+    <p>This isn't used as much these days. Using call() with the spread operator is more common.</p>
+
+    <div class="row">
+      <div class="col-5">
+        <p>This prints: George Cooper booked a seat on Lufthansa flight LH583</p>
+      </div>
+      <div class="col-7">
+        <pre class="example"><span class="code-js">const flightData = [583, 'George Cooper'];
+// pass in Array
+book.apply(lufthansa, flightData)</span></span></pre>
+      </div>
+    </div>
+
+
+    <h2>Using call with the spread operator</h2>
+
+    <p>The apply() method isn't used as much these days. Using call() with the spread operator is more common.</p>
+
+    <div class="row">
+      <div class="col-5">
+        <p>This prints: George Cooper booked a seat on Lufthansa flight LH583</p>
+      </div>
+      <div class="col-7">
+        <pre class="example"><span class="code-js">book.call(lufthansa, ...flightData)</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h1>bind method</h1>
+    <p>Similar to the call method, the difference is that bind does not immediately call the function.
+      Instead it returns a new function where this keyword is bound.</p>
+    <p>So it's set to whatever value we pass into bind.</p>
+
+
+    <h2>Example</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>this returns a new function where this keyword is set to eurowings</p>
+        <p>You can then run it normally with arguments.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">const bookEW = book.bind(eurowings);
+
+bookEW(23, 'Steven Williams');</span></pre>
+      </div>
+    </div>
+
+
+
+
+    <h2>NaN and 'this' keyword example</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>This returns NaN because in an event handler function, 'this' points to the element the handler is attached to</p>
+      </div>
+
+      <div class="col-7">
+<pre class="example"><span class="code-html">&lt;button class="buy"&gt;Buy new plane&lt;/button&gt;</span>
+  
+<span class="code-js">const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  //  book: function() {}
+  book(flightNum, name) {
+    console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name })
+  }
+}
+
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  // in an event handler function, 'this' points to the element the handler is attached to
+  this.planes++
+  console.log(this.planes)
+}
+
+
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane)</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <h3>Solution</h3>
+    <div class="row">
+      <div class="col-5">
+        <p>Calling the method directly <strong>lufthansa.buyPlane();</strong> works outside of the Event Listener.</p>
+        <p>To get the Event Listener to work, you need to use .bind() and set its keyword to lufthansa.</p>
+      </div>
+
+      <div class="col-7">
+<pre class="example"><span class="code-js">const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  //  book: function() {}
+  book(flightNum, name) {
+    console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name })
+  }
+}
+
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  // in an event handler function, 'this' points to the element the handler is attached to
+  this.planes++
+  console.log(this.planes)
+}
+
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane<span class="code-highlight">.bind(lufthansa))</span></span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <h2>Partial Application example</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>Partial Application means you can preset parameters.</p>
+        <p>This example sets a new value for the 'rate'.</p>
+        <p>This uses bind() to create a new specific function based off the general function.</p>
+      </div>
+
+    <div class="col-7">
+<pre class="example"><span class="code-js">const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.10, 200));
+
+// since the first parameter in bind() is the location of this keyword, add null because this example does not have a 'this' keyword.
+// this sets a new rate value
+const addVAT = addTax.bind(null, 0.23);
+
+console.log(addVAT(100))</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+  </section>
+
+
+<button class="buy">Buy new plane</button>
+
+  <script>'use strict'
+
+    const lufthansa = {
+      airline: 'Lufthansa',
+      iataCode: 'LH',
+      bookings: [],
+      //  book: function() {}
+      book(flightNum, name) {
+        console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+
+        this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name })
+      }
+    }
+
+    // lufthansa.book(239, 'Jonas');
+    // console.log(lufthansa)
+
+
+    const eurowings = {
+      airline: 'Eurowings',
+      iataCode: 'EW',
+      bookings: []
+    }
+
+    // create new function call to book()
+    // since it's not a method anymore, you cannot use the 'this' keyword
+    const book = lufthansa.book;
+
+    // how to tell JavaScript how 'this' should be used
+    // use call, apply, or bind
+    // book(23, 'Sarah Williams');
+
+    // call is a method of this function
+    // first argument is what you want 'this' to point to
+    // book.call(eurowings, 23, 'Sarah Williams');
+    // console.log(eurowings);
+
+
+    const flightData = [583, 'George Cooper'];
+    // pass in Array
+    // book.apply(lufthansa, flightData)
+
+    // book.call(lufthansa, ...flightData)
+
+    //this returns a new function where this keyword is set to eurowings
+    const bookEW = book.bind(eurowings);
+
+    // bookEW(23, 'Steven Williams');
+
+
+
+    // event listeners
+    lufthansa.planes = 300;
+    lufthansa.buyPlane = function () {
+      // in an event handler function, 'this' points to the element the handler is attached to
+      this.planes++
+      console.log(this.planes)
+    }
+
+// lufthansa.buyPlane();
+
+//     document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa))
+
+
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.10, 200));
+
+// since the first parameter in bind() is the location of this keyword, add null because this example does not have a 'this' keyword.
+// this sets a new rate value
+const addVAT = addTax.bind(null, 0.23);
+
+console.log(addVAT(100))
+
+  </script>
+</body>
+
+</html>

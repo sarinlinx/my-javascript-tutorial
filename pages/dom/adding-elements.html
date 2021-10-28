@@ -2,48 +2,56 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
 
-    <title>Adding DOM elements</title>
+  <title>Adding DOM elements</title>
 </head>
 
 <body>
-    <a href="../../index.html">Home page</a>
+  <a href="../../index.html">Home page</a>
 
 
-    <section class="container">
-        <h1>Adding new DOM elements</h1>
-        <div class="row">
-            <div class="col">
-                <p>Steps to add a new DOM element.</p>
-                <ul>
-                  <li>Create the element using <span class="standout"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement" target="_blank">.createElement()</a></span></li>
-                  <li>Create text that goes inside the elmenet using <span class="standout"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode" target="_blank">.createTextNode()</a></span></li>
-                  <li>Add text to the new element using <span class="standout"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild" target="_blank">.appendChild()</a></span></li>
-                  <li>Add the new element to an existing element using <span class="standout"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild" target="_blank">.appendChild()</a></span></li>
-                </ul>
+  <section class="container">
+    <h1>Adding new DOM elements</h1>
+    <div class="row">
+      <div class="col">
+        <p>Steps to add a new DOM element.</p>
+        <ul>
+          <li>Create the element using <span class="standout"><a
+                href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement"
+                target="_blank">.createElement()</a></span></li>
+          <li>Create text that goes inside the elmenet using <span class="standout"><a
+                href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode"
+                target="_blank">.createTextNode()</a></span></li>
+          <li>Add text to the new element using <span class="standout"><a
+                href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild"
+                target="_blank">.appendChild()</a></span></li>
+          <li>Add the new element to an existing element using <span class="standout"><a
+                href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild"
+                target="_blank">.appendChild()</a></span></li>
+        </ul>
 
-            </div>
-        </div>
+      </div>
+    </div>
 
 
 
-        <h3>Adding a new DOM element</h3>
+    <h3>Adding a new DOM element</h3>
 
-        <div class="row">
-            <div class="col-6">
-                <p>This creats a new element titled &lt;figcaption&gt; with text inside</p>
-                <p>If you check dev tools, you'll see the new code has been added to the DOM.</p>
-            </div>
+    <div class="row">
+      <div class="col-6">
+        <p>This creats a new element titled &lt;figcaption&gt; with text inside</p>
+        <p>If you check dev tools, you'll see the new code has been added to the DOM.</p>
+      </div>
 
-            <div class="col-6">
-                <pre class="example"><span class="code-html">&lt;figure class="featured-image"&gt;
+      <div class="col-6">
+        <pre class="example"><span class="code-html">&lt;figure class="featured-image"&gt;
 &lt;img src="../_img/note.jpg"&gt;
 &lt;/figure&gt;</span>
 
@@ -66,50 +74,144 @@ captionElement.appendChild(captionText);
 <span class="code-comment">//Add new figcaption element to the featured image figure</span>
 FEATURED.appendChild(captionElement);</span></span></pre>
 
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h3>Adding a new DOM element</h3>
-
-<div class="row">
-    <div class="col-6">
-        <p>This adds another paragraph to the page using appendChild()</p>
+      </div>
     </div>
 
-    <div class="col-6">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h3>Adding a new DOM element</h3>
+
+    <div class="row">
+      <div class="col-6">
+        <p>This adds another paragraph to the page using appendChild()</p>
+      </div>
+
+      <div class="col-6">
         <pre class="example"><span class="code-js"><span class="code-comment">// Add a new element</span>
 const newParagraph = document.createElement('p')
 newParagraph.textContent = 'This is a new element from JavaScript'
 document.querySelector('body').appendChild(newParagraph)</span></span></pre>
-</div>
-</div>
-</section>
+      </div>
+    </div>
 
 
 
 
-    <script src="../../_js/jquery.js"></script>
-    <script src="../../_js/bootstrap.bundle.js"></script>
+
+
+
+
+    <h3>Adding to the DOM with a template literal</h3>
+
+    <div class="row">
+      <div class="col-6">
+        <p>This adds HTML after a div tag with the class of movements.</p>
+        <p>Assign a variable to the .movements element.</p>
+        <p>Next is an Object with a nested Array namved 'movements'.</p>
+        <p>Create a Function expression that contains a forEach loop</p>
+        <p>This loop contains variables that are used in a template literal.</p>
+        <p>The template literal builds the new HTML.</p>
+        <p>Call the original variable for the DOM element. Use insertAdjacentHTML to add HTML just after the beginning
+          of this element.</p>
+        <p>This takes 2 arguments. The 1st is position to attach the HTML (afterbegin).</p>
+        <p>The 2nd is the HTML string you are inserting.</p>
+      </div>
+
+      <div class="col-6">
+<pre class="example"><span class="code-html">&lt;div class="movements"&gt;&lt;/div&gt;</span>
+  
+<span class="code-js">const containerMovements = document.querySelector('.movements');
+
+const account1 = {
+  movements: [200, 450, -400]
+};
+
+const displayMovements = function (x) {
+  x.forEach(function (mov, i) {
+
+    const type = mov > 0 ? 'deposit' : 'withdrawl'
+
+    const html = `&lt;div class="movements__row"&gt;
+    &lt;div class="movements__type movements__type--${type}">${i + 1} ${type}&lt;/div&gt;     
+    &lt;div class="movements__value">${mov}&lt;/div&gt;
+    &lt;/div&gt;
+    `;
+    <span class="code-comment">// add this to the element you're adding to
+    // 2 arguments
+    // 1st is position to attach the HTML
+    // 2nd is string you are inserting</span>
+    containerMovements.insertAdjacentHTML('afterbegin', html)
+  });
+}
+
+displayMovements(account1.movements)</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+  </section>
+  <div class="movements">
+
+  </div>
+  <script>'use strict'
+
+    const containerMovements = document.querySelector('.movements');
+
+    const account1 = {
+      movements: [200, 450, -400]
+    };
+
+    const displayMovements = function (x) {
+      x.forEach(function (mov, i) {
+
+        const type = mov > 0 ? 'deposit' : 'withdrawl'
+
+        const html = `<div class="movements__row">
+          <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>     
+          <div class="movements__value">${mov}</div>
+        </div>
+        `;
+        // add this to the element you're adding to
+        // 2 arguments
+        // 1st is position to attach the HTML
+        // 2nd is string you are inserting
+        containerMovements.insertAdjacentHTML('afterbegin', html)
+      });
+    }
+
+    displayMovements(account1.movements)
+
+
+
+
+  </script>
+
 </body>
 
 </html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Callback functions</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+  <section class="container">
+    <h2>Callback functions</h2>
+
+    <div class="row">
+      <div class="col">
+        <p>Callback functions are used heavily in JavaScript.</p>
+        <p>It simplifies code into reuseable parts.</p>
+        <p>More importantly, callback functions allow us to create abstraction.</p>
+        <p>basically what abstract and means, is that we hide the detail of some code implementation because we don't
+          really care about all that detail.</p>
+        <p> this allows us to think about problems at a higher more abstract level. And so that's why it's called an
+          abstruction.</p>
+
+      </div>
+    </div>
+
+    <h2>Example</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>Call the transformer() and pass into it a callback function</p>
+        <p>They are called this because you are not calling them. JavaScript calls them later in the code.</p>
+        <p>The function value is passed into the transformer().</p>
+        <p>transformer() calls the callback functions.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">const oneWord = function (str) {
+  <span class="code-comment">// return string without spaces</span>
+  return str.replace(/ /g, '').toLowerCase();
+}
+
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+};
+
+<span class="code-comment">// Higher Order Function</span>
+const transformer = function (str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+
+  <span class="code-comment">// .name is a property of any function</span>
+  console.log(`Transformed by: ${fn.name}`);
+}
+
+<span class="code-comment">// only the function value is passed in, it is NOT being called</span>
+transformer('JavaScript is the best', upperFirstWord);
+transformer('JavaScript is the best', oneWord);</span></span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <h2>EventListener Example</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>This uses a callback function so the addEventListener knows wht to do when it sees a click.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">const high5 = function () {
+          console.log('Hi')
+        };
+          
+        document.body.addEventListener('click', high5);</span></span></pre>
+      </div>
+    </div>
+  </section>
+
+
+
+  <script>
+    const oneWord = function (str) {
+      // return string without spaces
+      return str.replace(/ /g, '').toLowerCase();
+    }
+
+    const upperFirstWord = function (str) {
+      const [first, ...others] = str.split(' ');
+      return [first.toUpperCase(), ...others].join(' ');
+    };
+
+    // Higher Order Function
+    const transformer = function (str, fn) {
+      console.log(`Original string: ${str}`);
+      console.log(`Transformed string: ${fn(str)}`);
+
+      // .name is a property of any function
+      console.log(`Transformed by: ${fn.name}`);
+    }
+
+    // only the function value is passed in, it is NOT being called
+    transformer('JavaScript is the best', upperFirstWord);
+    transformer('JavaScript is the best', oneWord);
+  </script>
+</body>
+
+</html>

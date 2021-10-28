@@ -25,6 +25,7 @@
                 <p>Good when you want to execute something only once, or immediately.</p>
                 <p>Function expressions will execute automatically if the expression is followed by ().</p>
                 <p>This function is actually an anonymous self-invoking function (function without name). AKA 'anonymous closure'.</p>
+                <p>Originally used for protecting variables from the Global scope, but these days you can do this using const.</p>
             </div>
         </div>
         <h3>Why use IIFE?</h3>
@@ -43,7 +44,7 @@
         <h3>Option 1</h3>
         <div class="row">
             <div class="col-6">
-                <p>Wrap the function in parenthesis. Encapsulating the function in parentheses protect the variables from the global scope.</p>
+                <p>Wrap the function in parenthesis. <strong>Encapsulating the function in parentheses protect the variables from the global scope</strong>.</p>
                 <p>The () is after the function has closed.</p>
             </div>
 
@@ -97,6 +98,22 @@ console.log(theBiggest);</span></pre>
                 <pre class="example"><span class="code-js"><span class="standout">!</span> function(){
   // some code…
 } <span class="standout">()</span>;</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+        <h3>Immediately Invoked Arrow Function</h3>
+        <div class="row">
+            <div class="col-6">
+                <p>The ! takes the place of parenthesis.</p>
+                <p>The () is inside the function.</p>
+            </div>
+
+            <div class="col-6">
+                <pre class="example"><span class="code-js">(() => console.log("Test")) ();</span></pre>
             </div>
         </div>
 
@@ -170,10 +187,9 @@ console.log(theBiggest);</span></pre>
 
     </section>
 
-
-
-    <script src="../../_js/jquery.js"></script>
-    <script src="../../_js/bootstrap.bundle.js"></script>
+<script>
+(() => console.log("Test Arrow")) ();
+  </script>
 </body>
 
 </html>
