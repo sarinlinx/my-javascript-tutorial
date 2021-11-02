@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Retrieving elements</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+  <section class="container">
+    <h1>Methods to retrieve elements</h1>
+    <h2>Older methods</h2>
+    <div class="row">
+      <div class="col">
+        <p>These are old methods which are good for forms or if you want your code to be unambiguous.</p>
+      </div>
+    </div>
+
+   
+
+    <div class="row">
+      <div class="col-6">
+        <p>Get elements with specific ID.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">document.getElementById("some-ID");</span></pre>
+      </div>
+    </div>
+
+
+    <p>NOTE: The following two return an HTMLCollection, not a node list.</p>
+    <p>An HTMLCollection is a live collection. If the DOM changes, this collection is also updated.</p>
+
+    <div class="row">
+      <div class="col-6">
+        <p>Get all element with a specified class name as array.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">document.getElementsByClassName("classname");</span></pre>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-6">
+        <p>Get all elements with specified HTML tag as array.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">document.getElementsByTagName("HTML tag");</span></pre>
+      </div>
+    </div>
+
+    <h2>Newer methods</h2>
+    <div class="row">
+      <div class="col">
+        <p>These are easier to use.</p>
+      </div>
+    </div>
+
+    <h3>querySelector()</h3>
+    <div class="alert alert-note">
+      <div class="alert-icon">
+        <img src="../../_img/note-icon.png" width="60" height="60">
+      </div>
+      <div class="alert-content">
+        <p>These must be triggered. A button click is used below.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <p>querySelector. Get the first element matching specified selectors.</p>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector"
+              target="_blank">querySelector</a></li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">document.querySelector(".main-nav a");</span></pre>
+      </div>
+    </div>
+
+
+    <h4>Retrieve the text inside the element (by class)</h4>
+    <div class="row">
+      <div class="col-6">
+        <p>This example retrieves the HTML inside the element.</p>
+        <p>This returns: <span class="standout">&lt;p&gt;Main Title&lt;/p&gt;</span></p>
+        <p>Note that everything inside the .main-title class is returned, even the paragraph tags.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-html">&lt;div class="main-title"&gt;&lt;p&gt;Main Title&lt;/p&gt;&lt;/div&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+  var innerhtml = <span class="standout">document.querySelector(".main-title").innerHTML;</span>
+  alert(innerhtml);
+}</span></pre>
+      </div>
+    </div>
+
+
+
+    <h4>Retrieve the HTML and text of an element (by class)</h4>
+    <div class="row">
+      <div class="col-6">
+        <p>This example retrieves the HTML around the element.</p>
+        <p>This returns: <span class="standout">&lt;div class="main-title"&gt;&lt;p&gt;Main
+            Title&lt;/p&gt;&lt;/div&gt;</span></p>
+
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-html">&lt;div class="main-title"&gt;&lt;p&gt;Main Title&lt;/p&gt;&lt;/div&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+  var outerhtml = <span class="standout">document.querySelector(".main-title").outerHTML;</span>
+  alert(outerhtml);
+}</span></pre>
+      </div>
+    </div>
+
+
+
+
+    <h4>Change the text inside an element (by class)</h4>
+    <div class="row">
+      <div class="col-6">
+        <p>This example retrieves the HTML inside the element, then uses innerHTML = to change it to something else.</p>
+        <p>This returns: <span class="standout">&lt;p&gt;New Title&lt;/p&gt;</span></p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-html">&lt;div class="main-title"&gt;Main Title&lt;/div&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+  var innerhtml = <span class="standout">document.querySelector(".main-title").innerHTML = "New Title";</span>
+}</span></pre>
+      </div>
+    </div>
+
+    <h4>Change the ID of an element</h4>
+    <div class="row">
+      <div class="col-6">
+        <p>This changes the 'id' attribute of an element.</p>
+        <p>This changes the id of 'firstID' to 'secondID'.</p>
+        <p>You can see this since the second alert box is different.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-html">&lt;p id="firstID"&gt;First paragraph&lt;/p&gt;
+&lt;button onclick="myFunction()"&gt;Click to change&lt;/button&gt;</span>
+
+<span class="code-js">function myFunction() {
+  var firstID = document.querySelector("#firstID").id;
+  alert(firstID);
+  var firstID = <span class="standout">document.querySelector("#firstID").id = "secondID";</span>
+  alert(firstID);
+}</span></pre>
+      </div>
+    </div>
+
+
+    <h4>Remove elements when button is clicked</h4>
+    <div class="row">
+      <div class="col-6">
+        <p>This removes all elements with a class of .note when the button is clicked.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-html">&lt;p class="note"&gt;This application was created by Andrew Mead&lt;/p&gt;
+&lt;p class="note"&gt;Some note text&lt;/p&gt;
+&lt;button id="remove-all"&gt;Remove All Notes&lt;/button&gt;</span>
+
+<span class="code-js">document.querySelector('#remove-all').addEventListener('click', function () {
+    document.querySelectorAll('.note').forEach(function( note) {
+        note.remove()
+    })
+})</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <h4>Retrieve text using textContent property</h4>
+    <div class="row">
+      <div class="col-6">
+        <p>textContent() returns the text of an element.</p>
+      </div>
+      <div class="col-6">
+        <pre
+          class="example"><span class="code-js">console.log(document.querySelector('.message').textContent);</span></pre>
+      </div>
+    </div>
+
+
+
+    <h4>Set text using textContent property</h4>
+    <div class="row">
+      <div class="col-6">
+        <p>textContent() returns the text of an element.</p>
+      </div>
+      <div class="col-6">
+        <pre
+          class="example"><span class="code-js">document.querySelector('.message').textContent = '🎉 Correct Number!';</span></pre>
+      </div>
+    </div>
+
+
+    <h4>Set value using textContent property</h4>
+    <div class="row">
+      <div class="col-6">
+        <p>##########</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">document.querySelector('.guess').value = 23;
+                  console.log(document.querySelector('.guess').value);</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h3>querySelectorAll</h3>
+    <div class="row">
+      <div class="col-6">
+        <p>querySelectorAll. This returns a node list of all elements that match the specified selectors.</p>
+        <p>This example retrieves all paragraph tags.</p>
+        <p>You can then alter them.</p>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll"
+              target="_blank">querySelectorAll</a></li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-html">&lt;p&gt;Paragraph 1&lt;/p&gt;
+&lt;p&gt;Paragraph 2&lt;/p&gt;
+&lt;p&gt;Paragraph 3&lt;/p&gt;</span>
+
+<span class="code-js">document.querySelectorAll("a");
+</span></pre>
+      </div>
+    </div>
+
+    <h4>Change all paragraph content to *</h3>
+      <div class="row">
+        <div class="col-6">
+          <p>This queries all paragraph tags.</p>
+          <p>They are then looped through and their content changed.</p>
+          <p>textContent is a property</p>
+
+        </div>
+        <div class="col-6">
+          <pre class="example"><span class="code-js">const ps = document.querySelectorAll('p')
+
+ps.forEach(function (p) {
+    p.textContent = '******'
+})</span></pre>
+        </div>
+      </div>
+
+      <h4>Remove an element</h3>
+        <div class="row">
+          <div class="col-6">
+            <p>Use the remove() method to remove an element.</p>
+
+          </div>
+          <div class="col-6">
+            <pre class="example"><span class="code-js">const ps = document.querySelectorAll('p')
+
+ps.forEach(function (p) {
+    p.remove()
+})</span></pre>
+          </div>
+        </div>
+
+        <h4>Remove paragraphs that contain the word 'the'</h3>
+          <div class="row">
+            <div class="col-6">
+              <p>This removes all paragraphs that contain the word 'the'.</p>
+
+            </div>
+            <div class="col-6">
+              <pre class="example"><span class="code-js">const paragraphs = document.querySelectorAll('p')
+
+paragraphs.forEach(function (paragraph) {
+  if (paragraph.textContent.includes('the')) {
+    paragraph.remove()
+  }
+})</span></pre>
+            </div>
+          </div>
+
+
+
+          <h4>Capturing text input</h3>
+            <div class="row">
+              <div class="col-6">
+                <p>This prints to the console what you're typing.</p>
+
+              </div>
+              <div class="col-6">
+                <pre class="example"><span class="code-html">&lt;input id="search-text" type="text" placeholder="Filter todos"&gt;</span>
+
+<span class="code-js"><span class="code-comment">//the 'input' event fires on every character change</span>
+document.querySelector('#search-text').addEventListener('input', function (e) {
+    console.log(e.target.value)
+})</span></pre>
+              </div>
+            </div>
+
+
+  </section>
+
+
+
+
+
+
+
+  <script src="../../_js/jquery.js"></script>
+  <script src="../../_js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

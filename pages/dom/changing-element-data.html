@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Changing element data</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+  <section class="container">
+
+
+    <h1>Methods to add data to elements in the DOM</h1>
+    <div class="row">
+      <div class="col">
+        <p>This section lists different ways to add data to elements in the DOM.</p>
+
+
+
+        <h2>createElement()</h2>
+        <div class="row">
+          <div class="col-5">
+            <p><span class="standout"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement"
+                  target="_blank">.createElement()</a></span> creates a new element but does not add it to the DOM.</p>
+          </div>
+          <div class="col-7">
+            <pre class="example"><span class="code-js">const message = document.createElement('div');</span></pre>
+          </div>
+        </div>
+
+
+
+
+        <h2>createTextNode()</h2>
+        <div class="row">
+          <div class="col-5">
+            <p><span class="standout"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode"
+                  target="_blank">.createTextNode()</a></span> creates text that goes inside the elmenet.</p>
+            <p>This prints: Testing new text to add</p>
+          </div>
+          <div class="col-7">
+            <pre class="example"><span class="code-html">&lt;p id="p1"&gt;Testing &lt;/p&gt;</span>
+              
+<span class="code-js">let newText = document.<span class="code-highlight">createTextNode('new text to add')</span>;
+let paragraph1 = document.getElementById("p1");
+paragraph1.appendChild(newText);</span></pre>
+          </div>
+        </div>
+
+
+
+
+
+
+
+        <h2>textContent()</h2>
+        <div class="row">
+          <div class="col-5">
+            <p><span class="standout"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent"
+                  target="_blank">textContent()</a></span> changes the text within an element.</p>
+            <p>It cannot adjust HTML.</p>
+            <p>This prints: We use cookies for analytics</p>
+          </div>
+          <div class="col-7">
+            <pre class="example"><span class="code-html">&lt;p id="p1"&gt;Testing &lt;/p&gt;</span>
+              
+<span class="code-js">const message = document.querySelector('#test1');
+message.textContent = 'We use cookies for analytics.';</span></pre>
+          </div>
+        </div>
+
+
+
+
+        <h2>innerHTML()</h2>
+        <div class="row">
+          <div class="col-5">
+            <p><span class="standout"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML"
+                  target="_blank">innerHTML()</a></span> can either:</p>
+            <ul>
+              <li>change the text within an element (if only text is entered)</li>
+              <li>Add HTML to an element</li>
+            </ul>
+            <p>This example surrounds the text in strong tags.</p>
+          </div>
+          <div class="col-7">
+            <pre class="example"><span class="code-html">&lt;p id="p1"&gt;Testing &lt;/p&gt;</span>
+              
+<span class="code-js">const message = document.querySelector('#test1');
+message.innerHTML = '&lt;strong&gt;We use cookies for analytics.&lt;/strong&gt;';</span></pre>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+  </section>
+  
+
+</body>
+
+</html>

@@ -21,20 +21,39 @@
     <h1>Adding new DOM elements</h1>
     <div class="row">
       <div class="col">
-        <p>Steps to add a new DOM element.</p>
+        <p>This page lists different ways to add, edit, and remove DOM elements.</p>
+      </div>
+    </div>
+
+
+
+
+    <h1>insertAdjacentHTML</h1>
+    <div class="row">
+      <div class="col">
         <ul>
-          <li>Create the element using <span class="standout"><a
-                href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement"
-                target="_blank">.createElement()</a></span></li>
-          <li>Create text that goes inside the elmenet using <span class="standout"><a
-                href="https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode"
-                target="_blank">.createTextNode()</a></span></li>
-          <li>Add text to the new element using <span class="standout"><a
-                href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild"
-                target="_blank">.appendChild()</a></span></li>
-          <li>Add the new element to an existing element using <span class="standout"><a
-                href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild"
-                target="_blank">.appendChild()</a></span></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML"
+              target="_blank">insertAdjacentHTML</a></li>
+        </ul>
+        <p>insertAdjacentHTML inserts nodes into the DOM at a specified location. It uses one of 4 options:</p>
+
+        <ul>
+          <li>
+            <code>'beforebegin'</code>: Before the <code>element</code>
+            itself.
+          </li>
+          <li>
+            <code>'afterbegin'</code>: Just inside the
+            <code>element</code>, before its first child.
+          </li>
+          <li>
+            <code>'beforeend'</code>: Just inside the
+            <code>element</code>, after its last child.
+          </li>
+          <li>
+            <code>'afterend'</code>: After the <code>element</code>
+            itself.
+          </li>
         </ul>
 
       </div>
@@ -42,21 +61,516 @@
 
 
 
-    <h3>Adding a new DOM element</h3>
+
+    <h2>beforebegin()</h2>
 
     <div class="row">
-      <div class="col-6">
+      <div class="col-5">
+        <p>This creats a new div element with an id of 'two'.</p>
+        <p>It is added to the DOM before the existing div.</p>
+      </div>
+
+      <div class="col-7">
+        <pre
+          class="example"><span class="code-html">&lt;div id="test1"&gt;
+  &lt;p&gt;Testing insertAdjacentHTML&lt;/p&gt;
+&lt;/div&gt;</span>
+
+<span class="code-js">let getEl = document.getElementById('test1');
+getEl.insertAdjacentHTML('<span class="code-highlight">beforebegin</span>', '&lt;div id="two">two&lt;/div>');</span></pre>
+
+      </div>
+    </div>
+
+
+    <h4>result</h4>
+
+    <div class="row">
+      <div class="col-5">
+        <p>This shows it was added before the existing div.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-html"><span class="code-highlight">&lt;div id="two"&gt;two&lt;/div&gt;</span>
+
+&lt;div id="test1"&gt;
+  &lt;p&gt;Testing insertAdjacentHTML&lt;/p&gt;
+&lt;/div&gt;</span></pre>
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <h2>afterbegin()</h2>
+
+    <div class="row">
+      <div class="col-5">
+        <p>This creats a new div element with an id of 'two'.</p>
+        <p>It is added just after the opening tag of the existing div.</p>
+      </div>
+
+      <div class="col-7">
+        <pre
+          class="example"><span class="code-html">&lt;div id="test1"&gt;
+  &lt;p&gt;Testing insertAdjacentHTML&lt;/p&gt;
+&lt;/div&gt;</span>
+
+<span class="code-js">let getEl = document.getElementById('test1');
+getEl.insertAdjacentHTML('<span class="code-highlight">afterbegin</span>', '&lt;div id="two">two&lt;/div>');</span></pre>
+
+      </div>
+    </div>
+
+
+    <h4>result</h4>
+
+    <div class="row">
+      <div class="col-5">
+        <p>This shows it was added after the opening existing div.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-html">&lt;div id="test1"&gt;
+  <span class="code-highlight">&lt;div id="two"&gt;two&lt;/div&gt;</span>
+  &lt;p&gt;Testing insertAdjacentHTML&lt;/p&gt;
+&lt;/div&gt;</span></pre>
+
+      </div>
+    </div>
+
+
+
+
+
+    <h2>beforeend()</h2>
+
+    <div class="row">
+      <div class="col-5">
+        <p>This creats a new div element with an id of 'two'.</p>
+        <p>It is added just before the closing existing div.</p>
+      </div>
+
+      <div class="col-7">
+        <pre
+          class="example"><span class="code-html">&lt;div id="test1"&gt;
+  &lt;p&gt;Testing insertAdjacentHTML&lt;/p&gt;
+&lt;/div&gt;</span>
+
+<span class="code-js">let getEl = document.getElementById('test1');
+getEl.insertAdjacentHTML('<span class="code-highlight">beforeend</span>', '&lt;div id="two">two&lt;/div>');</span></pre>
+
+      </div>
+    </div>
+
+
+    <h4>result</h4>
+
+    <div class="row">
+      <div class="col-5">
+        <p>This shows it was added before the existing closing div.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-html">&lt;div id="test1"&gt;
+  &lt;p&gt;Testing insertAdjacentHTML&lt;/p&gt;
+  <span class="code-highlight">&lt;div id="two"&gt;two&lt;/div&gt;</span>
+&lt;/div&gt;
+</span></pre>
+
+      </div>
+    </div>
+
+
+
+
+
+
+    <h2>afterend()</h2>
+
+    <div class="row">
+      <div class="col-5">
+        <p>This creats a new div element with an id of 'two'.</p>
+        <p>It is added after the closing existing div.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-html">&lt;div id="test1"&gt;
+  &lt;p&gt;Testing insertAdjacentHTML&lt;/p&gt;
+&lt;/div&gt;</span>
+
+<span class="code-js">let getEl = document.getElementById('test1');
+getEl.insertAdjacentHTML('<span class="code-highlight">afterend</span>', '&lt;div id="two">two&lt;/div>');</span></pre>
+
+      </div>
+    </div>
+
+
+    <h4>result</h4>
+
+    <div class="row">
+      <div class="col-5">
+        <p>This shows it was added before the existing closing div.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-html">&lt;div id="test1"&gt;
+  &lt;p&gt;Testing insertAdjacentHTML&lt;/p&gt;
+&lt;/div&gt;
+<span class="code-highlight">&lt;div id="two"&gt;two&lt;/div&gt;</span></span></pre>
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <h1>Methods to add elements to the DOM</h1>
+    <div class="row">
+      <div class="col">
+
+
+        <h2>prepend()</h2>
+        <div class="row">
+          <div class="col-5">
+            <p>prepend() adds text BEFORE the selected element.</p>
+            <p>This only works with text. HTML cannot be added.</p>
+
+          </div>
+          <div class="col-7">
+<pre class="example"><span class="code-html">&lt;div id="test1"&gt;
+  &lt;p id="p1"&gt;Testing &lt;/p&gt;
+  &lt;p id="p2"&gt;Testing &lt;/p&gt;
+  &lt;p id="p3"&gt;Testing &lt;/p&gt;
+&lt;/div&gt;</span>
+              
+<span class="code-js">const myText = 'Prepend this text';
+const message = document.querySelector('#test1');
+
+message.prepend(myText)</span>
+
+
+
+<span class="code-output">Prepend this text
+Testing
+Testing
+Testing </span></pre>
+          </div>
+        </div>
+
+
+
+        <h2>append()</h2>
+        <div class="row">
+          <div class="col-5">
+            <p>append() adds text AFTER the selected element.</p>
+            <p>This only works with text. HTML cannot be added.</p>
+
+          </div>
+          <div class="col-7">
+<pre class="example"><span class="code-html">&lt;div id="test1"&gt;
+  &lt;p id="p1"&gt;Testing &lt;/p&gt;
+  &lt;p id="p2"&gt;Testing &lt;/p&gt;
+  &lt;p id="p3"&gt;Testing &lt;/p&gt;
+&lt;/div&gt;</span>
+              
+<span class="code-js">const myText = 'Append this text';
+const message = document.querySelector('#test1');
+
+message.append(myText)</span>
+
+
+
+<span class="code-output">Testing
+Testing
+Testing
+Append this text</span></pre>
+          </div>
+        </div>
+
+
+
+        <h2>appendChild()</h2>
+        <div class="row">
+          <div class="col-5">
+            <p><span class="standout"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild"
+                  target="_blank">.appendChild()</a> Adds an HTML node to the DOM.</p>
+                  <p>This example:</p>
+                  <ul>
+                    <li>targets an existing div</li>
+                    <li>adds the new element</li>
+                    <li>appends text to the new element</li>
+                    <li>then finally appends the new element to the existing div section.</li>
+                  </ul>
+
+          </div>
+          <div class="col-7">
+<pre class="example"><span class="code-html">&lt;div id="test1"&gt;
+  &lt;p id="p1"&gt;Testing &lt;/p&gt;
+  &lt;p id="p2"&gt;Testing &lt;/p&gt;
+  &lt;p id="p3"&gt;Testing &lt;/p&gt;
+&lt;/div&gt;</span>
+              
+<span class="code-js"><span class="code-comment">// target existing div to append to</span>
+const selDiv = document.querySelector('#test1');
+<span class="code-comment">// create an element to append</span>
+const paraElement = document.createElement("p");
+<span class="code-comment">// create text to add to the appended element</span>
+const paraText = document.createTextNode("new text to add");
+<span class="code-comment">// append text to the new element</span>
+paraElement.appendChild(paraText)
+<span class="code-comment">// append the new element to the existing div</span>
+selDiv.appendChild(paraElement)</span></pre>
+          </div>
+        </div>
+
+
+
+
+
+
+        <h2>before()</h2>
+
+        <div class="row">
+          <div class="col-5">
+            <p>This inserts before the div element as a sibling.</p>
+          </div>
+
+<div class="col-7">
+<pre class="example"><span class="code-html">&lt;div id="test1"&gt;
+&lt;p id="p1"&gt;Testing &lt;/p&gt;
+&lt;p id="p2"&gt;Testing &lt;/p&gt;
+&lt;p id="p3"&gt;Testing &lt;/p&gt;
+&lt;/div&gt;</span>
+            
+<span class="code-js">const selDiv = document.querySelector('#test1');
+const message = document.createElement('div');
+message.textContent = 'We use cookies for analytics.';
+selDiv.before(message)</span>
+
+<span class="code-output">&lt;div&gt;We use cookies for analytics.&lt;/div&gt;
+&lt;div id="test1"&gt;
+  &lt;p id="p1"&gt;Testing &lt;/p&gt;
+  &lt;p id="p2"&gt;Testing &lt;/p&gt;
+  &lt;p id="p3"&gt;Testing &lt;/p&gt;
+&lt;/div&gt;</span></pre>
+                      </div>
+                    </div>
+
+                   
+
+
+
+
+
+
+
+
+            
+                    <h2>after()</h2>
+
+                    <div class="row">
+                      <div class="col-5">
+                        <p>This inserts before the div element as a sibling.</p>
+                      </div>
+            
+<div class="col-7">
+<pre class="example"><span class="code-html">&lt;div id="test1"&gt;
+&lt;p id="p1"&gt;Testing &lt;/p&gt;
+&lt;p id="p2"&gt;Testing &lt;/p&gt;
+&lt;p id="p3"&gt;Testing &lt;/p&gt;
+&lt;/div&gt;</span>
+            
+<span class="code-js">const selDiv = document.querySelector('#test1');
+const message = document.createElement('div');
+message.textContent = 'We use cookies for analytics.';
+selDiv.after(message)</span>
+
+<span class="code-output">&lt;div id="test1"&gt;
+  &lt;p id="p1"&gt;Testing &lt;/p&gt;
+  &lt;p id="p2"&gt;Testing &lt;/p&gt;
+  &lt;p id="p3"&gt;Testing &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;We use cookies for analytics.&lt;/div&gt;</span></pre>
+                      </div>
+                    </div>
+
+                               
+    
+    
+    
+    
+    
+    
+    
+                    <h2>remove()</h2>
+
+                    <div class="row">
+                      <div class="col-5">
+                        <p>This removes an element on click.</p>
+                      </div>
+            
+<div class="col-7">
+<pre class="example"><span class="code-html">&lt;div id="test1"&gt;
+&lt;p id="p1"&gt;Testing &lt;/p&gt;
+&lt;p id="p2"&gt;Testing &lt;/p&gt;
+&lt;p id="p3"&gt;Testing &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;button class="btn--close-cookie"&gt;Button&lt;/button&gt;</span>
+            
+<span class="code-js">const selDiv = document.querySelector('#test1');
+  
+document.querySelector('.btn--close-cookie').addEventListener('click', function() {
+  selDiv.remove()
+});</span></pre>
+                      </div>
+                    </div>
+
+                             
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h1>Steps to add an element to the DOM</h1>
+    <div class="row">
+      <div class="col">
+        <p>These examples first create a node.</p>
+        <p>Text or HTML is added.</p>
+        <p>It is then placed within the page.</p>
+      </div>
+    </div>
+
+    <h2>Step 1 - create the element</h2>
+    <h3>createElement()</h3>
+
+    <div class="row">
+      <div class="col-5">
+        <p>This creats a new element but does not add it to the DOM.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">const message = document.createElement('div');</span></pre>
+
+      </div>
+    </div>
+
+
+
+
+
+
+    <h2>Step 2 - Add data to the element</h2>
+
+    <div class="row">
+      <div class="col-5">
+        <p>This example adds information to the element using classList.add(), textContent, and .innerHTML.</p>
+      </div>
+
+      <div class="col-7">
+        <pre
+          class="example"><span class="code-js">const message = document.createElement('div');
+
+message.classList.add('cookie-message');
+message.textContent = 'We use cookies for analytics.';
+message.innerHTML = 'We use cookies for analytics. &lt;button class="btn btn--close-cookie"&gt;Got it!&lt;/button&gt;';</span></pre>
+
+      </div>
+    </div>
+
+
+
+
+    <h2>Step 3 - Add the element to the page</h2>
+
+
+    <h3>prepend()</h3>
+
+    <div class="row">
+      <div class="col-5">
+        <p>Prepend the new element to the page before the &lt;header&gt; tag.</p>
+        <p>This adds it as the first child.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">header.prepend(message)</span></pre>
+
+      </div>
+    </div>
+
+
+    <h3>append()</h3>
+
+    <div class="row">
+      <div class="col-5">
+        <p>appends the new element to the page after the &lt;header&gt; tag.</p>
+        <p>This adds it as the last child.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">header.append(message)</span></pre>
+
+      </div>
+    </div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h1>Examples</h1>
+    <h2>Example: Adding a new DOM element</h2>
+
+    <div class="row">
+      <div class="col-5">
         <p>This creats a new element titled &lt;figcaption&gt; with text inside</p>
         <p>If you check dev tools, you'll see the new code has been added to the DOM.</p>
       </div>
 
-      <div class="col-6">
+      <div class="col-7">
         <pre class="example"><span class="code-html">&lt;figure class="featured-image"&gt;
-&lt;img src="../_img/note.jpg"&gt;
+  &lt;img src="../_img/note.jpg"&gt;
 &lt;/figure&gt;</span>
 
-<span class="code-js">
-<span class="code-comment">//Create a variable for the existing element
+<span class="code-js"><span class="code-comment">//Create a variable for the existing element
 //You'll need this to append the new element</span>
 const FEATURED = document.querySelector(".featured-image");
 
@@ -87,17 +601,7 @@ FEATURED.appendChild(captionElement);</span></span></pre>
 
 
 
-
-
-
-
-
-
-
-
-
-
-    <h3>Adding a new DOM element</h3>
+    <h2>Example</h2>
 
     <div class="row">
       <div class="col-6">
@@ -119,7 +623,7 @@ document.querySelector('body').appendChild(newParagraph)</span></span></pre>
 
 
 
-    <h3>Adding to the DOM with a template literal</h3>
+    <h2>Adding to the DOM with a template literal</h2>
 
     <div class="row">
       <div class="col-6">
@@ -136,7 +640,7 @@ document.querySelector('body').appendChild(newParagraph)</span></span></pre>
       </div>
 
       <div class="col-6">
-<pre class="example"><span class="code-html">&lt;div class="movements"&gt;&lt;/div&gt;</span>
+        <pre class="example"><span class="code-html">&lt;div class="movements"&gt;&lt;/div&gt;</span>
   
 <span class="code-js">const containerMovements = document.querySelector('.movements');
 
@@ -165,6 +669,49 @@ const displayMovements = function (x) {
 displayMovements(account1.movements)</span></pre>
       </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h2>Create multiple copies of the same element with cloneNode()</h2>
+
+    <div class="row">
+      <div class="col-6">
+        <p>The above example create a single element.</p>
+        <p>To create multiple elements, use cloneNoe().</p>
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">const message = document.createElement('div');
+  message.classList.add('cookie-message');
+  message.textContent = 'We use cookies for analytics.';
+  message.innerHTML = 'We use cookies for analytics.
+
+  header.append(message.cloneNode(true))</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
 
 
 

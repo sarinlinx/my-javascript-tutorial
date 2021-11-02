@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Example Adding DOM elements</title>
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+    <div id="test1">
+      <p id="p1">Testing </p>
+      <p id="p2">Testing </p>
+      <p id="p3">Testing </p>
+    </div>
+
+<button class="btn--close-cookie">Button</button>
+
+  <script>
+    const selDiv = document.querySelector('#test1');
+    // const message = document.createElement('div');
+    // message.textContent = 'We use cookies for analytics.';
+
+    // selDiv.after(message)
+
+
+    // const message = document.createElement('div');
+    // message.innerHTML = 'We use cookies for analytics'
+    
+    // header.after(message)
+    
+    document.querySelector('.btn--close-cookie').addEventListener('click', function() {
+    selDiv.remove()
+    });
+
+  </script>
+</body>
+
+</html>
