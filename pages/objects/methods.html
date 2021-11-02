@@ -252,6 +252,9 @@ ray.speak({ say: 'howdy' });
 
     <section class="container">
         <h1>Chaining</h1>
+        <p>You can continue to chain methods as long as they return new Arrays.</p>
+
+
         <div class="row">
             <div class="col-6">
                 <p>Chaining allows one function to call another function.</p>
@@ -287,12 +290,106 @@ ray.speak({ say: 'howdy' });
 </pre>
             </div>
         </div>
+
+
+
+
+
+
+        <h2>Example 2</h1>
+        <div class="row">
+            <div class="col-6">
+                <p>This chains multiple methods and outputs the en</p>
+            </div>
+<div class="col-6">
+<pre class="example"><span class="code-js">const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+
+// use filter() to create a new Array of only positive values
+// then call .map() on the new Array
+// then call reduce()
+const totalDepositsUSD = movements
+.filter(mov => mov > 0)
+.map(mov => mov * eurToUsd)
+.reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositsUSD)</pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        
+        <h2>Debugging chained functions</h1>
+          <div class="row">
+              <div class="col-6">
+                  <p>Use the Array parameters built into each function to check it. For example, .map() takes currentElement, Index, and Array. </p>
+                  <p>This checks the current iteration of the filter() Array.</p>
+                  <p>This is called 3 times because there are 3 negative values.</p>
+
+              </div>
+  <div class="col-6">
+<pre class="example"><span class="code-js">const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+
+// use filter() to create a new Array of only positive values
+// then call .map() on the new Array
+// then call reduce()
+const totalDepositsUSD = movements
+<span class="code-highlight">.filter(mov => mov &lt; 0)
+.map((mov, i, arr) => {
+  console.log(arr);
+  return mov * eurToUsd;
+})</span>
+.reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositsUSD)</pre>
+              </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
     </section>
+<script>
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+
+// use filter() to create a new Array of only positive values
+// then call .map() on the new Array
+// then call reduce()
+const totalDepositsUSD = movements
+.filter(mov => mov < 0)
+.map((mov, i, arr) => {
+  console.log(arr);
+  return mov * eurToUsd;
+})
+.reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositsUSD)
+  </script>
 
 
 
-    <script src="../../_js/jquery.js"></script>
-    <script src="../../_js/bootstrap.bundle.js"></script>
+
+
 </body>
 
 </html>

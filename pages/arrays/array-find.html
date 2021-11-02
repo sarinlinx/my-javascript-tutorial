@@ -2,34 +2,39 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
 
-    <title>Array Iteration</title>
+  <title>Array Iteration</title>
 </head>
 
 <body>
-    <a href="../../index.html">Home page</a>
+  <a href="../../index.html">Home page</a>
 
 
 
 
 
-    <section class="container">
-        <h1>find()</h1>
+  <section class="container">
+    <h1>find()</h1>
+    <p>Requires a callback function that returns a boolean.</p>
+    <p>This is different from filter() because filter() returns all the elements that match the condition while the Find
+      method only returns the first one</p>
+    <p>And filter() returns a new Array where find() only returns a single element.</p>
 
-        <div class="row">
-            <div class="col-6">
-                <p>find() returns the value of the first array element that passes a test function.</p>
-                <p>This example finds (returns the value of ) the first element that is larger than 18.</p>
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">var numbers = [4, 9, 16, 25, 29];
+
+    <div class="row">
+      <div class="col-6">
+        <p>find() returns the value of the first array element that passes a test function.</p>
+        <p>This example finds (returns the value of ) the first element that is larger than 18.</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">var numbers = [4, 9, 16, 25, 29];
 var first = numbers.find(myFunction);
 
 function myFunction(value, index, array) {
@@ -37,32 +42,29 @@ function myFunction(value, index, array) {
 }
 
 console.log(first);</span></pre>
-            </div>
-        </div>
+      </div>
+    </div>
 
 
-        <h5>Output</h5>
-        <div class="row">
-            <div class="col-6">
+    <h5>Output</h5>
+    <div class="row">
+      <div class="col-6">
 
-                <p class="code-output">This example outputs:</p>
-            </div>
+        <p class="code-output">This example outputs:</p>
+      </div>
 
-            <div class="col-6">
-                <pre class="example"><span class="code-output">25</span></pre>
-            </div>
-        </div>
-        <h4>The index and array params</h4>
-        <div class="row">
-            <div class="col">
-                <p>Just as above, the index and array parameters can be added or omitted.</p>
-            </div>
-        </div>
-    </section>
+      <div class="col-6">
+        <pre class="example"><span class="code-output">25</span></pre>
+      </div>
+    </div>
+    <h4>The index and array params</h4>
+    <div class="row">
+      <div class="col">
+        <p>Just as above, the index and array parameters can be added or omitted.</p>
+      </div>
+    </div>
 
-
-
-
+  </section>
 
 
 
@@ -75,19 +77,16 @@ console.log(first);</span></pre>
 
 
 
+  <section class="container">
+    <h1>Using find() in an Array of Objects</h1>
 
+    <div class="row">
+      <div class="col-6">
+        <p>This can be used instead of indexOf() when searching an Array of Objects.</p>
+      </div>
 
-
-    <section class="container">
-        <h1>Using find() in an Array of Objects</h1>
-
-        <div class="row">
-            <div class="col-6">
-                <p>This can be used instead of indexOf() when searching an Array of Objects.</p>
-            </div>
-
-            <div class="col-6">
-                <pre class="example"><span class="code-js">const notes = [{
+      <div class="col-6">
+        <pre class="example"><span class="code-js">const notes = [{
     title: 'My next trip',
     body: 'I would like to go to Spain'
 }, {
@@ -120,32 +119,135 @@ const findNote = function(notesArray, noteTitle) {
 // 2nd argument is the text string to search for</span>
 const note = findNote(notes, 'Office modification')
 console.log(note)</span></pre>
-            </div>
-        </div>
+      </div>
+    </div>
 
 
-        <h5>Output</h5>
-        <div class="row">
-            <div class="col-6">
+    <h5>Output</h5>
+    <div class="row">
+      <div class="col-6">
 
-                <p class="code-output">This example outputs:</p>
-            </div>
+        <p class="code-output">This example outputs:</p>
+      </div>
 
-            <div class="col-6">
-                <pre class="example"><span class="code-output">{ title: 'Office modification', body: 'Get a new seat' }
+      <div class="col-6">
+        <pre class="example"><span class="code-output">{ title: 'Office modification', body: 'Get a new seat' }
                 </span></pre>
-            </div>
-        </div>
-
-    </section>
+      </div>
+    </div>
 
 
 
 
 
-    </section>
-    <script src="../../_js/jquery.js"></script>
-    <script src="../../_js/bootstrap.bundle.js"></script>
+
+
+
+
+
+    <h2>Example</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>This return -400</p>
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const firstWithdrawal = movements.find(mov => mov &gt; 0)
+console.log(firstWithdrawal)</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+    <h2>Return a single Object from an Array</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>This return the Object for Jessica Davis.</p>
+      </div>
+
+      <div class="col-7">
+<pre class="example"><span class="code-js">const account1 = {
+  owner: 'Jonas Schmedtmann',
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+};
+
+const account2 = {
+  owner: 'Jessica Davis',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+};
+
+const account3 = {
+  owner: 'Steven Thomas Williams',
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333,
+};
+
+const account4 = {
+  owner: 'Sarah Smith',
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444,
+};
+
+const accounts = [account1, account2, account3, account4];
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis')
+console.log(account)</span></pre>
+      </div>
+    </div>
+
+
+
+  </section>
+  <script>
+
+    const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+    const firstWithdrawal = movements.find(mov => mov < 0)
+    // console.log(firstWithdrawal)
+
+    const account1 = {
+  owner: 'Jonas Schmedtmann',
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+};
+
+const account2 = {
+  owner: 'Jessica Davis',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+};
+
+const account3 = {
+  owner: 'Steven Thomas Williams',
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333,
+};
+
+const account4 = {
+  owner: 'Sarah Smith',
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444,
+};
+
+const accounts = [account1, account2, account3, account4];
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis')
+console.log(account)
+
+
+  </script>
 </body>
 
 </html>

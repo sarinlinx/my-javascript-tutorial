@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>flat()</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+
+    <section class="container">
+        <h1>flat()</h1>
+
+        <div class="row">
+            <div class="col-6">
+                <p>Take a <strong>1 Level Deep</strong> nested Array and combine them into a single Array.</p>
+                <p>This takes no arguments.</p>
+            </div>
+            <div class="col-6">
+<pre class="example"><span class="code-js">const arr = [[1,2,3], [4,5,6], 7,8];
+// put sub elements into single Array
+console.log(arr.flat())</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <h1>flat() with depth</h1>
+
+        <div class="row">
+            <div class="col-6">
+                <p>Same thing but 2 levels of Nested Arrays.</p>
+<p>You can then add the numerical param to go deeper.</p>
+              </div>
+            <div class="col-6">
+<pre class="example"><span class="code-js">const arrDeep = [[[1,2],3], [4,[5,6]], 7,8];
+console.log(arrDeep.flat(2))</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+        <h1>flat() with depth</h1>
+
+        <div class="row">
+            <div class="col-6">
+                <p>It's common to use .map with .flat.</p>
+                <p>But, it's better for performance if you use .flatMap() which combines them.</p>
+                <p>It's a map method that flattens the result.</p>
+                <p>NOTE: This only goes 1 level deep and you CANNOT change it.</p>
+              </div>
+            <div class="col-6">
+<pre class="example"><span class="code-js">const account1 = {
+  owner: 'Jonas Schmedtmann',
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+};
+
+const account2 = {
+  owner: 'Jessica Davis',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+};
+
+const account3 = {
+  owner: 'Steven Thomas Williams',
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333,
+};
+
+const account4 = {
+  owner: 'Sarah Smith',
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444,
+};
+
+const accounts = [account1, account2, account3, account4];
+
+
+const overalBalance = accounts
+.flatMap(acc => acc.movements)
+.reduce((acc, mov) => acc + mov, 0);
+
+console.log(overalBalance)</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <script>
+
+  const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const anyDeposits = movements.every(mov => mov > 0)
+// console.log(anyDeposits)
+
+const arrDeep = [[[1,2],3], [4,[5,6]], 7,8];
+// console.log(arrDeep.flat(2))
+
+
+const account1 = {
+  owner: 'Jonas Schmedtmann',
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+};
+
+const account2 = {
+  owner: 'Jessica Davis',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+};
+
+const account3 = {
+  owner: 'Steven Thomas Williams',
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333,
+};
+
+const account4 = {
+  owner: 'Sarah Smith',
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444,
+};
+
+const accounts = [account1, account2, account3, account4];
+
+
+const overalBalance = accounts
+.flatMap(acc => acc.movements)
+.reduce((acc, mov) => acc + mov, 0);
+
+console.log(overalBalance)
+
+
+
+
+
+
+      </script>
+
+
+</body>
+
+</html>

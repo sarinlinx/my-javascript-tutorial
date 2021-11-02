@@ -62,9 +62,40 @@ console.log(allOver18);</span></pre>
                 <p>Just as above, the index and array parameters can be added or omitted.</p>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+        <h2>Example</h2>
+        
+        <div class="row">
+          <div class="col-6">
+              <p>Returns false since all values are not over 0</p>
+          </div>
+          <div class="col-6">
+<pre class="example"><span class="code-js">const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const anyDeposits = movements.every(mov => mov > 0)
+console.log(anyDeposits)</span></pre>
+</div>
+</div>
+
     </section>
 
 
+
+    <script>
+  const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const anyDeposits = movements.every(mov => mov > 0)
+console.log(anyDeposits)
+
+
+      </script>
 
 
 </body>

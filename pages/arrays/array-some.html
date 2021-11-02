@@ -67,6 +67,26 @@ function myFunction(value, index, array) {
                 <p>Just as above, the index and array parameters can be added or omitted.</p>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+        
+        <div class="row">
+          <div class="col-6">
+              <p>This returns false since no values are over 5000</p>
+          </div>
+          <div class="col-6">
+<pre class="example"><span class="code-js">const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const anyDeposits = movements.some(mov => mov > 5000)
+console.log(anyDeposits)</span></pre>
+</div>
+      </div>
     </section>
 
 
@@ -76,8 +96,15 @@ function myFunction(value, index, array) {
 
 
     </section>
-    <script src="../../_js/jquery.js"></script>
-    <script src="../../_js/bootstrap.bundle.js"></script>
+
+    <script>
+      const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const anyDeposits = movements.some(mov => mov > 5000)
+console.log(anyDeposits)
+
+  </script>
+
+
 </body>
 
 </html>

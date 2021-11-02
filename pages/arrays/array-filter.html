@@ -2,19 +2,19 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
 
-    <title>filter()</title>
+  <title>filter()</title>
 </head>
 
 <body>
-    <a href="../../index.html">Home page</a>
+  <a href="../../index.html">Home page</a>
 
 
 
@@ -26,17 +26,17 @@
 
 
 
-    <section class="container">
-        <h1>filter()</h1>
+  <section class="container">
+    <h1>filter()</h1>
 
-        <div class="row">
-            <div class="col-6">
-                <p>filter() creates a new array, but only with elements that pass a specific test in the function.</p>
-                <p>The original array is not touched.</p>
-                <p>This example creates a new array from elements with a value larger than 18</p>
-            </div>
-            <div class="col-6">
-                <pre class="example"><span class="code-js">var numbers = [45, 4, 9, 16, 25];
+    <div class="row">
+      <div class="col-6">
+        <p>filter() creates a new array, but only with elements that pass a specific test in the function.</p>
+        <p>The original array is not touched.</p>
+        <p>This example creates a new array from elements with a value larger than 18</p>
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">var numbers = [45, 4, 9, 16, 25];
 var over18 = numbers.filter(myFunction);
 
 function myFunction(value) {
@@ -44,45 +44,45 @@ function myFunction(value) {
 }
 
 console.log(over18);</span></pre>
-            </div>
+      </div>
+    </div>
+
+
+    <h5>Output</h5>
+    <div class="row">
+      <div class="col-6">
+
+        <p class="code-output">This example outputs:</p>
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-output">Array [ 45, 25 ]</span></pre>
+      </div>
+    </div>
+
+
+    <h4>The index and array params</h4>
+    <div class="row">
+      <div class="col">
+        <p>Just as above, the index and array parameters can be added or omitted.</p>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <h3>Searching an Array Object for a string</h1>
+
+      <div class="row">
+        <div class="col-4">
+          <p>This searches the Array named 'notes' for a string.</p>
+          <p>If found, the Object within that string is returned (from the new Array created by filter())</p>
         </div>
-
-
-        <h5>Output</h5>
-        <div class="row">
-            <div class="col-6">
-
-                <p class="code-output">This example outputs:</p>
-            </div>
-
-            <div class="col-6">
-                <pre class="example"><span class="code-output">Array [ 45, 25 ]</span></pre>
-            </div>
-        </div>
-
-
-        <h4>The index and array params</h4>
-        <div class="row">
-            <div class="col">
-                <p>Just as above, the index and array parameters can be added or omitted.</p>
-            </div>
-        </div>
-
-
-
-
-
-
-
-        <h3>Searching an Array Object for a string</h1>
-
-            <div class="row">
-                <div class="col-4">
-                    <p>This searches the Array named 'notes' for a string.</p>
-                    <p>If found, the Object within that string is returned (from the new Array created by filter())</p>
-                </div>
-                <div class="col-8">
-                    <pre class="example"><span class="code-js"><span class="code-comment">//Create an Array of Objects</span>
+        <div class="col-8">
+          <pre class="example"><span class="code-js"><span class="code-comment">//Create an Array of Objects</span>
 const notes = [{
     title: 'My next trip',
     body: 'I would like to go to Spain'
@@ -121,27 +121,26 @@ const findNotes = function(notesArray, query) {
 
   <span class="code-comment">// Call the function</span>
   console.log(findNotes(notes, 'eating'))</span></pre>
-                </div>
-            </div>
+        </div>
+      </div>
 
 
-            <h5>Output</h5>
-            <div class="row">
-                <div class="col-4">
+      <h5>Output</h5>
+      <div class="row">
+        <div class="col-4">
 
-                    <p class="code-output">This example outputs:</p>
-                </div>
+          <p class="code-output">This example outputs:</p>
+        </div>
 
-                <div class="col-8">
-                    <pre class="example"><span class="code-output">[
+        <div class="col-8">
+          <pre class="example"><span class="code-output">[
   {
     title: 'Habbits to work on',
     body: 'Exercise. Eating a bit better.'
   }
 ]</span></pre>
-                </div>
-            </div>
-    </section>
+        </div>
+      </div>
 
 
 
@@ -152,7 +151,60 @@ const findNotes = function(notesArray, query) {
 
 
 
-    <script src="../../_js/bootstrap.bundle.js"></script>
+
+
+
+
+
+<h1>Filter out negative values</h1>
+      <div class="row">
+        <div class="col-6">
+          <p>This filters the movements array and returns only the positive values into a new array title deposits.</p>
+        </div>
+        <div class="col-6">
+<pre class="example"><span class="code-js">const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// filter negative values
+const deposits = movements.filter(function(mov) {
+  return mov > 0;
+})
+
+console.log(deposits)</span></pre>
+        </div>
+      </div>
+
+      
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+  <script>
+    const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+    // filter negative values
+    const deposits = movements.filter(function(mov) {
+      return mov > 0;
+    })
+
+    console.log(deposits)
+
+
+    const depositsFor = []
+    for (const mov of movements) if (mov > 0) depositsFor.push(mov)
+    console.log(depositsFor)
+
+
+  </script>
+
 </body>
 
 </html>
