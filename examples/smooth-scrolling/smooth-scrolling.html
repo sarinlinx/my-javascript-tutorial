@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Smooth scrolling</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+    <section class="container">
+        <h1>Smooth scrolling (old way)</h1>
+        <div class="row">
+            <div class="col">
+              <ul><li><a href="example-site/ex-01.html" target="_blank">Example 01</a></li></ul>
+                <p>This option finds the coordintates of the sections to scroll to.</p>
+            </div>
+        </div>
+  
+  
+
+        <h2>Scrolling to section coordinates</h2>
+        <div class="row">
+            <div class="col-5">
+                <p>Create variables for the button and the section to scroll to.</p>
+                <p>Add an event listener for the click of the button.</p>
+                <p>Create a variable to store the coordinates of the section.</p>
+                <p>Use window.scrollTo() to scroll to the left and top position of that section.</p>
+                <p>You must also add window.pageXOffset and window.pageYOffset since the coordintes change as you scroll. This ensures the value stays the same.</p>
+            </div>
+
+            <div class="col-7">
+<pre class="example"><span class="code-html">&lt;button class="btn--text btn--scroll-to"&gt;Learn more &DownArrow;&lt;/button&gt;
+
+&lt;section class="section" id="section--1"&gt;</span>
+
+<span class="code-js">const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+  
+<span class="code-comment">// add event listener to button</span>
+btnScrollTo.addEventListener('click', function(e) {
+  <span class="code-comment">// get coordinates of element to scroll to</span>
+  const s1coords = section1.getBoundingClientRect();
+  console.log(e.target.getBoundingClientRect())
+  <span class="code-comment">// scrolling: 1st arg is left position of s1coords: 2nd arg is top position of s1coords</span>
+  window.scrollTo(
+    s1coords.left + window.pageXOffset,
+    s1coords.top + window.pageYOffset);
+})</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+        <h2>Add smooth scroll</h2>
+        <div class="row">
+            <div class="col-5">
+                <p>Update the scrollTo() method to the following to smoothly scroll.</p>
+            </div>
+
+            <div class="col-7">
+<pre class="example"><span class="code-js">window.scrollTo({
+  left: s1coords.left + window.pageXOffset,
+  top: s1coords.top + window.pageYOffset,
+  behavior: 'smooth',
+});</span></pre>
+            </div>
+        </div>
+
+
+
+
+        
+        <h2>Modern smooth scroll</h2>
+        <div class="row">
+            <div class="col-5">
+                <p>Remove the window.scrollTo() section and use scrollIntoView()</p>
+                <p>The first part is the element to scroll to.</p>
+                <p>It only needs a behavior of 'smooth'.</p>
+            </div>
+
+            <div class="col-7">
+<pre class="example"><span class="code-js">section1.scrollIntoView({
+  behavior: 'smooth'
+})</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+</body>
+
+</html>

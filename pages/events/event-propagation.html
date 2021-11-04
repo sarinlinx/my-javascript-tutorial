@@ -83,6 +83,7 @@
         <h1>Bubbling and Capturing</h1>
         <div class="row">
             <div class="col">
+              <p>Capturing and Bubbling exist due to the old days of JavaScript when browsers handled JavaScript differently.</p>
                 <p>Some browers only support bubbling or capturing.</p>
                 <ul><li><a href="https://quirksmode.org/js/events_order.html">Events Order</a></li></ul>
 
@@ -93,6 +94,14 @@
 <h3>Bubbling</h3>
 <p>Bubbling works bottom up</p>
 <p>The other way to register the event is by having the browser notice the event first on the lowest element. In our example, the IMG and then passing the event up the dom chain until it reaches the UL. This is called catching an event in the bubbling phase, because the event bubbles from the LI to the UL.</p>
+<p>addEventListener only listens for events in the bubble phase.</p> 
+<p>Bubbling can be great for event delegation.</p>
+<img src="../../_img/event-propagation.png" width="950px">
+
+<h3>Notes</h3>
+<p>In both cases, the event only travels through Parent elements, not siblings.</p>
+<p>The event also happens on all elments it passes through.</p>
+<p>Not all elements have a capture and bubbling phase. You have to act on them directly where they are.</p>
             </div>
         </div>
     </section>
@@ -114,6 +123,7 @@
     <h2>Example of bubling (use false)</h2>
             <div class="row">
                 <div class="col-6">
+                  <p>false is default behavior</p>
                     <p>true or false dictates 'capturing phase' or 'bubling phase'.</p>
                     <p>Load the page and click 'pink'.</p>
                     <p>The console outputs:<br><strong>pink<br>Clicked inside UL</strong></p>
@@ -166,9 +176,39 @@ document.getElementById('pink').addEventListener('click', function(e) {
 } , <span class="standout">true</span>);</span></pre>
                     </div>
                 </div>
+
             </section>
 
 
+
+
+
+
+
+
+
+            
+        <section class="container">
+          <h2>Stop propagation</h2>
+                  <div class="row">
+                      <div class="col-6">
+                          <p>Use e.stopPropagation() to stop an event from bubbling.</p>
+                          <p>This can help with complex apps with many handlers for many events.</p>
+                          <p>But in general it's not a good idea to stop the propagation of an event.</p>
+                      </div>
+
+<div class="col-6">
+<pre class="example"><span class="code-js">document.querySelector('.classNameHere').addEventListener('click', function (e) {
+this.style.backgroundColor = #fff;
+e.stopPropatation();
+});
+</span></pre>
+</div>
+                  </div>
+                  
+              </section>
+  
+  
 
 
 

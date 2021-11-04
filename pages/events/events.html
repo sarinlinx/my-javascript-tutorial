@@ -35,6 +35,11 @@
         </div>
     </section>
 
+
+
+
+
+
     <section class="container">
         <h1>The Events Queue</h1>
         <div class="row">
@@ -42,8 +47,27 @@
                 <p>Events in JavaScript work by inserting themselves into a queue and they will remain there until they're needed. So if you don't remove some events, it's going to cause a problem like this.</p>
                 <p>Uncaught TypeError: Cannot read property 'parentNode' of null.</p>
 
+                <p>Example on how to remove an eventListener that should only runs once.</p>
+<pre class="example"><span class="code-js">
+const alertH1 = function(e) {
+  console.log('addEventListern: Great! You are reading the heading')
+};
+
+// enter event and name of function to remove
+h1.removeEventListener('mouseenter', alertH1);</span></pre>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
     </section>
 
 
