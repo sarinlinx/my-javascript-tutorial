@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Event delegation</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+    <section class="container">
+        <h1>Event delegation</h1>
+        <div class="row">
+            <div class="col">
+                <p>Useful when elements are not already on the page at runtime. (EX: buttons added dynamically while using the app.)</p>
+                <p>This allows you to add event handlers on elements that do not already exist.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container">
+        <h2>Smooth scrolling example</h2>
+        <div class="row">
+            <div class="col-5">
+                <p>This adds a single even handler to the parent element of multiple sub-elements.</p>
+                <p>It then determines on what sub-element the click event occurred on.</p>
+
+            </div>
+
+<div class="col-7">
+<pre class="example"><span class="code-html">&lt;ul class="nav__links"&gt;
+  &lt;li&gt;
+    &lt;a href="#section--1"&gt;Features&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#section--2"&gt;Operations&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;a href="#section--3"&gt;Testimonials&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;section class="section" id="section--1"&gt;&lt;/section&gt;
+&lt;section class="section" id="section--2"&gt;&lt;/section&gt;
+&lt;section class="section" id="section--3"&gt;&lt;/section&gt;</span>
+
+<span class="code-js"><span class="code-comment">/* EVENT DELEGATION */
+// put eventListener on a common parent element when the event bubbles up
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event</span>
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  <span class="code-comment">// prevent hyperlink jump or URL change</span>
+  e.preventDefault();
+
+  <span class="code-comment">// e.tareget is where the event occurred</span>
+  if (e.target.classList.contains('nav__link')) {
+    <span class="code-comment">// obtain the specific anchor tag</span>
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});</span></pre>
+            </div>
+        </div>
+
+            </section>
+
+
+
+
+
+
+</html>
