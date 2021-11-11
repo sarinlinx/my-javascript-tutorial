@@ -31,18 +31,160 @@
          
 
 
-
+<h3>HTML</h3>
             <div class="row">
-                <div class="col-5">
-<p>..........</p>
+                <div class="col-3">
+<p>HTML code</p>
                 </div>
 
 
 
-                <div class="col-7">
-                    <pre class="example"><span class="code-js">..................</span></pre>
+<div class="col-9">
+<pre class="example"><span class="code-html">&lt;div class="operations"&gt;
+
+  &lt;div class="operations__tab-container"&gt;
+    &lt;button class="btn operations__tab operations__tab--1 operations__tab--active" data-tab="1"&gt;
+      &lt;span&gt;01&lt;/span&gt;Instant Transfers
+    &lt;/button&gt;
+
+    &lt;button class="btn operations__tab operations__tab--2" data-tab="2"&gt;
+      &lt;span&gt;02&lt;/span&gt;Instant Loans
+    &lt;/button&gt;
+
+    &lt;button class="btn operations__tab operations__tab--3" data-tab="3"&gt;
+      &lt;span&gt;03&lt;/span&gt;Instant Closing
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div class="operations__content operations__content--1 operations__content--active"&gt;
+    &lt;div class="operations__icon operations__icon--1"&gt;
+      &lt;svg&gt;
+        &lt;use xlink:href="img/icons.svg#icon-upload"&gt;&lt;/use&gt;
+      &lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;h5 class="operations__header"&gt;
+      Tranfser money to anyone, instantly! No fees, no BS.
+    &lt;/h5&gt;
+    &lt;p&gt;
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+      ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+      aliquip ex ea commodo consequat.
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="operations__content operations__content--2"&gt;
+    &lt;div class="operations__icon operations__icon--2"&gt;
+      &lt;svg&gt;
+        &lt;use xlink:href="img/icons.svg#icon-home"&gt;&lt;/use&gt;
+      &lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;h5 class="operations__header"&gt;
+      Buy a home or make your dreams come true, with instant loans.
+    &lt;/h5&gt;
+    &lt;p&gt;
+      Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit
+      anim id est laborum.
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class="operations__content operations__content--3"&gt;
+    &lt;div class="operations__icon operations__icon--3"&gt;
+      &lt;svg&gt;
+        &lt;use xlink:href="img/icons.svg#icon-user-x"&gt;&lt;/use&gt;
+      &lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;h5 class="operations__header"&gt;
+      No longer need your account? No problem! Close it instantly.
+    &lt;/h5&gt;
+    &lt;p&gt;
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+      officia deserunt mollit anim id est laborum. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+      ea commodo consequat.
+    &lt;/p&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;</span></pre>
                 </div>
             </div>
+
+
+
+
+
+
+
+
+
+
+
+            
+
+<h3>JavaScript</h3>
+<div class="row">
+    <div class="col-3">
+<p>First, create variables to store HTML elements.</p>
+    </div>
+
+
+
+<div class="col-9">
+<pre class="example"><span class="code-js">const tabsContainer = document.querySelector('.operations__tab-container');
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContent = document.querySelectorAll('.operations__content');</span></pre>
+    </div>
+</div>
+
+
+<h3>Use Event Delegation to specify which tab was clicked</h3>
+<div class="row">
+  <div class="col-3">
+<p>There is 1 event listener and it's attached to the parent element of all tabs.</p>
+<p>closest() is then used to determine which tab was clicked.</p>
+<p>There is a forEach() loop to remove active classes from all tabs.</p>
+<p>Then another forEach() loop to add an active class to the tab that was clicked.</p>
+</div>
+
+
+
+<div class="col-9">
+<pre class="example"><span class="code-js"><span class="code-comment">// Event Delegation
+  // Attach the eventListener on the parent element</span>
+  tabsContainer.addEventListener('click', function (e) {
+    <span class="code-comment">// confirm which tab was clicked, it then bubbles up to the parent element</span>
+    const clicked = e.target.closest('.operations__tab');
+
+    <span class="code-comment">// if you click the container, null is returned since there is no closest() element
+    // to prevent this from happening, use a 'Guard clause'
+    // a 'Guard clause' is an if statement that returns early if a condition is matched
+    // in this case, if nothing is clicked, the function immediately ends
+    // null is falsey. !clicked then becomes true if you clicked on the container</span>
+    if (!clicked) return;
+
+    <span class="code-comment">/*___________
+     Remove classes 
+     _____________*/
+    // Remove active classes from all tabs</span>
+    tabs.forEach(t => t.classList.remove('operations__tab--active'));
+
+    <span class="code-comment">// Remove active class from all content areas</span>
+    tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+
+    <span class="code-comment">/*___________
+     Add classes 
+     _____________*/
+    // Add active class when tab is clicked</span>
+    clicked.classList.add('operations__tab--active');
+
+    <span class="code-comment">// obtain data-tab value from HTML using dataset.tab
+    // Add active class to the clicked button</span>
+    document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active');
+  });</span></pre>
+  </div>
+</div>
 
 
             

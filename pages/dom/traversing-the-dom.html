@@ -2,53 +2,362 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
 
-    <title>Traversing the DOM</title>
+  <title>Traversing the DOM</title>
 </head>
 
 <body>
-    <a href="../../index.html">Home page</a>
+  <a href="../../index.html">Home page</a>
 
 
 
 
-    <section class="container">
-        <h1>Traversing the DOM</h1>
-        <div class="row">
-            <div class="col">
-                <p>..........</p>
-            </div>
-        </div>
-    </section>
+  <section class="container">
+    <h1>Traversing the DOM</h1>
 
 
-    <section class="container">
-        <h2>.</h2>
-        <div class="row">
-            <div class="col-5">
-                <p>.............</p>
+    <h2>HTML</h2>
+    <div class="row">
+      <div class="col-4">
+        <p>This is the HTML used in all examples</p>
 
-            </div>
+      </div>
 
-<div class="col-7">
-<pre class="example"><span class="code-html">........................</span>
+      <div class="col-8">
+        <pre class="example"><span class="code-html">&lt;header class="header"&gt;
+  &lt;nav class="nav"&gt;
+    &lt;img src="img/logo.png" alt="Bankist logo" class="nav__logo" id="logo" designer="Jonas"
+      data-version-number="3.0" /&gt;
+    &lt;ul class="nav__links"&gt;
+      &lt;li class="nav__item"&gt;
+        &lt;a class="nav__link" href="#section--1"&gt;Features&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav__item"&gt;
+        &lt;a class="nav__link" href="#section--2"&gt;Operations&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="nav__item"&gt;
+        &lt;a class="nav__link" href="#section--3"&gt;Testimonials&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
 
-<span class="code-js">...................</span></pre>
-            </div>
-        </div>
+  &lt;div class="header__title"&gt;
+    &lt;!-- &lt;h1 onclick="alert('HTML alert')"&gt; --&gt;
 
-            </section>
+    &lt;h1&gt;
+      When
+      &lt;!-- Green highlight effect --&gt;
+      &lt;span class="highlight"&gt;banking&lt;/span&gt;meets
+      &lt;br /&gt;
+      &lt;span class="highlight"&gt;minimalist&lt;/span&gt;
+    &lt;/h1&gt;
+
+    &lt;h4&gt;A simpler banking experience for a simpler life.&lt;/h4&gt;
+    &lt;button class="btn--text btn--scroll-to"&gt;Learn more &DownArrow;&lt;/button&gt;
+    &lt;img
+      src="img/hero.png"
+      class="header__img"
+      alt="Minimalist bank items"
+    /&gt;
+  &lt;/div&gt;
+
+  &lt;div class="header__title"&gt;
+    &lt;button class="btn--text btn--scroll-to"&gt;Learn more &DownArrow;&lt;/button&gt;
+&lt;/header&gt;
+
+&lt;section class="section" id="section--1"&gt;
+  &lt;div class="section__title"&gt;
+    &lt;h2 class="section__description"&gt;Features&lt;/h2&gt;
+    &lt;h3 class="section__header"&gt;
+      Everything you need in a modern bank and more.
+    &lt;/h3&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="section" id="section--2"&gt;
+  &lt;div class="section__title"&gt;
+    &lt;h2 class="section__description"&gt;Operations&lt;/h2&gt;
+    &lt;h3 class="section__header"&gt;
+      Everything as simple as possible, but no simpler.
+    &lt;/h3&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="section" id="section--3"&gt;
+&lt;/section&gt;</span></pre>
+      </div>
+    </div>
 
 
 
 
 
+    <h1>Downwards</h1>
+
+
+
+    <h2>Create a variable</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>Create a variable for an element to use with all functions.</p>
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">const h1 = document.querySelector('h1');</span></pre>
+      </div>
+    </div>
+
+
+
+
+    <h2>querySelectorAll()</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>This returns a Node list of all elements with a class of .highlight that are direct children of h1.</p>
+        <p>In this case, a Node list of 2 elements with the class of .highlight inside the h1</p>
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">console.log(h1.querySelectorAll('.highlight'));</span></pre>
+      </div>
+    </div>
+
+
+
+    <h2>childNodes()</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>direct children</p>
+        <p>This returns all children elements inside the h1 tags</p>
+        <p>This includes text, comments, classes</p>
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">console.log(h1.childNodes);</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+    <h2>children()</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>direct children</p>
+        <p>Returns an HTMLCollection of all child tags (not text) within the h1 element</p>
+        <p>This retunrs the first span, br tag, and final span tag</p>
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">console.log(h1.children);</span></pre>
+      </div>
+    </div>
+
+
+
+    <h2>firstElementChild</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>direct children</p>
+        <p>Selects the first child after the opening h1</p>
+        <p>This selects the first span tag</p>
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">h1.firstElementChild.style.color = 'white';</span></pre>
+      </div>
+    </div>
+
+
+    <h2>lastElementChild</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>Selects the last child within the h1 tags</p>
+        <p>This selects the last span tag</p>
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">h1.lastElementChild.style.color = 'orangered';</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1>Upwards</h1>
+
+    <h2>parentNode()</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>direct parents</p>
+        <p>This returns the parent element of the h1 tag</p>
+         <p>In this example, &lt;div class="header__title"&gt;</p>
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">console.log(h1.parentNode);</span></pre>
+      </div>
+    </div>
+
+
+    <h2>parentElement()</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>returns the same as parentNode, need a better example </p>
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">console.log(h1.parentElement);</span></pre>
+      </div>
+    </div>
+
+    
+    <h2>closest() ex 1</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>closest() can be thought of as the opposite of querySelector since querySelector searches for children</p>
+        <p>closest() searches for parents</p>
+          <p>This changes the closest parent with a class of header</p>
+      </p>
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">h1.closest('.header').style.background = 'var(--gradient-secondary)';</span></pre>
+      </div>
+    </div>
+
+
+    <h2>closest() ex 2</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>need a better example. Since there's only 1 h1 tag, it gets selected</p>
+      </p>
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">h1.closest('h1').style.background = 'var(--gradient-primary)';</span></pre>
+      </div>
+    </div>
+
+
+
+
+<h1>Siblings</h1>
+
+    <h2>previousElementSibling</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>Can only access direct siblings in JS</p>
+        <p>Select previous sibling</p>
+        <p>This returns null since there is no sibling h1 tag</p>
+    
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">console.log(h1.previousElementSibling);</span></pre>
+      </div>
+    </div>
+
+
+   <h2>nextElementSibling</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>This returns the h4 tag since it's the next sibling</p>
+    
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">console.log(h1.nextElementSibling);</span></pre>
+      </div>
+    </div>
+
+    <h2>previousSibling</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>Sibling Nodes</p>
+      <p>This returns the Node before the h1</p>
+      <p>This returns #test</p>     
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">console.log(h1.previousSibling);</span></pre>
+      </div>
+    </div>
+
+
+    <h2>nextSibling</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>Sibling Nodes</p>
+      <p>This returns the Node after the h1</p>     
+      </div>
+
+      <div class="col-6">
+        <pre class="example"><span class="code-js">console.log(h1.nextSibling);</span></pre>
+      </div>
+    </div>
+
+
+    <h2>Return all siblings</h2>
+    <div class="row">
+      <div class="col-6">
+        <p>There's not a direct way to do this in JavaScript.</p>
+        <p>You must first go to the parent, then check for children</p>
+        <p>Frst list all children of the parent of the h1, which includes the h1</p>
+        <p>This returns an HTMLCollection</p>
+        <p>Then spread the HTMLCollection into an Array, then loop</p>
+       
+      </div>
+
+      <div class="col-6">
+<pre class="example"><span class="code-js">console.log(h1.parentElement.children);
+  
+[...h1.parentElement.children].forEach(function (el) {
+  if (el !== h1) el.style.transform = 'scale(0.5)';
+});
+</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </section>
+</body>
 
 </html>
