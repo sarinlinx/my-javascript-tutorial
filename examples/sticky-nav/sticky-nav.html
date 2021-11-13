@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Sticky Nav</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+  <section class="container">
+    <h1>Sticky Nav</h1>
+    <div class="row">
+      <div class="col">
+        <ul>
+          <li><a href="example-site/index.html" target="_blank">Example 01</a></li>
+        </ul>
+      </div>
+    </div>
+
+
+
+    <h2>Use scroll to trigger the sticky nav CSS</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>This is an inefficient way since 'scroll' is called every time the page is scrolled.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-css">.nav.sticky {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.95);
+} </span>
+
+<span class="code-html">&lt;nav class="nav"&gt;
+  &lt;img
+    src="img/logo.png"
+    alt="Bankist logo"
+    class="nav__logo"
+    id="logo"
+    designer="Jonas"
+    data-version-number="3.0"/&gt;
+
+  &lt;ul class="nav__links"&gt;
+    &lt;li class="nav__item"&gt;
+      &lt;a class="nav__link" href="#section--1"&gt;Features&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="nav__item"&gt;
+      &lt;a class="nav__link" href="#section--2"&gt;Operations&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="nav__item"&gt;
+      &lt;a class="nav__link" href="#section--3"&gt;Testimonials&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="nav__item"&gt;
+      &lt;a class="nav__link nav__link--btn btn--show-modal" href="#"
+        &gt;Open account&lt;/a
+      &gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt; </span>
+
+<span class="code-js"><span class="code-comment">// create var for nav menu </span>
+const nav = document.querySelector('.nav');
+<span class="code-comment">// create var for first section </span>
+const section1 = document.querySelector('#section--1');
+<span class="code-comment">// get coordinates for this first section </span>
+const initialCoords = section1.getBoundingClientRect();
+<span class="code-comment">// console.log(initialCoords); </span>
+
+<span class="code-comment">// this event is fired each time you scroll </span>
+window.addEventListener('scroll', function () {
+  <span class="code-comment">// console.log(window.scrollY); </span>
+
+  <span class="code-comment">// if the current scrollY position is more than the initial coordinates of section--1, add sticky class </span>
+  if (window.scrollY > initialCoords.top) nav.classList.add('sticky');
+  <span class="code-comment">// if not, remove the sticky class </span>
+  else nav.classList.remove('sticky');
+}); </span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h1>Using the Intersection Observer API</h1>
+
+    <h2>Example of how it works</h2>
+    <div class="row">
+      <div class="col-4">
+        <p>This API allows our code to basically observe changes to the way that a certain target element intersects
+          another element, or the way it intersects the viewport.</p>
+          <p>This example shows how it functions when the section1 element is in view or out of view.</p>
+      </div>
+
+<div class="col-8">
+<pre class="example"><span class="code-js"><span class="code-comment">// Callback function
+// This gets called each time that the observed element, (the target element), is intersecting
+// the root element at the threshold that we defined
+// needs 2 args: entries (this is any Array of the threshold entries)
+// and observer Object (you don't always need the observer) </span>
+const obsCallback = function (entries, observer) {
+  entries.forEach(entry => {
+    console.log(entry);
+  });
+};
+
+<span class="code-comment">// Object of options </span>
+const obsOptions = {
+  <span class="code-comment">// needs a root property. This is the element the target is intersecting
+  // null allows you to observe the element intersecting the viewport (top of page) </span>
+  root: null,
+  <span class="code-comment">/ needs a threshold
+  // % of intersection at which the observer callback is called. There can be more than 1 threshold
+  //  0% means our callback will trigger each time that the target element moves completely out of the view,
+  // and also as soon as it enters the view
+  // that's because the callback function will be called when the threshold is passed when moving into the view and when moving out of the view,
+  // if the value is 1, it would be called when 100% of the target is actually visible in the viewport. </span>
+  threshold: [0, 0.2],
+};
+
+<span class="code-comment">// whenever the target (section1) is intersecting the viewport at the threshold %, the callback function is called
+// IntersectionObserver takes a callback function and object of options </span>
+const observer = new IntersectionObserver(obsCallback, obsOptions);
+<span class="code-comment">// observe is method, then the target element to observe </span>
+observer.observe(section1);</span></pre>
+</div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    
+    <h2>Sticky Nav example</h2>
+    <div class="row">
+      <div class="col-4">
+        <p>This triggers then nav when the header is at the same point of the bottom of the sticky nav (rather than at the top of the viewport).</p>
+      </div>
+
+<div class="col-8">
+<pre class="example"><span class="code-js">const nav = document.querySelector('.nav');
+const section1 = document.querySelector('#section--1');
+const initialCoords = section1.getBoundingClientRect();
+
+const header = document.querySelector('.header');
+<span class="code-comment">// obtain the height of the sticky nav menu </span>
+const navHeight = nav.getBoundingClientRect().height;
+
+<span class="code-comment">// callback function </span>
+const stickyNav = function (entries) {
+  <span class="code-comment">// destructure to get first element out of 'entries'. Same as entries[0] </span>
+  const [entry] = entries;
+  console.log(entry);
+
+  <span class="code-comment">// if target is NOT intersecting the root, add sticky class </span>
+  if (!entry.isIntersecting) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+};
+
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  <span class="code-comment">// Object of options created inside instead of being called </span>
+  root: null,
+  threshold: 0, <span class="code-comment">// when header is 0% visisble </span>
+  rootMargin: `-${navHeight}px`,// this becomes pixels applied outside the target element, this allows the header to stop at the position the nav menu starts, rather than the top of the page
+});
+
+<span class="code-comment">// observe the header </span>
+headerObserver.observe(header);
+
+</span></pre>
+</div>
+    </div>
+
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+
+
+</body>
+
+</html>

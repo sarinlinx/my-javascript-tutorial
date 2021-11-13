@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Slider component</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+  <section class="container">
+    <h1>Slider component</h1>
+    <p>.........................</p>
+    <div class="row">
+      <div class="col">
+        <ul>
+          <li><a href="example-site/index.html" target="_blank">Example</a></li>
+        </ul>
+
+      </div>
+    </div>
+
+
+
+    <h2>HTML</h2>
+    <div class="row">
+      <div class="col-4">
+        <p>HTML</p>
+        <p>Originally, all 3 slides are on top of each other.</p>
+        <p>JavaScript adds CSS to place them side by side in the HTML.</p>        
+      </div>
+
+      <div class="col-8">
+<pre class="example"><span class="code-html">&lt;div class="slider"&gt;
+  &lt;div class="slide"&gt;
+    &lt;div class="testimonial"&gt;
+      &lt;h5 class="testimonial__header"&gt;Best financial decision ever!&lt;/h5&gt;
+      &lt;blockquote class="testimonial__text"&gt;
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Accusantium quas quisquam non? Quas voluptate nulla minima
+        deleniti optio ullam nesciunt, numquam corporis et asperiores
+        laboriosam sunt, praesentium suscipit blanditiis. Necessitatibus
+        id alias reiciendis, perferendis facere pariatur dolore veniam
+        autem esse non voluptatem saepe provident nihil molestiae.
+      &lt;/blockquote&gt;
+      &lt;address class="testimonial__author"&gt;
+        &lt;img src="img/user-1.jpg" alt="" class="testimonial__photo" /&gt;
+        &lt;h6 class="testimonial__name"&gt;Aarav Lynn&lt;/h6&gt;
+        &lt;p class="testimonial__location"&gt;San Francisco, USA&lt;/p&gt;
+      &lt;/address&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="slide"&gt;
+    &lt;div class="testimonial"&gt;
+      &lt;h5 class="testimonial__header"&gt;
+        The last step to becoming a complete minimalist
+      &lt;/h5&gt;
+      &lt;blockquote class="testimonial__text"&gt;
+        Quisquam itaque deserunt ullam, quia ea repellendus provident,
+        ducimus neque ipsam modi voluptatibus doloremque, corrupti
+        laborum. Incidunt numquam perferendis veritatis neque repellendus.
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo
+        deserunt exercitationem deleniti.
+      &lt;/blockquote&gt;
+      &lt;address class="testimonial__author"&gt;
+        &lt;img src="img/user-2.jpg" alt="" class="testimonial__photo" /&gt;
+        &lt;h6 class="testimonial__name"&gt;Miyah Miles&lt;/h6&gt;
+        &lt;p class="testimonial__location"&gt;London, UK&lt;/p&gt;
+      &lt;/address&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="slide"&gt;
+    &lt;div class="testimonial"&gt;
+      &lt;h5 class="testimonial__header"&gt;
+        Finally free from old-school banks
+      &lt;/h5&gt;
+      &lt;blockquote class="testimonial__text"&gt;
+        Debitis, nihil sit minus suscipit magni aperiam vel tenetur
+        incidunt commodi architecto numquam omnis nulla autem,
+        necessitatibus blanditiis modi similique quidem. Odio aliquam
+        culpa dicta beatae quod maiores ipsa minus consequatur error sunt,
+        deleniti saepe aliquid quos inventore sequi. Necessitatibus id
+        alias reiciendis, perferendis facere.
+      &lt;/blockquote&gt;
+      &lt;address class="testimonial__author"&gt;
+        &lt;img src="img/user-3.jpg" alt="" class="testimonial__photo" /&gt;
+        &lt;h6 class="testimonial__name"&gt;Francisco Gomes&lt;/h6&gt;
+        &lt;p class="testimonial__location"&gt;Lisbon, Portugal&lt;/p&gt;
+      &lt;/address&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;button class="slider__btn slider__btn--left"&gt;&larr;&lt;/button&gt;
+  &lt;button class="slider__btn slider__btn--right"&gt;&rarr;&lt;/button&gt;
+  &lt;div class="dots"&gt;&lt;/div&gt;
+&lt;/div&gt; </span></pre>
+    </div>
+  </div>
+
+
+
+
+
+  <h2>CSS</h2>
+  <div class="row">
+    <div class="col-4">
+      <p>CSS</p>
+    
+    </div>
+
+    <div class="col-8">
+<pre class="example"><span class="code-css">.slider {
+  max-width: 100rem;
+  height: 50rem;
+  margin: 0 auto;
+  position: relative;
+
+  /* IN THE END */
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* THIS creates the animation! */
+  transition: transform 1s;
+}
+
+.slide > img {
+  /* Only for images that have different size than slide */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider__btn {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+
+  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  font-family: inherit;
+  color: #333;
+  border-radius: 50%;
+  height: 5.5rem;
+  width: 5.5rem;
+  font-size: 3.25rem;
+  cursor: pointer;
+}
+
+.slider__btn--left {
+  left: 6%;
+  transform: translate(-50%, -50%);
+}
+
+.slider__btn--right {
+  right: 6%;
+  transform: translate(50%, -50%);
+}
+
+.dots {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.dots__dot {
+  border: none;
+  background-color: #b9b9b9;
+  opacity: 0.7;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  margin-right: 1.75rem;
+  cursor: pointer;
+  transition: all 0.5s;
+
+  /* Only necessary when overlying images */
+  /* box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.7); */
+}
+
+.dots__dot:last-child {
+  margin: 0;
+}
+
+.dots__dot--active {
+  /* background-color: #fff; */
+  background-color: #888;
+  opacity: 1;
+}</span></pre>
+  </div>
+</div>
+
+
+
+
+
+
+
+<h2>JavaScript</h2>
+<div class="row">
+  <div class="col-4">
+    <p>Go through and explain everything.</p>
+   
+  
+  </div>
+
+  <div class="col-8">
+<pre class="example"><span class="code-js"><span class="code-comment">// Slider </span>
+const slider = function () {
+  <span class="code-comment">// each slide block has a div class named .slide </span>
+  const slides = document.querySelectorAll('.slide');
+  const btnLeft = document.querySelector('.slider__btn--left');
+  const btnRight = document.querySelector('.slider__btn--right');
+  const dotContainer = document.querySelector('.dots');
+
+  let curSlide = 0;
+
+  const maxSlide = slides.length;
+
+  <span class="code-comment">// Create navigation dots below slider </span>
+  const createDots = function () {
+    slides.forEach(function (_, i) { // only need the index value
+      dotContainer.insertAdjacentHTML( // insert the HTML for the dot
+        'beforeend',
+        `<button class="dots__dot" data-slide="${i}"></button>`
+      );
+    });
+  };
+
+  const activateDot = function (slide) { 
+    <span class="code-comment">// add ore move CSS to change dot color </span>
+    document.querySelectorAll('.dots__dot')
+      .forEach(dot => dot.classList.remove('dots__dot--active'));
+
+    document.querySelector(`.dots__dot[data-slide="${slide}"]`) // select on data-slide attribute
+      .classList.add('dots__dot--active');
+  };
+
+  <span class="code-comment">// Update CSS translateX value for each slide </span>
+  const goToSlide = function (slide) {  
+    slides.forEach(
+      <span class="code-comment">// this moves each 0%, 100%, 200%, 300%
+      // this multiplies 100 times the index of the forEach() loop
+      // Slide is zero to start </span>
+      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+    );
+  };
+
+
+  <span class="code-comment">// Next slide </span>
+  const nextSlide = function () {
+    if (curSlide === maxSlide - 1) { <span class="code-comment">// if current slide is the last slide </span>
+      curSlide = 0; <span class="code-comment">// return to zero again to restart (-1 is necessary since .length is NOT zero based) </span>
+    } else {
+      curSlide++; <span class="code-comment">// if not, increase by one to progress </span>
+    }
+    goToSlide(curSlide);
+    activateDot(curSlide);
+  };
+
+  <span class="code-comment">// Previous slide </span>
+  const prevSlide = function () {
+    if (curSlide === 0) { <span class="code-comment">// if current slide is zero </span>
+      curSlide = maxSlide - 1; <span class="code-comment">// decrease by 1 (move back to the max slide) (-1 is necessary since .length is NOT zero based) </span>
+    } else { <span class="code-comment">// otherwise, move back 1 slide </span>
+      curSlide--;
+    }
+    goToSlide(curSlide);
+    activateDot(curSlide);
+  };
+
+
+  const init = function () {
+    goToSlide(0); <span class="code-comment">// original slide </span>
+    createDots();
+    activateDot(0); <span class="code-comment">// original dot </span>
+  };
+
+  init();
+
+
+  <span class="code-comment">// Slider button handlers </span>
+  btnRight.addEventListener('click', nextSlide);
+  btnLeft.addEventListener('click', prevSlide);
+
+
+  <span class="code-comment">// this allows the left and right keyboard keys to move the slider </span>
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') prevSlide();
+    e.key === 'ArrowRight' && nextSlide();
+  });
+
+
+  dotContainer.addEventListener('click', function (e) {
+    <span class="code-comment">// Event Delegation: target parent element </span>
+    if (e.target.classList.contains('dots__dot')) {
+      <span class="code-comment">// destructure </span>
+      const { slide } = e.target.dataset; <span class="code-comment">// dataset references data-slide in HTML </span>
+      goToSlide(slide);
+      activateDot(slide);
+    }
+  });
+};
+
+slider();</span></pre>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  </section>
+
+
+
+
+
+
+
+</body>
+
+</html>

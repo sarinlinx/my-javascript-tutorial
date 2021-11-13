@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" type="image/png" href="img/icon.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Bankist | When Banking meets Minimalist</title>
+
+    <!-- <script defer src="script.js"></script> -->
+  </head>
+  <body> 
+
+    <section class="section" id="section--3">
+      <div class="section__title section__title--testimonials">
+        <h2 class="section__description">Not sure yet?</h2>
+        <h3 class="section__header">
+          Millions of Bankists are already making their lifes simpler.
+        </h3>
+      </div>
+
+      <div class="slider">
+        <div class="slide">
+          <div class="testimonial">
+            <h5 class="testimonial__header">Best financial decision ever!</h5>
+            <blockquote class="testimonial__text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Accusantium quas quisquam non? Quas voluptate nulla minima
+              deleniti optio ullam nesciunt, numquam corporis et asperiores
+              laboriosam sunt, praesentium suscipit blanditiis. Necessitatibus
+              id alias reiciendis, perferendis facere pariatur dolore veniam
+              autem esse non voluptatem saepe provident nihil molestiae.
+            </blockquote>
+            <address class="testimonial__author">
+              <img src="img/user-1.jpg" alt="" class="testimonial__photo" />
+              <h6 class="testimonial__name">Aarav Lynn</h6>
+              <p class="testimonial__location">San Francisco, USA</p>
+            </address>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="testimonial">
+            <h5 class="testimonial__header">
+              The last step to becoming a complete minimalist
+            </h5>
+            <blockquote class="testimonial__text">
+              Quisquam itaque deserunt ullam, quia ea repellendus provident,
+              ducimus neque ipsam modi voluptatibus doloremque, corrupti
+              laborum. Incidunt numquam perferendis veritatis neque repellendus.
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo
+              deserunt exercitationem deleniti.
+            </blockquote>
+            <address class="testimonial__author">
+              <img src="img/user-2.jpg" alt="" class="testimonial__photo" />
+              <h6 class="testimonial__name">Miyah Miles</h6>
+              <p class="testimonial__location">London, UK</p>
+            </address>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="testimonial">
+            <h5 class="testimonial__header">
+              Finally free from old-school banks
+            </h5>
+            <blockquote class="testimonial__text">
+              Debitis, nihil sit minus suscipit magni aperiam vel tenetur
+              incidunt commodi architecto numquam omnis nulla autem,
+              necessitatibus blanditiis modi similique quidem. Odio aliquam
+              culpa dicta beatae quod maiores ipsa minus consequatur error sunt,
+              deleniti saepe aliquid quos inventore sequi. Necessitatibus id
+              alias reiciendis, perferendis facere.
+            </blockquote>
+            <address class="testimonial__author">
+              <img src="img/user-3.jpg" alt="" class="testimonial__photo" />
+              <h6 class="testimonial__name">Francisco Gomes</h6>
+              <p class="testimonial__location">Lisbon, Portugal</p>
+            </address>
+          </div>
+        </div>
+
+        <button class="slider__btn slider__btn--left">&larr;</button>
+        <button class="slider__btn slider__btn--right">&rarr;</button>
+        <div class="dots"></div>
+      </div>
+    </section>
+
+
+    <script>
+
+// select all sections with a class of .section
+const allSections = document.querySelectorAll('.section');
+
+
+const revealSection = function (entries, observer) {
+  // destructure entries
+  const [entry] = entries;
+
+  // if entry is NOT intersecting, return immediately
+  if (!entry.isIntersecting) return;
+
+  // otherwise, execute the rest of the code
+  // remove CSS hidden class
+  entry.target.classList.remove('section--hidden');
+  // set unobserve after section is scrolled past
+  observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null, // viewport
+  threshold: 0.15, // don't show immediately after it enters viewport. Revealed after 15% viewable
+});
+
+// loop over Node list
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  // add the CSS class to hide the sections
+  // section.classList.add('section--hidden');
+});
+
+
+
+
+
+
+// Lazy load images
+// select all images with an property of data-src
+const imgTargets = document.querySelectorAll('img[data-src]');
+
+
+// Callback function for Observer
+const loadImg = function (entries, observer) {
+  // only 1 threshold so there's only 1 entry
+  const [entry] = entries;
+
+  // if it's NOT intersecting, return nothing
+  if (!entry.isIntersecting) return;
+
+  // Otherwise, replace src with data-src
+  // JavaScript then creates a 'load' event for this
+  entry.target.src = entry.target.dataset.src;
+
+  // Look for the load event created above
+  entry.target.addEventListener('load', function () {
+    // remove CSS lazy class
+    entry.target.classList.remove('lazy-img');
+  });
+
+  // stop observing images 
+  observer.unobserve(entry.target);
+};
+
+
+
+// Create Image Observer
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null, // viewport
+  threshold: 0,
+  rootMargin: '200px', // causes images to fully load 200px before they are scrolled to
+});
+
+
+// Loop over Node list to observe each image
+imgTargets.forEach(img => imgObserver.observe(img));
+
+
+
+
+
+
+
+
+
+
+
+// Slider
+const slider = function () {
+  // each slide block has a div class named .slide
+  const slides = document.querySelectorAll('.slide');
+  const btnLeft = document.querySelector('.slider__btn--left');
+  const btnRight = document.querySelector('.slider__btn--right');
+  const dotContainer = document.querySelector('.dots');
+
+  let curSlide = 0;
+
+  const maxSlide = slides.length;
+
+  // Create navigation dots below slider
+  const createDots = function () {
+    slides.forEach(function (_, i) { // only need the index value
+      dotContainer.insertAdjacentHTML( // insert the HTML for the dot
+        'beforeend',
+        `<button class="dots__dot" data-slide="${i}"></button>`
+      );
+    });
+  };
+
+  const activateDot = function (slide) { 
+    // add ore move CSS to change dot color 
+    document.querySelectorAll('.dots__dot')
+      .forEach(dot => dot.classList.remove('dots__dot--active'));
+
+    document.querySelector(`.dots__dot[data-slide="${slide}"]`) // select on data-slide attribute
+      .classList.add('dots__dot--active');
+  };
+
+  // Update CSS translateX value for each slide 
+  const goToSlide = function (slide) {  
+    slides.forEach(
+      // this moves each 0%, 100%, 200%, 300%
+      // this multiplies 100 times the index of the forEach() loop
+      // Slide is zero to start
+      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+    );
+  };
+
+
+  // Next slide
+  const nextSlide = function () {
+    if (curSlide === maxSlide - 1) { // if current slide is the last slide
+      curSlide = 0; // return to zero again to restart (-1 is necessary since .length is NOT zero based)
+    } else {
+      curSlide++; // if not, increase by one to progress
+    }
+    goToSlide(curSlide);
+    activateDot(curSlide);
+  };
+
+  // Previous slide
+  const prevSlide = function () {
+    if (curSlide === 0) { // if current slide is zero
+      curSlide = maxSlide - 1; // decrease by 1 (move back to the max slide) (-1 is necessary since .length is NOT zero based)
+    } else { // otherwise, move back 1 slide
+      curSlide--;
+    }
+    goToSlide(curSlide);
+    activateDot(curSlide);
+  };
+
+
+  const init = function () {
+    goToSlide(0); // original slide
+    createDots();
+    activateDot(0); // original dot
+  };
+
+  init();
+
+
+  // Slider button handlers
+  btnRight.addEventListener('click', nextSlide);
+  btnLeft.addEventListener('click', prevSlide);
+
+
+  // this allows the left and right keyboard keys to move the slider
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') prevSlide();
+    e.key === 'ArrowRight' && nextSlide();
+  });
+
+
+  dotContainer.addEventListener('click', function (e) {
+    // Event Delegation: target parent element
+    if (e.target.classList.contains('dots__dot')) {
+      // destructure
+      const { slide } = e.target.dataset; // dataset references data-slide in HTML
+      goToSlide(slide);
+      activateDot(slide);
+    }
+  });
+};
+
+slider();
+</script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+    <title>Revealing elements</title>
+</head>
+
+<body>
+    <a href="../../index.html">Home page</a>
+
+
+
+
+    <section class="container">
+        <h1>Revealing elements</h1>
+        <p>This example slides in the new section as you're scrolling down.</p>
+        <div class="row">
+            <div class="col">
+              <ul><li><a href="example-site/index.html" target="_blank">Example 01</a></li></ul>
+              
+            </div>
+        </div>
+  
+  
+
+        <h2>Revealing elements</h2>
+        <div class="row">
+            <div class="col-4">
+                <p>This uses the IntersectionObserver API to check when a section has scrolled into the viewport.</p>
+                <p>The CSS class to hide the element is run on all first.</p>
+                <p>As the page is scrolled, the CSS class is removed for that section.</p>
+                <p>The observer then uses 'unobserve' to stop observer the section when it's out of the viewport. This helps optimization.</p>
+            </div>
+
+            <div class="col-8">
+<pre class="example"><span class="code-css">.section--hidden {
+  opacity: 0;
+  transform: translateY(8rem);
+} </span>
+  
+<span class="code-html">&ltsection class="section" id="section--1"&gt; </span>
+  
+<span class="code-js"><span class="code-comment">// select all sections with a class of .section </span>
+const allSections = document.querySelectorAll('.section');
+
+const revealSection = function (entries, observer) {
+  <span class="code-comment">// destructure entries </span>
+  const [entry] = entries;
+
+  <span class="code-comment">// if entry is NOT intersecting, return immediately </span>
+  if (!entry.isIntersecting) return;
+
+  <span class="code-comment">// otherwise, execute the rest of the code
+  // remove CSS hidden class </span>
+  entry.target.classList.remove('section--hidden');
+  <span class="code-comment">// set unobserve after section is scrolled past </span>
+  observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null, // viewport
+  threshold: 0.15, // don't show immediately after it enters viewport. Revealed after 15% viewable
+});
+
+<span class="code-comment">// loop over Node list </span>
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  <span class="code-comment">// add the CSS class to hide the sections </span>
+  section.classList.add('section--hidden');
+});</span></pre>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+
+
+
+</body>
+
+</html>

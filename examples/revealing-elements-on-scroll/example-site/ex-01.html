@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Bankist | When Banking meets Minimalist</title>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <img src="img/logo.png" alt="Bankist logo" class="nav__logo" id="logo" designer="Jonas"
+        data-version-number="3.0" />
+      <ul class="nav__links">
+        <li class="nav__item">
+          <a class="nav__link" href="#section--1">Features</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#section--2">Operations</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#section--3">Testimonials</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header__title">
+      <!-- <h1 onclick="alert('HTML alert')"> -->
+
+
+
+      <h1>
+        When
+        <!-- Green highlight effect -->
+        <span class="highlight">banking</span>meets
+        <br />
+        <span class="highlight">minimalist</span>
+      </h1>
+
+
+
+      <h4>A simpler banking experience for a simpler life.</h4>
+      <button class="btn--text btn--scroll-to">Learn more &DownArrow;</button>
+      <img
+        src="img/hero.png"
+        class="header__img"
+        alt="Minimalist bank items"
+      />
+    </div>
+
+    <div class="header__title">
+      <button class="btn--text btn--scroll-to">Learn more &DownArrow;</button>
+  </header>
+
+  <section class="section" id="section--1">
+    <div class="section__title">
+      <h2 class="section__description">Features</h2>
+      <h3 class="section__header">
+        Everything you need in a modern bank and more.
+      </h3>
+    </div>
+  </section>
+
+  <section class="section" id="section--2">
+    <div class="section__title">
+      <h2 class="section__description">Operations</h2>
+      <h3 class="section__header">
+        Everything as simple as possible, but no simpler.
+      </h3>
+    </div>
+  </section>
+
+  <section class="section" id="section--3">
+  </section>
+  <script>
+
+
+
+const h1 = document.querySelector('h1');
+// going downwards
+
+// this returns a Node list of all elements with a class of .highlight that are direct children of h1
+// in this case, a Node list of 2 elements with the class of .highlight inside the h1
+// console.log(h1.querySelectorAll('.highlight'));
+
+// direct children
+// this returns all children elements inside the h1 tags
+// this includes text, comments, classes
+// console.log(h1.childNodes);
+
+// direct children
+// returns an HTMLCollection of all child tags (not text) within the h1 element
+// this retunrs the first span, br tag, and final span tag
+// console.log(h1.children);
+
+// selects the first child after the opening h1
+// this selects the first span tag
+// h1.firstElementChild.style.color = 'white';
+
+// selects the last child within the h1 tags
+// this selects the last span tag
+// h1.lastElementChild.style.color = 'orangered';
+
+
+
+
+
+
+
+
+
+
+// Going upwards: parents
+
+// direct parents
+// this returns the parent element of the h1 tag
+// in this example, <div class="header__title">
+// console.log(h1.parentNode);
+
+// returns the same as parentNode, need a better example
+// console.log(h1.parentElement);
+
+
+// closest()
+// can be thought of as the opposite of querySelect since querySelector searches for children
+// closest() searches for parents
+
+// changes the closest parent with a class of header
+// h1.closest('.header').style.background = 'var(--gradient-secondary)';
+
+// need a better example. Since there's only 1 h1 tag, it gets selected
+// h1.closest('h1').style.background = 'var(--gradient-primary)';
+
+
+
+
+// Going sideways: siblings
+
+// can only access direct siblings in JS
+// select previous sibling
+// this returns null since there is no sibling h1 tag
+// console.log(h1.previousElementSibling);
+
+// this returns the h4 tag since it's the next sibling
+// console.log(h1.nextElementSibling);
+
+// sibling Nodes
+// returns the Node before the h1
+// this returns #test
+// console.log(h1.previousSibling);
+
+// returns the Node after the h1
+// console.log(h1.nextSibling);
+
+// Return all siblings
+// not direct way to do this in JS
+// you must first go to the parent, then check for children
+
+// first list all children of the parent of the h1, which includes the h1
+// this returns an HTMLCollection
+console.log(h1.parentElement.children);
+
+// spread the HTMLCollection into an Array, then loop
+  [...h1.parentElement.children].forEach(function (el) {
+    if (el !== h1) el.style.transform = 'scale(0.5)';
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+/* EVENT DELEGATION */
+// put eventListener on a common parent element when the event bubbles up
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  // prevent hyperlink jump or URL change
+  e.preventDefault();
+
+  // e.tareget is where the event occurred
+  if (e.target.classList.contains('nav__link')) {
+    // obtain the specific anchor tag
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+}
+});
+
+
+
+
+    // this works also to smooth scroll, but it's not efficient since it's called on every single sub element (3 in this case)
+  //   document.querySelectorAll('.nav__link').forEach(function (el) {
+  //     el.addEventListener('click', function (e) {
+  //       // prevent hyperlink jump or URL change
+  //       e.preventDefault();
+  //       // store the anchor link (#section--1)
+  //       const id = this.getAttribute('href');
+  
+  //       document.querySelector(id).scrollIntoView({
+  //         behavior: 'smooth'
+  //       });
+  //     });
+  // });
+
+
+    /* Original smooth scrolling code
+    const btnScrollTo = document.querySelector('.btn--scroll-to');
+    const section1 = document.querySelector('#section--1');
+    
+    // add event listener to button
+    btnScrollTo.addEventListener('click', function(e) {
+    // get coordinates of element to scroll to
+    const s1coords = section1.getBoundingClientRect();
+    // console.log(s1coords)
+    console.log(e.target.getBoundingClientRect())
+    // scrolling: 1st arg is left position of s1coords: 2nd arg is top position of s1coords
+    // window.scrollTo(
+    //   s1coords.left + window.pageXOffset,
+    //   s1coords.top + window.pageYOffset);
+    
+    
+    
+    
+      // window.scrollTo({
+      // left: s1coords.left + window.pageXOffset,
+      // top: s1coords.top + window.pageYOffset,
+      // behavior: 'smooth',
+      // });
+    
+    
+      section1.scrollIntoView({
+        behavior: 'smooth'
+      })
+    
+    // scroll coordinates
+    // console.log('Current scroll (X/Y)', window.pageXOffset, pageYOffset);
+    // height width of viewport
+    // console.log('height/width viewport', document.documentElement.clientHeight, document.documentElement.clientWidth);
+    })*/
+
+  </script>
+</body>
+
+</html>

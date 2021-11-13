@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Lazy load images</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+  <section class="container">
+    <h1>Lazy load images on scroll</h1>
+    <p>T...........................</p>
+    <div class="row">
+      <div class="col">
+        <ul>
+          <li><a href="example-site/index.html" target="_blank">Example 01</a></li>
+        </ul>
+
+      </div>
+    </div>
+
+
+
+    <h2>Revealing elements</h2>
+    <div class="row">
+      <div class="col-4">
+        <p>The main ingredient to this lazy loading strategy is that we have a very low resolution image, which is
+          really small and which is loaded, right in the beginning.</p>
+          <p>The data-set attribute is used to point to the full size image.</p>
+          <p>As you scroll, the low res image (with a blur) is replaced with the full size image.</p>
+      </div>
+
+      <div class="col-8">
+<pre class="example"><span class="code-css">.lazy-img {
+  filter: blur(20px);
+} </span>
+
+<span class="code-html">&lt;img
+  src="img/digital-lazy.jpg"
+  data-src="img/digital.jpg"
+  alt="Computer"
+  class="features__img lazy-img"
+/&gt; </span>
+
+<span class="code-js"><span class="code-comment">// Lazy load images
+// select all images with an property of data-src </span>
+const imgTargets = document.querySelectorAll('img[data-src]');  
+
+<span class="code-comment">// Callback function for Observer </span>
+const loadImg = function (entries, observer) {
+  <span class="code-comment">// only 1 threshold so there's only 1 entry </span>
+  const [entry] = entries;
+
+  <span class="code-comment">// if it's NOT intersecting, return nothing </span>
+  if (!entry.isIntersecting) return;
+
+  <span class="code-comment">// Otherwise, replace src with data-src
+  // JavaScript then creates a 'load' event for this </span>
+  entry.target.src = entry.target.dataset.src;
+
+  <span class="code-comment">// Look for the load event created above </span>
+  entry.target.addEventListener('load', function () {
+    <span class="code-comment">// remove CSS lazy class </span>
+    entry.target.classList.remove('lazy-img');
+  });
+
+  <span class="code-comment">// stop observing images </span>
+  observer.unobserve(entry.target);
+};
+
+  
+<span class="code-comment">// Create Image Observer </span>
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null, <span class="code-comment">// viewport </span>
+  threshold: 0,
+  rootMargin: '200px', // causes images to fully load 200px before they are scrolled to
+});
+
+<span class="code-comment">// Loop over Node list to observe each image </span>
+imgTargets.forEach(img => imgObserver.observe(img)); </span></pre>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+
+
+</body>
+
+</html>

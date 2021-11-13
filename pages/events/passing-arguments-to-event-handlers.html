@@ -28,6 +28,9 @@
     <div class="row">
       <div class="col-4">
         <p>Nav menu</p>
+        <p>This creates a logo and 4 links</p>
+        <p>When any link is hovered, the rest change their opacity.</p>
+        <p>When hovered away, the opacity returns to normal.</p>
         <ul><a href="ex-passing-args-to-event-handlers.html" target="_blank">Example</a></li></ul>
       </div>
 
@@ -66,24 +69,130 @@
 
 
 
-    <h2>Store parent element in variable</h2>
+    <h2>Step 1 - Store parent element in variable</h2>
     <div class="row">
       <div class="col-6">
-        <p>Nav menu</p>
+        <p>Store the &ltpnav class="nav"&gt; in a variable.</p>
+        <p>This will be used as the reference for all other links.</p>
       </div>
 
       <div class="col-6">
-<pre class="example"><span class="code-js">.........</span></pre>
+<pre class="example"><span class="code-js">const nav = document.querySelector('.nav')</span></pre>
       </div>
     </div>
 
 
 
+    <h2>Step 2 - Create mouseover event</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>The mouseover event looks for the link that is hovered.</p>
+        <p>It then causes all other links to change their opacity (to dim)</p>
+      </div>
 
+      <div class="col-7">
+<pre class="example"><span class="code-js"><span class="code-comment">// this section looks for the link that is hovered, then changes the opacity on all other siblings
+// but, it does NOT change the opacity back when you move the mouse away</span>
+nav.addEventListener('mouseover', function(e) {
+  if (e.target.classList.contains('nav__link')) {
+    <span class="code-comment">// confirm which link was clicked</span>
+    const link = e.target;
+
+    <span class="code-comment">// siblings = parent element of all links
+    // then use querySelectorAll to search within that element for .nav__link</span>
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link')
+
+    <span class="code-comment">// locate logo</span>
+    const logo = link.closest('.nav').querySelector('img')
+
+    <span class="code-comment">//change opacity of siblings when a link is clicked</span>
+    siblings.forEach(el => {
+      <span class="code-comment">// exclude the link you clicked
+      // change the rest's opacity</span>
+      if(el !== link) el.style.opacity = 0.5
+    })
+
+    logo.style.opacity = 0.5
+  }
+})</span></pre>
+      </div>
+    </div>
+
+
+    <h2>Step 3 - Create mouseout event</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>The mouseout event removes the opacity when the mouse is moved away from the link.</p>
+      </div>
+
+      <div class="col-7">
+<pre class="example"><span class="code-js"><span class="code-comment">// this changes the opacity back when you move your mouse away</span>
+nav.addEventListener('mouseout', function(e) {
+  if (e.target.classList.contains('nav__link')) {
+    <span class="code-comment">// confirm which link was clicked</span>
+    const link = e.target;
+
+    <span class="code-comment">// siblings = parent element of all links
+    // then use querySelectorAll to search within that element for .nav__link </span>
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link')
+
+    <span class="code-comment">// locate logo </span>
+    const logo = link.closest('.nav').querySelector('img')
+
+    <span class="code-comment">//change opacity of siblings when a link is clicked </span>
+    siblings.forEach(el => {
+      <span class="code-comment">// exclude the link you clicked
+      // change the rest's opacity </span>
+      if(el !== link) el.style.opacity = 1
+    })
+
+    logo.style.opacity = 1
+  }
+})</span></pre>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  
+  <h2>Refactored code</h2>
+  <div class="row">
+    <div class="col-5">
+      <p>This simplifies the code above by creating a single function.</p>
+      <p>The bind() function is used to send the argument for the opacity values.</p>
+      <p>This works since the opacity values are the only things different in the two functions above.</p>
+    </div>
+
+    <div class="col-7">
+<pre class="example"><span class="code-js"><span class="code-comment">// Passing "argument" into handler
+// Since the only thing different in the 2 functions was the opacity, you can create a single function
+// then send different arguments into the function to set the opacity </span>
+const handleHover = function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  }
+};
+
+<span class="code-comment">// bind() creates a copy of the function it's called on
+// it then sets the 'this' keyword in the function call to the argument passed in </span>
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+nav.addEventListener('mouseout', handleHover.bind(1));</span></pre>
+</div>
+</div>
 
   </section>
   <script>
-
 
 </script>
 </body>

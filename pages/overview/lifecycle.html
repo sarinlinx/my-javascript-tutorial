@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Lifecycle</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+  <section class="container">
+
+
+
+    <h1>Lifecycle</h1>
+
+
+
+    <h1>DOMContentLoaded</h1>
+
+    <div class="row">
+      <div class="col-6">
+        <p>This is similar to document.ready in jQuery.</p>
+        <p>this event is fired by the document as soon as the HTML is completely parsed, which means that the HTML has
+          been downloaded and been converted to the DOM tree.</p>
+        <p> all scripts must be downloaded and executed before the DOM content loaded event can happen.</p>
+        <p>Only HTML and JS need to be loaded.</p>
+        <p>You can listen for the event.</p>
+
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">document.addEventListener('DOMContentLoaded'), function (e) {
+  console.log(e);
+}
+</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+    <h1>load</h1>
+
+    <div class="row">
+      <div class="col-6">
+        <p>fired by the window. As soon as not only the HTML is parsed, but also all the images and external resources
+          like CSS files are also loaded. So basically when the complete page has finished loading is when this event
+          gets fired.
+        </p>
+
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">document.addEventListener('load'), function (e) {
+  console.log(e);
+}
+</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h1>beforeunload</h1>
+
+    <div class="row">
+      <div class="col-6">
+        <p> And this event here is created immediately before a user is about to leave a page. So for example, after
+          clicking this close button here in the browser tab, so we can basically use this event to ask users if they
+          are 100% sure that they want to leave the page. Now in some browsers to make this work, we need to call
+          prevent default here. In Chrome it's not necessary, but some browsers require it. And then we can also take a
+          look at the event itself.</p>
+        <p>in order to display a leaving confirmation, we need to set the return value on the event to an empty string.
+          So return value and an empty string.</p>
+        <p>Not possible to customize the popup message.</p>
+        <p>the only time you should prompt the user, if they really want to leave the page is for example,
+          when the user is leaving in the middle of filling out the form, or like writing a blog post or something like
+          that. So a situation in which data could actually be lost by accident.</p>
+
+      </div>
+      <div class="col-6">
+        <pre class="example"><span class="code-js">document.addEventListener('beforeunload'), function (e) {
+  e.preventDefault(); <span class="code-comment">// some browsers require this </span>
+  console.log(e);
+  e.returnValue = ''; <span class="code-comment">// for historical reasons </span>
+}
+</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
