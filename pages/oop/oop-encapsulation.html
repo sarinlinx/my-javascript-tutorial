@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Encapsulation</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+  <section class="container">
+
+    <h1>Encapsulation</h1>
+
+    <h2>Create a class with methods</h2>
+
+    <div class="row">
+      <div class="col-4">
+        <p>This adds methdos within the class that can be used outside of it to set properties.</p>
+        <p>This is perferable to writing the properties manually outside the function. This way, you can just call
+          deposit() or withdraw() with an argument.</p>
+        <p>The problem with this Class is that 'pin' is currently available outside of it. This needs to be encapsulated
+          to protect its data.</p>
+      </div>
+
+      <div class="col-8">
+        <pre class="example"><span class="code-js"> class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.pin = pin;
+    this.movements = [];
+    this.locale = navigator.language;
+
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+
+  <span class="code-comment">// create methods that interact with properties, this is easier than adding them manually outside the class
+      // Public interface for the Objects </span>
+  deposit(val) {
+    this.movements.push(val)
+  }
+
+  withdraw(val) {
+    this.deposit(-val)
+  }    
+}
+
+const acc1 = new Account('Jonas', 'EUR', 1111)
+console.log(acc1)
+
+acc1.deposit(250)
+acc1.withdraw(140)</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+  </section>
+  <script>
+
+    class Account {
+      constructor(owner, currency, pin) {
+        this.owner = owner;
+        this.currency = currency;
+        this.pin = pin;
+        this.movements = [];
+        this.locale = navigator.language;
+
+        console.log(`Thanks for opening an account, ${owner}`);
+      }
+
+      // create methods that interact with properties, this is easier than adding them manually outside the class
+      // Public interface for the Objects
+      deposit(val) {
+        this.movements.push(val)
+      }
+
+      withdraw(val) {
+        this.deposit(-val)
+      }
+
+      requestLoan(val) {
+        // if (this.#approveLoan(val)) {
+        if (this._approveLoan(val)) {
+          this.deposit(val);
+          console.log(`Loan approved`);
+          return this;
+        }
+      }
+    }
+
+    const acc1 = new Account('Jonas', 'EUR', 1111)
+    console.log(acc1)
+
+    acc1.deposit(250)
+    acc1.withdraw(140)
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Class Inheritance</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+  <section class="container">
+    <h1>Class Inheritance using Constructor Functions</h1>
+    <p>In this example, the STUDENT class inherits from the PERSON class.</p>
+    <p>Constructor functions are used to inherit.</p>
+
+
+
+    <h2> example</h2>
+    <div class="row">
+      <div class="col-4">
+        <p>This creates a Person.prototype.</p>
+        <p>The Student.prototype inherits from it and adds a new property named 'course'.</p>
+        <p>mike is created as a prototype of Student, but also inherits up the chain from Person.</p>
+      </div>
+
+      <div class="col-8">
+        <pre class="example"><span class="code-js"><span class="code-comment">/*_________
+Person Constructor function
+__________*/
+// Create Person Object </span>
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+<span class="code-comment">// Make calcAge() available to the Person prototype </span>
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear)
+}
+
+
+<span class="code-comment">/*_________
+Student Constructor function
+__________*/
+// Student Object with additional properties from Person </span>
+const Student = function (firstName, birthYear, course) {
+  <span class="code-comment">// use call() to pull in data from the Person Constructor function. This allows you to use the 'this' keyword </span>
+  Person.call(this, firstName, birthYear)
+  <span class="code-comment">// additional property </span>  
+  this.course = course;
+}
+
+
+<span class="code-comment">// STEP 1 - Link Prototypes
+// The Student.prototype Object is now an Object that inherits from Person.prototype
+// This connection must be creaed BEFORE adding methods to the Student prototype
+// Object.create returns an empty object, so Student.prototype is empty
+// Since it's empty, you can then add methods to it
+// This creates a prototype chain where Student.prototype can inherit from Person.prototype
+// If you did not use Object.create(), a copy would be created, which doesn't allow inheritance </span>
+Student.prototype = Object.create(Person.prototype)
+
+
+
+<span class="code-comment">// STEP 2
+// Add a method to the Student prototype </span>
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}.`);
+}
+
+
+<span class="code-comment">/*_________
+New Student Object
+__________*/
+// Create an Object named mike </span>
+const mike = new Student('Mike', 2020, 'Computer Science');
+
+<span class="code-comment">// call the introduce() on the Student Object </span>
+mike.introduce(); <span class="code-comment">// this was inherited from the Student.prototype </span>
+mike.calcAge(); <span class="code-comment">// this was inherited from the Person.prototype </span></span></pre>
+      </div>
+    </div>
+
+
+
+
+    <h2>The constructor property</h2>
+    <div class="row">
+      <div class="col-4">
+        <p>This returns Person as the constructor of Student.</p>
+        <p>This is because the prototype property of the student was set using Object.create().</p>
+        <p>This should be fixed to points to Student as it could cause problems later if it's still pointing to Person.
+        </p>
+        <p>To fix, set it using: <strong>Student.prototype.constructor = Student;</strong></p>
+      </div>
+
+      <div class="col-8">
+        <pre class="example"><span class="code-js">console.dir(Student.prototype.constructor);
+<span class="code-comment">// reset using this </span>
+Student.prototype.constructor = Student;
+</span></pre>
+      </div>
+    </div>
+
+
+
+    <h2>Confirming using instanceof</h2>
+    <div class="row">
+      <div class="col-4">
+        <p>Use instanceof to verify which constructor is being used.</p>
+        <p>These all return true since the prototypes are linked together because it was created using
+          <strong>Student.prototype = Object.create(Person.prototype)</strong>.
+        </p>
+      </div>
+
+      <div class="col-8">
+        <pre class="example"><span class="code-js">console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+console.log(mike instanceof Object);</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h1>Class Inheritance using ES6 classes</h1>
+    <p>To implement inheritance between ES6 classes, you need the extend keyword and super function.</p>
+
+
+
+    <h2>example</h2>
+    <div class="row">
+      <div class="col-4">
+        <p>This creates a ES6 class named PersonCl with several methods.</p>
+        <p>A new class named StudentCl is created from PeronCl using the 'extends' keyword.</p>
+        <p>Within StudentCl, the super() function is used to set the 'this' keyword within this class. (This is ony
+          necesary if you need to use the 'this' keyword.)</p>
+        <p>The 'this' keyword is used to create a new property on StudentCl.</p>
+        <p>martha is created from StudentCl and has access to all properties and methods up to PersonCl.</p>
+      </div>
+
+      <div class="col-8">
+        <pre class="example"><span class="code-js"><span class="code-comment">/*_________
+  Person Constructor function
+__________*/ </span>
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  } 
+
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey ${this.fullName}`);
+  }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  introduce() {
+    console.log(`My name is ${this.fullName} and I study ${this.course}.`);
+  }
+}
+
+
+<span class="code-comment">// inherit fromn PersonCl
+// the extends keywords links the classes </span>
+class StudentCl extends PersonCl {
+  <span class="code-comment">// receives same args as parent class + more </span>
+  constructor(fullName, birthYear, course) {
+    <span class="code-comment">// super is the constructor function of the parent class
+    // you don't need to specify the name of the parent class again here
+    // pass in args from the constructor of the parent class
+    // This MUST HAPPEN FIRST IF YOU NEED TO USE THE 'this' KEYWORD
+    // This is because the super function creates the 'this' keyword for this subclass
+    // If you don't need to use the 'this' keyword, you can leave the super function out. Then only the args from the parent will exist </span>
+    super(fullName, birthYear)
+    <span class="code-comment">// you can now use the 'this' keyword </span>
+    this.course = course;
+  }
+}
+
+    
+<span class="code-comment">// All methods are inherited from the parent class </span>
+const martha = new StudentCl('Martha Jones', 2012, 'Computer Science')
+martha.introduce();
+</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h1>Class Inheritance using Object.create()</h1>
+    <p>ES6 and Constructor functions fake the way Classes work in other languages.</p>
+    <p>Object.create() is the actual JavaScript technique way of writing this.</p>
+    <p>However, ES6 classes are used more often in the real world.</p>
+
+    <div class="row">
+      <div class="col-4">
+        <p>This uses Object.create() to link Objects to other Objects</p>
+      </div>
+
+      <div class="col-8">
+        <pre class="example"><span class="code-js"><span class="code-comment">/*_________
+  Object.create()
+  __________*/ </span>
+
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+
+  <span class="code-comment">// so you don't have to many set the properties on a new StudentProto Object </span>
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto);
+
+<span class="code-comment">// PersonProto is the prototype of StudentProto
+// empty when created </span>
+const StudentProto = Object.create(PersonProto);
+
+
+StudentProto.init = function (firstName, birthYear, course) {
+  <span class="code-comment">// Use call() to set the 'this' keyword to the 'this' keyword in this method </span>
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+<span class="code-comment">// inherit from PersonProto </span>
+StudentProto.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+<span class="code-comment">// create new object that inherits from StudentProto
+// StudentProto is now the prototype of the jay Object </span>
+const jay = Object.create(StudentProto);
+
+<span class="code-comment">// From StudentProto </span>
+jay.init('Jay', 2010, 'Computer Science');
+jay.introduce();
+<span class="code-comment">// From PersonProto </span>
+jay.calcAge();</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h1>Another class example</h1>
+
+    <div class="row">
+      <div class="col-4">
+        <p>T.................</p>
+      </div>
+
+      <div class="col-8">
+        <pre class="example"><span class="code-js">..............</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </section>
+  <script>
+
+    class Account {
+      constructor(owner, currency, pin) {
+        this.owner = owner;
+        this.currency = currency;
+        this.pin = pin;
+        this.movements = [];
+        this.locale = navigator.language;
+
+        console.log(`Thanks for opening an account, ${owner}`);
+      }
+
+      // create methods that interact with properties, this is easier than adding them manually outside the class
+      // Public interface for the Objects
+      deposit(val) {
+        this.movements.push(val)
+      }
+
+      withdraw(val) {
+        this.deposit(-val)
+      }
+
+      requestLoan(val) {
+        // if (this.#approveLoan(val)) {
+        if (this._approveLoan(val)) {
+          this.deposit(val);
+          console.log(`Loan approved`);
+          return this;
+        }
+      }
+    }
+
+    const acc1 = new Account('Jonas', 'EUR', 1111)
+    console.log(acc1)
+
+    acc1.deposit(250)
+    acc1.withdraw(140)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*_________
+       Object.create()
+       __________*/
+
+    const PersonProto = {
+      calcAge() {
+        // console.log(2037 - this.birthYear);
+      },
+
+      // so you don't have to many set the properties on a new StudentProto Object
+      init(firstName, birthYear) {
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+      },
+    };
+
+    const steven = Object.create(PersonProto);
+
+    // PersonProto is the prototype of StudentProto
+    // empty when created
+    const StudentProto = Object.create(PersonProto);
+
+
+    StudentProto.init = function (firstName, birthYear, course) {
+      // Use call() to set the 'this' keyword to the 'this' keyword in this method
+      PersonProto.init.call(this, firstName, birthYear);
+      this.course = course;
+    };
+
+    // inherit from PersonProto
+    StudentProto.introduce = function () {
+      // console.log(`My name is ${this.firstName} and I study ${this.course}`);
+    };
+
+    // create new object that inherits from StudentProto
+    // StudentProto is now the prototype of the jay Object
+    const jay = Object.create(StudentProto);
+
+    // From StudentProto
+    jay.init('Jay', 2010, 'Computer Science');
+    jay.introduce();
+    // From PersonProto
+    jay.calcAge();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*_________
+    Classes
+    __________*/
+    class PersonCl {
+      constructor(fullName, birthYear) {
+        this.fullName = fullName;
+        this.birthYear = birthYear;
+      }
+
+      calcAge() {
+        // console.log(2037 - this.birthYear);
+      }
+
+      greet() {
+        console.log(`Hey ${this.fullName}`);
+      }
+
+      get age() {
+        return 2037 - this.birthYear;
+      }
+
+      set fullName(name) {
+        if (name.includes(' ')) this._fullName = name;
+        else alert(`${name} is not a full name!`);
+      }
+
+      get fullName() {
+        return this._fullName;
+      }
+
+      introduce() {
+        // console.log(`My name is ${this.fullName} and I study ${this.course}.`);
+      }
+    }
+
+
+    // inherit fromn PersonCl
+    // the extends keywords links the classes
+    class StudentCl extends PersonCl {
+      // receives same args as parent class + more
+      constructor(fullName, birthYear, course) {
+        // super is the constructor function of the parent class
+        // you don't need to specify the name of the parent class again here
+        // pass in args from the constructor of the parent class
+        // This MUST HAPPEN FIRST IF YOU NEED TO USE THE 'this' KEYWORD
+        // This is because the super function creates the 'this' keyword for this subclass
+        // If you don't need to use the 'this' keyword, you can leave the super function out. Then only the args from the parent will exist
+        super(fullName, birthYear)
+        // you can now use the 'this' keyword
+        this.course = course;
+      }
+    }
+
+
+    // All methods are inherited from the parent class
+    const martha = new StudentCl('Martha Jones', 2012, 'Computer Science')
+    martha.introduce();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Object.create() example
+    const Person = function (firstName, birthYear) {
+      this.firstName = firstName;
+      this.birthYear = birthYear;
+    };
+
+
+    // Make calcAge() available to the Person prototype
+    Person.prototype.calcAge = function () {
+      // console.log(2037 - this.birthYear)
+    }
+
+
+    /*_________
+    Student Constructor function
+    __________*/
+    // Student Object with additional properties from Person
+    const Student = function (firstName, birthYear, course) {
+      // use call() to pull in data from the Person Constructor function. This allows you to use the 'this' keyword
+      Person.call(this, firstName, birthYear)
+      // additional property  
+      this.course = course;
+    }
+
+
+    // STEP 1 - Link Prototypes
+    // The Student.prototype Object is now an Object that inherits from Person.prototype
+    // This connection must be creaed BEFORE adding methods to the Student prototype
+    // Object.create returns an empty object, so Student.prototype is empty
+    // Since it's empty, you can then add methods to it
+    // This creates a prototype chain where Student.prototype can inherit from Person.prototype
+    // If you did not use Object.create(), a copy would be created, which doesn't allow inheritance
+    Student.prototype = Object.create(Person.prototype)
+
+
+
+    // STEP 2
+    // Add a method to the Student prototype
+    Student.prototype.introduce = function () {
+      // console.log(`My name is ${this.firstName} and I study ${this.course}.`);
+    }
+
+
+    /*_________
+    New Student Object
+    __________*/
+    // Create an Object named mike
+    const mike = new Student('Mike', 2020, 'Computer Science');
+
+    // call the introduce() on the Student Object
+    mike.introduce(); // this was inherited from the Student.prototype
+    mike.calcAge(); // this was inherited from the Person.prototype
+
+    // console.log(mike.__proto__);
+    // console.log(mike.__proto__.__proto__);
+
+    // console.log(mike instanceof Student);
+    // console.log(mike instanceof Person);
+    // console.log(mike instanceof Object);
+
+    Student.prototype.constructor = Student;
+// console.dir(Student.prototype.constructor);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
