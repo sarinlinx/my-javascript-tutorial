@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>ES6 Classes</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+  <section class="container">
+    <h1>ES6 Classes</h1>
+    <p> although we use the class keyword here,
+      behind the scenes, classes are still functions,
+      and therefore, we have class expressions
+
+      and class declarations.</p>
+    <p>the class really just hides the true nature
+      of prototypal inheritance in JavaScript.</p>
+    <p>this is great for people who are coming
+      from another language
+      and have experience with object-oriented programming,
+      because it's gonna be a bit easier
+      for these developers
+      to start writing object-oriented code in JavaScript.</p>
+
+    <h2>Things to keep in mind about classes</h2>
+    <p>1: Classes are NOT hoisted.</p>
+    <p>2: Classes are first class citizens. we can pass them into functions and also return them from functions.</p>
+    <p>3: Classes are executed in strict mode.</p>
+
+    <h2>Should I use constructor functions or ES6 classes?</h2>
+    <p>constructor functions
+      are not like old or deprecated syntax.
+      So it's 100% fine to keep using them.
+      So one more time, this is more a question
+      of personal preference.</p>
+
+    <p>Do not use classes if you do not understand Prototypal Inheritance.</p>
+    <p>some people actually say
+      that classes are really bad in general
+      and that no one should ever be using them
+      simply because they hide the true nature of JavaScript.
+      But I actually don't agree with that,
+      and I think it's absolutely okay to use classes
+      in your code as long as you understand everything
+      about the prototype and prototypal inheritance.</p>
+
+
+    <p>what's nice about classes
+      is that they visually put all the code
+      that belongs to a certain class, and all the behavior,
+      all into one nice code block.</p>
+
+      <p>Function constructors can be more difficult to read.</p>
+
+
+
+
+    <div class="row">
+      <div class="col-5">
+        <p>Example of a class expression and declaration.</p>
+      </div>
+      <div class="col-7">
+        <pre class="example"><span class="code-js"><span class="code-comment">// class expression </span>
+const PersonCl = class {
+  
+}
+
+<span class="code-comment">// class declaration </span>
+class PersonCl {
+
+}</span></pre>
+      </div>
+    </div>
+
+
+    <h2>Add constructor method</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>inside the class, the first thing that we need to do is to add a constructor method.</p>
+        <p>This constructor actually works in a pretty similar way as a constructor function,
+          so as we studied previously but this one is actually a method of this class.
+          And in fact, it needs to be called constructor.</p>
+        <p> just like in constructor functions, we pass in arguments basically for the properties
+          that we want the object to have.</p>
+        <p>whenever we create a new object, so like a new instance using the new operator,
+          this constructor will automatically be called.</p>
+
+      </div>
+      <div class="col-7">
+        <pre class="example"><span class="code-js">class PersonCl {
+  constructor(firstName, birthYear) {
+
+  }
+}</span></pre>
+      </div>
+    </div>
+
+
+    <h2>Adding Properties Example</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>so as you see, everything here looks exactly the same as before.
+          So it looks just like a regular function call
+          and again, we also use the new keyword here.
+          And so therefore, just like before,
+          the this keyword here inside of the constructor
+          will also be set to the newly created empty object.</p>
+        <p>
+          when we create a new instance here,
+          then it is this constructor that is gonna be called
+          and that will return a new object
+          and then that will be stored here into jessica.</p>
+      </div>
+      <div class="col-7">
+        <pre class="example"><span class="code-js">class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+}
+
+const jessica = new PersonCl('Jessica', 1996);</span></pre>
+      </div>
+    </div>
+
+
+
+    <h2>Adding Methods Example</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>Add the method directly to the declaration.</p>
+        <p> what's important to understand here
+          is that all of these methods
+          that we write in the class,
+          so outside of the constructor
+          will be on the prototype of the objects and not on the objects themselves.</p>
+        <p> as you see, PersonCl here acts
+          just like any other function constructor
+          but the only difference that this looks a little bit nicer.</p>
+        <p>All we have to do is to write the methods here,
+          so inside the class, but outside of the constructor,
+          and then they will automatically be added
+          to the prototype property of the class.</p>
+      </div>
+      <div class="col-7">
+        <pre class="example"><span class="code-js">class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+ <span class="code-highlight">calcAge() {
+    console.log(2037 - this.birthYear)
+  } </span>
+}
+
+const jessica = new PersonCl('Jessica', 1996);
+jessica.calcAge();
+
+<span class="code-comment">// this returns true </span>
+console.log(jessica.__proto__ === PersonCl.prototype);</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  </section>
+  <script>
+
+    const Person = function (firstName, birthYear) {
+      // this references the empty Object
+      // set the first property of the parameter passed into this function
+      this.firstName = firstName;
+      this.birthYear = birthYear;
+
+    };
+
+    // Constructor function. This calls the Person function
+    // 4 steps:
+    // 1. New empty object is created {}
+    // 2. function is called, The this keyword is set to this newly created object (this = {})
+    // 3. This newly created object is linked to a prototype
+    // 4. function automatically return the empty Object originally created, but it's no longer empty
+    const jonas = new Person('Jonas', 1991);
+    // console.log(jonas)
+    // console.log(jonas instanceof Person);
+
+    // Add Prototype
+    Person.prototype.calcAge = function () {
+      // console.log(2037 - this.birthYear)
+    }
+
+    // console.log(Person.prototype)
+    jonas.calcAge();
+
+
+    // Every Object has a special property called __proto__
+    // This shows the prototype of an Object
+    // console.log(jonas.__proto__)
+
+    // console.log(Person.prototype.isPrototypeOf(jonas))
+
+
+    Person.prototype.species = 'Homo Sapiens';
+    // console.log(jonas)
+    // console.log(jonas.species)
+
+    // console.log(jonas.hasOwnProperty('firsName'));
+    // console.log(jonas.hasOwnProperty('species'));
+
+    // console.log(jonas.__proto__.__proto__)
+
+    // class expression
+    const PersonCl = class {
+
+    }
+
+    // class declaration
+    class PersonCl {
+      constructor(firstName, birthYear) {
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+      }
+
+      calcAge() {
+        console.log(2037 - this.birthYear)
+      }
+    }
+
+    const jessica = new PersonCl('Jessica', 1996);
+
+  </script>
+</body>
+
+</html>

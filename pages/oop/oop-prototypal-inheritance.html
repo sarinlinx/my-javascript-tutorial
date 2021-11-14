@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Prototypal Inheritance</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+  
+
+  <section class="container">
+    <h1>Prototypes</h1>
+    <div class="row">
+      <div class="col">
+        <p>first each and every function in JavaScript automatically has a property called prototype. And that includes,
+          of course, constructor functions.</p>
+        <p>every object that's created by a certain constructor function will get access to all the methods and
+          properties that we define on the constructors prototype property.</p>
+        <p>all the objects that are created through this constructor function here will inherit,
+          so they will get access to all the methods and properties
+          that are defined on this prototype property.</p>
+      </div>
+    </div>
+
+
+
+
+
+    <h2>Add a method using a Prototype</h2>
+
+    <div class="row">
+      <div class="col-5">
+        <p>This adds a method to the Object Function using a prototype of the Person Object.</p>
+        <p>Now, each object created by this constructor function will now get access to all the methods of this
+          prototype property.</p>
+        <p>You can then add this method on the 'jonas' Object, even though it's not part of that Object itself.</p>
+        <p>Now, only 1 copy of calcAge() exists, but but then all of the objects that are created using this constructor
+          function can basically reuse this function on themselves.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">  const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;  
+};
+
+const jonas = new Person('Jonas', 1991);
+
+<span class="code-comment">// Add Prototype </span>
+<span class="code-highlight">Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear)
+}
+
+console.log(Person.prototype)
+
+jonas.calcAge(); </span>
+</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+    <h2>__proto__ property</h2>
+
+    <div class="row">
+      <div class="col-5">
+        <p>Every Object has a special property called __proto__</p>
+        <p>
+          This shows the prototype of an Object</p>
+        <p>So the prototype of the Jonas object is essentially the prototype property
+          of the constructor function.</p>
+        <p>The result is the same as <strong>console.log(Person.prototype)</strong>.</p>
+        <p>NOTE: Person.prototype is NOT the prototype of Person. It is instead what's gonna be used as the prototype of
+          all the objects that are created with the person constructor function.</p>
+        <p> this confusion comes from bad naming of this property. So the fact that it's called prototype
+          kind of implies that this is the prototype of person,but as we just learned, it is actually not.</p>
+        <p>Probably shouldn't be called prototype but instead something like .prototypeOfLinkedObjects.</p>
+        <p>This would make it easier to think about how it works.</p>
+        <p>Step #3 when creating a new Object constructor creates the __proto__ property.</p>
+        <p>it creates this proto property and it sets its value to the prototype property of the function that is being
+          called.</p>
+
+
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">console.log(jonas.__proto__)</span>
+</span></pre>
+      </div>
+    </div>
+
+
+
+    <h2>isPrototypeOf</h2>
+
+    <div class="row">
+      <div class="col-5">
+        <p>Confirm if the prototype of the Object Function is the same as the new Object you created.</p>
+        <p>This returns true.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">console.log(Person.prototype.isPrototypeOf(jonas))</span>
+</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+    
+    <h2>Set properties of the prototype</h2>
+
+    <div class="row">
+      <div class="col-5">
+        <p>You can also add a property to the prototype. All Objects created form it will then have access to it.</p>
+        <p>When you view the 'jonas' Object, the new property only appears on the prototype of the Object.</p>
+        <img src="../../_img/oop-add-property-to-prototype.png">     
+        <p>But running <strong>jonas.species</strong> returns the string text.</p>
+      </div>
+
+      <div class="col-7">
+<pre class="example"><span class="code-js">Person.prototype.species = 'Homo Sapiens';
+console.log(jonas)
+console.log(jonas.species)</span>
+</span></pre>
+      </div>
+    </div>
+
+
+
+    <h1>Prototypal Inheritance</h1>
+    <div class="row">
+      <div class="col">
+        <p>everything starts with the person the constructor function that we've been developing. Now, this constructor
+          function has a prototype property which is an object and inside that object, we defined the calcAge method and
+          person dot prototype itself actually also has a reference back to person which is the constructor property.
+        </p>
+        <p>Now remember, person dot prototype is actually not the prototype of person but of all the objects that are
+          created through the person function</p>
+
+      </div>
+    </div>
+
+
+
+
+    <h2>How the 'new' operator create creates an Object</h2>
+    <div class="row">
+      <div class="col">
+        <p>when we call a function, any function with the new operator
+          the first thing that is gonna happen is that a new empty object is created instantly.</p>
+        <p>Then the this keyboard and the function call
+          is set to the newly created object.
+          So, inside the function's execution context
+          this is now the new empty object</p>
+        <p> that's why in the functions code we set the name and birth year properties on the this keyword
+          because doing so will ultimately set them on the new object.</p>
+        <p> now the new object is linked
+          to the constructor functions prototype property.
+          So in this case, person dot prototype.
+          And this happens internally
+          by adding the underscore, underscore protal property
+          to the new object.</p>
+        <p>person dot prototype is now the new objects prototype
+          which is denoted in the underscore, underscore
+          proto property of Jonas.
+          So again, underscore proto always points
+          to an object prototype
+          and that is true for all objects in JavaScript.</p>
+        <p>finally the new object is automatically returned
+          from the function unless
+          we explicitly return something else.
+          But in a constructor function like person
+          we usually never do that.
+          Okay, and with this the result of the new operator
+          and the person constructor function
+          is a new object that we just created programmatically
+          and that is now stored in the Jonas variable</p>
+        <p>this whole process that I just explained
+          is how it works with function constructors
+          and also with ES6 classes
+          but not with the object dot create syntax
+          that we're gonna use later.</p>
+
+
+
+
+        <img src="../../_img/oop-prototypal-inheritance-01.png" width="950px">
+
+      </div>
+    </div>
+
+
+
+    <h2>Why does it work this way?</h2>
+    <div class="row">
+      <div class="col">
+        <p>here we are attempting to call the calcAge function
+
+          on the jonas object.
+
+          However, JavaScript can actually not find
+
+          the calcAge function directly in the jonas object, right?
+
+          It is simply not there</p>
+        <p>if a property or a method cannot be found
+          in a certain object JavaScript will look into its prototype</p>
+        <p>That's how the calcAge function can run correctly and return a result.</p>
+        <p>So, the jonas object inherited the calcAge method from its prototype or in other words it delegated the
+          calcAge functionality to its prototype.</p>
+        <p>the beauty of this
+
+          is that we can create as many person objects as we like
+
+          and all of them will then inherit this method.
+
+          So we can call this calcAge method on all the person objects
+
+          without the method being directly attached
+
+          to all the objects themselves</p>
+        <p>this is essential for code performance.
+
+          Just imagine that we had a 1,000 objects in the code
+
+          and if all of them would have to carry the calcAge function
+
+          around then that would certainly impact performance.
+
+          So instead, they can all simply use the calcAge function
+
+          from their common prototype</p>
+
+        <img src="../../_img/oop-prototypal-inheritance-02.png" width="950px">
+
+
+
+
+      </div>
+    </div>
+
+
+
+
+    <h2>Prototype Chain</h2>
+    <div class="row">
+      <div class="col">
+        <p>the fact that Jonas is connected to a prototype
+          and the ability of looking up methods and properties
+          in a prototype is what we call the prototype chain.</p>
+          <p>remember that person dot prototype itself
+            is also an object
+          
+            and all objects in JavaScript have a prototype, right?
+            
+            Therefore, person dot prototype itself
+            
+            must also have a prototype.</p>
+            <p>And the prototype of person dot prototype
+
+              is object dot prototype.</p>
+              <p>person dot prototype is just a simple object
+
+                which means that it has been built
+                
+                by the built in object constructor function
+                
+                and this is actually the function
+                
+                that is called behind the scenes
+                
+                whenever we create an object literal.</p>
+<p>what matters here
+
+  is that person dot prototype itself  
+  needs to have a prototype
+    and since it has been created
+  by the object constructor function
+  its prototype is gonna be object dot prototype.</p>
+  <p>this entire series of links
+
+    between the objects is what is called the prototype chain</p>
+    <p>and object dot prototype is usually the top
+      of the prototype chain
+      which means that it's prototype is null. it's underscore proto property will simply point to null
+      which then marks the end of the prototype chain.</p>
+      <p>in a certain way the prototype chain
+        is very similar to the scope chain but with prototypes.
+        So, in the scope chain
+        whenever JavaScript can find a certain variable
+                in a certain scope,
+                it looks up into the next scope and a scope chain
+                and tries to find the variable there.
+                On the other hand in the prototype chain
+                whenever JavaScript can find a certain property
+                or method in a certain object
+                it's gonna look up into the next prototype
+                in the prototype chain
+                and see if it can find it there, okay?</p>
+                <p>So again the prototype chain is pretty similar
+
+                  to the scope chain
+                  
+                  but instead of working with scopes,
+                  
+                  it works with properties and methods in objects, all right?</p>
+
+                  <img src="../../_img/oop-prototypal-inheritance-03.png" width="950px">
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h2>...............</h2>
+
+    <div class="row">
+      <div class="col-5">
+        <p>.................</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">.................</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </section>
+  <script>
+
+    const Person = function (firstName, birthYear) {
+      // this references the empty Object
+      // set the first property of the parameter passed into this function
+      this.firstName = firstName;
+      this.birthYear = birthYear;
+
+    };
+
+    // Constructor function. This calls the Person function
+    // 4 steps:
+    // 1. New empty object is created {}
+    // 2. function is called, The this keyword is set to this newly created object (this = {})
+    // 3. This newly created object is linked to a prototype
+    // 4. function automatically return the empty Object originally created, but it's no longer empty
+    const jonas = new Person('Jonas', 1991);
+    // console.log(jonas)
+    // console.log(jonas instanceof Person);
+
+    // Add Prototype
+    Person.prototype.calcAge = function () {
+      console.log(2037 - this.birthYear)
+    }
+
+    console.log(Person.prototype)
+    jonas.calcAge();
+
+
+    // Every Object has a special property called __proto__
+    // This shows the prototype of an Object
+    console.log(jonas.__proto__)
+
+    console.log(Person.prototype.isPrototypeOf(jonas))
+
+
+    Person.prototype.species = 'Homo Sapiens';
+    console.log(jonas)
+    console.log(jonas.species)
+
+    console.log(jonas.hasOwnProperty('firsName');
+    console.log(jonas.hasOwnProperty('species');
+
+
+  </script>
+</body>
+
+</html>

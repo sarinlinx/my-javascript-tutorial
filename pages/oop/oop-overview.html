@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>OOP</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+
+  <section class="container">
+    <h1>Object Oriented Programming</h1>
+    <div class="row">
+      <div class="col">
+        <p>OOP in short, is a programming paradigm that is based on the concept of objects. And paradigm simply means
+          the style of the code, so the how we write and organize code.</p>
+
+        <p>we use objects to model, so to describe aspects of the real world, like a user or a to-do list item, or even
+          more abstract features like an HTML component or some kind of data structure.</p>
+        <p>objects can contain data, which we call properties, and also code, which we call methods. So we can say that
+          by using objects, we pack all the data and the corresponding behavior
+          all into one big block.</p>
+        <p> in OOP objects are self-contained pieces of code or blocks of code, like small applications on their own.
+          And we then use these objects as building blocks of our applications and make objects interact with one
+          another.</p>
+        <p> these interactions happen through a so-called public interface, which we also call API. This interface is
+          basically a bunch of methods that a code outside of the objects can access and that we use to communicate with
+          the object.</p>
+        <p> why does OOP actually exist? Well, this paradigm was developed with the goal of organizing code, so to make
+          it more flexible and easier to maintain.</p>
+        <img src="../../_img/oop-overview.png" width="950px">
+      </div>
+    </div>
+
+    <h1>Classes</h1>
+    <div class="row">
+      <div class="col">
+        <p> in OOP, we actually need a way to generate, so to create, new objects from our code. And to do that in
+          traditional OOP, we use something called classes.</p>
+        <p>You can think of a class as a blueprint, which can then be used to create new objects
+          based on the rules described in the class. So it's just like an architecture
+          where the architect develops a blueprint to exactly plan and describe a house.
+          But the blueprint is really just an abstract plan, like a set of rules,
+          but nothing tangible that you can actually touch. However, from that blueprint,
+          many real houses can then be built in the real world.</p>
+
+        <p>we call all objects created through a class instances of that class.</p>
+        <p>an instance is a real object that we can use in our code, which was created from a class, and a class itself
+          is not an object.</p>
+        <img src="../../_img/oop-classes.png" width="950px">
+      </div>
+    </div>
+
+    <h1>Designing a class</h1>
+    <div class="row">
+      <div class="col">
+        <p>4 fundamental principles of OOP.</p>
+        <ul>
+          <li>
+            abstraction</li>
+          <li>encapsulation</li>
+          <li>
+            inheritance</li>
+          <li>polymorphism</li>
+        </ul>
+      </div>
+    </div>
+
+
+
+    <h2>Abstraction</h2>
+    <div class="row">
+      <div class="col">
+        <p>abstraction basically means to ignore or to hide details that don't matter. This allows us to get an overview
+          perspective of whatever it is that we're implementing instead of messing with details that don't really matter
+          to our implementation.</p>
+        <img src="../../_img/oop-abstraction.png" width="950px">
+      </div>
+    </div>
+
+
+
+    <h2>Encapsulation</h2>
+    <div class="row">
+      <div class="col">
+        <p>Encapsulation means to keep some properties and methods private inside the class so that they're not
+          accessible from outside the class. However, some methods can, of course, be exposed as a public interface,
+          which we call API.</p>
+        <p>having these critical properties nicely encapsulated like this, we prevent external code from accidentally
+          manipulating this internal state. And by the way, the term state simply refers to an object's data.</p>
+        <p> in summary, we should always have the goal to nicely encapsulate most of our state and methods
+          and only leaving essential methods public</p>
+        <img src="../../_img/oop-encapsulation.png" width="950px">
+      </div>
+    </div>
+
+    <h2>Inheritance</h2>
+    <div class="row">
+      <div class="col">
+        <p>when we have two classes that are closely related, like user and admin here, we can have one class inherit
+          from the other. So we will have one parent class and one child class, and the child class then extends the
+          parent class.</p>
+        <p>a child class inherits all the properties and methods from its parent class.</p>
+        <p>Now, in more formal terms, inheritance makes all properties and methods of a certain class available to a
+          child class,
+          which of course then forms a hierarchy between these two classes.</p>
+        <p>And the goal of this is to reuse logic</p>
+        <p> that is common to both of the classes. In this case, both the admin and the user need to log in. And so
+          instead of writing that logic twice, it makes sense to inherit the login method from the more global class,
+          which is the parent class user, to the more specific class, which is the child class admin.</p>
+
+        <img src="../../_img/oop-inheritance.png" width="950px">
+      </div>
+    </div>
+
+    <h2>Polymorphism</h2>
+    <div class="row">
+      <div class="col">
+        <p>polymorphism means that a child class can overwrite a method that it inherited from a parent class.</p>
+        <p>In this example, how do we give them different login methods?</p>
+        <p> Well, it's actually quite simple. In each class we simply just write a new method, which is also called
+          login. And then, according to polymorphism, that login method will overwrite the login method that has been
+          inherited from the user class.</p>
+
+
+
+
+
+
+
+        <img src="../../_img/oop-polymorphism.png" width="950px">
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </section>
+
+
+  <div class="col-6">
+    <pre class="example"><span class="code-js">.............</span></pre>
+  </div>
+
+</body>
+
+</html>

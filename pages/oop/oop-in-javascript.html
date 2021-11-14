@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>OOP in JS</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+
+  <section class="container">
+    <h1>Object Oriented Programming in JavaScript</h1>
+    <div class="row">
+      <div class="col">
+        <p> the classical Object-Oriented Programming model with classes and instances created from these classes.</p>
+        <p>And in the same way, the theoretical class can be used to create actual objects which are called instances
+          and which we can then use in our cout. And this process of creating an instance is called instantiation.</p>
+        <p>in JavaScript things work a bit differently. So why did I first tell you about classes and instances? Well,
+          it's because we do have similar concepts in JavaScript and so it's very useful to first understand the class
+          instance model. Plus, many people also just use this terminology in the context of JavaScript. And finally,
+          JavaScript syntax itself uses also some of these terms for example, instances. And so, you really need to know
+          what a class is and what an instance is.</p>
+
+        <p> in JavaScript we have something called prototypes and all objects in JavaScript are linked to a certain
+          prototype object. So we say that each object has a prototype.</p>
+
+        <p>the prototype object contains methods and properties that all the objects that are linked to that prototype
+          can access and use. And this behavior is usually called prototypal inheritance.</p>
+
+        <p> prototypal inheritance means that all objects that are linked to a certain prototype object can use the
+          methods and properties that are defined on that prototype.</p>
+        <p>objects inherit methods and properties from the prototype which is the reason why this mechanism is called
+          prototypal inheritance. Just note that this inheritance is actually different from the inheritance that we
+          talked about in the last lecture.</p>
+        <p>The classical example is where one class inheriting from another class. But in this case, it's basically an
+          instance inheriting from a class. So that's very different and so keep that in mind</p>
+        <p>we can also say that objects delegate behavior to the linked prototype object. And behavior is just another
+          term for methods here.</p>
+        <p> besides prototypal inheritance, we also call this mechanism, delegation.</p>
+        <p>that's also the reason why this arrow is pointing upwards because technically, objects delegate their
+          behavior to the prototype.</p>
+        <p>On the other hand, in classical OOP with classes, the behavior, so the methods, are actually copied from the
+          class to the object and so that is completely different.</p>
+
+
+        <img src="../../_img/oop-prototypal-inheritance.png" width="956px">
+      </div>
+    </div>
+
+
+    <h2>How to implement OOP in JS?</h2>
+    <div class="row">
+      <div class="col">
+        <p>3 ways:</p>
+        <ul>
+          <li>Constructor functions</li>
+          <li>ES6 classes</li>
+          <li>Object.create()</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Constructor functions</h3>
+    <div class="row">
+      <div class="col">
+        <p>constructor functions are a way of creating objects programmatically, using a function which will also set
+          the new object's prototype. And this is actually how built-in objects like arrays or maps or sets are
+          implemented. Also, this is how OOP has been done in JavaScript basically since the beginning.</p>
+      </div>
+    </div>
+
+
+    <h3>ES6 classes</h3>
+    <div class="row">
+      <div class="col">
+        <p>the ES6 release introduced classes into JavaScript. And so now, ES6 classes are actually the more modern way
+          of doing OOP in JavaScript. However, keep in mind that these are actually not the kind of classes that we
+          talked about in the last lecture and in the last slide. They are instead just so called 'synthetic sugar' over
+          constructor functions. So this means that ES6 classes are basically just a layer of abstraction over
+          constructor functions.</p>
+        <p>So, it's really just a nicer syntax that makes it easier for newcomers to do OOP in JavaScript. But behind
+          the scenes, ES6 classes are actually implemented with constructor functions. And so they also use prototypal
+          inheritance just like we learnt in the last slide.</p>
+      </div>
+    </div>
+
+
+    <h3>Object.create()</h3>
+    <div class="row">
+      <div class="col">
+        <p> object.create() which is basically the easiest and most straightforward way of linking an object to a
+          prototype object. However, it's not as used as the other two methods</p>
+          <img src="../../_img/oop-implementing-prototypal-inheritance.png" width="956px">
+      </div>
+    </div>
+
+
+
+
+  </section>
+
+
+
+</body>
+
+</html>

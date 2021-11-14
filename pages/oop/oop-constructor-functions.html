@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Constructor Functions</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+  <section class="container">
+    <h1>Constructor Functions</h1>
+    <div class="row">
+      <div class="col">
+        <p>A constructor function is actually a completely normal function. The only difference between a regular
+          function, and a function that we call constructor function, is that we call a constructor function with the
+          "new" operator.</p>
+        <p>function constructors are not really a feature of the JavaScript language. Instead, they are simply a pattern
+          that has been developed by other developers. And now everyone simply uses this.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="container">
+    <h2>Create a new Object with 2 properties from an Object constructor</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>Start with a captial letter.</p>
+        <p>Arrow functions will not work since they do not use the 'this' keyword.</p>
+        <p>This returns a new Person Object with properties values that were passed in from the 'jonas' function.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">const Person = function(firstName, birthYear) {
+<span class="code-comment">// this references the empty Object
+  // set the first property of the parameter passed into this function </span>
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+<span class="code-comment">// Constructor function. This calls the Person function
+// 4 steps:
+// 1. New empty object is created {}
+// 2. function is called, The this keyword is set to this newly created object (this = {})
+// 3. This newly created object is linked to a prototype
+// 4. function automatically return the empty Object originally created, but it's no longer empty </span>
+const jonas = new Person('Jonas', 1991);
+console.log(jonas)</span></pre>
+      </div>
+    </div>
+
+    <h2>instanceof</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>The above example creates an instance of the Person object.</p>
+        <p>You can confirm using the 'instanceof' keyword.</p>
+        <p>This returns true.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">console.log(jonas instanceof Person);</span></pre>
+      </div>
+    </div>
+
+
+
+
+    <h2>Add a method (bad way)</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>NEVER create a method inside a constructor function</p>
+        <p>Each object created from this would then be copied with each new Object created from it which is terrible for
+          performance</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">const Person = function(firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+  
+  <span class="code-highlight">this.calcAge = function() {
+    console.log(2037 - this.birthYear)
+  } </span>
+ 
+ };</span></pre>
+      </div>
+    </div>
+
+
+    <h2>Add a method (good way)</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>The better way is to use Prototypal Inheritance.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">.......</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+    <script>
+
+      const Person = function (firstName, birthYear) {
+        // this references the empty Object
+        // set the first property of the parameter passed into this function
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+
+        // NEVER create a method inside a constructor function
+        // Each object created from this would then be copied with each new Object created from it which is terrible for performance
+        this.calcAge = function () {
+          console.log(2037 - this.birthYear)
+        }
+
+      };
+
+      // Constructor function. This calls the Person function
+      // 4 steps:
+      // 1. New empty object is created {}
+      // 2. function is called, The this keyword is set to this newly created object (this = {})
+      // 3. This newly created object is linked to a prototype
+      // 4. function automatically return the empty Object originally created, but it's no longer empty
+      const jonas = new Person('Jonas', 1991);
+      console.log(jonas)
+
+      console.log(jonas instanceof Person);
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

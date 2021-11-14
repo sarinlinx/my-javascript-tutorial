@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Setters and Getters</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+  <section class="container">
+    <h1>Setters and Getters</h1>
+    <p>every object in JavaScript
+      can have setter and getter properties.     
+      And we call these special properties assessor properties,
+
+      while the more normal properties are called data properties.</p>
+      <p>getters and setters are basically functions
+        that get and set a value so just as the name says,
+                but on the outside they still look like regular properties.</p>
+
+
+
+
+                <h2>Getter example</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>Create an Object</p>
+        <p>Use the keyword get followed by a method</p>
+        <p>Call it in dot syntax, not as a method.</p>
+      </div>
+      <div class="col-7">
+<pre class="example"><span class="code-js">const account = {
+  owner: 'jonas',
+  movements:  [200, 300, 120, 363],
+
+  <span class="code-highlight">get latest() {
+    <span class="code-comment">// slice creates a new array, pop() extracts it </span>
+    return this.movements.slice(-1).pop();
+  } </span>
+}
+
+<span class="code-comment">// use it as a property </span>
+console.log(account.latest)</span></pre>
+      </div>
+    </div>
+
+
+
+    
+    <h2>Setter example</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>Must have at least 1 parameter</p>
+        <p>Se it like any other property.</p>
+      </div>
+      <div class="col-7">
+<pre class="example"><span class="code-js">const account = {
+  owner: 'jonas',
+  movements:  [200, 300, 120, 363],
+
+  <span class="code-highlight">set latest() {
+    this.movements.push(mov);   
+  } </span>
+}
+
+account.latest = 50;
+console.log(account.movements);</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <h2>Class getter example</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>Like any other method on the prototype</p>
+      </div>
+      <div class="col-7">
+<pre class="example"><span class="code-js">class PersonCl {
+  constructor(firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+  }
+
+ <span class="code-highlight">get age() {
+    return 2037 - this.birthYear;
+  } </span>
+}
+
+console.log(jessica.age);
+
+</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+    <h2>Setting a property that already exists</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>This attempts to set a property that already exists.</p>
+        <p>You cannot use the same name as the existing property, so just add an underscore before it.</p>
+        <p>You must then create a getter for the new _fullName property.</p>
+      </div>
+      <div class="col-7">
+<pre class="example"><span class="code-js">class PersonCl {
+  constructor(fullName, birthYear) {
+  this.fullName = fullName;
+  this.birthYear = birthYear;
+  }
+
+  <span class="code-comment">// Create setter to check if text string is a full name by looking for a space</span>
+  <span class="code-highlight">set fullName(name) {
+    if (name.includes(' ') this._fullName = name; 
+    else console.log(`${name} is not a full name`)
+  }
+}
+
+get fullName() {
+  return this._fullName;
+}</span></span></pre>
+      </div>
+    </div>
+
+
+
+
+
+  </section>
+  <script>
+
+    const Person = function (firstName, birthYear) {
+      // this references the empty Object
+      // set the first property of the parameter passed into this function
+      this.firstName = firstName;
+      this.birthYear = birthYear;
+
+    };
+
+    // Constructor function. This calls the Person function
+    // 4 steps:
+    // 1. New empty object is created {}
+    // 2. function is called, The this keyword is set to this newly created object (this = {})
+    // 3. This newly created object is linked to a prototype
+    // 4. function automatically return the empty Object originally created, but it's no longer empty
+    const jonas = new Person('Jonas', 1991);
+    // console.log(jonas)
+    // console.log(jonas instanceof Person);
+
+    // Add Prototype
+    Person.prototype.calcAge = function () {
+      // console.log(2037 - this.birthYear)
+    }
+
+    // console.log(Person.prototype)
+    jonas.calcAge();
+
+
+    // Every Object has a special property called __proto__
+    // This shows the prototype of an Object
+    // console.log(jonas.__proto__)
+
+    // console.log(Person.prototype.isPrototypeOf(jonas))
+
+
+    Person.prototype.species = 'Homo Sapiens';
+    // console.log(jonas)
+    // console.log(jonas.species)
+
+    // console.log(jonas.hasOwnProperty('firsName'));
+    // console.log(jonas.hasOwnProperty('species'));
+
+    // console.log(jonas.__proto__.__proto__)
+
+    // class expression
+    // const PersonCl = class {
+
+    // }
+
+    // // class declaration
+    // class PersonCl {
+    //   constructor(firstName, birthYear) {
+    //     this.firstName = firstName;
+    //     this.birthYear = birthYear;
+    //   }
+
+    //   calcAge() {
+    //     console.log(2037 - this.birthYear)
+    //   }
+    // }
+
+    // const jessica = new PersonCl('Jessica', 1996);
+
+
+
+const account = {
+  owner: 'jonas',
+  movements:  [200, 300, 120, 363],
+
+
+  get latest() {
+    // slice creates a new array, pop() extracts it
+return this.movements.slice(-1).pop();
+  }
+}
+
+// use it as a property
+console.log(account.latest)
+
+
+  </script>
+</body>
+
+</html>

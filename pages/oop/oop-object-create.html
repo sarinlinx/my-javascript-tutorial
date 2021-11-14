@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Object.create</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+  <section class="container">
+    <h1>Object.create</h1>
+    <p> with Object.create,
+      there is still the idea of prototypal inheritance.
+      However, there are no prototype properties involved.
+      And also no constructor functions, and no new operator.</p>
+    <p>we can use Object.create
+      to essentially manually set the prototype of an object,
+      to any other object that we want.</p>
+      <p>the big takeaway is
+
+        that Object.create creates a new object,
+        
+        and the prototype of that object
+        
+        will be the object that we passed in.</p>
+
+
+
+    <h2> example</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>PersonProto will be the prototype of all the person objects.</p>
+        <p>Then create a person object
+          with this object here as the prototype. This will now return a brand new object,
+          that is linked to the prototype that we passed using personProto.</p>
+        <p>Steven here is right now an empty object. And it will be linked to this PersonProto object,
+          which will be its prototype.</p>
+          
+
+      </div>
+      <div class="col-7">
+      <pre class="example"><span class="code-js">const PersonProto = {
+  calcAge() { 
+    console.log(2037 - this.birthYear);
+  }
+}
+
+const steven = Object.create(personProto)
+steven.name = 'Steven'
+steven.birthYear = 2002
+steven.calcAge()</span></pre>
+      </div>
+    </div>
+
+
+<h1>Explanation</h1>
+<p>here at the right side,
+  we have the way it works where de constructor functions,  
+  just as we have been doing it up until this point.</p>
+<p>when we use the new operator  in constructor functions or classes,  it automatically sets the prototype
+    of the instances to the constructors,  prototype property.</p>
+<p> with Object.create,  we can set the prototype of objects manually 
+  to any object that we want.</p>
+  <p>in this case,    we manually set the prototype
+    of the Steven object to the person proto object.</p>
+<p>Now the two objects
+  are effectively linked through the proto property,
+  just like before.
+    So now looking at properties,
+    or methods in a prototype chain,
+    works just like it worked
+  
+  in function constructors, or classes.</p>
+  <p> the prototype chain, in fact,
+    looks exactly the same here.
+        The big difference is
+        that we didn't need any constructor function,
+        and also no prototype property at all,
+        to achieve the exact same thing.</p>
+    <p>this is actually a bit more straightforward,
+      and a bit more natural.
+            And I guess, that it might also be easier to understand.
+            However, the reason why I'm showing you
+            this Object.create technique,
+            right at the end, is because in practice,
+            in the real world,
+            this is actually the least used way
+            of implementing prototypal inheritance.</p>
+
+            <img src="../../_img/oop-object-create.png" width="950px">
+
+
+
+
+
+
+
+            <h2>Better way to set properties</h2>
+            <div class="row">
+              <div class="col-5">
+                <p>This uses a function to add the properties.</p>
+                <p>this looks a bit like the constructor function
+
+                  that we created earlier.
+                  
+                  However, this has actually nothing
+                  
+                  to do with any constructor function,
+                  
+                  because we are not using the new operator
+                  
+                  to call this we will simply do Sarah.init
+                  
+                  and then we will pass in the arguments.</p>
+                  <p>this keyword will of course,
+
+                    also points to the Sarah object now,
+                    
+                    but it does so because we explicitly called init on Sarah.
+                    
+                    So again, this has nothing to do
+                    
+                    with constructor functions that we saw earlier.
+                    
+                    And it's also completely different
+                    
+                    from the constructor method that we have in ESX classes.</p>
+        
+              </div>
+              <div class="col-7">
+<pre class="example"><span class="code-js">const PersonProto = {
+  calcAge() { 
+    console.log(2037 - this.birthYear);
+  },
+  <span class="code-highlight">init(firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+  }, </span>
+}
+              
+const sarah = Object.create(PersonProto);
+
+<span class="code-highlight">sarah.init('Sarah', 1979)
+sarah.calcAge() </span> </span></pre>
+              </div>
+            </div>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </section>
+  <script>
+
+    const Person = function (firstName, birthYear) {
+      this.firstName = firstName;
+      this.birthYear = birthYear;
+    };
+
+    // Constructor function. This calls the Person function
+    // 4 steps:
+    // 1. New empty object is created {}
+    // 2. function is called, The this keyword is set to this newly created object (this = {})
+    // 3. This newly created object is linked to a prototype
+    // 4. function automatically return the empty Object originally created, but it's no longer empty
+    const jonas = new Person('Jonas', 1991);
+    // console.log(jonas)
+    // console.log(jonas instanceof Person);
+
+    // Add Prototype
+    Person.prototype.calcAge = function () {
+      // console.log(2037 - this.birthYear)
+    }
+
+    // console.log(Person.prototype)
+    jonas.calcAge();
+
+
+    // Every Object has a special property called __proto__
+    // This shows the prototype of an Object
+    // console.log(jonas.__proto__)
+
+    // console.log(Person.prototype.isPrototypeOf(jonas))
+
+
+    Person.prototype.species = 'Homo Sapiens';
+    // console.log(jonas)
+    // console.log(jonas.species)
+
+    // console.log(jonas.hasOwnProperty('firsName'));
+    // console.log(jonas.hasOwnProperty('species'));
+
+    // console.log(jonas.__proto__.__proto__)
+
+    // class expression
+    // const PersonCl = class {
+
+    // }
+
+    // // class declaration
+    // class PersonCl {
+    //   constructor(firstName, birthYear) {
+    //     this.firstName = firstName;
+    //     this.birthYear = birthYear;
+    //   }
+
+    //   calcAge() {
+    //     console.log(2037 - this.birthYear)
+    //   }
+    // }
+
+    // const jessica = new PersonCl('Jessica', 1996);
+
+
+
+    const account = {
+      owner: 'jonas',
+      movements: [200, 300, 120, 363],
+
+
+      get latest() {
+        // slice creates a new array, pop() extracts it
+        return this.movements.slice(-1).pop();
+      }
+    }
+
+    // use it as a property
+    console.log(account.latest)
+
+
+  </script>
+</body>
+
+</html>
