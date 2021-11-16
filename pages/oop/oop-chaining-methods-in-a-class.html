@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Chaining methods</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+  <section class="container">
+
+    <h1>Chaining methods</h1>
+    <p>all we have to do is to return the object itself
+
+      at the end of a method that we want to be chainable.</p>
+
+
+
+
+
+
+
+
+
+
+
+    <h2>Chaining methods in a class</h2>
+    <div class="row">
+      <div class="col-4">
+        <p>You must set each method to <strong>return this;</strong> for chaining to work.</p>        
+      </div>
+
+  <div class="col-8">
+  <pre class="example"><span class="code-js">class Account {
+  locale = navigator.language;    
+  #movements = [];
+  #pin;
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.#pin = pin;
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+
+  getMovements() {
+    return this.#movements;
+  }
+
+  deposit(val) {
+    this.#movements.push(val)
+    <span class="code-highlight">return this </span>
+  }
+
+  withdraw(val) {
+    this.deposit(-val)
+    <span class="code-highlight">return this </span>
+  }
+
+  requestLoan(val) {
+    if (this._approveLoan(val)) {
+      this.deposit(val);
+      console.log(`Loan approved`);
+      <span class="code-highlight">return this; </span>
+    }
+  }
+
+  _approveLoan(val) {
+    return true;
+}
+}
+
+<span class="code-highlight"><span class="code-comment">// Chaining </span>
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000)
+
+console.log(acc1.getMovements()) </span></span></pre>
+  </div>
+    </div>
+
+
+
+
+
+
+
+
+  </section>
+  <script>
+
+    class Account {
+
+      locale = navigator.language;
+      // add a # symbol to make the field private      
+      #movements = [];
+      // create a private field for pin, it must be created OUTSIDE the constructor
+      #pin;
+
+      constructor(owner, currency, pin) {
+        this.owner = owner;
+        this.currency = currency;
+        // #pin is then redefined here
+        this.#pin = pin;
+
+        console.log(`Thanks for opening an account, ${owner}`);
+      }
+
+      getMovements() {
+        return this.#movements;
+      }
+
+      deposit(val) {
+        this.#movements.push(val)
+        return this
+      }
+
+      withdraw(val) {
+        this.deposit(-val)
+        return this
+      }
+
+      requestLoan(val) {
+        if (this._approveLoan(val)) {
+          this.deposit(val);
+          console.log(`Loan approved`);
+          return this;
+        }
+      }
+
+      // Add # to create a private method
+      // little browser support for this
+      _approveLoan(val) {
+        return true;
+      }
+    }
+
+    const acc1 = new Account('Jonas', 'EUR', 1111)
+    console.log(acc1)
+
+    acc1.deposit(250)
+    acc1.withdraw(140)
+
+    acc1.getMovements();
+
+    // you cannot access it any longer
+    // console.log(acc1.#movements)
+
+    // this currently does not work in browsers
+    console.log(acc1._approveLoan(100))
+
+    // Chaining
+    acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000)
+
+    console.log(acc1.getMovements())
+  </script>
+</body>
+
+</html>

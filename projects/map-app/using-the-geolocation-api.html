@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+
+  <title>Geolocation API</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+
+
+
+
+  <section class="container">
+    <h1>Geolocation API</h1>
+    <p>This is a browser API.</p>
+
+    <h2>Using the API</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>Connect to the GeolocationAPI using: <strong>navigator.geolocation.getCurrentPosition()</strong></p>
+        <p>This takes 2 callback functions.</p>
+        <p>1: Callback funciton on successfully getting coordinates. This uses a position parameter.</p>
+        <p>2: Error while getting coordinates.</p>
+        <p>Load the page and you'll get a popup. Click OK and the console prints latitude and longitude.</p>
+
+      </div>
+      <div class="col-7">
+        <pre class="example"><span class="code-js">navigator.geolocation.getCurrentPosition(function(position) {
+  console.log(position);
+}, function() {
+  alert('Could not get your position')
+}) </span></pre>
+      </div>
+    </div>
+
+
+    <h2>Print latitude and longitude</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>You could obtain latitude and longitude using: position.coords.latitude.</p>
+        <p>But it's easier to destructure.</p>
+
+      </div>
+      <div class="col-7">
+<pre class="example"><span class="code-js">navigator.geolocation.getCurrentPosition(function(position) {
+  <span class="code-comment">// const latitude = position.coords.latitude
+  // you can also destructure to get the latitude property out of the position Object </span>
+  const {latitude} = position.coords
+  const {longitude} = position.coords
+  console.log(latitude, longitude)
+
+}, function() {
+  alert('Could not get your position')
+}) </span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h1>Leaflet</h1>
+    <p><a href="https://leafletjs.com/">Leaflet</a> is an open-source JavaScript library for maps. </p>
+    <p>Visit the <a href="https://leafletjs.com/download.html">download</a> page to either download the files, copy the CDN link, or run npm to install.</p>
+    <pre class="example">&lt;link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" /&gt;
+&lt;script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""&gt;&lt;/script&gt;
+
+&lt;script defer src="script.js"&gt;&lt;/script&gt;</pre>
+
+<p>Place these in the head of your HTML page ABOVE your custom scripts
+
+
+
+
+    <h2>Using Leaflet</h2>
+    <h3>Adding test code</h3>
+    <div class="row">
+      <div class="col-5">
+        <p>Copy the <a href="https://leafletjs.com/index.html">example script on the overview</a> page.</p>
+        <ul><li><a href="test-index.html" target="_blank">Test index.html page</a></li></ul>
+
+      </div>
+<div class="col-7">
+<pre class="example"><span class="code-js">var map = L.map('map').setView([51.505, -0.09], 13);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+L.marker([51.5, -0.09]).addTo(map)
+  .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+  .openPopup();</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+    <h2>Updating the test code</h3>
+    <div class="row">
+      <div class="col-5">
+        <p>Place the test code within the navigator.geolocation.getCurrentPosition() function.</p>
+        <p>var is also updated to const.</p>
+        <p>map() is also linked to the HTML element that will display the map. In this case &ltpdiv id="map"&gt;.</p>
+
+      </div>
+<div class="col-7">
+<pre class="example"><span class="code-js">navigator.geolocation.getCurrentPosition(function(position) {
+  const {latitude} = position.coords
+  const {longitude} = position.coords
+  
+  <span class="code-highlight"><span class="code-comment">// L is used by Leaflet as the main entry point. It's its namespace
+  // L has methods you can use such as map(), tileLayer(), and marker()
+  // the string you pass into map must be an element in the HTML where the map will be displayed
+  // for example: &lt;div id="map"&gt;&lt;/div&gt; </span>
+  const map = L.map('map').setView([51.505, -0.09], 13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  L.marker([51.5, -0.09]).addTo(map)
+    .bindPopup('A pretty CSS3 popup.Easily customizable.')
+    .openPopup(); </span>
+    
+  }, function() {
+    alert('Could not get your position')
+}) </span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+  </section>
+  <script>
+
+
+// navigator.geolocation.getCurrentPosition(function(position) {
+//   // const latitude = position.coords.latitude
+//   // you can also destructure to get the latitude property out of the position Object
+//   const {latitude} = position.coords
+//   const {longitude} = position.coords
+//   console.log(latitude, longitude)
+
+// }, function() {
+//   alert('Could not get your position')
+// }) 
+
+
+
+
+  </script>
+</body>
+
+</html>

@@ -24,15 +24,47 @@
   <section class="container">
 
     <h1>Encapsulation</h1>
+    <p>encapsulation basically means
+      to keep some properties and methods private inside the class
+      so that they are not accessible from outside of the class.</p>
+    <p> two big reasons why we need encapsulation
 
-    <h2>Create a class with methods</h2>
+      and data privacy.</p>
+    <p>1: So first it is to prevent code
+      from outside of a class to accidentally manipulate
+      or data inside the class.</p>
+    <p>
+    <p>2: when we expose only a small interface
+      so a small API consisting only of a few public methods
+      then we can change all the other internal methods
+      with more confidence.</p>
+    <p>in this case, we can be sure
+      that external code does not rely on these private methods.
+      And so therefore our code will not break
+      when we do internal changes.</p>
+    <p>NOTE: JavaScript classes actually do not yet support real data privacy and encapsulation.</p>
+    <p>In these examples, we will basically fake encapsulation
+      by simply using a convention.</p>
 
+
+
+
+
+
+
+
+
+
+
+    <h2>Create a class with methods without Encapsulation</h2>
     <div class="row">
       <div class="col-4">
-        <p>This adds methdos within the class that can be used outside of it to set properties.</p>
+        <p>This adds methods within the class that can be used outside of it to set properties.</p>
         <p>This is perferable to writing the properties manually outside the function. This way, you can just call
           deposit() or withdraw() with an argument.</p>
-        <p>The problem with this Class is that 'pin' is currently available outside of it. This needs to be encapsulated
+        <p>The problem with this Class is that the movements Array is currently available outside of it. For example:
+          you could use <strong>acc1.movements.push()</strong>.</p>
+        <p> This needs to be encapsulated
           to protect its data.</p>
       </div>
 
@@ -82,27 +114,455 @@ acc1.withdraw(140)</span></pre>
 
 
 
+    <h2>Protect the movements Array since it contains sensitive data</h2>
+    <div class="row">
+      <div class="col-4">
+        <p>Convention: Add an underscore before the property name. It does NOT make the property truly private.</p>
+      </div>
+      <div class="col-8">
+        <pre class="example"><span class="code-js">class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.pin = pin;
+    <span class="code-comment">// add underscore before property name
+    // this is called a Protected Property
+    // It is still accessible outside the class, but the underscore tells the developers it's not supposed to be </span>
+    <span class="code-highlight"> this._movements = []; </span>
+    this.locale = navigator.language;
 
-    
+    console.log(`Thanks for opening an account, ${owner}`);
+  }    
+
+  deposit(val) {
+    <span class="code-highlight">this._movements.push(val) </span>
+  }
+
+  withdraw(val) {
+    this.deposit(-val)
+  }
+
+  requestLoan(val) {           
+    if (this._approveLoan(val)) {
+      this.deposit(val);
+      console.log(`Loan approved`);
+      return this;
+    }
+  }
+}     </span></pre>
+      </div>
+    </div>
+
+
+    <h2>Access the Protected Propety using a Public method</h2>
+    <div class="row">
+      <div class="col-4">
+        <p>You can still access it from the outside by creating a public method.</p>
+        <p>Then call the method.</p>
+        <p>You should also protect _pin and _approveLoan.</p>
+      </div>
+
+      <div class="col-8">
+        <pre class="example"><span class="code-js">class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this._pin = pin;
+    this._movements = [];
+    this.locale = navigator.language;
+
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+
+  <span class="code-highlight"><span class="code-comment">// public method </span>
+  getMovements() {
+    return this._movements;
+  } </span>
+
+  deposit(val) {
+    this._movements.push(val)
+  }
+
+  withdraw(val) {
+    this.deposit(-val)
+  }
+
+  _approveLoan(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    // if (this.#approveLoan(val)) {
+    if (this._approveLoan(val)) {
+      this.deposit(val);
+      console.log(`Loan approved`);
+      return this;
+    }
+  }
+}
+
+<span class="code-highlight">acc1.getMovements(); </span></span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h1>Private class fields and methods</h1>
+    <p>8 types of fields and methods</p>
+    <p>1) Public fields</p>
+    <p>2) Private fields</p>
+    <p>3) Public methods</p>
+    <p>4) Private methods</p>
+
+    <p>There are also static versions of these 4</p>
+
+
+    <h2>Public fields</h2>
+    <div class="row">
+      <div class="col-4">
+        <p> think of a field as a property that will be on all instances. So that's why we can also call this a public
+          instance field.</p>
+        <p>In this example, _movements and locale are set for all Instances created through the class.</p>
+        <p>NOTE: These fields are NOT on the prototype, they are only on the Instances created from the Class.</p>
+        <p>The methods within the Account class ARE on the prototype.</p>
+      </div>
+
+      <div class="col-8">
+        <pre class="example"><span class="code-js">class Account {
+  <span class="code-highlight"><span class="code-comment">// Define a Public Field
+  // must sure to add the semicolon
+  // these are referenced by the 'this' keyword </span>
+  locale = navigator.language;
+  _movements = [];</span>
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this._pin = pin;      
+
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+ 
+  getMovements() {
+    return this._movements;
+  }
+
+  deposit(val) {
+    this._movements.push(val)
+  }
+
+  withdraw(val) {
+    this.deposit(-val)
+  }
+
+  _approveLoan(val) {
+    return true;
+  }
+
+  requestLoan(val) {           
+    if (this._approveLoan(val)) {
+      this.deposit(val);
+      console.log(`Loan approved`);
+      return this;
+    }
+  }
+}</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <h2>Private fields</h2>
+    <div class="row">
+      <div class="col-4">
+        <p>with private fields we can now make it
+          so that properties are really truly
+          not accessible from the outside.</p>
+      </div>
+
+      <div class="col-8">
+        <pre class="example"><span class="code-js">class Account {
+   
+  locale = navigator.language;
+  <span class="code-highlight"><span class="code-comment">// add a # symbol to make the field private  </span>    
+  #movements = [];
+  <span class="code-comment">// create a private field for pin, it must be created OUTSIDE the constructor </span>
+  #pin; </span>
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    <span class="code-highlight"><span class="code-comment">// #pin is then redefined here </span>
+    this.#pin = pin;      </span>
+
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+
+  getMovements() {
+    return this.#movements;
+  }
+
+  deposit(val) {
+    this.#movements.push(val)
+  }
+
+  withdraw(val) {
+    this.deposit(-val)
+  }
+
+  _approveLoan(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    if (this._approveLoan(val)) {
+      this.deposit(val);
+      console.log(`Loan approved`);
+      return this;
+    }
+  }
+}
+
+const acc1 = new Account('Jonas', 'EUR', 1111)
+console.log(acc1)
+
+acc1.deposit(250)
+acc1.withdraw(140)
+
+acc1.getMovements();
+
+<span class="code-highlight"><span class="code-comment">// you cannot access it any longer
+// console.log(acc1.#movements) </span></span></span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h2>Public methods</h2>
+    <div class="row">
+      <div class="col-4">
+        <p>All methods below are already public since they are accessible outside of the Class.</p>
+      </div>
+
+      <div class="col-8">
+        <pre class="example"><span class="code-js">class Account {
+   
+  locale = navigator.language;
+  // add a # symbol to make the field private      
+  #movements = [];
+  // create a private field for pin, it must be created OUTSIDE the constructor
+  #pin;
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    // #pin is then redefined here
+    this.#pin = pin;      
+
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+
+  <span class="code-highlight">getMovements() {
+    return this.#movements;
+  }
+
+  deposit(val) {
+    this.#movements.push(val)
+  }
+
+  withdraw(val) {
+    this.deposit(-val)
+  }
+
+  _approveLoan(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    if (this._approveLoan(val)) {
+      this.deposit(val);
+      console.log(`Loan approved`);
+      return this;
+    }
+  } </span>
+}</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h2>Private methods</h2>
+    <div class="row">
+      <div class="col-4">
+        <p>Private methods are very useful to hide the implementation details from the outside.</p>
+      </div>
+
+      <div class="col-8">
+<pre class="example"><span class="code-js">class Account {
+
+  locale = navigator.language;  
+  #movements = [];
+  #pin;
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.#pin = pin;
+
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+
+  getMovements() {
+    return this.#movements;
+  }
+
+  deposit(val) {
+    this.#movements.push(val)
+  }
+
+  withdraw(val) {
+    this.deposit(-val)
+  }
+
+  requestLoan(val) {
+    if (this.#approveLoan(val)) {
+      this.deposit(val);
+      console.log(`Loan approved`);
+      return this;
+    }
+  }
+
+  <span class="code-highlight"><span class="code-comment">// Add # to create a private method
+  // little browser support for this </span>
+  #approveLoan(val) {
+    return true;
+  } </span>
+}
+
+const acc1 = new Account('Jonas', 'EUR', 1111)
+console.log(acc1)
+
+acc1.deposit(250)
+acc1.withdraw(140)
+
+acc1.getMovements();
+
+// you cannot access it any longer
+// console.log(acc1.#movements)
+
+<span class="code-highlight"><span class="code-comment">// this currently does not work in browsers </span>
+console.log(acc1.#approveLoan(100)) </span></span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
 
   </section>
   <script>
 
     class Account {
+
+      locale = navigator.language;
+      // add a # symbol to make the field private      
+      #movements = [];
+      // create a private field for pin, it must be created OUTSIDE the constructor
+      #pin;
+
       constructor(owner, currency, pin) {
         this.owner = owner;
         this.currency = currency;
-        this.pin = pin;
-        this.movements = [];
-        this.locale = navigator.language;
+        // #pin is then redefined here
+        this.#pin = pin;
 
         console.log(`Thanks for opening an account, ${owner}`);
       }
 
-      // create methods that interact with properties, this is easier than adding them manually outside the class
-      // Public interface for the Objects
+      getMovements() {
+        return this.#movements;
+      }
+
       deposit(val) {
-        this.movements.push(val)
+        this.#movements.push(val)
       }
 
       withdraw(val) {
@@ -110,12 +570,17 @@ acc1.withdraw(140)</span></pre>
       }
 
       requestLoan(val) {
-        // if (this.#approveLoan(val)) {
         if (this._approveLoan(val)) {
           this.deposit(val);
           console.log(`Loan approved`);
           return this;
         }
+      }
+
+      // Add # to create a private method
+      // little browser support for this
+      _approveLoan(val) {
+        return true;
       }
     }
 
@@ -125,7 +590,13 @@ acc1.withdraw(140)</span></pre>
     acc1.deposit(250)
     acc1.withdraw(140)
 
+    acc1.getMovements();
 
+    // you cannot access it any longer
+    // console.log(acc1.#movements)
+
+    // this currently does not work in browsers
+    console.log(acc1._approveLoan(100))
   </script>
 </body>
 
