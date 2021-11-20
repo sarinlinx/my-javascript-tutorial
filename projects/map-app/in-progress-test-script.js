@@ -1,35 +1,76 @@
 'use strict';
 
-navigator.geolocation.getCurrentPosition(function(position) {
-  // const latitude = position.coords.latitude
-  // you can also destructure to get the latitude property out of the position Object
-  const {latitude} = position.coords
-  const {longitude} = position.coords
-  
-  // L is used by Leaflet as the main entry point. It's its namespace
-  // L has methods you can use such as map(), tileLayer(), and marker()
-  // the string you pass into map must be an element in the HTML where the map will be displayed
-  // for example: <div id="map"></div>
-  const map = L.map('map').setView([51.505, -0.09], 13);
+// prettier-ignore
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '© OpenStreetMap contributors'
-}).addTo(map);
+const form = document.querySelector('.form');
+const containerWorkouts = document.querySelector('.workouts');
+const inputType = document.querySelector('.form__input--type');
 
-L.marker([51.5, -0.09]).addTo(map)
-  .bindPopup('A pretty CSS3 popup.Easily customizable.')
-  .openPopup();
+const inputDistance = document.querySelector('.form__input--distance');
+const inputDuration = document.querySelector('.form__input--duration');
+const inputCadence = document.querySelector('.form__input--cadence');
+const inputElevation = document.querySelector('.form__input--elevation');
+
+// add global map var
+let map, mapEvent
+
+// Check if the geolocation API exists
+if (navigator.geolocation)
+  navigator.geolocation.getCurrentPosition(
+    function (position) {
+      // const latitude = position.coords.latitude
+      // you can also destructure to get the latitude property out of the position Object
+      const { latitude } = position.coords;
+      const { longitude } = position.coords;
+
+      const coords = [latitude, longitude];
+
+      map = L.map('map').setView(coords, 13);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+      }).addTo(map);
+
+
+      // handles map click events
+      // the mapE event is copied to a Global variable named mapEvent so you can use it outside this function
+      map.on('click', function (mapE) {    
+        mapEvent = mapE;
+        form.classList.remove('hidden');
+        inputDistance.focus()        
+      });
+    },
+    function () {
+      alert('Could not get your position');
+    }
+  );
+
+  // Display marker when form is submitted
+  form.addEventListener('submit', function(e){
+    // prevent page from reloading when form is submitted
+    e.preventDefault();
+
+    // Clear input field values
+    inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = '';
 
 
 
+  // destructure Object
+        const { lat, lng } = mapEvent.latlng;
 
-
-}, function() {
-  alert('Could not get your position')
-}) 
-
-
-
+        L.marker([lat, lng]).addTo(map)
+        .bindPopup(
+          L.popup({
+          maxWidth: 250,
+          minWidth: 100,
+          autoClose: false,
+          closeOnClick: false,
+          className: 'running-popup',
+        })
+        ).setPopupContent('Workout')
+        .openPopup();
+  })
 
 
 // class Workout {

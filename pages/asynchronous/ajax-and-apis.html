@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../../_css/style.css">
+  <title>AJAX and APIs</title>
+</head>
+
+<body>
+  <a href="../../../index.html">Home page</a>
+
+
+  <section class="container">
+    <h1>AJAX and APIs</h1>
+
+
+    <h2>Overview</h2>
+    <div class="row">
+      <div class="col">
+        <p>..........</p>
+      </div>
+    </div>
+
+
+
+    <h1>Synchronous code</h1>
+    <p>synchronous simply means that the code is executed line by line, in the exact order of execution
+      that we defined in our code,</p>
+    <p> as the first line of code is reached in the execution, it is simply executed in the execution of thread.</p>
+    <p>then the next line of code is executed and then the next one, all in sequence. So each line of code always waits
+      for the previous line to finish execution.</p>
+    <p> this can create problems when one line of code takes a long time to run.</p>
+    <img src="../../_img/synchronous-code.png" width="950px">
+
+
+    <h1>Asynchronous code</h1>
+    <p> the first line of code
+      is still synchronous here,
+      and we also move to the second line
+      in a synchronous way.</p>
+      <p>But here we encountered the set timeout function,
+      which will basically start a timer in an asynchronous way.</p>
+    <p>So this means that the timer
+      will essentially run in the background
+      without preventing the main code from executing.</p>
+      <p>We also register a callback function,
+        which will not be executed now,      
+        but only after the timer has finished running.</p>
+
+<p>Asynchronous code is executed after a task that is running in the background finishes execution.</p>
+
+<p> in this case, that is the timer.</p>
+<p>This callback that we just talked about is registered,
+  and then we immediately move on to the next line.  
+  So the main code is not being blocked  
+  and execution does not wait for the asynchronous timer
+    to finish its work.</p>
+    <p> when the timer finally finishes after five seconds,
+      the callback function will finally be executed as well.      
+      So you'll see that this callback      
+      runs after all the other code,      
+      even though in the code,      
+      it doesn't appear at the end.      
+      And so basically an action was deferred      
+      into the future here      
+      in order to make the code non-blocking.</p>
+      <p>Only certain functions such as set timeout
+        work in an asynchronous way.        
+        We just have to know which ones do
+                and which ones don't, okay?</p>
+                <img src="../../_img/asynchronous-code.png" width="950px">
+
+
+
+<h1>AJAX</h1>
+<p>Ajax stands for asynchronous JavaScript and XML,
+  and basically it allows us to communicate
+  with remote web servers in an asynchronous way.</p>
+<p>when we're asking a server to send us some data,
+  this server usually contains a web API.
+   And this API is the one that has the data
+  that we're asking for.</p>
+
+  <img src="../../_img/ajax.png" width="950px">
+
+
+
+  <h1>API</h1>
+
+  <img src="../../_img/api.png" width="950px">
+
+
+
+<p> when building applications in practice,
+  we simply call these online APIs, API,  
+  and many people will also call these APIs, Web APIs,  
+  or again, just simply API.  
+  So the term Online API is actually a term  
+  that I came up with myself  
+  because the term Web API
+    is actually also used for other things.</p>
+
+    <p>GitHub.com list of APIs.</p>
+    <ul><li><a href="https://github.com/public-apis/public-apis"></li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h3>...........</h3>
+    <div class="row">
+      <div class="col-5">
+        <p>lkjlkjlkj</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-html">jlkjlkjlk</pre>
+      </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>

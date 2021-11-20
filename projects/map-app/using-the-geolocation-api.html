@@ -53,7 +53,9 @@
 
       </div>
       <div class="col-7">
-<pre class="example"><span class="code-js">navigator.geolocation.getCurrentPosition(function(position) {
+<pre class="example"><span class="code-js"><span class="code-comment">// Check if the geolocation API exists </span>
+if (navigator.geolocation) 
+  navigator.geolocation.getCurrentPosition(function(position) {
   <span class="code-comment">// const latitude = position.coords.latitude
   // you can also destructure to get the latitude property out of the position Object </span>
   const {latitude} = position.coords
@@ -126,7 +128,9 @@ L.marker([51.5, -0.09]).addTo(map)
 
       </div>
 <div class="col-7">
-<pre class="example"><span class="code-js">navigator.geolocation.getCurrentPosition(function(position) {
+<pre class="example"><span class="code-js"><span class="code-comment">// Check if the geolocation API exists </span>
+  if (navigator.geolocation) 
+  navigator.geolocation.getCurrentPosition(function(position) {
   const {latitude} = position.coords
   const {longitude} = position.coords
   
@@ -149,6 +153,277 @@ L.marker([51.5, -0.09]).addTo(map)
 }) </span></pre>
       </div>
     </div>
+
+
+
+
+
+    <h2>Add your Latitude and Longitude</h3>
+      <div class="row">
+        <div class="col-5">
+          <p>Create Array named coords to store your local coordinates.</p>
+          <p>Add the coords Array to the .setView and .marker functions.</p>
+  
+        </div>
+<div class="col-7">
+<pre class="example"><span class="code-js">if (navigator.geolocation) 
+  navigator.geolocation.getCurrentPosition(function(position) {
+
+  const {latitude} = position.coords
+  const {longitude} = position.coords
+
+  <span class="code-comment">// Create Array to store latitude and longitude </span>
+  <span class="code-highlight">const coords = [latitude, longitude] </span>
+
+  <span class="code-comment">// Add the Array name as the first argument in setView </span>
+  const map = L.map('map').setView(<span class="code-highlight">coords</span>, 13);
+
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors'
+}).addTo(map);
+
+<span class="code-comment">// Add Array as argument to .marker </span>
+L.marker(<span class="code-highlight">coords</span>).addTo(map)
+  .bindPopup('A pretty CSS3 popup.Easily customizable.')
+  .openPopup();
+  
+}, function() {
+  alert('Could not get your position')
+}) </span></pre>
+    </div>
+  </div>
+
+
+
+
+  
+  <h2>Adjusting Zoom</h3>
+    <div class="row">
+      <div class="col-5">
+        <p>The second value in setView() is the zoom percent.</p>
+        <p>13 is a good general zoom when the map is loaded.</p>
+        <p>Lower values zoom out.</p>
+        <p>Higher values zoom in.</p>
+
+      </div>
+<div class="col-7">
+<pre class="example"><span class="code-js">const map = L.map('map').setView(coords, <span class="code-highlight">13</span>);</span></pre>
+  </div>
+</div>
+
+
+
+
+<h2>Tiles (changing styles)</h3>
+  <div class="row">
+    <div class="col-5">
+      <p>The map is made up of tiles noted by L.tileLayer()</p>
+      <p>openstreetmap is default, but you could use Google maps or any other map if you like.</p>
+      <p>You can change styles by changing the URL. This changes it from .org to .fr/hot/. Search online for other styles.</p>
+
+    </div>
+<div class="col-7">
+<pre class="example"><span class="code-js">L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'</span></pre>
+</div>
+</div>
+
+
+
+
+
+<h2>Display a Marker when you click on map</h3>
+  <div class="row">
+    <div class="col-5">
+      <p>Add a map.on() event. This is from Leaflet, but acts like an eventListener in JavaScript.</p>
+      <p>Listen for a click event. Return a map event from Leaflet.</p>
+      <p>View <a href="https://leafletjs.com/reference.html#layerevent" target="_blank">Leaflet's referece guide</a> for info on the latlng property.</p>
+      <p>Move the L.marker() function into the map.on section.</p>
+      <p>Add [lat, lng] to the L.marker function.</p>
+      <p>Clicking on the map now adds a new marker at the latitude and longitude of the click event.</p>
+      <p>.marker() creates it. .addTo() adds it to the map.</p>
+
+    </div>
+<div class="col-7">
+<pre class="example"><span class="code-js">if (navigator.geolocation)
+  navigator.geolocation.getCurrentPosition(
+    function (position) {
+      const { latitude } = position.coords;
+      const { longitude } = position.coords;
+
+      const coords = [latitude, longitude];
+      console.log(coords);
+
+      const map = L.map('map').setView(coords, 13);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+      }).addTo(map);     
+
+      <span class="code-highlight"><span class="code-comment">// on() method is from Leaflet
+      // function() returns a special map event from Leaflet </span>
+      map.on('click', function (mapEvent) {
+        console.log(mapEvent);
+        <span class="code-comment">// destructure mapEvent Object and create lat and lng variables </span>
+        const { lat, lng } = mapEvent.latlng;
+     
+        L.marker([lat, lng])
+        .addTo(map)
+        .bindPopup('Workout')
+        .openPopup();
+
+      }); </span>
+    },
+    function () {
+      alert('Could not get your position');
+    }
+  );</span></pre>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<h2>Add and Object of options to Popup</h3>
+  <div class="row">
+    <div class="col-5">
+      <p></p>
+      <p>View <a href="https://leafletjs.com/reference.html#popup" target="_blank">Leaflet's referece guide</a> for info on the Popup property.</p>      
+      <p>Add L.popup() inside .bindPopup.</p>
+      <p>You can then create an Object of options within it.</p>
+
+    </div>
+<div class="col-7">
+<pre class="example"><span class="code-js">if (navigator.geolocation)
+  navigator.geolocation.getCurrentPosition(
+    function (position) {
+      const { latitude } = position.coords;
+      const { longitude } = position.coords;
+      const coords = [latitude, longitude];
+      console.log(coords);
+      const map = L.map('map').setView(coords, 13);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+      }).addTo(map);
+
+      map.on('click', function (mapEvent) {
+        console.log(mapEvent);
+        const { lat, lng } = mapEvent.latlng;
+
+        <span class="code-highlight">L.marker([lat, lng]).addTo(map)
+        .bindPopup(
+          L.popup({
+          <span class="code-comment">// set Max and Min width </span>
+          maxWidth: 250,
+          minWidth: 100,
+          <span class="code-comment">// set autoClose to prevent popup from removing when another is added </span>
+          autoClose: false,
+          <span class="code-comment">// prevent popups from closing on the map </span>
+          closeOnClick: false,
+          <span class="code-comment">// add CSS class name to popup </span>
+          className: 'running-popup',         
+        })
+        )<span class="code-comment">// set text </span>
+        .setPopupContent('Workout') </span>
+        .openPopup();
+      });
+    },
+    function () {
+      alert('Could not get your position');
+    }
+  );</span></pre>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Display form when map is clicked</h3>
+  <div class="row">
+    <div class="col-5">
+      <p></p>
+      <p>The HTML form element is hidden by default with the CSS class 'hidden'.</p>
+      <p>In the map.on() function, add form.classList.remove to remove the 'hidden' CSS class from the form element.</p>
+      <p>Then, add inputDistance.focus() so the form field is automatically selected.</p>
+
+    </div>
+<div class="col-7">
+<pre class="example"><span class="code-html">&lt;form class="form hidden"&gt;
+  &lt;div class="form__row"&gt;
+    &lt;label class="form__label"&gt;Type&lt;/label&gt;
+    &lt;select class="form__input form__input--type"&gt;
+      &lt;option value="running"&gt;Running&lt;/option&gt;
+      &lt;option value="cycling"&gt;Cycling&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  &lt;div class="form__row"&gt;
+    &lt;label class="form__label"&gt;Distance&lt;/label&gt;
+    &lt;input class="form__input form__input--distance" placeholder="km" /&gt;
+  &lt;/div&gt;
+  &lt;div class="form__row"&gt;
+    &lt;label class="form__label"&gt;Duration&lt;/label&gt;
+    &lt;input
+      class="form__input form__input--duration"
+      placeholder="min"
+    /&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form__row"&gt;
+    &lt;label class="form__label"&gt;Cadence&lt;/label&gt;
+    &lt;input
+      class="form__input form__input--cadence"
+      placeholder="step/min"
+    /&gt;
+  &lt;/div&gt;
+  &lt;div class="form__row form__row--hidden"&gt;
+    &lt;label class="form__label"&gt;Elev Gain&lt;/label&gt;
+    &lt;input
+      class="form__input form__input--elevation"
+      placeholder="meters"
+    /&gt;
+  &lt;/div&gt;
+  &lt;button class="form__btn"&gt;OK&lt;/button&gt;
+&lt;/form&gt;</span>
+  
+<span class="code-js">const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+const form = document.querySelector('.form');
+const containerWorkouts = document.querySelector('.workouts');
+const inputType = document.querySelector('.form__input--type');
+const inputDistance = document.querySelector('.form__input--distance');
+const inputDuration = document.querySelector('.form__input--duration');
+const inputCadence = document.querySelector('.form__input--cadence');
+const inputElevation = document.querySelector('.form__input--elevation');
+  
+map.on('click', function (mapEvent) {
+<span class="code-comment">// remove CSS hidden class </span>
+form.classList.remove('hidden');
+inputDistance.focus()</span>
+<span class="code-comment">...
+...
+... </span></pre>
+</div>
+</div>
 
 
 

@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../../_css/style.css">
+  <title>AJAX</title>
+</head>
+
+<body>
+  <a href="../../../index.html">Home page</a>
+
+
+  <section class="container">
+    <h1>AJAX and APIs</h1>
+
+
+    <h2>Overview</h2>
+    <div class="row">
+      <div class="col">
+        <p>Project example:</p>
+        <ul>
+          <li><a href="project/index.html" target="_blank">Example project</a></li>
+        </ul>
+        <p>In these examples, the <a href="https://restcountries.com/">restcountries.com</a> API is used.</p>
+      </div>
+    </div>
+
+
+
+
+
+    <h1>Different ways to create an AJAX call</h1>
+
+
+    <h2>XMLHttpRequest (Oldest option)</h3>
+      <div class="row">
+        <div class="col-5">
+          <p>Call function, store in variable</p>
+        </div>
+
+        <div class="col-7">
+          <pre class="example"><span class="code-js">const request = new XMLHttpRequest();</span></pre>
+        </div>
+      </div>
+
+
+
+
+      <h3>Get URL to make AJAX call</h3>
+      <div class="row">
+        <div class="col-5">
+          <p>Use VAR.open().</p>
+          <p>The type of HTTP request used to get data is GET</p>
+          <p>String containing URL that AJAX will call.</p>
+        </div>
+
+        <div class="col-7">
+          <pre class="example"><span class="code-js">const request = new XMLHttpRequest();
+<span class="code-highlight">request.open('GET', 'https://restcountries.com/v2/name/portugal');</span></span></pre>
+        </div>
+      </div>
+
+
+      <h3>send request</h3>
+      <div class="row">
+        <div class="col-5">
+          <p>Use VAR.send() to send off the request to the API.</p>
+          <p>this AJAX call that we just send off here, is being done in the background, while the rest of the code
+            keeps running.</p>
+          <p>This request then fetches the data in the background.</p>
+          <p>When complete, it emits the 'load' event.</p>
+        </div>
+
+        <div class="col-7">
+          <pre class="example"><span class="code-js">const request = new XMLHttpRequest();
+request.open('GET', 'https://restcountries.com/v2/name/portugal');
+<span class="code-highlight">request.send();</span></span></pre>
+        </div>
+      </div>
+
+
+
+
+
+
+      <h3>Register callback for the 'load' event</h3>
+      <div class="row">
+        <div class="col-5">
+          <p>register a callback on the request object for the load event.</p>
+          <p>using this event listener, we are waiting for that event. And so as soon as the data arrives,
+            this callback function here will be called.</p>
+          <p>log the result to the console. The this keyword inside of this function is the request.</p>
+          <p>The response is in the property responseText. And again, this property is only gonning to be set
+            once the data has actually arrived.</p>
+          <p>This returns JSON</p>
+        </div>
+
+        <div class="col-7">
+          <pre class="example"><span class="code-js">const request = new XMLHttpRequest();
+request.open('GET', 'https://restcountries.com/v2/name/portugal');
+request.send();
+
+<span class="code-highlight">request.addEventListener('load', function() {
+  console.log(this.responseText);
+}</span></span></pre>
+        </div>
+      </div>
+
+
+
+      <h3>Convert JSON to an Array with a single Object</h3>
+      <div class="row">
+        <div class="col-5">
+          <p>Use JSON.parse() to convert the JSON data retrieved from the API.</p>
+        </div>
+
+        <div class="col-7">
+          <pre class="example"><span class="code-js">const request = new XMLHttpRequest();
+request.open('GET', 'https://restcountries.com/v2/name/portugal');
+request.send();
+
+request.addEventListener('load', function() {
+  <span class="code-highlight">const data = JSON.parse(this.responseText);</span>
+  console.log(data);
+}</span></pre>
+        </div>
+      </div>
+
+
+      <h3>Destructure Array</h3>
+      <div class="row">
+        <div class="col-5">
+          <p>Place data in brackets to destructure.</p>
+          <p>This returns only the first Object of the Array.</p>
+        </div>
+
+        <div class="col-7">
+          <pre class="example"><span class="code-js">const request = new XMLHttpRequest();
+request.open('GET', 'https://restcountries.com/v2/name/portugal');
+request.send();
+
+request.addEventListener('load', function() {
+  <span class="code-highlight">const [data] = JSON.parse(this.responseText);</span>
+  console.log(data);
+}</span></pre>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+      <h3>Add HTML template string</h3>
+      <div class="row">
+        <div class="col-5">
+          <p>This creates HTML to create the HTML with new data.</p>
+          <p>Use insertAdjacentHTML to add the HTML to the page.</p>
+          <p>Opacity is set to 1 because CSS originally set it to 0 with a transition.</p>
+        </div>
+
+        <div class="col-7">
+          <pre class="example"><span class="code-css">.countries {
+  display: flex;
+  font-size: 2rem;
+  opacity: 0;
+  transition: opacity 1s;
+}</span>
+  
+<span class="code-html">&lt;div class="countries"&gt;&lt;/div&gt;</span>
+            
+<span class="code-js"><span class="code-highlight">const countriesContainer = document.querySelector('.countries'); </span>
+            
+const request = new XMLHttpRequest();
+request.open('GET', 'https://restcountries.com/v2/name/portugal');
+request.send();
+
+request.addEventListener('load', function() {
+  const [data] = JSON.parse(this.responseText);
+  
+  <span class="code-highlight">const html = `
+  &lt;article class="country"&gt;
+    &lt;img class="country__img" src="${data.flag}" /&gt;
+    &lt;div class="country__data"&gt;
+      &lt;h3 class="country__name"&gt;${data.name}&lt;/h3&gt;
+      &lt;h4 class="country__region"&gt;${data.region}&lt;/h4&gt;
+      &lt;p class="country__row"&gt;&lt;span&gt;👫&lt;/span&gt;${(
+        +data.population / 1000000
+      ).toFixed(1)} people&lt;/p&gt;
+      &lt;p class="country__row"&gt;&lt;span&gt;🗣️&lt;/span&gt;${data.languages[0].name}&lt;/p&gt;
+      &lt;p class="country__row"&gt;&lt;span&gt;💰&lt;/span&gt;${data.currencies[0].name}&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+  `;
+    countriesContainer.insertAdjacentHTML('beforeend', html);
+    countriesContainer.style.opacity = 1;
+  }); </span>
+}</span></pre>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+      <h3>Place all code into a single function</h3>
+      <div class="row">
+        <div class="col-5">
+          <p>This allows you to send any country into the function and return the countries data.</p>
+          <p>Make sure to change the request.open() string to ${country}.</p>
+          <p>You can then call the function with the name of the country as the argument.</p>
+          <p>NOTE: The data returned for each country will be in the order it is retrieved in. So they will change order
+            each time you reload the page.</p>
+          <p>as we call getCountryData here with Portugal, for the very first time, it sends of this request,
+            and then JavaScript moves on in the code right away. And so it goes right here to this next line. And this,
+            of course, fires off another AJAX call immediately, way before the data of Portugal has actually arrived.
+          </p>
+          <p>If you want these requests to be made in a specific, like predefined order,
+                        then we would basically have to chain the requests.
+                        Which means to make the second request
+                        only after the first request has finished.</p>
+        </div>
+
+        <div class="col-7">
+          <pre class="example"><span class="code-js"><span class="code-highlight">const getCountryData = function (country) {</span>
+  const request = new XMLHttpRequest();
+  request.open('GET', `https://restcountries.com/v2/name/${country}`);
+  request.send();
+
+  request.addEventListener('load', function () {
+    const [data] = JSON.parse(this.responseText);
+    console.log(data);
+
+    const html = `
+  &lt;article class="country"&gt;
+    &lt;img class="country__img" src="${data.flag}" /&gt;
+    &lt;div class="country__data"&gt;
+      &lt;h3 class="country__name"&gt;${data.name}&lt;/h3&gt;
+      &lt;h4 class="country__region"&gt;${data.region}&lt;/h4&gt;
+      &lt;p class="country__row"&gt;&lt;span&gt;👫&lt;/span&gt;${(
+        +data.population / 1000000
+      ).toFixed(1)} people&lt;/p&gt;
+      &lt;p class="country__row"&gt;&lt;span&gt;🗣️&lt;/span&gt;${data.languages[0].name}&lt;/p&gt;
+      &lt;p class="country__row"&gt;&lt;span&gt;💰&lt;/span&gt;${data.currencies[0].name}&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+  `;
+    countriesContainer.insertAdjacentHTML('beforeend', html);
+    countriesContainer.style.opacity = 1;
+  });
+<span class="code-highlight">};</span>
+
+<span class="code-highlight">getCountryData('portugal');
+getCountryData('usa');
+getCountryData('germany');</span></span></pre>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1>Callbacks</h1>
+<p>This section explains how to put the data you receive in order.</p>
+
+
+
+<h2>Split out the HTML section into its own function.</h2>
+<div class="row">
+  <div class="col-5">
+   <p>This takes 2 arguments. The data and a CSS classname to add.</p>
+  </div>
+
+  <div class="col-7">
+<pre class="example"><span class="code-js">const renderCountry = function (data, className = '') {
+  const html = `
+  &lt;article class="country ${className}"&gt;
+    &lt;img class="country__img" src="${data.flag}" /&gt;
+    &lt;div class="country__data"&gt;
+      &lt;h3 class="country__name"&gt;${data.name}&lt;/h3&gt;
+      &lt;h4 class="country__region"&gt;${data.region}&lt;/h4&gt;
+      &lt;p class="country__row"&gt;&lt;span&gt;👫&lt;/span&gt;${(
+        +data.population / 1000000
+      ).toFixed(1)} people&lt;/p&gt;
+      &lt;p class="country__row"&gt;&lt;span&gt;🗣️&lt;/span&gt;${data.languages[0].name}&lt;/p&gt;
+      &lt;p class="country__row"&gt;&lt;span&gt;💰&lt;/span&gt;${data.currencies[0].name}&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+  `;
+  countriesContainer.insertAdjacentHTML('beforeend', html);
+  countriesContainer.style.opacity = 1;
+};</span></pre>
+  </div>
+</div>
+
+
+
+
+
+
+
+<h2>Create an AJAX call within an AJAX call</h2>
+<div class="row">
+  <div class="col-5">
+   <p>The getCountryAndNeighbour() function contains 2 AJAX calls.</p>
+   <p>The first is to obtain the primary country.</p>
+   <p>The second is to obtain the neighbor country using its country code.</p>
+   <p>They both return an Object of that country's data.</p>
+  </div>
+
+  <div class="col-7">
+<pre class="example"><span class="code-js">const getCountryAndNeighbour = function (country) {
+
+  <span class="code-comment">// AJAX call country 1 </span>
+  const request = new XMLHttpRequest();
+  request.open('GET', `https://restcountries.com/v2/name/${country}`);
+  request.send();
+
+  request.addEventListener('load', function () {
+    const [data] = JSON.parse(this.responseText);
+    console.log(data);
+
+    <span class="code-comment">// Render country 1 </span>
+    renderCountry(data);
+
+    <span class="code-comment">// Get neighbour country (2)
+    // .borders comes from the API response
+    // This is an Array and the first element is the neighbor country code </span>
+    const [neighbour] = data.borders;
+
+    <span class="code-comment">// This is for countries without any borders (islands) </span>
+    if (!neighbour) return;
+
+
+    <span class="code-comment">// AJAX call country 2 </span>
+    const request2 = new XMLHttpRequest();
+    <span class="code-comment">// This URL uses alpha. In the API documentation, this allows you to search for the country code </span>
+    request2.open('GET', `https://restcountries.com/v2/alpha/${neighbour}`);
+    request2.send();
+
+    request2.addEventListener('load', function () {
+      <span class="code-comment">// This return a string of the country code </span>
+      const data2 = JSON.parse(this.responseText);
+      console.log(data2);
+
+      <span class="code-comment">// pass in neighbor as the CSS class </span>
+      renderCountry(data2, 'neighbour');
+    });
+  });
+};
+
+getCountryAndNeighbour('portugal');</span></pre>
+  </div>
+</div>
+
+
+
+
+<h1>Callback hell</h1>
+<p>The above works with 2 callbacks.</p>
+<p>The 2nd is nested within the first.</p>
+<p>But imagine that we wanted  to do more requests in sequence,
+  like the neighbor of the neighbor of the neighbor,  
+  and like 10 times over.  So in that case, we would end up
+  with callbacks inside of callbacks inside of callbacks,
+  like 10 times.</p>
+  <p>There's a special name for this behavior. It's called  callback hell.</p>
+  <p>This is when you have a lot of nested callbacks in order to execute asynchronous tasks in sequence.</p>
+  <p>The problem with callback hell    is that it makes our code look very messy. But even more important,
+    it makes our code harder to maintain  and very difficult to understand.</p>
+    <p>Fortunately for us, since ES6,      there is actually a way of escaping callback hell
+      by using something called promises.</p>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../../_css/style.css">
+  <title>Promises and Fetch</title>
+</head>
+
+<body>
+  <a href="../../../index.html">Home page</a>
+
+
+  <section class="container">
+    <h1>Promises and Fetch</h1>
+
+
+    <h2>Overview</h2>
+    <div class="row">
+      <div class="col">
+        <p>Project example:</p>
+        <ul>
+          <li><a href="project/index.html" target="_blank">Example project</a></li>
+        </ul>
+        <p>In these examples, the <a href="https://restcountries.com/">restcountries.com</a> API is used.</p>
+      </div>
+    </div>
+
+
+
+
+
+    <h1>Fetch</h1>
+
+    <div class="row">
+      <div class="col-5">
+        <p>This is a very basic fetch function call to a URL.</p>
+        <p>This returns a promise.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">const request = fetch('https://restcountries.com/v2/name/portugal')
+console.log(request)</span></pre>
+      </div>
+    </div>
+
+    <h1>Promises</h1>
+    <div class="row">
+      <div class="col">
+        <p>A Promise is an object that is used basically as a placeholder for the future result of an asynchronous
+          operation.</p>
+        <p>Advantage is that you no longer need to rely on events and callback functions to handle asynchronous results.
+        </p>
+        <p>Also, you can chain them instead of nesting (which escapes callback hell).</p>
+      </div>
+    </div>
+
+    <img src="../../_img/promises.png" width="650px">
+
+
+    <h2>Promise Lifecycle</h2>
+    <p>since promises work with asynchronous operations, they are time sensitive.
+      So they change over time. This is called the lifecycle.</p>
+
+    <h3>Pending</h3>
+    <p>this is before any value resulting from the
+      asynchronous task is available.
+      Now, during this time,
+      the asynchronous task is still doing its work
+      in the background.</p>
+
+    <h3>Settled</h3>
+    <p>when the task finally finishes,
+      we say that the promise is settled and there are two different types of settled promises and
+      that's fulfilled promises and rejected promises.</p>
+    <p>Another important thing about promises is that
+      a promise is only settled once.
+      And so from there,
+      the state will remain unchanged forever.
+      So the promise was either fulfilled or rejected,
+      but it's impossible to change that state.</p>
+
+    <p>Fulfilled: a fulfilled promise is a promise that has
+      successfully resulted in a value just as we expect it and it's now available to being used.</p>
+    <p>Rejected: a rejected promise means that there has been an error during the asynchronous task.</p>
+
+    <h3>Consume a Promise</h3>
+    <p>these different states are relevant and useful when we use a promise to get a result, which is called, to consume
+      a promise.</p>
+    <p>So we consume a promise when we already have a promise.</p>
+    <p>But in order for a promise to exist in the first place,
+      it must first be built.
+      So it must be created in the case of the fetch API,
+      it's the fetch function that builds the promise
+      and returns it for us to consume.</p>
+
+    <img src="../../_img/promise-lifecycle.png" width="950px">
+
+
+
+
+
+    <h1>Consuming Promises</h1>
+
+
+    <div class="row">
+      <div class="col-5">
+        <p>This is a very basic fetch function call to a URL.</p>
+        <p>This returns a promise.</p>
+        <p>.then() is used to handle this first Promise. It returns the response Object. But, the .body property cannot
+          be read.</p>
+        <p>To read the .body property, you must use json(). But, this creates a 2nd Promise.</p>
+        <p>Use then() again on this 2nd Promise. This time, the data is returned.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">const getCountryData = function (country) {
+  <span class="code-comment">// This creates a Promise </span>
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    <span class="code-comment">// Use the then() Promise method to handle the Promise
+    // Pass in a callback function to be executed as soon as the promise is fulfilled
+    // This function receives 1 arg once it's called by JavaScript
+    // That argument is the resulting value of the fulfilled promise. Here's it's called response </span>
+    .then(function (response) {
+      <span class="code-comment">// This returns an Object named Response </span>
+      console.log(response);
+      <span class="code-comment">// The Response Object contains a body property
+      // You must use the json() method on the response Object to view this data
+      // json() also returns a new Promise, so you must return it here and handle it </span>
+      return response.json();
+    }) <span class="code-comment">// this then() is a callback function to handle the json() promise data
+    // this time you get access to the data because the resolved value of this promise is the data itself </span>
+    .then(function (data) {
+      console.log(data);
+      renderCountry(data[0]);
+    });
+};
+
+getCountryData('portugal');</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <h2>Simplified using Arrow Functions</h2>
+
+
+
+    <div class="row">
+      <div class="col-5">
+        <p>This is the same as above but uses Arrow Functions.</p>
+        <p>This fetches something and then we get a response which will be transformed to json. And then we take that
+          data and render the country to the DOM.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    <span class="code-comment">// Arrow function to return response.json </span>
+    .then(response => response.json())
+    .then(data => renderCountry(data[0]));
+};
+
+getCountryData('portugal');</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+</body>
+
+</html>
