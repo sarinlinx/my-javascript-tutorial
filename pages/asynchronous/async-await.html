@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+  <title>Async / Await</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+  <section class="container">
+
+
+    <h1>Consuming Promises with async/await</h1>
+
+
+
+    <div class="row">
+      <div class="col-5">
+        <p>This is a function that keeps running in the background while performing the code inside of it</p>
+
+        <p>When finished it returns a Promise</p>
+        <p>await will stop the code execution at this point of the function until the Promise is fulfilled.</p>
+        <p>stopping execution in an async function, is not a problem because this function is running asynchronously in
+          the background.</p>
+        <p>So it's not blocking the call stack. that's,what's so special about async/ await. it's the fact that it makes
+          our code look like regular synchronous code while behind the scenes. Everything is in fact asynchronous.</p>
+        <p>as soon as this premise here is resolved,then the value of this whole await expression that we havehere is
+          going to be the resolved value of the premise.And so we can simply store that into a variable.</p>
+        <p>before you start using a sync await you need to first understand that a sink await is in fact,
+          simply syntactic sugar over the then() method in Promises.</p>
+        <p>Behind the scenes, we are still using Promises. We are simply using a different way of consuming them here
+        </p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js"><span class="code-comment">// Start by creating an async function by adding async in front of it </span>              
+const whereAmI = async function (country) {
+  <span class="code-comment">// inside create await statements that await the result of the Promise </span>                  
+  cosnt res = await fetch(`https://restcountries.com/v2/name/${country}`)
+  console.log(res)
+}</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h1>try...catch</h1>
+    <p>we can't use the catch method that we use before, because we can really
+      attach it anywhere, right.
+      So instead, we use something called a try catch statement.</p>
+    <p>the try catch statement is actually used
+      in regular JavaScript as well.
+      So it's been in the language probably since the beginning.
+      So try catch has nothing to do with a sinc/await.
+      But we can still use it to catch errors in async functions.</p>
+
+
+      <h2>Simple example</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>wrap all our code in a try block.
+          And so JavaScript will then
+          basically try to execute this code.</p>
+        <p>The catch block
+          will have access to whatever error
+          occurred here in the try block.</p>
+      </div>
+
+      <div class="col-7">
+<pre class="example"><span class="code-js">const whereAmI = async function () {
+  try {
+    <span class="code-comment">// code here ... </span>
+  } 
+  
+  catch (err) {
+    console.error(`${err}`);
+    renderError(`${err.message}`);
+  }
+};</span></pre>
+      </div>
+    </div>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+ 
+
+
+    </script>
+</body>
+
+</html>

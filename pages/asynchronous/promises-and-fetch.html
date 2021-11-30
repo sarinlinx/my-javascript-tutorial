@@ -7,13 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" type="text/css" href="../../../_css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="../../../_css/style.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
   <title>Promises and Fetch</title>
 </head>
 
 <body>
-  <a href="../../../index.html">Home page</a>
+  <a href="../../index.html">Home page</a>
 
 
   <section class="container">
@@ -180,6 +180,608 @@ getCountryData('portugal');</span></pre>
 
 
 
+    <h1>Chaining Promises</h1>
+
+
+
+    <div class="row">
+      <div class="col-5">
+        <p>This chains an additional fetch call based off the first fetch call.</p>
+        <p>The avoids callback hell by returning the promise and handling it outside by continuing the chain using
+          .then().</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    <span class="code-comment">// 2nd call depends on data from 1st call </span>
+    .then(response => response.json())    
+    .then(data => {
+      <span class="code-comment">// get data then get neighbor country and perform AJAX call </span>
+      renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+
+      if (!neighbour) return;
+
+      <span class="code-comment">// 2nd AJAX call
+      // you must return this promise so you can chain an then method
+      // the then method always returns a promise, even if nothing is returned </span>
+      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+    }) 
+    <span class="code-comment">// this is the fullfilled value from the fetch promise </span>
+    .then(response => response.json())
+    .then(data => renderCountry(data, 'neighbour'));
+};
+
+getCountryData('portugal');</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+    <h1>Handling rejected Promises</h1>
+    <h2>Uncaught (in promise) TypeError: Failed to fetch</h2>
+    <p>This error happens when fetch failed.</p>
+    <p>2 ways to avoid this.</p>
+
+
+    <h3>Option 1: Pass 2nd callback function into the first then()</h3>
+    <div class="row">
+      <div class="col-5">
+        <p>The first callback function (then() method) is called for the fullfilled promise.</p>
+        <p>Add a 2nd callback when it's rejected.</p>
+        <p>This uses err to catch the error.</p>
+        <p>The chain then stops at this error.</p>
+        <p>The problem is you would have to add this to each fetch call when is a lot of duplicated code.</p>
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    .then(response => response.json()<span class="code-highlight">, 
+    err => alert(err) </span>
+    )    
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+
+      if (!neighbour) return;
+
+      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+    }) 
+    .then(response => response.json())
+    .then(data => renderCountry(data, 'neighbour'));
+};</span></pre>
+      </div>
+    </div>
+
+
+
+
+    <h3>Option 2: use catch to create global error handling</h3>
+    <div class="row">
+      <div class="col-5">
+        <p>Instead of writing err for each call, add catch to the last method.</p>
+        <p>Adding catch to the end catches any errors at any point in the chain.</p>
+
+      </div>
+
+      <div class="col-7">
+        <pre class="example"><span class="code-js">const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    // 2nd call depends on data from 1st call
+    .then(response => response.json())    
+    .then(data => {
+      // get data then get neighbor country and perform AJAX call
+      renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+
+      if (!neighbour) return;
+
+      // 2nd AJAX call
+      // you must return this promise so you can chain an then method
+      // the then method always returns a promise, even if nothing is returned
+      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+    }) 
+    // this is the fullfilled value from the fetch promise
+    .then(response => response.json())
+    .then(data => renderCountry(data, 'neighbour'))
+    <span class="code-highlight">.catch(err = > alert(err)) </span>
+};</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <h2>Display error to page</h3>
+      <div class="row">
+        <div class="col-5">
+          <p>This uses catch to print a message to the page.</p>
+
+        </div>
+
+        <div class="col-7">
+          <pre class="example"><span class="code-js"><span class="code-comment">// add text to page </span>
+<span class="code-highlight">const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  countriesContainer.style.opacity = 1;
+}; </span>
+  
+  
+  const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    .then(response => response.json())    
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+
+      if (!neighbour) return;
+
+      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+    }) 
+    .then(response => response.json())
+    .then(data => renderCountry(data, 'neighbour'))
+    <span class="code-highlight">.catch(err => {
+      renderError(`Something went wrong ${err.message}`);
+      })</span>
+};</span></pre>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <h1>finally() method</h1>
+      <div class="row">
+        <div class="col-5">
+          <p>The callback function you add to finally() is always called, even if it's rejected.</p>
+          <p>Use when something always needs to happen with the Promise.</p>
+          <p>A common use is hiding a rotating loading spinner.</p>
+        </div>
+
+        <div class="col-7">
+          <pre class="example"><span class="code-js">const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  countriesContainer.style.opacity = 1;
+};
+  
+  
+  const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    .then(response => response.json())    
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+
+      if (!neighbour) return;
+
+      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+    }) 
+    .then(response => response.json())
+    .then(data => renderCountry(data, 'neighbour'))
+    .catch(err => {
+      console.error(`${err} 💥💥💥`);
+      renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
+    })
+    <span class="code-highlight">.finally(() => {
+      countriesContainer.style.opacity = 1;
+    }); </span>
+};</span></pre>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <h1>Manually throw an error</h1>
+      <div class="row">
+        <div class="col-5">
+          <p>Since no country is entered into the getCountryData() function, a 404 error is returned.</p>
+          <p>If you consol.log the response, you'll see a property named 'ok' set to false.</p>
+          <p>Write an if statement to check if it's false.</p>
+          <p>If so, throw a custom error response.</p>
+          <p>The problem with this is that if you want to also create a custom error response for the 2nd Promise,
+            you'll have to duplicate the code.</p>
+        </div>
+
+        <div class="col-7">
+          <pre class="example"><span class="code-js">const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    <span class="code-highlight">.then(response => {
+      <span class="code-comment">// log the response error </span>
+      console.log(response)
+      <span class="code-comment">// ok is a property of the response which you can view using console.log
+      // this checks if this ok property is set to false </span>
+      if (!response.ok)
+      <span class="code-comment">// throw and define a new Error message
+      // throw immediately terminates the function, causing the Promise to be rejected
+      // this rejection then propagates down to .catch </span>
+      throw new Error(`Country not found (${response.status})`);
+      return response.json()
+    }) </span>
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+
+      if (!neighbour) return;
+
+      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+    }) 
+    .then(response => response.json())
+    .then(data => renderCountry(data, 'neighbour'))
+    .catch(err => {
+      console.error(`${err}`);
+      renderError(`Something went wrong ${err.message}`);
+      })
+      .finally(() => {
+        countriesContainer.style.opacity = 1;
+      })
+};
+
+getCountryData('');</span></pre>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <h1>Create a helper function to remove code duplication</h1>
+      <div class="row">
+        <div class="col-5">
+          <p>Creating a helper function helps you to avoid creating duplicate code.</p>
+          <p>This creates a helper function getJSON() to accept a URL and an error message.</p>
+          <p>If the response is ok property is false (meaning the country was not found), an error message is displayed.
+          </p>
+          <p>Additionally, another if statement is added to check if there's a neighbour country. if not, a custom error
+            displays.</p>
+        </div>
+
+        <div class="col-7">
+          <pre class="example"><span class="code-js"><span class="code-comment">// errorMsg has a default error message set as a param
+// this function returns a Promise </span>
+const getJSON = function (url, errorMsg = 'Something went wrong') {
+  return fetch(url).then(response => {
+    if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
+
+    return response.json();
+  });
+};
+
+const getCountryData = function (country) {
+<span class="code-comment">// Country 1 </span>
+getJSON(
+  `https://restcountries.com/v2/name/${country}`,
+  'Country not found'
+)
+  .then(data => {
+    renderCountry(data[0]);
+
+    const neighbour = data[0].borders[0];
+    
+    <span class="code-comment">// throws an error if no neighbors exist </span>
+    if (!neighbour) throw new Error('No neighbour found!');
+
+    <span class="code-comment">// Country 2 </span>
+    return getJSON(
+      `https://restcountries.com/v2/alpha/${neighbour}`,
+      'Country not found'
+    );
+  })
+
+  .then(data => renderCountry(data, 'neighbour'))
+  .catch(err => {
+    console.error(`${err} 💥💥💥`);
+    renderError(`catch: Something went wrong 💥💥 ${err.message}. Try again!`);
+  })
+  .finally(() => {
+    countriesContainer.style.opacity = 1;
+  });
+};
+
+getCountryData('australia');</span></pre>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <h1>Build a Promise</h1>
+      <div class="row">
+        <div class="col-5">
+          <p>Build a Promise using the new Promise constructor.</p>
+          <p>Take 1 arg which is an executor function.</p>
+          <p>As soon as the promise constructor runs, it will automatically execute this executor function that we pass
+            in.</p>
+          <p>As it executes this function, it will do so by passing in two other arguments. <strong>resolve</strong> and
+            <strong>reject</strong> functions.
+          </p>
+          <p>Reload the page to see the WIN or LOSE result.</p>
+        </div>
+
+        <div class="col-7">
+          <pre class="example"><span class="code-js">const lotteryPromise = new Promise(function(resolve, reject) {
+
+  if (Math.random() >= 0.5) {
+    <span class="code-comment">// call resolve function to fullfill the promise
+    // into the resolved function pass the fulfilled value of the promise
+    // so it can be consumed with the then() method.
+    // whatever value we pass into the resolve function here is gonna to be the result of the promise
+    // that will be available in the then() handler. </span>
+    resolve('You WIN')
+    }
+  else {
+    <span class="code-comment">// pass in error message to be available in catch() </span>
+    reject('You lost your money.')
+    }
+  })
+
+<span class="code-comment">//lotteryPromise is Promise Object at this point.
+// so we can call the then() method,
+// the then() method needs a callback function that is going to be called
+// with the resolved value of the promise.
+// res can be any name
+// .catch any errors </span>
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err))</span></pre>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+      <h2>Add asynchronous behavior</h1>
+        <div class="row">
+          <div class="col-5">
+            <p>This uses a timer. This encapsulates asyn behavior into the Promise</p>
+          </div>
+
+          <div class="col-7">
+            <pre class="example"><span class="code-js">const lotteryPromise = new Promise(function (resolve, reject) {
+
+  console.log('Lottery draw is happening')
+
+  <span class="code-highlight">setTimeout(function () { </span>
+    if (Math.random() >= 0.5) {
+      resolve('You WIN')
+    }
+    else {
+      <span class="code-comment">// create new Error object </span>
+      reject(new Error('You lost your money.'))
+    }
+  <span class="code-highlight">}, 2000) </span>
+})
+
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err))</span></pre>
+          </div>
+        </div>
+
+
+        <h2>Promisifying</h2>
+        <p>in practice, most of the time all we actually do
+          is to consume promises.
+          And we usually only built promises
+          to basically wrap old
+          callback based functions into promises.
+          And this is a process that we call promisifying.</p>
+        <p> promisifying means to convert callback based asynchronous behavior
+          to promise based.</p>
+
+
+        <div class="row">
+          <div class="col-5">
+            <p>Thi promisifies the setTimeout function and creates a wait function</p>
+          </div>
+
+          <div class="col-7">
+            <pre class="example"><span class="code-js">const lotteryPromise = new Promise(function (resolve, reject) {
+
+  console.log('Lottery draw is happening')
+
+  setTimeout(function () {
+    if (Math.random() >= 0.5) {
+      resolve('You WIN')
+    }
+    else {
+      <span class="code-comment">// create new Error object </span>
+      reject(new Error('You lost your money.'))
+    }
+  }, 2000)
+})
+
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err))
+
+const wait = function (seconds) {
+  <span class="code-comment">// create and return a Promise
+  // promisify setTimeout()
+  // reject is not needed since the timer cannot fail </span>
+  return new Promise(function (resolve) {
+    <span class="code-comment">// resolve is the callback function </span>
+    setTimeout(resolve, seconds * 1000)
+  })
+}
+
+<span class="code-comment">// consume the Promise
+// there is no resolved value for a timer so then() is empty </span>
+wait(2).then(() => {
+  console.log('Code to run after 2 seconds')
+  <span class="code-comment">// return a new Promise </span>
+  return wait(1)
+}).then(() => console.log('Waited for 1 second'))</span></pre>
+          </div>
+        </div>
+
+
+
+
+
+        <h2>Immediately resolve or reject a Promise</h2>
+
+        <div class="col">
+          <pre class="example"><span class="code-js">Promise.resolve('this resolves immediately').then(x => console.log(x))
+Promise.reject('this rejects immediately').catch(x => console.log(x)) </span></pre>
+        </div>
+
+
+
+
+
+        <h1>Consuming Promises with async/await</h1>
+
+
+
+        <div class="row">
+          <div class="col-5">
+            <p>This is a function that keeps running in the background while performing the code inside of it</p>
+            
+            <p>When finished it returns a Promise</p>
+            <p>await will stop the code execution at this point of the function until the Promise is fulfilled.</p>
+            <p>stopping execution in an async function, is not a problem because this function is running asynchronously in the background.</p>
+            <p>So it's not blocking the call stack. that's,what's so special about async/ await. it's the fact that it makes our code look like regular synchronous code while behind the scenes. Everything is in fact asynchronous.</p>
+            <p>as soon as this premise here is resolved,then the value of this whole await expression that we havehere is going to be the resolved value of the premise.And so we can simply store that into a variable.</p>
+            <p>before you start using a sync await      you need to first understand that a sink await is in fact,
+              simply syntactic sugar over the then() method in Promises.</p>
+              <p>Behind the scenes, we are still using Promises. We are simply using a different way of consuming them here</p>
+          </div>
+
+<div class="col-7">
+<pre class="example"><span class="code-js"><span class="code-comment">// Start by creating an async function by adding async in front of it </span>              
+const whereAmI = async function (country) {
+  <span class="code-comment">// inside create await statements that await the result of the Promise </span>                  
+  cosnt res = await fetch(`https://restcountries.com/v2/name/${country}`)
+  console.log(res)
+}</span></pre>
+</div>
+</div>
+
+
+<h1>Combinators</h2>
+
+  <h2>race</h2>
+  <h2>allSettled</h2>
+  <h2>any</h2>
+
+
+
+
+
+
+
+
+
+
+        <script>
+          const lotteryPromise = new Promise(function (resolve, reject) {
+            console.log('Lottery draw is happening')
+
+            setTimeout(function () {
+              if (Math.random() >= 0.5) {
+                resolve('You WIN')
+              }
+              else {
+                // create new Error object
+                reject(new Error('You lost your money.'))
+              }
+            }, 2000)
+          })
+
+
+          lotteryPromise.then(res => console.log(res)).catch(err => console.error(err))
+
+          const wait = function (seconds) {
+            // create and return a Promise
+            // promisify setTimeout()
+            // reject is not needed since the timer cannot fail
+            return new Promise(function (resolve) {
+              // resolve is the callback function
+              setTimeout(resolve, seconds * 1000)
+            })
+          }
+
+          // consume the Promise
+          // there is no resolved value for a timer so then() is empty
+          wait(2).then(() => {
+            console.log('Code to run after 2 seconds')
+            // return a new Promise
+            return wait(1)
+          }).then(() => console.log('Waited for 1 second'))
+
+
+
+
+
+
+
+
+        </script>
 </body>
 
 </html>
