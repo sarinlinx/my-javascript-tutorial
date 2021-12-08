@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <script type="module" defer src="script.js"></script>
+  <title>Modules</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+  <section class="container">
+
+
+    <h1>NPM</h1>
+    <div class="row">
+      <div class="col">
+        <p>why do we actually need a way of managing packages
+          or dependencies in our project?</p>
+        <p>Well, back in the day before we had NPM,
+          we used to include external libraries right into our HTML.
+          So, basically using the script tag. And this would then expose a global variable that we could use</p>
+        <p>The problem is that this is not manageable in a large project.</p>
+        <p>NPM helps to mange dependencies and versions easily.</p>
+
+
+
+
+
+
+
+
+
+
+
+        <h1>Create a default package (ADD TO THIS IN MORE DETAIL)</h1>
+
+        <div class="row">
+          <div class="col-5">
+            <p>Run npm init to initialize a new package.</p>
+            <p>This asks several questions during creation.</p>
+            <p>This creates a package.json file.</p>
+          </div>
+
+          <div class="col-7">
+            <pre class="example"><span class="code-js">npm init</span></pre>
+          </div>
+        </div>
+
+
+
+
+
+        <h2>Install Leaflet library using npm</h2>
+        <div class="row">
+          <div class="col-5">
+            <p>Run npm install (or i) followed by the package.</p>
+            <p>This creates a directory named node_modules containing the packages.</p>
+          </div>
+
+          <div class="col-7">
+            <pre class="example"><span class="code-js">npm install leaflet
+<span class="code-comment">or </span>
+npm i leaflet            </span></pre>
+          </div>
+        </div>
+
+
+
+        <h2>Sharing the package.json file</h2>
+        <div class="row">
+          <div class="col">
+            <p>NEVER share the node_modules directory. It contains thousands of files.</p>
+          </div>
+        </div>
+
+
+        <h2>Download all files in the package.json</h2>
+        <div class="row">
+          <div class="col-5">
+            <p>Just run npm install</p>
+          </div>
+
+          <div class="col-7">
+            <pre class="example"><span class="code-js">npm install</span></pre>
+          </div>
+        </div>
+
+
+
+
+
+        <h2>lodash</h2>
+        <div class="row">
+          <div class="col-5">
+            <p><a href="https://lodash.com" target="_blank">Lodash</a> is essentially
+              a collection of a ton of useful functions for erase,
+              objects, functions, dates, and more.
+              So, it's a lot of like functions that could
+              or should be included in JavaScript, but are not.
+              And so people simply implemented them in Lodash,
+              and so now we can use them.</p>
+            <p>The normal lodash package uses CommonJS which you cannot use without a module bundler.</p>
+            <p>The ES modules version is named lodash-es</p>
+          </div>
+
+          <div class="col-7">
+            <pre class="example"><span class="code-js">npm i lodash-es</span></pre>
+          </div>
+        </div>
+
+
+
+
+
+
+        <h2>lodash cloneDeep</h2>
+        <div class="row">
+          <div class="col-5">
+            <p>cloneDeep is used to clone Objects.</p>
+            <p>In the lodash files, it's named cloneDeep.js.</p>
+            <p>This export line appears in it.</p>
+          </div>
+
+          <div class="col-7">
+            <pre class="example"><span class="code-js">export default cloneDeep</span></pre>
+          </div>
+        </div>
+
+
+        <h2>importing cloneDeep</h2>
+        <div class="row">
+          <div class="col-5">
+            <p>Since it was exported as a default module, you can name it anything you like. But, it's still named
+              cloneDeep here.</p>
+          </div>
+
+          <div class="col-7">
+            <pre
+              class="example"><span class="code-js">import cloneDeep from './node_modules/lodash-es/cloneDeep.js';</span></pre>
+          </div>
+        </div>
+
+
+        <h2>Use cloneDeep to copy an Object</h2>
+        <div class="row">
+          <div class="col-5">
+            <p>This can then be used to create a clone of an Object. This would be very difficult for a nested Object
+              using asign() since any change to the Object would affect the copy.</p>
+          </div>
+
+          <div class="col-7">
+            <pre class="example"><span class="code-js">import cloneDeep from 'lodash-es';
+<span class="code-comment">// nested Object </span>
+const state = {
+  cart: [
+    { product: 'bread', quantity: 5 },
+    { product: 'pizza', quantity: 5 },
+  ],
+  user: { loggedIn: true },
+};
+
+<span class="code-comment">// assign() is used to create a copy of the Object, then it's merged with state
+// the problem is that any change to the Object ALSO affects the copy </span>
+const stateClone = Object.assign({}, state);
+
+<span class="code-comment">// This creates a clone instead of a copy, so any change to the original Object does NOT affect the clone </span>
+const stateDeepClone = cloneDeep(state);
+
+<span class="code-comment">// change the value to false </span>
+state.user.loggedIn = false;
+<span class="code-comment">// the copy displays the NEW change </span>
+console.log(stateClone);
+<span class="code-comment">// the clone displays the original value </span>
+console.log(stateDeepClone);</span></pre>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <h1>Bundling with Parcel and NPM scripts</h2>
+          <div class="row">
+            <div class="col-5">
+              <p>Save Parcel as a dev dependency.</p>
+              <p>a devDependency is basically like a tool that we need to build our application. But it's not a
+                dependency that we actually include in our code.</p>
+              <p>Parcel can then be run as a CLI, but since it was installed locally, you cannot just call it by running
+                'parcel'.</p>
+              <p>You must use NPX or NPM scripts.</p>
+            </div>
+
+            <div class="col-7">
+              <pre class="example"><span class="code-js">npm install parcel --save-dev</span></pre>
+            </div>
+          </div>
+
+
+          <h2>NPX</h2>
+          <div class="row">
+            <div class="col-5">
+              <p>NPX is an application built into NPM.</p>
+              <p>The option you pass into it is the ENTRY POINT since that's where you included script.js.</p>
+              <p>This starts a new development server on the URL displayed in the terminal.</p>
+              <p>NOTE: You must also remove type="module" from the HTML call to the script.js file.</p>
+              <p>This command creates a new /dist folder that will be sent for production.</p>
+
+            </div>
+
+            <div class="col-7">
+              <pre class="example"><span class="code-html"><span class="code-comment">&lt;!-- old code 
+&lt;script type="module" defer src="script.js"&gt;&lt;/script&gt;
+--&gt; </span>
+&lt;script defer src="script.js"&gt;&lt;/script&gt;</span>
+
+<span class="code-js">npx parcel index.html</span></pre>
+            </div>
+          </div>
+
+
+
+
+
+          <h2>Parcel hot module reloading</h2>
+          <div class="row">
+            <div class="col-5">
+              <p>what hot module reloading means
+                is that whenever we change one of the modules,
+                it will then, of course, trigger a rebuild, like this,
+                but that new modified bundle will then automatically,
+                like magic, get injected into the browser
+                without triggering a whole page reload.</p>
+              <p> that's going to be amazing for maintaining state on our page whenever we are testing out something.
+              </p>
+              <p>For example, in our Bankist the application,
+                where whenever we reloaded the page,
+                we needed to log in again into the application.
+                Remember that?
+                But with Parcel and hot module replacement,
+                that's not going to happen,
+                because the page will not reload.</p>
+
+            </div>
+
+            <div class="col-7">
+              <pre class="example"><span class="code-js">if (module.hot) {
+  module.hot.accept();
+}</span></pre>
+            </div>
+          </div>
+
+
+
+          <h2>Loading the library with Parcel</h2>
+          <div class="row">
+            <div class="col-5">
+              <p>there's no need for specifying
+                the entire path to any module.
+                So instead we can simply do this.
+                So keeping this here just for reference,
+                and then all we need to say
+                is that we want to include the lodash library.</p>
+            </div>
+
+            <div class="col-7">
+              <pre class="example"><span class="code-js">import cloneDeep from 'lodash-es';</span></pre>
+            </div>
+          </div>
+
+
+
+
+
+
+
+          <h2>Using NPM scripts</h2>
+          <div class="row">
+            <div class="col-5">
+              <p> NPM scripts are basically another way
+                of running a locally installed packages in the command line.
+                They also allow us to basically automate repetitive tasks.
+                And so therefore we then don't have to write NPX Parcel
+                and all of that, every time that we want to use it.</p>
+                <p>Add this script to your package.json file.</p>
+
+            </div>
+
+            <div class="col-7">
+              <pre class="example"><span class="code-js">"main": "script.js",
+<span class="code-highlight">"scripts": {
+  "start": "parcel index.html"
+},</span></pre>
+            </div>
+          </div>
+
+          <h2>Run the script</h2>
+          <div class="row">
+            <div class="col-5">
+              <p>After adding the line to the package.json file, run npm run scriptName to run.</p>
+              <p>we can execute whenever we want to start Parcel</p>
+              <p>This is the most common method.</p>
+            </div>
+
+            <div class="col-7">
+              <pre class="example"><span class="code-js">npm run start</span></pre>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+          <h2>Build final bundle</h2>
+          <div class="row">
+            <div class="col-5">
+              <p>Add line to package.json file</p>
+              <p>Run it using npm run build</p>
+            </div>
+            <div class="col-7">
+              <pre class="example"><span class="code-js">"main": "script.js",
+"scripts": {
+  "start": "parcel index.html",
+  <span class="code-highlight">"build": "parcel build index.html" </span>
+},
+
+
+
+npm run build</span></pre>
+            </div>
+          </div>
+
+
+
+
+
+</body>
+
+</html>

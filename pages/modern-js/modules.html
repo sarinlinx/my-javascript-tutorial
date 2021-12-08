@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <script type="module" defer src="script.js"></script>
+  <title>Modules</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+  <section class="container">
+
+
+    <div class="row">
+      <div class="col">
+        <p>A module is a reusable piece of code that encapsulates implementation details of a certain part of our
+          project.</p>
+        <p> that sounds a bit like a function or even a class, but the difference is that a module is usually a
+          standalone file.</p>
+        <p>a module can also have imports and exports.</p>
+        <p>with exports, as the name says, we can export values out of a module for example, simple values or even
+          entire functions. And whatever we export from a module is called the public API.</p>
+        <p> in the case of modules, this public API is actually consumed by importing values into a module.</p>
+        <p>just like we can export values in modules, we can usually also import values from other modules. And these
+          other modules from which we import are then called dependencies of the importing module</p>
+
+        <h2>ES6</h2>
+        <p>As of ES6, JavaScript has a native built-in module system.</p>
+        <p>ES6 modules are modules that are actually stored in files and each file is one module.</p>
+
+        <h3>Difference between scripts and ES6 modules</h3>
+
+        <h4>Variables</h4>
+        <p> in modules, all top level variables are scooped to the module. So basically variables are private
+          to the module by default. And the only way an outside module can access a value that's inside of a module is
+          by exporting that value. if we don't export, then no one from the outside can see the variable.</p>
+        <p> in scripts, on the other hand, all top level variables are always global and I showed you this in the map d
+          project, remember? And this can lead to problems like global namespace pollution, where multiple scripts try
+          to declare variables with the same name and then these variables collide.</p>
+
+        <h4>mode</h4>
+        <p>ES6 modules always executed in strict mode. So there's no need to manually declare strict mode.</p>
+        <p>scripts execute in sloppy mode by default.</p>
+
+        <h4>this keyword</h3>
+          <p>The this keyword is always undefined at the top level.</p>
+          <p>in scripts it points at the window object.</p>
+
+          <h4>Imports and Exports</h4>
+          <p>we can export and import values
+            between them using this ES6 import
+            and experts syntax. there is something really important to note about imports and exports, which is the fact
+            that they can only happen at the top level. So as you know, outside of any function or any if block. Imports
+            are hoisted.</p>
+          <p>Importing and exporting is impossible</p>
+
+
+
+          <h4>Linking to an HTML file</h4>
+          <p>in order to link a module to an HTML file, we need to use the script tag with
+            the type attribute set to module</p>
+          <p>Script use a plain script tag.</p>
+
+
+          <h4>File downloading</h4>
+          <p>ES6: always automatically happens
+            in an asynchronous way. And this is true for a module loaded from HTML as well as for modules
+            that are loaded by importing one module into another, using the import syntax.</p>
+          <p> scripts on the other hand are downloaded by default in a blocking synchronous way,
+            unless we use the async or differ attributes on the script tag.</p>
+
+          <img src="../../_img/es6modules-vs-scripts.png" width="950px">
+
+
+
+
+
+
+
+
+          <h2>Importing ES6 Modules</h2>
+
+          <p>when a piece of code is executed, the first step is to parse that code. parsing basically means to just
+            read the code, but without executing it. And this is the moment in which imports are hoisted.</p>
+
+          <p> the whole process of importing modules happens before the code in the main module
+            is actually executed.</p>
+          <p>This means is that only after all imported modules have been downloaded and executed,
+            the main index.js module will finally be executed as well.</p>
+          <p>this is only possible because of top level imports and exports that's because if we only export and import
+            values outside of any code that needs to be executed, then the engine can know all the imports and exports
+            during the parsing phase.</p>
+          <p>you might ask why do we actually want
+            modules to be loaded in a synchronous way?
+            Isn't synchronous bad?
+            Well, the answer is that this is the easiest way
+            in which we can do things
+            like bundling and dead code elimination.
+            So basically deleting code
+            that's actually not even necessary.
+            And trust me,
+            this is very important in large projects
+            with hundreds of modules
+            and that includes third party modules
+            from which we usually only want a small piece
+            and not the entire module.</p>
+          <p>So by knowing all dependencies
+            between modules before execution,
+            bundlers like webpack and Parcel
+            can then join multiple modules together
+            and eliminate that code.</p>
+          <p>this is the reason why we can only import and export outside of any code that needs to be executed.</p>
+          <p> remember downloading actually happens in an asynchronous way.
+            It is only the importing operation itself that happens synchronously.</p>
+          <p>after a module arrives, it's also parsed and the modules exports are linked to the imports in index.js.</p>
+
+          <p>
+            When imported, the connection is a live connection. This means exported values are not copied to imports.
+            Instead, the import is just a reference to the export at value like a pointer.</p>
+          <p>when the value changes in the exporting module, then the same value also changes in the importing module.
+          </p>
+          <p>This is unique to ES6 modules. Other modules systems DO NOT work like this.</p>
+
+
+
+
+
+          <img src="../../_img/es6-modules.png" width="950px">
+
+
+
+
+
+
+
+
+
+
+          <h1>import a module</h1>
+
+          <div class="row">
+            <div class="col-5">
+              <p>Module file is named shoppingCart.js and only contains: console.log('Exporting module');</p>
+              <p>Place script call in head of HTML file. You must specify the type attribute of module.</p>
+              <p>Load shoppingCart.js into the script.js file.</p>
+              <p>This prints: Exporting Module followed by Importing Module.</p>
+              <p>This shows the shoppingCart.js file is executed first.</p>
+            </div>
+
+            <div class="col-7">
+              <pre class="example"><span class="code-html">&lt;script type="module" defer src="script.js"&gt;&lt;/script&gt; </span>
+  
+<span class="code-js"><span class="code-comment">// script.js </span>
+import './shoppingCart.js';
+console.log('Importing module');</span></pre>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+          <h2>Add variables to module file</h2>
+
+          <div class="row">
+            <div class="col-5">
+              <p>Add variables to shoppingCart.js file.</p>
+              <p>These variables are scoped to this module file so you can only use them there.</p>
+              <p>If you want to use them outside that file, you must use <strong>exports</strong></p>
+              <p>There are 2 types of exports:</p>
+              <ul>
+                <li>named</li>
+                <li>default</li>
+              </ul>
+              <p>For a named export, just place 'export' in from of the code.</p>
+              <p>You can then import that variable into another script using 'import' followed by curly braces
+                containing the variable name. Then add 'from' after.</p>
+            </div>
+
+            <div class="col-7">
+              <pre class="example"><span class="code-js"><span class="code-comment">// shoppingCart.js </span>
+const shippingCost = 10;
+export const cart = [];
+
+<span class="code-highlight">export </span>const addToCart = function (product, quantity) {
+  cart.push({ product, quantity });
+  console.log(`${quantity} ${product} added to cart`);
+};
+
+<span class="code-comment">// shoppingCart.js </span>
+<span class="code-highlight">import </span> {addToCart} from './shoppingCart.js';
+addToCart('bread', 5);</span></pre>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <pre class="example"><span class="output">5 bread added to cart </span></pre>
+            </div>
+          </div>
+
+
+
+
+
+
+          <h1>Named Exports: Exporting multiple variables</h1>
+
+          <div class="row">
+            <div class="col-5">
+              <p>This uses a named export to export multiple variables.</p>
+              <p>You can then import them all in a single statement.</p>
+            </div>
+
+            <div class="col-7">
+              <pre class="example"><span class="code-js"><span class="code-comment">// shoppingCart.js </span>
+const totalPrice = 237;
+const totalQuantity = 23;
+
+<span class="code-highlight">export { totalPrice, totalQuantity}; </span>
+
+
+<span class="code-comment">// script.js </span>
+<span class="code-highlight">import {addToCart, totalPrice, totalQuantity } from './shoppingCart.js'; </span>
+addToCart('bread', 5);
+console.log(totalPrice, totalQuantity);</span></span></pre>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <pre class="example"><span class="output">5 bread added to cart </span></pre>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+          <h2>Changing the name of the import</h2>
+
+          <div class="row">
+            <div class="col-5">
+              <p>Use the word 'as' to rename a variable.</p>
+              <p>This renames totalQuantity in shoppingCart.js as tq.
+              <p>
+              <p>This renames totalPrice in script.js as price.
+              <p>
+              <p>You must also import the tq variable instead of totalQuantity.</p>
+            </div>
+
+            <div class="col-7">
+              <pre class="example"><span class="code-js"><span class="code-comment">// shoppingCart.js </span>
+const totalPrice = 237;
+const totalQuantity = 23;
+
+export { totalPrice, <span class="code-highlight">totalQuantity as tq </span>};
+
+
+<span class="code-comment">// script.js </span>
+import {addToCart, <span class="code-highlight">totalPrice as price, tq</span>} from './shoppingCart.js';
+console.log(<span class="code-highlight">price, tq</span>);</span></pre>
+            </div>
+          </div>
+
+
+
+
+
+          <h2>Import everything at once the name of the import</h2>
+
+          <div class="row">
+            <div class="col-5">
+              <p>Use * followed by an Object name to import everything</p>
+              <p>You must then use this Object name when calling variables. For example:
+                <strong>ShoppingCart</strong>.addToCart()
+              </p>
+            </div>
+
+            <div class="col-7">
+              <pre class="example"><span class="code-js"><span class="code-comment">// script.js </span>
+import {addToCart, <span class="code-highlight">import * as ShoppingCart from './shoppingCart.js';
+ShoppingCart.addToCart('bread', 5);
+console.log(ShoppingCart.totalPrice);
+</span></span></pre>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+          <h1>Default exports</h1>
+
+          <div class="row">
+            <div class="col-5">
+              <p>Use Default exports when you only want to export 1 thing per module.</p>
+              <p>Export the value, not the variable.</p>
+              <p>Give it any name you want when importing. It will still import the default export.</p>
+              <p>You should use one default export per module.</p>
+
+            </div>
+
+            <div class="col-7">
+              <pre class="example"><span class="code-js">export default function (product, quantity) {
+  cart.push({ product, quantity });
+  console.log(`${quantity} ${product} added to cart`);
+}
+
+<span class="code-comment">// importing using the name 'add'</span>
+import add from './shoppingCart.js'
+add('pizza', 2);</span></pre>
+            </div>
+          </div>
+
+
+
+
+
+
+          <h1>Import named and default exports at the same time</h1>
+
+          <div class="row">
+            <div class="col-5">
+              <p>This is the same as above but also imports the named 'cart' import at the same time.</p>
+              <p>NOTE: This is not used in practice. You should import them separately.</p>
+            </div>
+
+            <div class="col-7">
+              <pre class="example"><span class="code-js">export const cart = [];
+
+export default function (product, quantity) {
+  cart.push({ product, quantity });
+  console.log(`${quantity} ${product} added to cart`);
+}
+
+
+import add, <span class="code-highlight">{ cart } </span>from './shoppingCart.js';
+add('pizza', 2);
+console.log(cart);</span></pre>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+          <h1>Top-Level await (ES2022)</h1>
+
+          <div class="row">
+            <div class="col-5">
+              <p>starting from this new ES2022 version, we can now use the await keyword outside of async functions,
+                ONLY in modules.</p>
+              <p>This blocks the execution of the entire module.</p>
+
+
+
+
+            </div>
+
+            <div class="col-7">
+              <pre class="example"><span class="code-js"><span class="code-comment">// async is used outside of an async function </span>
+const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+<span class="code-comment">// create 2nd await to parse the JSON data </span>
+const data = await res.json()
+console.log(data);</span></pre>
+            </div>
+          </div>
+
+
+          <h1>CommonJS modules</h1>
+          <div class="row">
+            <div class="col">
+
+              <p>CommonJS modules are important for us,
+                because they have been used in Node.js,
+                for almost all of its existence. So only very recently,
+                ES Modules have actually been implemented,
+                in Node.js.</p>
+
+              <p>the big consequence of this,
+                is that almost all the modules,
+                in the npm repository, still use the CommonJS module system. </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-5">
+              <p> just like ES6 modules,
+                in CommonJS,
+                one file, is one module.</p>
+              <p>Export using export. followed by name of the export.</p>
+              <p>This export Object does not work in the browser, only Node.js.</p>
+              <p>Call require function to import. Again, require is part of the Node.js specification, not the browser.
+              </p>
+
+            </div>
+
+            <div class="col-7">
+              <pre class="example"><span class="code-js">export.addTocart = function (product, quantity) {
+cart.push({ product, quantity });
+console.log(
+`${quantity} ${product} added to cart (sipping cost is ${shippingCost})`
+);
+};
+
+<span class="code-comment">// Import </span>
+const { addTocart } = require('./shoppingCart.js');</span></pre>
+            </div>
+          </div>
+
+
+
+
+          <scrtip>
+
+            </script>
+
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <script type="module" defer src="script.js"></script>
+  <title>Babel</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+  <section class="container">
+
+
+    <h1>Babel</h1>
+    <div class="row">
+      <div class="col">
+        <p><a href="https://babeljs.io/">Babel</a> transpiles modern code back to ES5 code.</p>
+        <p>This is necessary for very old browsers.</p>
+      </div>
+    </div>
+
+
+
+
+
+
+    <h2>Converting everything using a Preset</h2>
+    <div class="row">
+      <div class="col">
+        <p><a href="https://babeljs.io/docs/en/presets">Presets</a> will automatically select
+          which JavaScript features should be compiled
+          based on browser support.</p>
+        <p>By default, Parcel uses the @babel/preset-env</p>
+        <p>NOTE: The presetn only includes final features part of the language afer passing the 4 stages of the ECMA
+          process.</p>
+        <p>Babel can actually only transpile ES6 Syntax.
+          So data things like arrow functions,
+          classes, const, or the spread operator.
+          So these are basically things
+          that have an equivalent way of writing them in ES5.</p>
+      </div>
+    </div>
+
+
+
+    <h2>Polyfilling</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>New features like find() and promise() cannot be transpiled.</p>
+        <p>But you can polyfill them.</p>
+        <p>You can import everything using <strong>core-js/stable</strong>. This is most common.</p>
+        <p>But you could also only import only a single part of the core-js library.</p>
+        <p>Polyfilling will not replace the existing new code. It will recreate them somewhere else in the code.</p>
+      </div>
+      <div class="col-7"><pre class="example"><span class="code-js">npm i core-js
+
+
+import 'core-js/stable/promise';</span></pre>
+      </div>
+    </div>
+
+
+    <h2>Install regenerator-runtime</h2>
+    <div class="row">
+      <div class="col-5">
+        <p>This is also needed for polyfilling facing functions.</p>
+      </div>
+      <div class="col-7"><pre class="example"><span class="code-js">npm install regenerator-runtime
+
+
+import 'regenerator-runtime/runtime';</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
