@@ -21,7 +21,6 @@
   <section class="container">
     <!-- <h1 type="button" data-toggle="collapse" data-target="#3-types-of-functions" aria-expanded="false" aria-controls="3-types-of-functions">3 types of Functions&nbsp;<i class="far fa-arrow-alt-circle-down"></i></h1> -->
 
-    <h1>3 types of functions</h1>
 
     <!-- <div class="collapse" id="3-types-of-functions"> -->
 
@@ -98,15 +97,38 @@
       </div>
     </div>
 
-    <h2>...</h2>
+    <h1>Writing clean and modern JavaScript</h1>
     <div class="row">
-      <div class="col-6">
-        <p>...............</p>
+      <div class="col">
+
+        <img src="../../_img/clean-code.png" width="950px">
+        <p>you should completely avoid any kind of loops.
+          And with that I mean any for loops.
+          So the for, and also the for of loops,
+          should be avoided if you want to avoid nested code.
+          And so instead, you can use array methods like a map,
+          filter and reduce.</p>
+        <p> for best readability,
+          always consume Promises using async/await
+          and not using the den and the catch methods.
+          Because these methods actually require callback functions,
+          which will then introduce even more nested code.</p>
+          <p>whenever you can,
+            you should run Promises in parallel            
+            using the Promise.all combinator function.            
+            So when you have two Promises that can run at the same time,            
+            so Promises that do not depend on each other,            
+            then please run them in parallel            
+            to make the application a little bit faster for your users.</p>
+            
+
+
+
+
+
       </div>
 
-      <div class="col-6">
-        <pre class="example"><span class="code-js">.................</span></pre>
-      </div>
+
     </div>
 
 </body>
