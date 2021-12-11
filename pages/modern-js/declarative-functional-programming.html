@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="../../_css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../../_css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <title>Modern JS</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home page</a>
+
+
+  <section class="container">
+
+    <h1>Declarative and Functional Programming</h1>
+
+
+    <h2>Imperative vs Declarative</h2>
+
+    <h3>Imperative</h3>
+    <div class="row">
+      <div class="col">
+        <p>2 ways to write code (paradigms)</p>
+        <p>whenever we write imperative code, we basically need to explain to the computer
+          how to do a certain things. So, basically, we need to explain every single step
+          that the computer needs to follow in order to achieve a certain result.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5">
+        <p>here in this code example,
+          we are trying to double the R array.
+          And so, this loop that I have here,
+          is a purely imperative way of writing that.
+          So, here we are telling the computer step by step,
+          to create an empty array to create a counter
+          that starts at zero, then to increase that counter
+          until we reach the length of the original array,
+          and then how exactly to store the new result
+          in each new position of the array.</p>
+      </div>
+      <div class="col-7">
+        <pre class="example"><span class="code-js">const arr = [2, 4, 6, 8];
+const doubled = [];
+for (let i = 0; i < arr.length; i++)
+  doubled[i] = arr[i] = 2;</span></pre>
+      </div>
+    </div>
+
+
+
+
+
+    <h3>Declarative</h3>
+    <div class="row">
+      <div class="col">
+        <p> when we write declarative code,
+          we simply describe the way that the computer should achieve
+          a certain result. But the how it should do it,
+          so basically, the step by step instructions,
+          they get abstracted away, so we do not care about them.</p>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5">
+        <p>this is how we do it in the declarative way.
+          So, we have R array, and then we simply tell JavaScript,
+          that it should map the values in the R array to a new array,
+          and each of these values should be multiplied by two.
+          And so, if you compare this code example,
+          with the one on the left,
+          then you will really see that in this example,
+          all we are doing is describing the way
+          that the computer should achieve the result
+          that we are looking for.
+          We are simply telling it what to do, which in this case,
+          is to simply map the original array onto a new array
+          and doubling all the elements.</p>
+        <p>all these super detailed steps
+          that we have on the left side, like creating an empty array
+          and initializing a counter,
+          all of these steps have been abstracted away,
+          because we don't really care about them, all right?
+          And this is pretty important to understand,
+          because more and more this is how modern JavaScript code
+          is actually written.
+          So, the difference between imperative and declarative
+          is not just some theoretical difference.
+          So, the declarative paradigm is actually a really big
+          and popular programming paradigm,
+          which has even given rise to a sub paradigm called,
+          functional programming.</p>
+
+
+
+      </div>
+      <div class="col-7">
+        <pre class="example"><span class="code-js">const arr = [2, 4, 6, 8];
+const doubled = arr.map(n => n * 2);</span></pre>
+      </div>
+    </div>
+
+
+    <img src="../../_img/imperative-vs-declarative.png" width="950px">
+
+
+    <h1>Functional Programming</h1>
+    <div class="row">
+      <div class="col">
+        <p>a declarative paradigm,
+          which is based on the idea of writing software,
+          simply by combining multiple so called pure functions,
+          while avoiding side effects and mutating data.</p>
+        <p>This is the modern way of writing code.</p>
+
+        <h3>Side effect</h3>
+        <p>a side effect is basically simply a modification
+          of any data that's outside of a function.
+          So, for example, mutating any variable that is external
+          to the function is causing a side effect.
+          So any variable that is outside of the scope
+          of the function.</p>
+        <p>data does not only refer to variables,
+          so for example, logging stuff to the console,
+          or also changing something in the DOM,
+          is also causing side effects.</p>
+
+        <h3>Pure function</h3>
+        <p>a pure function,
+          is a function without side effects.
+          So, basically a function that does not mutate
+          any external variables, and that does also not depend
+          on any external variables.</p>
+        <p>if we give the same inputs to a pure function,
+          it will always return the same output
+          and again, that's because it does not depend
+          on any external variables,
+          and it also does not manipulate them.</p>
+        <p>And finally, if we look again, at our definition here,
+          we also see that functional programming
+          is about avoiding mutating data,
+          and we do that by using something called immutability.</p>
+        <p>in functional programming, state, which also means basically data is never modified.</p>
+        <p>let's say that we have some application,
+          and we have an object there to keep track of all the data
+          that we need in an application.
+          And so that we usually called state,
+          and so again, in functional programming,
+          that state is never modified.
+          Instead, what we will do is to copy that object,
+          so that state, and then it is that copy that is mutated,
+          and can then be returned,
+          but the original state is never touched, okay?</p>
+        <p>that's what it means for the state being immutable,
+          and the big upside of immutability is that,
+          it makes it so much easier to keep track
+          of how the data flows through our entire application.</p>
+        <p>ultimately, that will allow us to write better code
+          with less bugs, and code that is also more readable,
+          which overall, is the entire goal
+          of using functional programming in the first place.</p>
+
+      </div>
+    </div>
+
+
+
+
+    <h1>Other recommendations</h1>
+    <div class="row">
+      <div class="col">
+        <p>another thing that you can do is to always prefer,
+          built in methods or functions that do not produce
+          side effects over the ones that do,
+          and this is really important for data transformations.</p>
+        <p>whenever you want to do that,
+          you should use a method such as Map, Filter and Reduce.</p>
+        <p>this is the functional and modern way
+          of doing data transformations, and many times,
+          this is actually the first contact that many people have,
+          with functional programming.
+          So, Map, Filter and Reduce are actually present
+          in all functional programming languages,
+          and they are very important to implement a functional code
+          into more declarative code in our code.</p>
+
+        <p> now to finish, let's come back to declarative syntax,
+          because functional programming is only a part of using
+          and writing declarative code.
+          So, in order to write code that is more declarative,
+          you should use array and object destructuring
+          whenever that's possible.</p>
+        <p>You should also use the spread operator,
+          the ternary operator, and also template literals
+          whenever that is possible, because if you think about it,
+          then all of these four ways of writing code,
+          actually makes the code more declarative.</p>
+        <p> these operators are more about telling the code
+          what to do, and not exactly the steps
+          that it should take</p>
+
+
+
+          <img src="../../_img/functional-programming.png" width="950px">
+
+
+
+
+
+
+
+      </div>
+    </div>
+
+
+</body>
+
+</html>
